@@ -1,0 +1,49 @@
+diff --git a/lpd/scripts/Makefile b/lpd/scripts/Makefile
+index d028d09..9cb1ae5 100644
+--- a/lpd/scripts/Makefile
++++ b/lpd/scripts/Makefile
+@@ -8,9 +8,9 @@ SCRIPTS = lp_diag_setup lp_diag_notify
+ all: $(SCRIPTS)
+ 
+ install: all
+-	@$(call install_files,$(SCRIPTS),744,$(DESTDIR)/etc/ppc64-diag)
++	@$(call install_files,$(SCRIPTS),744,$(DESTDIR)/usr/libexec/ppc64-diag)
+ 
+ uninstall:
+-	@$(call uninstall_files,$(SCRIPTS),$(DESTDIR)/etc/ppc64-diag)
++	@$(call uninstall_files,$(SCRIPTS),$(DESTDIR)/usr/libexec/ppc64-diag)
+ 
+ clean:
+diff --git a/lpd/scripts/lp_diag_notify b/lpd/scripts/lp_diag_notify
+index 9cb9b04..fb67138 100755
+--- a/lpd/scripts/lp_diag_notify
++++ b/lpd/scripts/lp_diag_notify
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -I /etc/ppc64-diag
++#!/usr/bin/perl -I /usr/libexec/ppc64-diag
+ # @file		lp_diag_notify
+ #
+ # This script is to be registered with servicelog as a notification tool.
+diff --git a/lpd/scripts/lp_diag_setup b/lpd/scripts/lp_diag_setup
+index 7d7cc94..acbe05a 100755
+--- a/lpd/scripts/lp_diag_setup
++++ b/lpd/scripts/lp_diag_setup
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl -I /etc/ppc64-diag
++#!/usr/bin/perl -I /usr/libexec/ppc64-diag
+ # @file		lp_diag_setup
+ # @brief	Register/unregister Light Path notification tools
+ #		with servicelog
+@@ -78,10 +78,10 @@ sub unregister {
+ }
+ 
+ @notification_tools = (
+-    ["/etc/ppc64-diag/lp_diag_notify -e",
++    ["/usr/libexec/ppc64-diag/lp_diag_notify -e",
+      "--match='disposition>=1 and severity>=4 and serviceable=1' ".
+      "--type=EVENT --method=num_arg"],
+-    ["/etc/ppc64-diag/lp_diag_notify -r",
++    ["/usr/libexec/ppc64-diag/lp_diag_notify -r",
+      "--type=REPAIR --method=num_arg"],
+ );
+ 

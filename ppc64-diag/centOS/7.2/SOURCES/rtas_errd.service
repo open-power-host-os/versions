@@ -1,0 +1,15 @@
+[Unit]
+Description=ppc64-diag rtas_errd (platform error handling) Service
+After=syslog.target 
+
+
+[Service]
+Type=forking
+ExecStart=/usr/libexec/ppc64-diag/rtas_errd start
+ExecStop=/usr/libexec/ppc64-diag/rtas_errd stop
+StandardOutput=syslog
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
+

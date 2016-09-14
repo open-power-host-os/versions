@@ -1,0 +1,10 @@
+Package:
+ name: 'librtas'
+ clone_url: 'https://github.com/nfont/librtas.git'
+ branch: 'master'
+ commit_id: '3fe4911'
+ expects_source: "librtas-1.4.1"
+ files:
+  centos:
+   '7.2':
+    spec: 'centOS/7.2/librtas.spec'
