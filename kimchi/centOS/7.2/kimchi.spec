@@ -4,7 +4,7 @@
 
 Name:       kimchi
 Version:    2.2.0
-Release:    2%{?dist}%{?pkvm_release}
+Release:    3%{?dist}%{?pkvm_release}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -94,6 +94,26 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Sep 07 2016 user - 2.2.0-3.pkvm3_1_1
+- 484cab8 Storagebuttons not behaving properly
+6c2249e Create test to verify graphics type change
+dfb11f2 Issue #836: Allow user change guest graphics type
+8ce6506 Issue #994: SPICE graphics does not need <channel> tag
+2f5e538 For s390x architecture, serial type is not validated in vm xml as as not supported on s390x.
+0889977 Issue# 973 Emphasize resource name in dlg
+2bcb669 Updated API.md for addition paramters support for VM ifaces API on s390x/s390 architecture.
+b2371dc Updated code to support VM ifaces on s390x/s390 architecture.
+bdd88ad Updated API.md for addition interfaces paramter in template API.
+fd39978 Updated code to support interfaces parameter to template API only on s390x/s390 architecture.
+189f53b /plugins/kimchi/ovsbridges API
+2285616 Issue #606: Change icon to distinguish image generated template and iso generated template
+c7e9307 Issue #939: [UI] Guest tab is not rendered correctly if guests are not in running or shutoff state
+8ad9319 Issue #921: Peers button disappears
+30ce46d Enhancement to /plugins/kimchi/interfaces
+b6eb399 Enhancement to /plugins/kimchi/interfaces
+5a6b9a0 Issue #626: Snapshot revert does not release storage volume
+12fe984 Attach all functions of multi-fn PCI PT at once
+
 * Thu Sep 01 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.2.0-2.pkvm3_1_1
 - Build August, 31st, 2016
 

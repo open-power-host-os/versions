@@ -8,7 +8,7 @@
 
 Name:       ginger-base
 Version:    2.0.0
-Release:    2%{?dist}%{?pkvm_release}
+Release:    3%{?dist}%{?pkvm_release}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -75,6 +75,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Sep 07 2016 user - 2.0.0-3.pkvm3_1_1
+- b51c6ae Extending Kimchi Peers to Host Dashboard
+6875c55 Moving storage device listing from ginger to gingerbase
+2fa4618 Update usage of add_task() method.
+
 * Thu Sep 01 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.0.0-2.pkvm3_1_1
 - Build August, 31st, 2016
 

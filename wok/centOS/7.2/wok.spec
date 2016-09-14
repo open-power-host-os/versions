@@ -4,7 +4,7 @@
 
 Name:       wok
 Version:    2.2.0
-Release:    3%{?dist}%{?pkvm_release}
+Release:    4%{?dist}%{?pkvm_release}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -178,6 +178,20 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed Sep 07 2016 user - 2.2.0-4.pkvm3_1_1
+- bea70fc Merge remote-tracking branch upstream/master into powerkvm-v3.1.1
+8e5a84d Change location of User Requests Log
+d164293 Save log entry IDs for requests that generate tasks
+2ae31d2 Log AsyncTask success or failure
+d25d822 Update Request Logger to handle AsyncTask status
+0767b4b Create log_request() method for code simplification
+cdb3c4e Blink dialog session timeout
+86514d0 Minor fixes in form fields
+bc54058 Removing Kimchi Peers dropdown from Wok navbar
+b1f0fef Issue #122 - Add unit test to stop AsyncTask.
+9a00bff Issue #122 - Make AsyncTask stoppable.
+240f449 Merge remote-tracking branch upstream/master into powerkvm-v3.1.1
+
 * Thu Sep 01 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.2.0-3.pkvm3_1_1
 - Build August, 31st, 2016
 

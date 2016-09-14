@@ -4,7 +4,7 @@
 
 Name:       ginger
 Version:    2.2.0
-Release:    2%{?dist}%{?pkvm_release}
+Release:    3%{?dist}%{?pkvm_release}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -99,6 +99,21 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Sep 07 2016 user - 2.2.0-3.pkvm3_1_1
+- 086765c Update functionalities for Platform Management
+30cefe3 UT implemented for the new features implemented.
+fbd22ff Audit graph backend implemetation.
+0fc004a Audit predefined rules backend implementation.
+e093afb Updated docs and i18n.py for the new features implemented.
+d4101d1 Backend code implemented to get list of system calls.
+c1d2fd7 Audit report implementation from the backend.
+630bfae Audit log implementation from the backend.
+bdea605 Audit conf implemented in the backend.
+1c528ad Modified audit rules code for comments and added new features.
+fe4324f Issue #166 : nfs mount fails with 500
+ee3d989 Backend Changes for Sensor Data Records for Platform Management
+670ff8c [HostOS] Revert Introducing iSCSI implementation for Storage devices
+
 * Thu Sep 01 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.2.0-2.pkvm3_1_1
 - Build August, 31st, 2016
 
