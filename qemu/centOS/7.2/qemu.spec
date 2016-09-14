@@ -192,9 +192,9 @@ Version: 2.6.93
 %define release_week 32
 %define release_day 0
 %define release_spin 0
-%define pkvm_release .pkvm3_1_1.%{?release_week}0%{?release_day}.%{?release_spin}
+%define release_date .%{?release_week}0%{?release_day}.%{?release_spin}
 
-Release: 7%{?dist}%{?pkvm_release}
+Release: 8%{?dist}%{?release_date}
 Epoch: 11
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools

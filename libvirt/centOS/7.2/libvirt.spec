@@ -385,8 +385,8 @@ Version: 1.3.4
 %define release_week 32
 %define release_day 0
 %define release_spin 0
-%define pkvm_release .pkvm3_1_1.%{?release_week}0%{?release_day}.%{?release_spin}
-Release: 2%{?dist}%{?ibm_release}%{?pkvm_release}
+%define release_date .%{?release_week}0%{?release_day}.%{?release_spin}
+Release: 3%{?dist}%{?ibm_release}%{?release_date}
 ExclusiveArch: ppc64 ppc64le x86_64 s390x
 Source0: libvirt-%{?release_week}0%{?release_day}.%{?release_spin}.tar.gz
 License: LGPLv2+

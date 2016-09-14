@@ -1,10 +1,8 @@
 %define ibm_release .1
 
-%define pkvm_release .pkvm3_1_1
-
 Name:       kimchi
 Version:    2.2.0
-Release:    3%{?dist}%{?pkvm_release}
+Release:    4%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch

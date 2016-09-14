@@ -1,10 +1,8 @@
 %define ibm_release .1
 
-%define pkvm_release .pkvm3_1_1
-
 Name:       wok
 Version:    2.2.0
-Release:    4%{?dist}%{?pkvm_release}
+Release:    5%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch

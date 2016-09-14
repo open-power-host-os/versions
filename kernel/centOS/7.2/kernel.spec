@@ -27,16 +27,16 @@ Summary: The Linux kernel
 %define release_week 32
 %define release_day 0
 %define release_spin 0
-%define pkvm_release .pkvm3_1_1.%{?release_week}0%{?release_day}.%{?release_spin}
+%define release_date .%{?release_week}0%{?release_day}.%{?release_spin}
 
 %define rpmversion 4.7.0
 %define pkgrelease 3
 
 # allow pkg_release to have configurable %{?dist} tag
-%define specrelease 1%{?dist}
+%define specrelease 2%{?dist}
 
 #define ibm_release %{?repo}.1
-%define pkg_release %{specrelease}%{?buildid}%{?ibm_release}%{?pkvm_release}
+%define pkg_release %{specrelease}%{?buildid}%{?ibm_release}%{?release_date}
 
 # The kernel tarball/base version
 #define rheltarball %{rpmversion}-%{pkgrelease}.el7
@@ -554,7 +554,7 @@ This package provides debug information for the perf package.
 %{expand:%%global debuginfo_args %{?debuginfo_args} -p '.*%%{_bindir}/perf(\.debug)?|.*%%{_libexecdir}/perf-core/.*|XXX' -o perf-debuginfo.list}
 
 %if ! 0%{?cross_build}
- 
+
 %package -n python-perf
 Summary: Python bindings for apps which will manipulate perf events
 Group: Development/Libraries
@@ -1511,7 +1511,7 @@ fi\
 %{nil}
 
 %kernel_variant_preun
-%kernel_variant_post 
+%kernel_variant_post
 
 %kernel_variant_preun debug
 %kernel_variant_post -v debug
