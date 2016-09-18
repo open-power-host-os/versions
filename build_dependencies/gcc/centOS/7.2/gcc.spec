@@ -79,7 +79,7 @@ Name: gcc
 %global gcc_version 4.8.5
 %endif
 Version: 4.8.5
-Release: %{gcc_release}%{?dist}.1
+Release: %{gcc_release}%{?dist}.2
 %if "%{version}" != "%{gcc_version}"
 %define gcc_provides %{gcc_version}-16%{?dist}
 %endif
@@ -219,6 +219,9 @@ Patch19: gcc48-aarch64-async-unw-tables.patch
 Patch20: gcc48-aarch64-unwind-opt.patch
 Patch21: gcc48-rh1243366.patch
 Patch22: gcc48-rh1296211.patch
+Patch23: gcc48-enable-livepatch-0001.patch
+Patch24: gcc48-enable-livepatch-0002.patch
+Patch25: gcc48-enable-livepatch-0003.patch
 
 Patch1000: fastjar-0.97-segfault.patch
 Patch1001: fastjar-0.97-len1.patch
@@ -918,6 +921,9 @@ rm -f libgo/go/crypto/elliptic/p224{,_test}.go
 %patch20 -p0 -b .aarch64-unwind-opt~
 %patch21 -p0 -b .rh1243366~
 %patch22 -p0 -b .rh1296211~
+%patch23 -p0 -b .enable-livepatch-0001~
+%patch24 -p0 -b .enable-livepatch-0002~
+%patch25 -p0 -b .enable-livepatch-0003~
 
 %if 0%{?_enable_debug_packages}
 cat > split-debuginfo.sh <<\EOF
@@ -3359,6 +3365,10 @@ fi
 %{_prefix}/libexec/gcc/%{gcc_target_platform}/%{gcc_version}/plugin
 
 %changelog
+* Tue Sep 20 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 4.8.5-4.2
+- Adding patch series to be able to compile kernel with livepatch feature:
+  gcc48-enable-livepatch-000{1,2,3}.patch
+
 * Tue Aug 30 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 4.8.5-4.1
 - Build August, 24th, 2016
 
