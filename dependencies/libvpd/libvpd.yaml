@@ -1,0 +1,10 @@
+Package:
+ name: 'libvpd'
+ clone_url: 'https://github.com/open-power-host-os/libvpd.git'
+ branch: 'master'
+ commit_id: 'a791b31'
+ expects_source: "libvpd"
+ files:
+  centos:
+   '7.2':
+    spec: 'centOS/7.2/libvpd.spec'

@@ -1,0 +1,14 @@
+Package:
+ name: 'lsvpd'
+ clone_url: 'https://github.com/open-power-host-os/lsvpd.git'
+ branch: 'master'
+ commit_id: '22bf310'
+ expects_source: "lsvpd"
+ files:
+  centos:
+   '7.2':
+    spec: 'centOS/7.2/lsvpd.spec'
+    dependencies:
+     - 'libvpd'
+    build_dependencies:
+     - 'librtas'
