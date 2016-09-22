@@ -2,7 +2,7 @@ Package:
  name: 'libvpd'
  clone_url: 'https://github.com/open-power-host-os/libvpd.git'
  branch: 'master'
- commit_id: 'a791b31'
+ commit_id: 'cf5d293'
  expects_source: "libvpd"
  files:
   centos:
