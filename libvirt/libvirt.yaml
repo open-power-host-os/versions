@@ -2,7 +2,7 @@ Package:
  name: 'libvirt'
  clone_url: 'https://github.com/open-power-host-os/libvirt.git'
  branch: 'hostos-devel'
- commit_id: '238a70f'
+ commit_id: '62135c2'
  expects_source: "libvirt-3200.0"
  files:
   centos:

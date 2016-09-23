@@ -386,7 +386,7 @@ Version: 2.2.0
 %define release_day 0
 %define release_spin 0
 %define release_date .%{?release_week}0%{?release_day}.%{?release_spin}
-Release: 3%{?dist}%{?ibm_release}%{?release_date}
+Release: 4%{?dist}%{?ibm_release}%{?release_date}
 ExclusiveArch: ppc64 ppc64le x86_64 s390x
 Source0: libvirt-%{?release_week}0%{?release_day}.%{?release_spin}.tar.gz
 License: LGPLv2+
@@ -2432,6 +2432,10 @@ exit 0
 #doc examples/systemtap
 
 %changelog
+* Thu Sep 22 2016 user - 2.2.0-4.3200.0
+- 62135c2 virsh: use virConnectGetDomainCapabilities with maxvcpus
+238a70f Enable PCI Multifunction hotplug/unplug
+
 * Tue Aug 30 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 1.3.4-2.pkvm3_1_1.3100.0
 - Build August, 24th, 2016
 

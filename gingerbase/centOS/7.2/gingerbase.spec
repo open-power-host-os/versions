@@ -6,7 +6,7 @@
 
 Name:       ginger-base
 Version:    2.0.0
-Release:    4%{?dist}
+Release:    5%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -73,6 +73,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Sep 22 2016 user - 2.0.0-5
+- c13abf8 Fix PEP8 version 1.5.7 issues on master
+9274de8 Fixing copyright date of test_storage_devs.py
+b51c6ae Extending Kimchi Peers to Host Dashboard
+
 * Wed Sep 07 2016 user - 2.0.0-3.pkvm3_1_1
 - b51c6ae Extending Kimchi Peers to Host Dashboard
 6875c55 Moving storage device listing from ginger to gingerbase

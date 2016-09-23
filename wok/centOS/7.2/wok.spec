@@ -2,7 +2,7 @@
 
 Name:       wok
 Version:    2.2.0
-Release:    5%{?dist}
+Release:    6%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -176,6 +176,12 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Thu Sep 22 2016 user - 2.2.0-6
+- 918911e Merge remote-tracking branch upstream/master into powerkvm-v3.1.1
+a14cda7 Add ui/libs/datatables/js/plugins/ip-address/* files to IBM-license-blacklist
+69743f8 Remove obsolete message WOKUTILS0001E
+bea70fc Merge remote-tracking branch upstream/master into powerkvm-v3.1.1
+
 * Wed Sep 07 2016 user - 2.2.0-4.pkvm3_1_1
 - bea70fc Merge remote-tracking branch upstream/master into powerkvm-v3.1.1
 8e5a84d Change location of User Requests Log

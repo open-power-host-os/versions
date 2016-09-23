@@ -2,7 +2,7 @@
 
 Name:       ginger
 Version:    2.2.0
-Release:    4%{?dist}
+Release:    5%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -97,6 +97,17 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Sep 22 2016 user - 2.2.0-5
+- 90bff39 Issue # 430 :UI displays blank in Volume Group list when checking more details for selected vg.
+6395b8b Fixes on tests/test_graph.py:
+c092063 Issue #384 : Fixing the broken /ginger/stgdevs API
+81bc523 Issue #418 : Disable iscsi target discovery auth methods for individual IQNs
+af5f9b7 Issue #415 : Disable auth for iSCSI target and initiator selectively
+937e083 Added columns in detailed report for graph creation.
+ad3318b Implemented audit graph backend.
+d38b15f Issue #389 : iSCSI Auth model class loading fix
+086765c Update functionalities for Platform Management
+
 * Wed Sep 07 2016 user - 2.2.0-3.pkvm3_1_1
 - 086765c Update functionalities for Platform Management
 30cefe3 UT implemented for the new features implemented.

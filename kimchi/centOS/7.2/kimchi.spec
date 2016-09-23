@@ -2,7 +2,7 @@
 
 Name:       kimchi
 Version:    2.2.0
-Release:    4%{?dist}
+Release:    5%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -92,6 +92,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Sep 22 2016 user - 2.2.0-5
+- 81d2bee Fallback multifunction attach/detach to single function
+b9daefe remote iso listing for s390x
+484cab8 Storagebuttons not behaving properly
+
 * Wed Sep 07 2016 user - 2.2.0-3.pkvm3_1_1
 - 484cab8 Storagebuttons not behaving properly
 6c2249e Create test to verify graphics type change
