@@ -1,8 +1,8 @@
 Package:
  name: 'ppc64-diag'
- clone_url: 'http://git.code.sf.net/p/linux-diag/ppc64-diag'
+ clone_url: 'https://github.com/open-power-host-os/ppc64-diag.git'
  branch: 'master'
- commit_id: 'cddaca3'
+ commit_id: '92ea7c8'
  expects_source: "ppc64-diag-2.7.1"
  files:
   centos:

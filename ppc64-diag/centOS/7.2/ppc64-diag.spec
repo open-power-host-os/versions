@@ -1,6 +1,6 @@
 Name:           ppc64-diag
 Version:        2.7.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        PowerLinux Platform Diagnostics
 URL:            http://sourceforge.net/projects/linux-diag/files/ppc64-diag/
 Group:          System Environment/Base
