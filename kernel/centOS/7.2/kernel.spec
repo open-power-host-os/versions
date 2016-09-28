@@ -473,7 +473,7 @@ Source110: config-arm64
 # This file is intentionally left empty in the stock kernel. Its a nicety
 # added for those wanting to do custom rebuilds with altered config opts.
 Source1000: config-local
-Source1001: pkvm3_1_1-mcp8-mini.config
+Source1001: hostos-minimal.config
 
 # Sources for kernel-tools
 Source2000: cpupower.service
@@ -817,7 +817,7 @@ sleep 2
 
 # IBM: need to touch these files for nobuildarches and noarch to keep source consistent
 touch %{SOURCE11} # x509.genkey
-touch %{SOURCE1001} # pkvm3_1_0.config
+touch %{SOURCE1001} # hostos-minimal.config
 touch %{SOURCE13} # mod-extra.list
 touch %{SOURCE14} # mod-extra.sh
 #touch %{SOURCE12} # extra_certificates
