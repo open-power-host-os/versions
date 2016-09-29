@@ -23,6 +23,7 @@ Requires:   python-ipaddr
 Requires:   python-magic
 Requires:   python-netaddr
 Requires:   python-augeas
+Requires:	python2-crypto
 Requires:       libvirt-python
 
 
@@ -56,47 +57,74 @@ rm -rf $RPM_BUILD_ROOT
 
 %post
 %if 0%{?with_systemd}
-    install -dm 0755 /usr/lib/systemd/system/wokd.service.requires
-    ln -sf ../tuned.service /usr/lib/systemd/system/wokd.service.requires
-    /bin/systemctl daemon-reload >/dev/null 2>&1 || :
-    service wokd restart
+	install -dm 0755 %{_unitdir}/wokd.service.requires
+	ln -sf ../tuned.service %{_unitdir}/wokd.service.requires
 %endif
 
 
 %postun
 %if 0%{?with_systemd}
-    if [ $1 == 0 ]; then  # uninstall
-        rm -f /usr/lib/systemd/system/wokd.service.requires/tuned.service
-        /bin/systemctl daemon-reload >/dev/null 2>&1 || :
-        service wokd restart
-    fi
+	if [ $1 == 0 ]; then # uninstall
+		rm -f %{_unitdir}/wokd.service.requires/tuned.service
+	fi
+%endif
+
+%posttrans
+%if 0%{?with_systemd}
+	if [ $1 == 0 ]; then # upgrade
+		if ! [ -f %{_unitdir}/wokd.service.requires ]; then
+			ln -sf ../tuned.service %{_unitdir}/wokd.service.requires
+		fi
+		/bin/systemctl daemon-reload >/dev/null 2>&1 || :
+		service wokd restart
+	fi
 %endif
 
 
 %files
 %attr(-,root,root)
+%dir %{python_sitelib}/wok/plugins/ginger
 %{python_sitelib}/wok/plugins/ginger/*.py*
 %{python_sitelib}/wok/plugins/ginger/API.json
+%dir %{python_sitelib}/wok/plugins/ginger/control
 %{python_sitelib}/wok/plugins/ginger/control/*.py*
+%dir %{python_sitelib}/wok/plugins/ginger/model
 %{python_sitelib}/wok/plugins/ginger/model/*.py*
-%{_datadir}/wok/plugins/ginger/ui/images/*.svg
 %{_prefix}/share/locale/*/LC_MESSAGES/ginger.mo
+%dir %{_datadir}/wok/plugins/ginger/ui
+%dir %{_datadir}/wok/plugins/ginger/ui/config
 %{_datadir}/wok/plugins/ginger/ui/config/tab-ext.xml
+%dir %{_datadir}/wok/plugins/ginger/ui/css
+%{_datadir}/wok/plugins/ginger/ui/css/ginger.css
+%dir %{_datadir}/wok/plugins/ginger/ui/css/base
+%dir %{_datadir}/wok/plugins/ginger/ui/css/base/images
 %{_datadir}/wok/plugins/ginger/ui/css/base/images/*.gif
 %{_datadir}/wok/plugins/ginger/ui/css/base/images/*.png
-%{_datadir}/wok/plugins/ginger/ui/css/ginger.css
+%dir %{_datadir}/wok/plugins/ginger/ui/images
+%{_datadir}/wok/plugins/ginger/ui/images/*.svg
+%dir %{_datadir}/wok/plugins/ginger/ui/js
 %{_datadir}/wok/plugins/ginger/ui/js/*.js
-%{_datadir}/wok/plugins/ginger/ui/pages/help/ginger-help.css
-%{_datadir}/wok/plugins/ginger/ui/pages/help/*/*.html
-%{_datadir}/wok/plugins/ginger/ui/pages/tabs/*.html.tmpl
+%dir %{_datadir}/wok/plugins/ginger/ui/pages
 %{_datadir}/wok/plugins/ginger/ui/pages/i18n.json.tmpl
-%{_datadir}/wok/plugins/ginger/ui/pages/host-network*.html.tmpl
 %{_datadir}/wok/plugins/ginger/ui/pages/*.html.tmpl
+%dir %{_datadir}/wok/plugins/ginger/ui/pages/help
+%{_datadir}/wok/plugins/ginger/ui/pages/help/ginger-help.css
+%dir %{_datadir}/wok/plugins/ginger/ui/pages/help/en_US
+%dir %{_datadir}/wok/plugins/ginger/ui/pages/help/pt_BR
+%dir %{_datadir}/wok/plugins/ginger/ui/pages/help/zh_CN
+%{_datadir}/wok/plugins/ginger/ui/pages/help/en_US/*.html
+%{_datadir}/wok/plugins/ginger/ui/pages/help/pt_BR/*.html
+%{_datadir}/wok/plugins/ginger/ui/pages/help/zh_CN/*.html
+%dir %{_datadir}/wok/plugins/ginger/ui/pages/tabs
+%{_datadir}/wok/plugins/ginger/ui/pages/tabs/*.html.tmpl
 %{_sysconfdir}/wok/plugins.d/ginger.conf
 %{_sysconfdir}/systemd/system/wokd.service.d/ginger.conf
 
 
 %changelog
+* Mon Sep 26 2016 Ramon Medeiros <ramonn@linux.vnet.ibm.com>
+- Separate fedora rpm building
+
 * Thu Sep 22 2016 user - 2.2.0-5
 - 90bff39 Issue # 430 :UI displays blank in Volume Group list when checking more details for selected vg.
 6395b8b Fixes on tests/test_graph.py:

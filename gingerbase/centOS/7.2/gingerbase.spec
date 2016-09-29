@@ -14,7 +14,7 @@ Group:      System Environment/Base
 License:    LGPL/ASL2
 #Source0:   %{name}-%{version}.tar.gz
 Source0:    %{name}.tar.gz
-Requires:   wok
+Requires:   wok >= 2.1.0
 Requires:   pyparted
 Requires:   python-cherrypy
 Requires:   python-configobj
@@ -32,6 +32,10 @@ BuildRequires: automake
 
 %if 0%{?fedora} >= 23
 Requires:   python2-dnf
+%endif
+
+%if 0%{?fedora} >= 15 || 0%{?rhel} >= 7
+%global with_systemd 1
 %endif
 
 %if 0%{?rhel} == 6
