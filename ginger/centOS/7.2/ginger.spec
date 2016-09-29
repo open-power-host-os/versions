@@ -2,7 +2,7 @@
 
 Name:       ginger
 Version:    2.2.0
-Release:    5%{?dist}
+Release:    6%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -122,8 +122,20 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Mon Sep 26 2016 Ramon Medeiros <ramonn@linux.vnet.ibm.com>
-- Separate fedora rpm building
+* Thu Sep 29 2016 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.2.0-6
+- a706dae Fixing is_feature_available method of model/graph.py
+75f30e6 Issue # 61 :Add Adapter button missing in Host -> Network tab.
+b621d55 Issue #412: python-pygraphviz not listed as dependency
+6268db6 Fix build process
+012673b Fix make-rpm target
+551d9cf Issue #413: spec asks for python2-crypto on opensuse 42.1, which does not exists
+a3a1149 Issue #433: refactor rpm building
+923861a Moving Platform Management data to state_dir
+5e4f120 Issue #403 - Make system services UI more failproof
+b4f7875 Makefile.am: CLEANFILES must clean pyc files
+b4bac12 Issue #381: make clean does not revert its changes from make rpm
+fe2566a Fix PEP8 issues
+90bff39 Issue # 430 :UI displays blank in Volume Group list when checking more details for selected vg.
 
 * Thu Sep 22 2016 user - 2.2.0-5
 - 90bff39 Issue # 430 :UI displays blank in Volume Group list when checking more details for selected vg.

@@ -2,7 +2,7 @@
 
 Name:       kimchi
 Version:    2.2.0
-Release:    5%{?dist}
+Release:    6%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -92,6 +92,25 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Sep 29 2016 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.2.0-6
+- d885f94 Fix make-rpm target
+bdb879f Issue #1018 - Disable volume resize option on logical pool.
+25d02dd Fix max number of memory slots for Ubuntu on Power
+4a5690d Issue #1017: Fix upload file to logical storage pool.
+639198b Fix issue #1019: Hide storage volume actions menu for iSCSI/SCSI pools
+8f47e2a Bug fix #521: Extend logical pool
+912bc93 Fix issue #1022: Remove Clone option for running guests
+3091f31 Bug fix: Recognize Fedora 24 ISO
+fc9bfbd Fix issue #1005: Proper display paused guests on Gallery View
+7fb3e2c Bug fix: Disable Search More ISOs button on create Template dialog when the operation is in progress
+8ae95fa Fix issue #1020: Fix alert icon position to do not overlay img/iso icon
+b6fbaa2 Fix issue #1020: Verify libvirt access on real file path instead of symlink
+48314ab Remove legacy check_files on Makefile
+98a28cd Issue #1012: Boot order gets reset to only one entry after editing a VM
+e9aa8f1 Issue #585: make clean does not revert its changes from make rpm
+76f0d52 Fix issue #1010: Convert disk size to bytes while attaching new disk to guest
+81d2bee Fallback multifunction attach/detach to single function
+
 * Thu Sep 22 2016 user - 2.2.0-5
 - 81d2bee Fallback multifunction attach/detach to single function
 b9daefe remote iso listing for s390x

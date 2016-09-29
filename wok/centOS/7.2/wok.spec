@@ -2,7 +2,7 @@
 
 Name:       wok
 Version:    2.2.0
-Release:    6%{?dist}
+Release:    7%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -176,6 +176,15 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Thu Sep 29 2016 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.2.0-7
+- 646941d Fix make-rpm target
+cad930b Issue #166: wok is pointing to /etc/nginx/conf.d which does not exists on OpenSuse 42.1
+e80f9e3 Fix Kimchi issue #1032: Remove Peers dropdown from Wok header
+5c62e4c Merge remote-tracking branch upstream/master into powerkvm-v3.1.1
+1f2eec3 Issue #155: make clean does not revert its changes from make rpm
+2e99b4f Fix issue #159: Fix user log filter parameters to allow user does advanced search
+918911e Merge remote-tracking branch upstream/master into powerkvm-v3.1.1
+
 * Thu Sep 22 2016 user - 2.2.0-6
 - 918911e Merge remote-tracking branch upstream/master into powerkvm-v3.1.1
 a14cda7 Add ui/libs/datatables/js/plugins/ip-address/* files to IBM-license-blacklist

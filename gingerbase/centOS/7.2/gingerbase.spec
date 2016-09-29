@@ -6,7 +6,7 @@
 
 Name:       ginger-base
 Version:    2.0.0
-Release:    5%{?dist}
+Release:    6%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -77,6 +77,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Sep 29 2016 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.0.0-6
+- 4422805 Bug fix: Log message got truncated because of \ on message
+70b7eed Fix issue #131: Update README to add python-mock as dependency to run tests
+c13abf8 Fix PEP8 version 1.5.7 issues on master
+
 * Thu Sep 22 2016 user - 2.0.0-5
 - c13abf8 Fix PEP8 version 1.5.7 issues on master
 9274de8 Fixing copyright date of test_storage_devs.py

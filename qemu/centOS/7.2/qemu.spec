@@ -194,7 +194,7 @@ Version: 2.6.93
 %define release_spin 0
 %define release_date .%{?release_week}0%{?release_day}.%{?release_spin}
 
-Release: 8%{?dist}%{?release_date}
+Release: 9%{?dist}%{?release_date}
 Epoch: 11
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -1529,6 +1529,39 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Thu Sep 29 2016 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 11:2.6.93-9.3200.0
+- 1dc33ed Update version for v2.7.0 release
+12d2c41 Update version for v2.7.0-rc5 release
+56f101e 9pfs: handle walk of .. in the root directory
+805b5d9 9pfs: forbid . and .. in file names
+fff39a7 9pfs: forbid illegal path names
+2b294f6 Merge remote-tracking branch remotes/bonzini/tags/for-upstream into staging
+336d588 optionrom: cope with multiple -O options
+6160183 Revert Change net/socket.c to use socket_*() functions
+135a972 translate: early exit in tb_flush if there is no tcg
+b69a553 ui: fix refresh of VNC server surface
+e00da55 Merge remote-tracking branch remotes/mst/tags/for_upstream into staging
+58a83c6 virtio: decrement vq->inuse in virtqueue_discard()
+bccdef6 virtio: recalculate vq->inuse after migration
+8c1c230 Fix bsd-user build after d915b7bb
+d75aa43 Update version for v2.7.0-rc4 release
+62680fa Merge remote-tracking branch remotes/jasowang/tags/net-pull-request into staging
+e0af5a0 e1000e: remove internal interrupt flag
+67f3280 slirp: fix segv when init failed
+5f9f818 test-logging: dont hard-code paths in /tmp
+5045570 glib: add compatibility implementation for g_dir_make_tmp()
+60c6b79 syscall.c: Redefine IFLA_* enums
+aee5f8f Revert syscall.c: Fix build with older linux-headers
+02b1ad8 Merge remote-tracking branch remotes/stefanha/tags/block-pull-request into staging
+156af3a block: fix possible reorder of flush operations
+ce83ee5 block: fix deadlock in bdrv_co_flush
+5844365 Merge remote-tracking branch remotes/jasowang/tags/net-pull-request into staging
+e9e0a58 net/net: properly handle multiple packets in net_fill_rstate()
+47882fa net: vmxnet: use g_new for pkt initialisation
+4b887ae Merge remote-tracking branch remotes/famz/tags/docker-pull-request into staging
+92b6a16 curl: Cast fd to int for DPRINTF
+5f0e775 Update version for v2.7.0-rc3 release
+
 * Tue Aug 30 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 11:2.6.93-7.pkvm3_1_1.3100.0
 - Build August, 24th, 2016
 
