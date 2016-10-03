@@ -1,0 +1,18 @@
+Package:
+ name: 'docker'
+ clone_url: 'https://github.com/docker/docker.git'
+ commit_id: 'bb80604a0b200140a440675348c848a137a1b2e2'
+ branch: '1.12.x'
+ expects_source: 'docker'
+ files:
+  centos:
+   '7.2':
+    spec: 'centOS/7.2/docker.spec'
+    build_files: 'centOS/7.2/SOURCES'
+    download_build_files:
+     - 'https://github.com/projectatomic/docker-storage-setup/archive/194eca25fd0d180b62f3ecf1b7b408992fd6a083/docker-storage-setup-194eca2.tar.gz'
+     - 'https://github.com/projectatomic/docker-selinux/archive/032bcda7b1eb6d9d75d3c0ce64d9d35cdb9c7b85/docker-selinux-032bcda.tar.gz'
+     - 'https://github.com/projectatomic/docker-novolume-plugin/archive/c5212546ab01b4b7b62caba888d298ab63f53984/docker-novolume-plugin-c521254.tar.gz'
+     - 'https://github.com/docker/v1.10-migrator/archive/994c35cbf7ae094d4cb1230b85631ecedd77b0d8/v1.10-migrator-994c35c.tar.gz'
+     - 'https://github.com/projectatomic/runc/archive/f509e5094de84a919e2e8ae316373689fb66c513/runc-f509e50.tar.gz'
+     - 'https://github.com/docker/containerd/archive/0ac3cd1be170d180b2baed755e8f0da547ceb267/containerd-0ac3cd1.tar.gz'
