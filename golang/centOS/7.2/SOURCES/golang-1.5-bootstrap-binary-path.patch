@@ -1,7 +1,7 @@
 diff -up go/src/cmd/dist/buildtool.go.boot go/src/cmd/dist/buildtool.go
 --- go/src/cmd/dist/buildtool.go.boot	2016-02-17 21:35:20.000000000 +0100
 +++ go/src/cmd/dist/buildtool.go	2016-03-31 13:24:43.430883930 +0200
-@@ -106,12 +106,20 @@ func bootstrapBuildTools() {
+@@ -106,14 +106,22 @@ func bootstrapBuildTools() {
  	os.Setenv("GOBIN", "")
  
  	os.Setenv("GOOS", "")
@@ -18,9 +18,11 @@ diff -up go/src/cmd/dist/buildtool.go.boot go/src/cmd/dist/buildtool.go
 +		bingopath = pathf("%s/bin/go", goroot_bootstrap)
 +	}
 +
- 	// Run Go 1.4 to build binaries.
--	run(workspace, ShowOutput|CheckExit, pathf("%s/bin/go", goroot_bootstrap), "install", "-v", "bootstrap/...")
-+	run(workspace, ShowOutput|CheckExit, bingopath, "install", "-v", "bootstrap/...")
+ 	// Run Go 1.4 to build binaries. Use -gcflags=-l to disable inlining to
+ 	// workaround bugs in Go 1.4's compiler. See discussion thread:
+ 	// https://groups.google.com/d/msg/golang-dev/Ss7mCKsvk8w/Gsq7VYI0AwAJ
+-	run(workspace, ShowOutput|CheckExit, pathf("%s/bin/go", goroot_bootstrap), "install", "-gcflags=-l", "-v", "bootstrap/...")
++	run(workspace, ShowOutput|CheckExit, bingopath, "install", "-gcflags=-l", "-v", "bootstrap/...")
  
  	// Copy binaries into tool binary directory.
  	for _, name := range bootstrapDirs {

@@ -81,16 +81,6 @@ index 169944d..c653464 100644
  			case "P-256":
  				pub.Curve = elliptic.P256()
  			case "P-384":
-diff --git a/src/crypto/elliptic/bottombits.go b/src/crypto/elliptic/bottombits.go
-new file mode 100644
-index 0000000..4544722
---- /dev/null
-+++ b/src/crypto/elliptic/bottombits.go
-@@ -0,0 +1,4 @@
-+package elliptic
-+
-+const bottom28Bits = 0xfffffff
-+const two31m3 = 1<<31 - 1<<3
 diff --git a/src/crypto/elliptic/elliptic.go b/src/crypto/elliptic/elliptic.go
 index f3b84e1..ca0b7cf 100644
 --- a/src/crypto/elliptic/elliptic.go
@@ -279,7 +269,7 @@ index 2d3fac7..0000000
 --- a/src/crypto/elliptic/p224.go
 +++ /dev/null
 @@ -1,765 +0,0 @@
--// Copyright 2012 The Go Authors.  All rights reserved.
+-// Copyright 2012 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
@@ -1050,7 +1040,7 @@ index 4b26d16..0000000
 --- a/src/crypto/elliptic/p224_test.go
 +++ /dev/null
 @@ -1,47 +0,0 @@
--// Copyright 2012 The Go Authors.  All rights reserved.
+-// Copyright 2012 The Go Authors. All rights reserved.
 -// Use of this source code is governed by a BSD-style
 -// license that can be found in the LICENSE file.
 -
@@ -1168,3 +1158,4 @@ index be6c013..428053a 100644
  			hashFunc = crypto.SHA256
  			sigAlgo.Algorithm = oidSignatureECDSAWithSHA256
  		case elliptic.P384():
+ 
