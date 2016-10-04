@@ -2,7 +2,7 @@ Package:
  name: 'wok'
  clone_url: 'https://github.com/open-power-host-os/wok.git'
  branch: 'powerkvm-v3.1.1'
- commit_id: '918911e'
+ commit_id: '646941d'
  expects_source: 'wok'
  files:
   centos:
