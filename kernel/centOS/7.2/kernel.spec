@@ -29,8 +29,8 @@ Summary: The Linux kernel
 %define release_spin 0
 %define release_date .%{?release_week}0%{?release_day}.%{?release_spin}
 
-%define rpmversion 4.7.0
-%define pkgrelease 3
+%define rpmversion 4.8.0
+%define pkgrelease 1
 
 # allow pkg_release to have configurable %{?dist} tag
 %define specrelease 2%{?dist}
@@ -361,7 +361,7 @@ Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: %{rpmversion}
-Release: %{pkg_release}.2
+Release: %{pkg_release}.1
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1711,6 +1711,9 @@ fi
 
 
 %changelog
+* Wed Oct 05 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com>- 4.8.0-1.3200.0.3
+- Rebase on top of Linux 4.8
+
 * Tue Sep 20 2016 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 4.7.0-2.el7.centos.3200.0.2
 - rebuilt with kernel live patching enabled
 

@@ -2,7 +2,7 @@ Package:
  name: 'kernel'
  clone_url: 'https://github.com/open-power-host-os/linux.git'
  branch: 'hostos-devel'
- commit_id: 'bf1d492'
+ commit_id: '324d47b'
  expects_source: "kernel-3200.0"
  files:
   centos:
