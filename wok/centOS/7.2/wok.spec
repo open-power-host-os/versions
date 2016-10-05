@@ -2,7 +2,7 @@
 
 Name:       wok
 Version:    2.2.0
-Release:    7%{?dist}
+Release:    8%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -176,6 +176,10 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed Oct 05 2016 user - 2.2.0-8
+- bd24776 Update ChangeLog, VERSION and po files to 2.3 release
+646941d Fix make-rpm target
+
 * Thu Sep 29 2016 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.2.0-7
 - 646941d Fix make-rpm target
 cad930b Issue #166: wok is pointing to /etc/nginx/conf.d which does not exists on OpenSuse 42.1

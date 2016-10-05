@@ -2,7 +2,7 @@
 
 Name:       ginger
 Version:    2.2.0
-Release:    6%{?dist}
+Release:    7%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -122,6 +122,15 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Oct 05 2016 user - 2.2.0-7
+- 3c049fb Returning rows_indexes as part of ginger.listNetworkConfig object.
+831a43b Issue #414: service disapear after stopping it at opensuse 42.1
+5fec64a Updating po files
+4ba7319 Update changelog for 2.3.0
+fbbde90 Changing version to 2.3.0
+af9e56c ChangeLog and VERSION changes for 2.3.0-rc1
+a706dae Fixing is_feature_available method of model/graph.py
+
 * Thu Sep 29 2016 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.2.0-6
 - a706dae Fixing is_feature_available method of model/graph.py
 75f30e6 Issue # 61 :Add Adapter button missing in Host -> Network tab.

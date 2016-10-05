@@ -386,7 +386,7 @@ Version: 2.2.0
 %define release_day 0
 %define release_spin 0
 %define release_date .%{?release_week}0%{?release_day}.%{?release_spin}
-Release: 4%{?dist}%{?ibm_release}%{?release_date}
+Release: 5%{?dist}%{?ibm_release}%{?release_date}
 ExclusiveArch: ppc64 ppc64le x86_64 s390x
 Source0: libvirt-%{?release_week}0%{?release_day}.%{?release_spin}.tar.gz
 License: LGPLv2+
@@ -2432,6 +2432,27 @@ exit 0
 #doc examples/systemtap
 
 %changelog
+* Wed Oct 05 2016 user - 2.2.0-5.3200.0
+- ddccbf6 qemu: Fix coldplug of vcpus
+98fe4f8 qemu: process: Enforce vcpu order range to <1,maxvcpus>
+a783b65 qemu: process: Dont use shifted indexes for vcpu order verification
+2ba15ac qemu: process: Fix off-by-one in vcpu order duplicate error message
+d72de66 qemu: driver: Dont return automatic NUMA emulator pinning data for persistentDef
+73bd880 qemu: driver: Dont return automatic NUMA vCPU pinning data for persistentDef
+979edc3 qemu: domain: Add macro to simplify access to vm private data
+147b668 conf: Introduce virDomainObjGetOneDefState
+8b43f06 qemu: domain: Dont infer vcpu state
+5c149d8 qemu: monitor: Add vcpu state information to monitor data
+fe0fa43 qemu: monitor: qemuMonitorGetCPUInfoHotplug: Add iterator anycpu
+557d6f7 qemu: monitor: Use a more obvious iterator name
+a2299ad numa: Rename virNumaGetHostNodeset and make it return only nodes with memory
+f856b8c util: numa: Remove impossible error handling
+ea783c1 qemu: Add missing p to qemuCgrouEmulatorAllNodesRestore
+092ecc6 qemu: driver: Remove unnecessary condition
+d7e1062 qemu: process: Fix start with unpluggable vcpus with NUMA pinning
+691d038 qemu: cgroup: Extract temporary relaxing of cgroup setting for vcpu hotplug
+62135c2 virsh: use virConnectGetDomainCapabilities with maxvcpus
+
 * Thu Sep 22 2016 user - 2.2.0-4.3200.0
 - 62135c2 virsh: use virConnectGetDomainCapabilities with maxvcpus
 238a70f Enable PCI Multifunction hotplug/unplug
