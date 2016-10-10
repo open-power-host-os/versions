@@ -1,0 +1,180 @@
+commit d9409a6b848e85dfd9e0cde62d7a2ff835df503c
+Author: Josh Stone <jistone@redhat.com>
+Date:   Thu Jul 21 11:14:12 2016 -0700
+
+    Backport fixes for kernel 4.6 to systemtap 3.0
+    
+    Fedora 23 and 24 were reported broken, rhbz1358863 and rhbz1358782.
+    
+    commit 8acda2cea4688b8fca910ea8780fc29594ba6085
+    Author: David Smith <dsmith@redhat.com>
+    Date:   Mon Apr 11 14:07:25 2016 -0500
+    
+        Fixed PR19940 by updating runtime/linux/access_process_vm.h.
+    
+        * runtime/linux/access_process_vm.h: Changed page_cache_release() to
+          put_page().
+    
+    commit e7c42c3a9fa0c442ae59a15ccf256224c27ef745
+    Author: David Smith <dsmith@redhat.com>
+    Date:   Mon Apr 25 10:02:36 2016 -0500
+    
+        Fix PR19990 by updating runtime/linux/access_process_vm.h.
+    
+        * runtime/linux/access_process_vm.h (__access_process_vm_): Use
+          get_user_pages_remote() when available.
+        * buildrun.cxx (compile_pass): Added export test for
+          'get_user_pages_remote()'.
+    
+    commit 15de83a3b4b298ea8fa5f86083017d062393c0db
+    Author: David Smith <dsmith@redhat.com>
+    Date:   Fri May 27 11:19:03 2016 -0500
+    
+        Fix PR20158 by updating the runtime for the 4.6 kernel.
+    
+        * buildrun.cxx (compile_pass): Added autoconf-stacktrace_ops-int-address.c
+          compile test.
+        * stack.c: (print_stack_address): If STAPCONF_STACKTRACE_OPS_INT_ADDRESS
+          is defined, the function returns a int instead of being a void
+          function.
+        * runtime/linux/autoconf-stacktrace_ops-int-address.c: New autoconf-style
+          test.
+    
+    commit 59a9c75e68ba37bc891395da7e25cbef963d1ac7
+    Author: David Smith <dsmith@redhat.com>
+    Date:   Fri May 27 13:08:36 2016 -0500
+    
+        Fix PR20161 by handling VM_FAULT_MINOR being removed from rawhide kernels.
+    
+        * tapset/linux/memory.stp (vm_fault_contains): Handle VM_FAULT_MINOR being
+          undefined by treating it the same way we did when it had the value of 0.
+    
+    Plus a small bonus for rhbz1358863:
+    
+    commit 91bfb360f9a2405edd6cd9f1cb3527aa085fa6ca
+    Author: Josh Stone <jistone@redhat.com>
+    Date:   Thu Jul 21 10:11:31 2016 -0700
+    
+        pfaults.stp: correct the fault_entry_time index
+    
+        Commit 31131f187a73 removed most manual tid() memoization, but missed
+        this particular use, and stap complained about the never-assigned 'id'.
+
+diff --git a/buildrun.cxx b/buildrun.cxx
+index 76139b46b7eb..ca8a6dff3607 100644
+--- a/buildrun.cxx
++++ b/buildrun.cxx
+@@ -379,6 +379,8 @@ compile_pass (systemtap_session& s)
+   output_autoconf(s, o, "autoconf-walk-stack.c", "STAPCONF_WALK_STACK", NULL);
+   output_autoconf(s, o, "autoconf-stacktrace_ops-warning.c",
+                   "STAPCONF_STACKTRACE_OPS_WARNING", NULL);
++  output_autoconf(s, o, "autoconf-stacktrace_ops-int-address.c",
++                  "STAPCONF_STACKTRACE_OPS_INT_ADDRESS", NULL);
+   output_autoconf(s, o, "autoconf-mm-context-vdso.c", "STAPCONF_MM_CONTEXT_VDSO", NULL);
+   output_autoconf(s, o, "autoconf-mm-context-vdso-base.c", "STAPCONF_MM_CONTEXT_VDSO_BASE", NULL);
+   output_autoconf(s, o, "autoconf-blk-types.c", "STAPCONF_BLK_TYPES", NULL);
+@@ -452,6 +454,7 @@ compile_pass (systemtap_session& s)
+ 		  "STAPCONF_MODULE_LAYOUT", NULL);
+   output_autoconf(s, o, "autoconf-mod_kallsyms.c",
+ 		  "STAPCONF_MOD_KALLSYMS", NULL);
++  output_exportconf(s, o, "get_user_pages_remote", "STAPCONF_GET_USER_PAGES_REMOTE");
+ 
+   o << module_cflags << " += -include $(STAPCONF_HEADER)" << endl;
+ 
+diff --git a/runtime/linux/access_process_vm.h b/runtime/linux/access_process_vm.h
+index fa11baf0276f..214d4e2546bf 100644
+--- a/runtime/linux/access_process_vm.h
++++ b/runtime/linux/access_process_vm.h
+@@ -32,7 +32,11 @@ __access_process_vm_ (struct task_struct *tsk, unsigned long addr, void *buf,
+       int bytes, ret, offset;
+       void *maddr;
+ 
++#ifdef STAPCONF_GET_USER_PAGES_REMOTE
++      ret = get_user_pages_remote (tsk, mm, addr, 1, write, 1, &page, &vma);
++#else
+       ret = get_user_pages (tsk, mm, addr, 1, write, 1, &page, &vma);
++#endif
+       if (ret <= 0)
+ 	break;
+ 
+@@ -52,7 +56,7 @@ __access_process_vm_ (struct task_struct *tsk, unsigned long addr, void *buf,
+ 	  reader (vma, page, addr, buf, maddr + offset, bytes);
+ 	}
+       kunmap (page);
+-      page_cache_release (page);
++      put_page (page);
+       len -= bytes;
+       buf += bytes;
+       addr += bytes;
+diff --git a/runtime/linux/autoconf-stacktrace_ops-int-address.c b/runtime/linux/autoconf-stacktrace_ops-int-address.c
+new file mode 100644
+index 000000000000..8ca277a6e1c3
+--- /dev/null
++++ b/runtime/linux/autoconf-stacktrace_ops-int-address.c
+@@ -0,0 +1,14 @@
++#include <linux/sched.h>
++#include <asm/stacktrace.h>
++
++// check for 4.6 patch which changed the function signature of
++// stacktrace_ops 'address' member.
++
++int print_stack_address(void *data __attribute__ ((unused)),
++			unsigned long addr __attribute__ ((unused)),
++			int reliable __attribute__ ((unused)))
++{
++    return 0;
++}
++
++struct stacktrace_ops ops __attribute__ ((unused)) = {.address=print_stack_address};
+diff --git a/runtime/stack.c b/runtime/stack.c
+index a7d03db722d5..a99bad062382 100644
+--- a/runtime/stack.c
++++ b/runtime/stack.c
+@@ -111,7 +111,11 @@ static int print_stack_stack(void *data, char *name)
+ 	return -1;
+ }
+ 
++#ifdef STAPCONF_STACKTRACE_OPS_INT_ADDRESS
++static int print_stack_address(void *data, unsigned long addr, int reliable)
++#else
+ static void print_stack_address(void *data, unsigned long addr, int reliable)
++#endif
+ {
+ 	struct print_stack_data *sdata = data;
+ 	if (sdata->skip > 0)
+@@ -122,6 +126,9 @@ static void print_stack_address(void *data, unsigned long addr, int reliable)
+ 				NULL);
+ 		sdata->levels--;
+ 	}
++#ifdef STAPCONF_STACKTRACE_OPS_INT_ADDRESS
++	return 0;
++#endif
+ }
+ 
+ static const struct stacktrace_ops print_stack_ops = {
+diff --git a/tapset/linux/memory.stp b/tapset/linux/memory.stp
+index e2c9b3cf32b8..4546ee97c763 100644
+--- a/tapset/linux/memory.stp
++++ b/tapset/linux/memory.stp
+@@ -30,7 +30,7 @@ function vm_fault_contains:long (value:long, test:long)
+ 	switch (STAP_ARG_test){
+ 	case 0: res = STAP_ARG_value & VM_FAULT_OOM; break;
+ 	case 1: res = STAP_ARG_value & VM_FAULT_SIGBUS; break;
+-#if defined(VM_FAULT_MINOR) && VM_FAULT_MINOR == 0
++#if !defined(VM_FAULT_MINOR) || (defined(VM_FAULT_MINOR) && VM_FAULT_MINOR == 0)
+ 	case 2: /* VM_FAULT_MINOR infered by that flags off */
+ 		res = !((VM_FAULT_OOM | VM_FAULT_SIGBUS | VM_FAULT_MAJOR) & 
+ 				 STAP_ARG_value);
+diff --git a/testsuite/systemtap.examples/memory/pfaults.stp b/testsuite/systemtap.examples/memory/pfaults.stp
+index eaf6f4e6cdc9..fd70ba3e8d51 100755
+--- a/testsuite/systemtap.examples/memory/pfaults.stp
++++ b/testsuite/systemtap.examples/memory/pfaults.stp
+@@ -15,7 +15,7 @@ probe vm.pagefault {
+ probe vm.pagefault.return {
+   t=gettimeofday_us()
+   if (!(tid() in fault_entry_time)) next
+-  e = t - fault_entry_time[id]
++  e = t - fault_entry_time[tid()]
+   if (vm_fault_contains(fault_type,VM_FAULT_MINOR)) {
+     ftype="minor"
+   } else if (vm_fault_contains(fault_type,VM_FAULT_MAJOR)) {
