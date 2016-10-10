@@ -6,7 +6,7 @@
 
 Name:       ginger-base
 Version:    2.0.0
-Release:    6%{?dist}
+Release:    7%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -77,6 +77,17 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Oct 05 2016 user - 2.0.0-7
+- 2bc859f Rpmlint spec file fixes
+fe9f4fb Issue #118: Suggestion to check spec guidelines
+36dc0ab Adding pt-br translations in fuzzy statements
+394938f Updating po files
+9769bc3 ChangeLog for 2.2.1
+82a79fc Updating VERSION to 2.2.1
+d8fe260 ChangeLog and VERSION changes for 2.2.1-rc1
+5fbea64 Issue #108: Update APT packges list after update.
+4422805 Bug fix: Log message got truncated because of \ on message
+
 * Thu Sep 29 2016 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.0.0-6
 - 4422805 Bug fix: Log message got truncated because of \ on message
 70b7eed Fix issue #131: Update README to add python-mock as dependency to run tests

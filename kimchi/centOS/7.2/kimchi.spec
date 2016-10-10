@@ -2,7 +2,7 @@
 
 Name:       kimchi
 Version:    2.2.0
-Release:    6%{?dist}
+Release:    7%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -92,6 +92,15 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Oct 05 2016 user - 2.2.0-7
+- bfe8c18 [HostOS] Revert Enable CPU HotPlug in UI
+3661131 [HostOS] Revert Fix frontend vcpu hotplug
+586b25a Use vfio for live assignment of devices too
+70efd44 Update ChangeLog, VERSION and po files to 2.3 release
+833ada3 Improve storage volume creation of XML
+e33a592 Fixed noTemplate message display
+d885f94 Fix make-rpm target
+
 * Thu Sep 29 2016 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.2.0-6
 - d885f94 Fix make-rpm target
 bdb879f Issue #1018 - Disable volume resize option on logical pool.
