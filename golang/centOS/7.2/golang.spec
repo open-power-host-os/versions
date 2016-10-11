@@ -95,7 +95,7 @@
 
 Name:           golang
 Version:        1.7.1
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        The Go Programming Language
 # source tree includes several copies of Mark.Twain-Tom.Sawyer.txt under Public Domain
 License:        BSD and Public Domain
@@ -124,7 +124,8 @@ Requires:       go-srpm-macros
 Patch0:         golang-1.2-verbose-build.patch
 
 # https://bugzilla.redhat.com/show_bug.cgi?id=1038683
-Patch1:         golang-1.2-remove-ECC-p224.patch
+# Applying this currently breaks the build
+# Patch1:         golang-1.2-remove-ECC-p224.patch
 
 # use the arch dependent path in the bootstrap
 Patch212:       golang-1.5-bootstrap-binary-path.patch
@@ -256,7 +257,7 @@ Summary:        Golang shared object libraries
 %patch0 -p1 -b .verbose
 
 # remove the P224 curve
-%patch1 -p1 -b .curve
+# %patch1 -p1 -b .curve
 
 # use the arch dependent path in the bootstrap
 %patch212 -p1 -b .bootstrap
@@ -485,6 +486,9 @@ fi
 %endif
 
 %changelog
+* Wed Oct 12 2016 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 1.7.1-3
+- Remove 224 curve patch. It is breaking the RPM build.
+
 * Fri Sep 23 2016 Jakub Čajka <jcajka@redhat.com> - 1.7.1-2
 - fix link failure due to relocation overflows on PPC64X
 
