@@ -16,3 +16,5 @@ Package:
      - 'https://github.com/docker/v1.10-migrator/archive/994c35cbf7ae094d4cb1230b85631ecedd77b0d8/v1.10-migrator-994c35c.tar.gz'
      - 'https://github.com/projectatomic/runc/archive/f509e5094de84a919e2e8ae316373689fb66c513/runc-f509e50.tar.gz'
      - 'https://github.com/docker/containerd/archive/0ac3cd1be170d180b2baed755e8f0da547ceb267/containerd-0ac3cd1.tar.gz'
+    build_dependencies:
+     - golang
