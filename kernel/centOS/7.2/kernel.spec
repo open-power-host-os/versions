@@ -29,7 +29,7 @@ Summary: The Linux kernel
 %define release_spin 0
 %define release_date .%{?release_week}0%{?release_day}.%{?release_spin}
 
-%define rpmversion 4.8.0
+%define rpmversion 4.8.1
 %define pkgrelease 1
 
 # allow pkg_release to have configurable %{?dist} tag
@@ -1711,6 +1711,9 @@ fi
 
 
 %changelog
+* Thu Oct 13 2016 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 4.8.1-2
+- Fix kernel version to 4.8.1
+
 * Wed Oct 05 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com>- 4.8.0-1.3200.0.3
 - Rebase on top of Linux 4.8
 
