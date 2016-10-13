@@ -120,9 +120,9 @@ BuildRequires:  net-tools
 BuildRequires:  pcre-devel, glibc-static, perl
 
 Provides:       go = %{version}-%{release}
+Provides:       go-srpm-macros
 Requires:       %{name}-bin = %{version}-%{release}
 Requires:       %{name}-src = %{version}-%{release}
-Requires:       go-srpm-macros
 
 Patch0:         golang-1.2-verbose-build.patch
 
@@ -159,6 +159,8 @@ Obsoletes:      emacs-%{name} < 1.4
 ExclusiveArch:  %{golang_arches}
 
 Source100:      golang-gdbinit
+Source101:      golang-prelink.conf
+Source102:      macros.golang
 
 %description
 %{summary}.
@@ -405,6 +407,18 @@ ln -sf /etc/alternatives/gofmt $RPM_BUILD_ROOT%{_bindir}/gofmt
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/gdbinit.d
 cp -av %{SOURCE100} $RPM_BUILD_ROOT%{_sysconfdir}/gdbinit.d/golang.gdb
 
+# prelink blacklist
+mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/prelink.conf.d
+cp -av %{SOURCE101} $RPM_BUILD_ROOT%{_sysconfdir}/prelink.conf.d/golang.conf
+
+# rpm macros
+mkdir -p %{buildroot}
+%if 0%{?rhel} > 6 || 0%{?fedora} > 0
+mkdir -p $RPM_BUILD_ROOT%{_rpmconfigdir}/macros.d
+cp -av %{SOURCE102} $RPM_BUILD_ROOT%{_rpmconfigdir}/macros.d/macros.golang
+%endif
+
+
 %check
 %if %{runtests}
 export GOROOT=$(pwd -P)
@@ -474,6 +488,13 @@ fi
 
 # gdbinit (for gdb debugging)
 %{_sysconfdir}/gdbinit.d
+
+# prelink blacklist
+%{_sysconfdir}/prelink.conf.d
+
+%if 0%{?rhel} > 6 || 0%{?fedora} > 0
+%{_rpmconfigdir}/macros.d/macros.golang
+%endif
 
 %files -f go-src.list src
 
