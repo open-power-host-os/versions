@@ -5,8 +5,8 @@
 %define ibm_release .1
 
 Name:       ginger-base
-Version:    2.0.0
-Release:    7%{?dist}
+Version:    2.2.1
+Release:    1%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch

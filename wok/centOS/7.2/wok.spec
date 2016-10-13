@@ -1,8 +1,8 @@
 %define ibm_release .1
 
 Name:       wok
-Version:    2.2.0
-Release:    8%{?dist}
+Version:    2.3.0
+Release:    1%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
