@@ -1,8 +1,8 @@
 %define ibm_release .1
 
 Name:       kimchi
-Version:    2.2.0
-Release:    7%{?dist}
+Version:    2.3.0
+Release:    1%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
