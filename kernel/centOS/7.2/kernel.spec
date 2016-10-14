@@ -21,15 +21,12 @@ Summary: The Linux kernel
 %global released_kernel 1
 
 %define rpmversion 4.8.1
-%define pkgrelease 1
-
-# allow pkg_release to have configurable %{?dist} tag
 %define specrelease 2
 
 %define pkg_release %{specrelease}%{?dist}
 
 # The kernel tarball/base version
-#define rheltarball %{rpmversion}-%{pkgrelease}.el7
+#define rheltarball %{rpmversion}-%{specrelease}.el7
 
 # What parts do we want to build?  We must build at least one kernel.
 # These are the kernels that are built IF the architecture allows it.
@@ -411,7 +408,7 @@ BuildRequires: ncurses-devel
 %{!?cross_build:BuildRequires: vim-minimal}
 %endif
 
-#Source0: linux-%{rpmversion}-%{pkgrelease}.el7.tar.xz
+#Source0: linux-%{rpmversion}-%{specrelease}.el7.tar.xz
 Source0: kernel-0.tar.gz
 
 Source11: x509.genkey
@@ -1399,8 +1396,8 @@ make DESTDIR=$RPM_BUILD_ROOT bootwrapper_install WRAPPER_OBJDIR=%{_libdir}/kerne
 
 %if %{with_doc}
 # Red Hat UEFI Secure Boot CA cert, which can be used to authenticate the kernel
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/doc/kernel-keys/%{rpmversion}-%{pkgrelease}
-install -m 0644 %{SOURCE13} $RPM_BUILD_ROOT%{_datadir}/doc/kernel-keys/%{rpmversion}-%{pkgrelease}/kernel-signing-ca.cer
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/doc/kernel-keys/%{rpmversion}-%{specrelease}
+install -m 0644 %{SOURCE13} $RPM_BUILD_ROOT%{_datadir}/doc/kernel-keys/%{rpmversion}-%{specrelease}/kernel-signing-ca.cer
 %endif
 
 # IBM: touch these for arches that don't build kernel-tools so source is consistent.
@@ -1555,8 +1552,8 @@ fi
 %dir %{_datadir}/doc/kernel-doc-%{rpmversion}/Documentation
 %dir %{_datadir}/doc/kernel-doc-%{rpmversion}
 %{_datadir}/man/man9/*
-%{_datadir}/doc/kernel-keys/%{rpmversion}-%{pkgrelease}/kernel-signing-ca.cer
-%dir %{_datadir}/doc/kernel-keys/%{rpmversion}-%{pkgrelease}
+%{_datadir}/doc/kernel-keys/%{rpmversion}-%{specrelease}/kernel-signing-ca.cer
+%dir %{_datadir}/doc/kernel-keys/%{rpmversion}-%{specrelease}
 %dir %{_datadir}/doc/kernel-keys
 %endif
 
