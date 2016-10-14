@@ -22,10 +22,6 @@ Summary: The Linux kernel
 # For internal testing builds during development, it should be 0.
 %global released_kernel 1
 
-# This crazy release structure is so the daily scratch builds and the weekly official builds
-#   will always yum install correctly over each other
-%define release_date .0
-
 %define rpmversion 4.8.1
 %define pkgrelease 1
 
@@ -33,7 +29,7 @@ Summary: The Linux kernel
 %define specrelease 2%{?dist}
 
 #define ibm_release %{?repo}.1
-%define pkg_release %{specrelease}%{?buildid}%{?ibm_release}%{?release_date}
+%define pkg_release %{specrelease}%{?buildid}%{?ibm_release}
 
 # The kernel tarball/base version
 #define rheltarball %{rpmversion}-%{pkgrelease}.el7
