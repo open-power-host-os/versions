@@ -409,7 +409,7 @@ BuildRequires: ncurses-devel
 %endif
 
 #Source0: linux-%{rpmversion}-%{specrelease}.el7.tar.xz
-Source0: kernel-0.tar.gz
+Source0: kernel.tar.gz
 
 Source11: x509.genkey
 
@@ -710,7 +710,7 @@ exit 1
 %endif
 
 tar xzf %{SOURCE0}
-mv kernel-0 kernel-%{KVRA}
+mv kernel kernel-%{KVRA}
 #setup -q -n kernel-%{rheltarball} -c
 
 
