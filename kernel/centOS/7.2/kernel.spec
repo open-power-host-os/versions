@@ -28,8 +28,7 @@ Summary: The Linux kernel
 # allow pkg_release to have configurable %{?dist} tag
 %define specrelease 2%{?dist}
 
-#define ibm_release %{?repo}.1
-%define pkg_release %{specrelease}%{?buildid}%{?ibm_release}
+%define pkg_release %{specrelease}%{?buildid}
 
 # The kernel tarball/base version
 #define rheltarball %{rpmversion}-%{pkgrelease}.el7
