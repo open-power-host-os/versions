@@ -24,8 +24,7 @@ Summary: The Linux kernel
 
 # This crazy release structure is so the daily scratch builds and the weekly official builds
 #   will always yum install correctly over each other
-%define release_spin 0
-%define release_date .0.%{?release_spin}
+%define release_date .0
 
 %define rpmversion 4.8.1
 %define pkgrelease 1
@@ -420,7 +419,7 @@ BuildRequires: ncurses-devel
 %endif
 
 #Source0: linux-%{rpmversion}-%{pkgrelease}.el7.tar.xz
-Source0: kernel-0.%{?release_spin}.tar.gz
+Source0: kernel-0.tar.gz
 
 Source11: x509.genkey
 
@@ -721,7 +720,7 @@ exit 1
 %endif
 
 tar xzf %{SOURCE0}
-mv kernel-0.%{?release_spin} kernel-%{KVRA}
+mv kernel-0 kernel-%{KVRA}
 #setup -q -n kernel-%{rheltarball} -c
 
 
