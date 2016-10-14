@@ -24,9 +24,9 @@ Summary: The Linux kernel
 %define pkgrelease 1
 
 # allow pkg_release to have configurable %{?dist} tag
-%define specrelease 2%{?dist}
+%define specrelease 2
 
-%define pkg_release %{specrelease}
+%define pkg_release %{specrelease}%{?dist}
 
 # The kernel tarball/base version
 #define rheltarball %{rpmversion}-%{pkgrelease}.el7
