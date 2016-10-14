@@ -16,8 +16,6 @@
 
 Summary: The Linux kernel
 
-# % define buildid .local
-
 # For a kernel released for public testing, released_kernel should be 1.
 # For internal testing builds during development, it should be 0.
 %global released_kernel 1
@@ -28,7 +26,7 @@ Summary: The Linux kernel
 # allow pkg_release to have configurable %{?dist} tag
 %define specrelease 2%{?dist}
 
-%define pkg_release %{specrelease}%{?buildid}
+%define pkg_release %{specrelease}
 
 # The kernel tarball/base version
 #define rheltarball %{rpmversion}-%{pkgrelease}.el7
