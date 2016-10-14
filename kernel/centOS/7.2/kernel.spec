@@ -21,7 +21,7 @@ Summary: The Linux kernel
 %global released_kernel 1
 
 %define rpmversion 4.8.1
-%define specrelease 2
+%define specrelease 3
 
 %define pkg_release %{specrelease}%{?dist}
 
@@ -1697,6 +1697,10 @@ fi
 
 
 %changelog
+* Fri Oct 14 2016 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 4.8.1-3
+- Remove unused macros and simplify package numbering
+- Bump specrelease
+
 * Thu Oct 13 2016 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 4.8.1-2
 - Fix kernel version to 4.8.1
 
