@@ -476,6 +476,7 @@ tar zxf %{SOURCE1}
 
 # unpack %%{repo}-selinux
 tar zxf %{SOURCE2}
+mv container-selinux-%{commit2} %{repo}-selinux-%{commit2}
 
 # untar docker-novolume-plugin
 tar zxf %{SOURCE4}
