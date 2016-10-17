@@ -16,30 +16,17 @@
 
 Summary: The Linux kernel
 
-# % define buildid .local
-
 # For a kernel released for public testing, released_kernel should be 1.
 # For internal testing builds during development, it should be 0.
 %global released_kernel 1
 
-# This crazy release structure is so the daily scratch builds and the weekly official builds
-#   will always yum install correctly over each other
-%define release_week 32
-%define release_day 0
-%define release_spin 0
-%define release_date .%{?release_week}0%{?release_day}.%{?release_spin}
-
 %define rpmversion 4.8.1
-%define pkgrelease 1
+%define specrelease 3
 
-# allow pkg_release to have configurable %{?dist} tag
-%define specrelease 2%{?dist}
-
-#define ibm_release %{?repo}.1
-%define pkg_release %{specrelease}%{?buildid}%{?ibm_release}%{?release_date}
+%define pkg_release %{specrelease}%{?dist}
 
 # The kernel tarball/base version
-#define rheltarball %{rpmversion}-%{pkgrelease}.el7
+#define rheltarball %{rpmversion}-%{specrelease}.el7
 
 # What parts do we want to build?  We must build at least one kernel.
 # These are the kernels that are built IF the architecture allows it.
@@ -361,7 +348,7 @@ Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: %{rpmversion}
-Release: %{pkg_release}.1
+Release: %{pkg_release}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -421,8 +408,7 @@ BuildRequires: ncurses-devel
 %{!?cross_build:BuildRequires: vim-minimal}
 %endif
 
-#Source0: linux-%{rpmversion}-%{pkgrelease}.el7.tar.xz
-Source0: kernel-%{?release_week}0%{?release_day}.%{?release_spin}.tar.gz
+Source0: linux-source.tar.gz
 
 Source11: x509.genkey
 
@@ -723,7 +709,7 @@ exit 1
 %endif
 
 tar xzf %{SOURCE0}
-mv kernel-%{?release_week}0%{?release_day}.%{?release_spin} kernel-%{KVRA}
+mv linux-source kernel-%{KVRA}
 #setup -q -n kernel-%{rheltarball} -c
 
 
@@ -1409,8 +1395,8 @@ make DESTDIR=$RPM_BUILD_ROOT bootwrapper_install WRAPPER_OBJDIR=%{_libdir}/kerne
 
 %if %{with_doc}
 # Red Hat UEFI Secure Boot CA cert, which can be used to authenticate the kernel
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/doc/kernel-keys/%{rpmversion}-%{pkgrelease}
-install -m 0644 %{SOURCE13} $RPM_BUILD_ROOT%{_datadir}/doc/kernel-keys/%{rpmversion}-%{pkgrelease}/kernel-signing-ca.cer
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/doc/kernel-keys/%{rpmversion}-%{specrelease}
+install -m 0644 %{SOURCE13} $RPM_BUILD_ROOT%{_datadir}/doc/kernel-keys/%{rpmversion}-%{specrelease}/kernel-signing-ca.cer
 %endif
 
 # IBM: touch these for arches that don't build kernel-tools so source is consistent.
@@ -1565,8 +1551,8 @@ fi
 %dir %{_datadir}/doc/kernel-doc-%{rpmversion}/Documentation
 %dir %{_datadir}/doc/kernel-doc-%{rpmversion}
 %{_datadir}/man/man9/*
-%{_datadir}/doc/kernel-keys/%{rpmversion}-%{pkgrelease}/kernel-signing-ca.cer
-%dir %{_datadir}/doc/kernel-keys/%{rpmversion}-%{pkgrelease}
+%{_datadir}/doc/kernel-keys/%{rpmversion}-%{specrelease}/kernel-signing-ca.cer
+%dir %{_datadir}/doc/kernel-keys/%{rpmversion}-%{specrelease}
 %dir %{_datadir}/doc/kernel-keys
 %endif
 
@@ -1711,6 +1697,10 @@ fi
 
 
 %changelog
+* Fri Oct 14 2016 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 4.8.1-3
+- Remove unused macros and simplify package numbering
+- Bump specrelease
+
 * Thu Oct 13 2016 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 4.8.1-2
 - Fix kernel version to 4.8.1
 
