@@ -20,3 +20,4 @@ Package:
      - golang
     dependencies:
      - libseccomp
+     - oci-register-machine
