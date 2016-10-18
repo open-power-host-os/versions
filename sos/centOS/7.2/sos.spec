@@ -3,8 +3,7 @@
 Summary: A set of tools to gather troubleshooting information from a system
 Name: sos
 Version: 3.3
-%define ibm_release %{?repo}.1
-Release: 17%{?dist}%{?ibm_release}
+Release: 18%{?dist}
 Group: Applications/System
 Source0: %{name}.tar.gz
 License: GPLv2+
@@ -54,6 +53,9 @@ rm -rf ${RPM_BUILD_ROOT}
 %config(noreplace) %{_sysconfdir}/sos.conf
 
 %changelog
+* Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 3.3-18
+- Spec cleanup
+
 * Tue Aug 30 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 3.3-17.1
 - Build August, 24th, 2016
 
