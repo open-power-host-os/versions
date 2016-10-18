@@ -1,0 +1,12 @@
+Package:
+ name: 'oci-systemd-hook'
+ clone_url: 'https://github.com/projectatomic/oci-systemd-hook.git'
+ commit_id: 'a9c551a95252aef3f94ec1761486219644506a59'
+ branch: 'master'
+ expects_source: 'oci-systemd-hook'
+ files:
+  centos:
+   '7.2':
+    spec: 'centOS/7.2/oci-systemd-hook.spec'
+    build_dependencies:
+     - golang

@@ -21,3 +21,4 @@ Package:
     dependencies:
      - libseccomp
      - oci-register-machine
+     - oci-systemd-hook
