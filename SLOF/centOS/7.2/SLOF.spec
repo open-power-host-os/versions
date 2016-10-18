@@ -1,26 +1,13 @@
-%global gittagdate 20160525
-
-%global gittag qemu-slof-%{gittagdate}
-
 Name:           SLOF
-Version:        %{gittagdate}
-%define ibm_release  %{?repo}.1
-Release:        2%{?dist}%{?ibm_release}
+Version:        20160525
+Release:        3%{?dist}
 Summary:        Slimline Open Firmware
 
 License:        BSD
 URL:            http://www.openfirmware.info/SLOF
 BuildArch:      noarch
 
-# There are no upstream tarballs.  To prepare a tarball, do:
-#
-#  git clone https://github.com/open-power-host-os/slof.git
-#  cd slof-frobisher
-#  git checkout powerkvm-v3.1
-#  git archive --format=tar --prefix=SLOF-%{gittagdate}/ HEAD | gzip > ../SLOF-%{gittagdate}.tar.gz
-#
-
-Source0:        SLOF-%{gittagdate}.tar.gz
+Source0:        SLOF.tar.gz
 
 # LTC: building native; no need for xcompiler
 BuildRequires:  perl(Data::Dumper)
@@ -40,7 +27,7 @@ separately.  It is a dependency of qemu-system-ppc64.
 
 
 %prep
-%setup -q -n SLOF-%{gittagdate}
+%setup -q -n SLOF
 
 if test -r "gitlog" ; then
     echo "This is the first 50 lines of a gitlog taken at archive creation time:"
@@ -67,6 +54,9 @@ cp -a boot_rom.bin $RPM_BUILD_ROOT%{_datadir}/qemu/slof.bin
 
 
 %changelog
+* Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 20160525-3
+- Spec cleanup
+
 * Tue Aug 30 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 20160525-2.1
 - Build August, 24th, 2016
 
