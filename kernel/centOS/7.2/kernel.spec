@@ -16,17 +16,8 @@
 
 Summary: The Linux kernel
 
-# For a kernel released for public testing, released_kernel should be 1.
-# For internal testing builds during development, it should be 0.
-%global released_kernel 1
-
-%define rpmversion 4.8.4
-%define specrelease 1
-
-%define pkg_release %{specrelease}%{?dist}
-
 # The kernel tarball/base version
-#define rheltarball %{rpmversion}-%{specrelease}.el7
+#define rheltarball %{version}-%{release}.el7
 
 # What parts do we want to build?  We must build at least one kernel.
 # These are the kernels that are built IF the architecture allows it.
@@ -313,6 +304,17 @@ Summary: The Linux kernel
 %define kernel_prereq  fileutils, module-init-tools >= 3.16-2, initscripts >= 8.11.1-1, grubby >= 8.28-2
 %define initrd_prereq  dracut >= 001-7
 
+Name: kernel%{?variant}
+Group: System Environment/Kernel
+License: GPLv2
+URL: http://www.kernel.org/
+Version: 4.8.4
+Release: 2%{?dist}
+# DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
+# SET %%nobuildarches (ABOVE) INSTEAD
+ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
+ExclusiveOS: Linux
+
 #
 # This macro does requires, provides, conflicts, obsoletes for a kernel package.
 #	%%kernel_reqprovconf <subpackage>
@@ -320,8 +322,8 @@ Summary: The Linux kernel
 # macros defined above.
 #
 %define kernel_reqprovconf \
-Provides: kernel = %{rpmversion}-%{pkg_release}\
-Provides: kernel-%{_target_cpu} = %{rpmversion}-%{pkg_release}%{?1:.%{1}}\
+Provides: kernel = %{version}-%{release}\
+Provides: kernel-%{_target_cpu} = %{version}-%{release}%{?1:.%{1}}\
 Provides: kernel-drm = 4.3.0\
 Provides: kernel-drm-nouveau = 16\
 Provides: kernel-modeset = 1\
@@ -343,16 +345,6 @@ AutoReq: no\
 AutoProv: yes\
 %{nil}
 
-Name: kernel%{?variant}
-Group: System Environment/Kernel
-License: GPLv2
-URL: http://www.kernel.org/
-Version: %{rpmversion}
-Release: %{pkg_release}
-# DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
-# SET %%nobuildarches (ABOVE) INSTEAD
-ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
-ExclusiveOS: Linux
 
 %kernel_reqprovconf
 
@@ -1297,7 +1289,7 @@ find Documentation -type d | xargs chmod u+w
 cd kernel-%{KVRA}
 
 %if %{with_doc}
-docdir=$RPM_BUILD_ROOT%{_datadir}/doc/kernel-doc-%{rpmversion}
+docdir=$RPM_BUILD_ROOT%{_datadir}/doc/kernel-doc-%{version}
 man9dir=$RPM_BUILD_ROOT%{_datadir}/man/man9
 
 # copy the source over
@@ -1395,8 +1387,8 @@ make DESTDIR=$RPM_BUILD_ROOT bootwrapper_install WRAPPER_OBJDIR=%{_libdir}/kerne
 
 %if %{with_doc}
 # Red Hat UEFI Secure Boot CA cert, which can be used to authenticate the kernel
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/doc/kernel-keys/%{rpmversion}-%{specrelease}
-install -m 0644 %{SOURCE13} $RPM_BUILD_ROOT%{_datadir}/doc/kernel-keys/%{rpmversion}-%{specrelease}/kernel-signing-ca.cer
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/doc/kernel-keys/%{version}-%{release}
+install -m 0644 %{SOURCE13} $RPM_BUILD_ROOT%{_datadir}/doc/kernel-keys/%{version}-%{release}/kernel-signing-ca.cer
 %endif
 
 # IBM: touch these for arches that don't build kernel-tools so source is consistent.
@@ -1547,12 +1539,12 @@ fi
 %if %{with_doc}
 %files doc
 %defattr(-,root,root)
-%{_datadir}/doc/kernel-doc-%{rpmversion}/Documentation/*
-%dir %{_datadir}/doc/kernel-doc-%{rpmversion}/Documentation
-%dir %{_datadir}/doc/kernel-doc-%{rpmversion}
+%{_datadir}/doc/kernel-doc-%{version}/Documentation/*
+%dir %{_datadir}/doc/kernel-doc-%{version}/Documentation
+%dir %{_datadir}/doc/kernel-doc-%{version}
 %{_datadir}/man/man9/*
-%{_datadir}/doc/kernel-keys/%{rpmversion}-%{specrelease}/kernel-signing-ca.cer
-%dir %{_datadir}/doc/kernel-keys/%{rpmversion}-%{specrelease}
+%{_datadir}/doc/kernel-keys/%{version}-%{release}/kernel-signing-ca.cer
+%dir %{_datadir}/doc/kernel-keys/%{version}-%{release}
 %dir %{_datadir}/doc/kernel-keys
 %endif
 
@@ -1697,6 +1689,9 @@ fi
 
 
 %changelog
+* Wed Oct 31 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 4.8.4-2
+- Remove unused macros and simplify package numbering
+
 * Wed Oct 26 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 4.8.4-1
 - 888abf4 Merge branch hostos-base into hostos-devel
 200b22d powerpc/mm/iommu, vfio/spapr: Put pages on VFIO container shutdown
