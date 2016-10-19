@@ -381,7 +381,7 @@ Name: libvirt
 Version: 2.2.0
 Release: 5%{?dist}
 ExclusiveArch: ppc64 ppc64le x86_64 s390x
-Source0: libvirt-0.tar.gz
+Source0: libvirt.tar.gz
 License: LGPLv2+
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -1232,7 +1232,7 @@ Libvirt plugin for NSS for translating domain names into IP addresses.
 %endif
 
 %prep
-%setup -n %{name}-0
+%setup -n libvirt
 
 # Patches have to be stored in a temporary file because RPM has
 # a limit on the length of the result of any macro expansion;
