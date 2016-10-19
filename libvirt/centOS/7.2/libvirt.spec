@@ -379,7 +379,7 @@
 Summary: Library providing a simple virtualization API
 Name: libvirt
 Version: 2.2.0
-Release: 5%{?dist}
+Release: 6%{?dist}
 ExclusiveArch: ppc64 ppc64le x86_64 s390x
 Source0: libvirt.tar.gz
 License: LGPLv2+
@@ -2425,6 +2425,10 @@ exit 0
 #doc examples/systemtap
 
 %changelog
+* Wed Oct 19 2016 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 2.2.0-6
+- Remove unused macros and simplify package numbering
+- Bump release
+
 * Wed Oct 05 2016 user - 2.2.0-5.3200.0
 - ddccbf6 qemu: Fix coldplug of vcpus
 98fe4f8 qemu: process: Enforce vcpu order range to <1,maxvcpus>
