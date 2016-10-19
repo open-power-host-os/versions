@@ -3,7 +3,7 @@ Package:
  clone_url: 'https://github.com/open-power-host-os/libvirt.git'
  branch: 'hostos-devel'
  commit_id: 'ddccbf6'
- expects_source: "libvirt-00.0"
+ expects_source: "libvirt-0.0"
  files:
   centos:
    '7.2':

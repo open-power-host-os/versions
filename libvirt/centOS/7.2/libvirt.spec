@@ -382,12 +382,11 @@ Version: 2.2.0
 #define ibm_release %{?repo}.1
 # This release structure is so the daily scratch builds and the weekly official builds
 #   will always yum install correctly over each other
-%define release_day 0
 %define release_spin 0
-%define release_date .0%{?release_day}.%{?release_spin}
+%define release_date .0.%{?release_spin}
 Release: 5%{?dist}%{?ibm_release}%{?release_date}
 ExclusiveArch: ppc64 ppc64le x86_64 s390x
-Source0: libvirt-0%{?release_day}.%{?release_spin}.tar.gz
+Source0: libvirt-0.%{?release_spin}.tar.gz
 License: LGPLv2+
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -1238,7 +1237,7 @@ Libvirt plugin for NSS for translating domain names into IP addresses.
 %endif
 
 %prep
-%setup -n %{name}-0%{?release_day}.%{?release_spin}
+%setup -n %{name}-0.%{?release_spin}
 
 # Patches have to be stored in a temporary file because RPM has
 # a limit on the length of the result of any macro expansion;
