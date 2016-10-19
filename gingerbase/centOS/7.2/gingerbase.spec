@@ -2,17 +2,14 @@
 %global with_systemd 1
 %endif
 
-%define ibm_release .1
-
 Name:       ginger-base
 Version:    2.2.1
-Release:    3%{?dist}
+Release:    4%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
 Group:      System Environment/Base
 License:    LGPL/ASL2
-#Source0:   %{name}-%{version}.tar.gz
 Source0:    %{name}.tar.gz
 Requires:   wok >= 2.1.0
 Requires:   pyparted
@@ -77,6 +74,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.2.1-4
+- spec cleanup
+
 * Wed Nov 02 2016 user - 2.2.1-3
 - 56913b3 Merge remote-tracking branch upstream/master into hostos-devel
 ff00717 Bug fix #135: Add/Edit repository should consider host OS to ask user input

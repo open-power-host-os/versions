@@ -1,8 +1,6 @@
-%define ibm_release .1
-
 Name:       kimchi
 Version:    2.3.0
-Release:    3%{?dist}
+Release:    4%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -92,6 +90,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.3.0-4
+- spec cleanup
+
 * Wed Nov 02 2016 user - 2.3.0-3
 - 71787ff Merge remote-tracking branch upstream/master into hostos-devel
 0e180c4 Remove URI configuration from kimchi.conf file
