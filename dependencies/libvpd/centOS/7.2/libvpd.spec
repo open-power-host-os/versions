@@ -1,9 +1,6 @@
-%define name libvpd
-%define version 2.2.5
-
-Name:		%{name}
-Version:	%{version}
-Release:	2%{?dist}
+Name:		libvpd
+Version:	2.2.5
+Release:	3%{?dist}
 Summary:	VPD Database access library for lsvpd
 
 Group:		System Environment/Libraries
@@ -37,7 +34,7 @@ Contains header files for building with libvpd.
 %configure --disable-static
 %{__make} %{?_smp_mflags}
 
-%clean 
+%clean
 %{__rm} -rf $RPM_BUILD_ROOT
 
 %install
@@ -48,7 +45,7 @@ Contains header files for building with libvpd.
 
 %postun -p /sbin/ldconfig
 
-%files 
+%files
 %defattr(-,root,root,-)
 %doc COPYING README AUTHORS
 %exclude %{_libdir}/*.la
@@ -67,6 +64,9 @@ Contains header files for building with libvpd.
 %{_libdir}/pkgconfig/libvpd_cxx-2.pc
 
 %changelog
+* Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> 2.2.5-3
+- Spec cleanup: Remove indirections in Version and Name tags.
+
 * Thu Jun 18 2015 Jakub Čajka <jcajka@redhat.com> - 2.2.4-2
 - Resolves: #1184244 - Syntax error message while running vpdupdate - libvpd
 
