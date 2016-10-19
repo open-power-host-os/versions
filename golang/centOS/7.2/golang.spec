@@ -93,6 +93,9 @@
 %global go_api 1.7
 %global go_version 1.7.1
 
+# Check the package after building
+%global runtests 0
+
 Name:           golang
 Version:        1.7.1
 Release:        3%{?dist}
@@ -403,6 +406,7 @@ mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/gdbinit.d
 cp -av %{SOURCE100} $RPM_BUILD_ROOT%{_sysconfdir}/gdbinit.d/golang.gdb
 
 %check
+%if %{runtests}
 export GOROOT=$(pwd -P)
 export PATH="$GOROOT"/bin:"$PATH"
 cd src
@@ -426,6 +430,8 @@ export GO_TEST_TIMEOUT_SCALE=2
 ./run.bash --no-rebuild -v -v -v -k || :
 %endif
 cd ..
+
+%endif
 
 
 %post bin
