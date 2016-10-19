@@ -3,6 +3,9 @@ Package:
  clone_url: 'https://github.com/open-power-host-os/linux.git'
  branch: 'hostos-devel'
  commit_id: '888abf4'
+ version:
+   file: 'Makefile'
+   regex: 'VERSION.*([\d.]+)\nPATCHLEVEL\s*=\s*(?P<patch>[\d.]*)\nSUBLEVEL\s*=\s*(?(patch)([\d.]*))'
  expects_source: "linux-source"
  files:
   centos:
