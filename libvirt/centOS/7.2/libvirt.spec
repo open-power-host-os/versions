@@ -382,8 +382,7 @@ Version: 2.2.0
 #define ibm_release %{?repo}.1
 # This release structure is so the daily scratch builds and the weekly official builds
 #   will always yum install correctly over each other
-%define release_date .0
-Release: 5%{?dist}%{?ibm_release}%{?release_date}
+Release: 5%{?dist}%{?ibm_release}
 ExclusiveArch: ppc64 ppc64le x86_64 s390x
 Source0: libvirt-0.tar.gz
 License: LGPLv2+
