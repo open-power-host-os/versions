@@ -1,0 +1,33 @@
+[Unit]
+Description=Docker Application Container Engine
+Documentation=http://docs.docker.com
+After=network.target docker-containerd.service
+Wants=docker-storage-setup.service
+Requires=docker-containerd.service
+
+[Service]
+Type=notify
+EnvironmentFile=-/etc/sysconfig/docker
+EnvironmentFile=-/etc/sysconfig/docker-storage
+EnvironmentFile=-/etc/sysconfig/docker-network
+Environment=GOTRACEBACK=crash
+Environment=DOCKER_HTTP_HOST_COMPAT=1
+ExecStart=/usr/bin/docker daemon \
+          --add-runtime oci=/usr/libexec/docker/docker-runc \
+          --default-runtime=oci \
+          --containerd /run/containerd.sock \
+          --exec-opt native.cgroupdriver=systemd \
+          $OPTIONS \
+          $DOCKER_STORAGE_OPTIONS \
+          $DOCKER_NETWORK_OPTIONS \
+          $INSECURE_REGISTRY
+ExecReload=/bin/kill -s HUP $MAINPID
+TasksMax=8192
+LimitNOFILE=1048576
+LimitNPROC=1048576
+LimitCORE=infinity
+TimeoutStartSec=0
+Restart=on-abnormal
+
+[Install]
+WantedBy=multi-user.target

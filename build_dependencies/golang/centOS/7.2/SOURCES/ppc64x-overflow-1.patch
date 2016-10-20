@@ -1,0 +1,457 @@
+From d6beea7f9ea1aa2ae5abca7fccb252767820aa13 Mon Sep 17 00:00:00 2001
+From: Lynn Boger <laboger@linux.vnet.ibm.com>
+Date: Tue, 26 Jul 2016 08:51:10 -0500
+Subject: [PATCH] cmd/link: split large elf text sections for ppc64x
+
+Some applications built with Go on ppc64x with
+external linking can fail to link with relocation
+truncation errors, due to the way that the golang
+compiler generates a single go.o file containing
+a single large text section to send to the GNU
+linker.  If the size of the single text section is
+greater than 2^26, this can lead to link errors
+due to 24 bit offset field in the bl (call)
+instruction.
+
+This fix solves the problem by splitting into
+multiple text sections when this limit is reached.
+When this is done then the GNU linker can fix the
+long calls and insert jump tables where needed.
+---
+ src/cmd/link/internal/ld/data.go   | 52 +++++++++++++++++++++++++++++--
+ src/cmd/link/internal/ld/elf.go    | 60 ++++++++++++++++++++++++++++++++---
+ src/cmd/link/internal/ld/lib.go    | 20 ++++++++++++
+ src/cmd/link/internal/ld/symtab.go | 64 ++++++++++++++++++++++++++++++++++++++
+ src/cmd/link/internal/ppc64/asm.go | 12 ++++---
+ src/runtime/symtab.go              | 34 +++++++++++++++-----
+ src/runtime/type.go                | 16 +++++++++-
+ 7 files changed, 237 insertions(+), 21 deletions(-)
+
+diff --git a/src/cmd/link/internal/ld/data.go b/src/cmd/link/internal/ld/data.go
+index 57a0dad..58ce18c 100644
+--- a/src/cmd/link/internal/ld/data.go
++++ b/src/cmd/link/internal/ld/data.go
+@@ -527,7 +527,15 @@ func relocsym(s *LSym) {
+ 			o = Symaddr(r.Sym) + r.Add - int64(r.Sym.Sect.Vaddr)
+ 
+ 		case obj.R_ADDROFF:
+-			o = Symaddr(r.Sym) - int64(r.Sym.Sect.Vaddr) + r.Add
++
++			// The method offset tables using this relocation expect the offset to be relative
++			// to the start of the first text section, even if there are multiple.
++
++			if Linkmode == LinkExternal && r.Sym.Sect.Name == ".text" && r.Sym.Sect.Vaddr != Segtext.Vaddr {
++				o = Symaddr(r.Sym) - int64(Segtext.Vaddr) + r.Add
++			} else {
++				o = Symaddr(r.Sym) - int64(r.Sym.Sect.Vaddr) + r.Add
++			}
+ 
+ 			// r->sym can be null when CALL $(constant) is transformed from absolute PC to relative PC call.
+ 		case obj.R_CALL, obj.R_GOTPCREL, obj.R_PCREL:
+@@ -1926,6 +1934,7 @@ func textaddress() {
+ 	}
+ 	va := uint64(INITTEXT)
+ 	sect.Vaddr = va
++	n := 1
+ 	for _, sym := range Ctxt.Textp {
+ 		sym.Sect = sect
+ 		if sym.Type&obj.SSUB != 0 {
+@@ -1948,9 +1957,30 @@ func textaddress() {
+ 		} else {
+ 			va += uint64(sym.Size)
+ 		}
++		// On ppc64x a text section should not be larger than 2^26 bytes due to the size of
++		// call target offset field in the bl instruction.  Splitting into text
++		// sections smaller than this limit allows the GNU linker to modify the long calls
++		// appropriately.  The limit allows for the space for linker tables.
++
++		// Only break at outermost syms.
++
++		if sym.Outer == nil && Iself && Linkmode == LinkExternal && SysArch.InFamily(sys.PPC64) && va-sect.Vaddr > uint64(0x1c00000) {
++
++			// Set the length for the previous text section
++			sect.Length = va - sect.Vaddr
++
++			// Create new section, set the starting Vaddr
++			sect = addsection(&Segtext, ".text", 05)
++			sect.Vaddr = va
++
++			// Create a symbol for the start and end of the secondary text section
++			Linklookup(Ctxt, fmt.Sprintf("runtime.text.%d", n), 0).Sect = sect
++			n++
++		}
+ 	}
+ 
+ 	sect.Length = va - sect.Vaddr
++	Linklookup(Ctxt, "runtime.etext", 0).Sect = sect
+ }
+ 
+ // assign addresses
+@@ -2057,11 +2087,27 @@ func address() {
+ 	Segdwarf.Filelen = va - Segdwarf.Vaddr
+ 
+ 	text := Segtext.Sect
++	lasttext := text
+ 	var rodata *Section
+ 	if Segrodata.Sect != nil {
+ 		rodata = Segrodata.Sect
+ 	} else {
+-		rodata = text.Next
++		// Could be multiple .text sections
++		n := 1
++		for sect := Segtext.Sect.Next; sect != nil; sect = sect.Next {
++			if sect.Name != ".text" {
++				break
++			}
++			lasttext = sect
++			symname := fmt.Sprintf("runtime.text.%d", n)
++			xdefine(symname, obj.STEXT, int64(sect.Vaddr))
++			n++
++		}
++
++		rodata = lasttext.Next
++		if rodata != nil && rodata.Name != ".rodata" {
++			Diag("Unexpected section order in text segment")
++		}
+ 	}
+ 	var relrodata *Section
+ 	typelink := rodata.Next
+@@ -2108,7 +2154,7 @@ func address() {
+ 	}
+ 
+ 	xdefine("runtime.text", obj.STEXT, int64(text.Vaddr))
+-	xdefine("runtime.etext", obj.STEXT, int64(text.Vaddr+text.Length))
++	xdefine("runtime.etext", obj.STEXT, int64(lasttext.Vaddr+lasttext.Length))
+ 	if HEADTYPE == obj.Hwindows {
+ 		xdefine(".text", obj.STEXT, int64(text.Vaddr))
+ 	}
+diff --git a/src/cmd/link/internal/ld/elf.go b/src/cmd/link/internal/ld/elf.go
+index 39d3609..ecb00c2 100644
+--- a/src/cmd/link/internal/ld/elf.go
++++ b/src/cmd/link/internal/ld/elf.go
+@@ -1623,6 +1623,25 @@ func elfshname(name string) *ElfShdr {
+ 	return nil
+ }
+ 
++// Create an ElfShdr for the section with name.
++// A new one is created even if one already exists with
++// the same name.
++func elfshnamedup(name string) *ElfShdr {
++	var off int
++	var sh *ElfShdr
++
++	for i := 0; i < nelfstr; i++ {
++		if name == elfstr[i].s {
++			off = elfstr[i].off
++			sh = newElfShdr(int64(off))
++			return sh
++		}
++	}
++	Diag("cannot find elf name %s", name)
++	errorexit()
++	return nil
++}
++
+ func elfshalloc(sect *Section) *ElfShdr {
+ 	sh := elfshname(sect.Name)
+ 	sect.Elfsect = sh
+@@ -1630,7 +1649,17 @@ func elfshalloc(sect *Section) *ElfShdr {
+ }
+ 
+ func elfshbits(sect *Section) *ElfShdr {
+-	sh := elfshalloc(sect)
++	var sh *ElfShdr
++
++	if sect.Name == ".text" {
++		if sect.Elfsect == nil {
++			sect.Elfsect = elfshnamedup(sect.Name)
++		}
++		sh = sect.Elfsect
++	} else {
++		sh = elfshalloc(sect)
++	}
++
+ 	// If this section has already been set up as a note, we assume type_ and
+ 	// flags are already correct, but the other fields still need filling in.
+ 	if sh.type_ == SHT_NOTE {
+@@ -1706,6 +1735,15 @@ func elfshreloc(sect *Section) *ElfShdr {
+ 	}
+ 
+ 	sh := elfshname(elfRelType + sect.Name)
++
++	// There could be multiple text sections but each needs
++	// its own .rela.text.
++	if sect.Name == ".text" {
++		if sh.info != 0 && sh.info != uint32(sect.Elfsect.shnum) {
++			sh = elfshnamedup(elfRelType + sect.Name)
++		}
++	}
++
+ 	sh.type_ = uint32(typ)
+ 	sh.entsize = uint64(SysArch.RegSize) * 2
+ 	if typ == SHT_RELA {
+@@ -1776,9 +1814,12 @@ func Elfemitreloc() {
+ 		Cput(0)
+ 	}
+ 
+-	elfrelocsect(Segtext.Sect, Ctxt.Textp)
+-	for sect := Segtext.Sect.Next; sect != nil; sect = sect.Next {
+-		elfrelocsect(sect, datap)
++	for sect := Segtext.Sect; sect != nil; sect = sect.Next {
++		if sect.Name == ".text" {
++			elfrelocsect(sect, Ctxt.Textp)
++		} else {
++			elfrelocsect(sect, datap)
++		}
+ 	}
+ 	for sect := Segrodata.Sect; sect != nil; sect = sect.Next {
+ 		elfrelocsect(sect, datap)
+@@ -2109,7 +2150,16 @@ func Asmbelfsetup() {
+ 	elfshname("")
+ 
+ 	for sect := Segtext.Sect; sect != nil; sect = sect.Next {
+-		elfshalloc(sect)
++
++		// There could be multiple .text sections. Instead check the Elfsect
++		// field to determine if already has an ElfShdr and if not, create one.
++		if sect.Name == ".text" {
++			if sect.Elfsect == nil {
++				sect.Elfsect = elfshnamedup(sect.Name)
++			}
++		} else {
++			elfshalloc(sect)
++		}
+ 	}
+ 	for sect := Segrodata.Sect; sect != nil; sect = sect.Next {
+ 		elfshalloc(sect)
+diff --git a/src/cmd/link/internal/ld/lib.go b/src/cmd/link/internal/ld/lib.go
+index 14f4fa9..709e7ca 100644
+--- a/src/cmd/link/internal/ld/lib.go
++++ b/src/cmd/link/internal/ld/lib.go
+@@ -1956,6 +1956,26 @@ func genasmsym(put func(*LSym, string, int, int64, int64, int, *LSym)) {
+ 	if s.Type == obj.STEXT {
+ 		put(s, s.Name, 'T', s.Value, s.Size, int(s.Version), nil)
+ 	}
++	n := 0
++
++	// Generate base addresses for all text sections if there are multiple
++	for sect := Segtext.Sect; sect != nil; sect = sect.Next {
++		if n == 0 {
++			n++
++			continue
++		}
++		if sect.Name != ".text" {
++			break
++		}
++		s = Linkrlookup(Ctxt, fmt.Sprintf("runtime.text.%d", n), 0)
++		if s == nil {
++			break
++		}
++		if s.Type == obj.STEXT {
++			put(s, s.Name, 'T', s.Value, s.Size, int(s.Version), nil)
++		}
++		n++
++	}
+ 	s = Linklookup(Ctxt, "runtime.etext", 0)
+ 	if s.Type == obj.STEXT {
+ 		put(s, s.Name, 'T', s.Value, s.Size, int(s.Version), nil)
+diff --git a/src/cmd/link/internal/ld/symtab.go b/src/cmd/link/internal/ld/symtab.go
+index 06d7792..80eb33d 100644
+--- a/src/cmd/link/internal/ld/symtab.go
++++ b/src/cmd/link/internal/ld/symtab.go
+@@ -315,6 +315,62 @@ func (libs byPkg) Swap(a, b int) {
+ 	libs[a], libs[b] = libs[b], libs[a]
+ }
+ 
++// Create a table with information on the text sections.
++
++func textsectionmap() uint32 {
++
++	t := Linklookup(Ctxt, "runtime.textsectionmap", 0)
++	t.Type = obj.SRODATA
++	t.Attr |= AttrReachable
++	nsections := int64(0)
++
++	for sect := Segtext.Sect; sect != nil; sect = sect.Next {
++		if sect.Name == ".text" {
++			nsections++
++		} else {
++			break
++		}
++	}
++	Symgrow(Ctxt, t, nsections*3*8)
++
++	off := int64(0)
++	n := 0
++
++	// The vaddr for each text section is the difference between the section's
++	// Vaddr and the Vaddr for the first text section as determined at compile
++	// time.
++
++	// The symbol name for the start address of the first text section is
++	// runtime.text.  Additional text sections are named runtime.text.n where n is the
++	// order of creation starting with 1. These symbols provide the section's
++	// start address after relocation by the linker.
++
++	textbase := Segtext.Sect.Vaddr
++	for sect := Segtext.Sect; sect != nil; sect = sect.Next {
++		if sect.Name != ".text" {
++			break
++		}
++		off = setuintxx(Ctxt, t, off, sect.Vaddr-textbase, int64(SysArch.IntSize))
++		off = setuintxx(Ctxt, t, off, sect.Length, int64(SysArch.IntSize))
++		if n == 0 {
++			s := Linkrlookup(Ctxt, "runtime.text", 0)
++			if s == nil {
++				Diag("Unable to find symbol runtime.text\n")
++			}
++			off = setaddr(Ctxt, t, off, s)
++
++		} else {
++			s := Linklookup(Ctxt, fmt.Sprintf("runtime.text.%d", n), 0)
++			if s == nil {
++				Diag("Unable to find symbol runtime.text.%d\n", n)
++			}
++			off = setaddr(Ctxt, t, off, s)
++		}
++		n++
++	}
++	return uint32(n)
++}
++
+ func symtab() {
+ 	dosymtype()
+ 
+@@ -489,6 +545,8 @@ func symtab() {
+ 		adduint(Ctxt, abihashgostr, uint64(hashsym.Size))
+ 	}
+ 
++	nsections := textsectionmap()
++
+ 	// Information about the layout of the executable image for the
+ 	// runtime to use. Any changes here must be matched by changes to
+ 	// the definition of moduledata in runtime/symtab.go.
+@@ -527,6 +585,12 @@ func symtab() {
+ 	Addaddr(Ctxt, moduledata, Linklookup(Ctxt, "runtime.gcbss", 0))
+ 	Addaddr(Ctxt, moduledata, Linklookup(Ctxt, "runtime.types", 0))
+ 	Addaddr(Ctxt, moduledata, Linklookup(Ctxt, "runtime.etypes", 0))
++
++	// text section information
++	Addaddr(Ctxt, moduledata, Linklookup(Ctxt, "runtime.textsectionmap", 0))
++	adduint(Ctxt, moduledata, uint64(nsections))
++	adduint(Ctxt, moduledata, uint64(nsections))
++
+ 	// The typelinks slice
+ 	Addaddr(Ctxt, moduledata, Linklookup(Ctxt, "runtime.typelink", 0))
+ 	adduint(Ctxt, moduledata, uint64(ntypelinks))
+diff --git a/src/cmd/link/internal/ppc64/asm.go b/src/cmd/link/internal/ppc64/asm.go
+index bd2e23f..ab59fa8 100644
+--- a/src/cmd/link/internal/ppc64/asm.go
++++ b/src/cmd/link/internal/ppc64/asm.go
+@@ -813,12 +813,14 @@ func asmb() {
+ 		ld.Asmbelfsetup()
+ 	}
+ 
+-	sect := ld.Segtext.Sect
+-	ld.Cseek(int64(sect.Vaddr - ld.Segtext.Vaddr + ld.Segtext.Fileoff))
+-	ld.Codeblk(int64(sect.Vaddr), int64(sect.Length))
+-	for sect = sect.Next; sect != nil; sect = sect.Next {
++	for sect := ld.Segtext.Sect; sect != nil; sect = sect.Next {
+ 		ld.Cseek(int64(sect.Vaddr - ld.Segtext.Vaddr + ld.Segtext.Fileoff))
+-		ld.Datblk(int64(sect.Vaddr), int64(sect.Length))
++		// Might have multiple text sections
++		if sect.Name == ".text" {
++			ld.Codeblk(int64(sect.Vaddr), int64(sect.Length))
++		} else {
++			ld.Datblk(int64(sect.Vaddr), int64(sect.Length))
++		}
+ 	}
+ 
+ 	if ld.Segrodata.Filelen > 0 {
+diff --git a/src/runtime/symtab.go b/src/runtime/symtab.go
+index 4f6fae2..23e80ce 100644
+--- a/src/runtime/symtab.go
++++ b/src/runtime/symtab.go
+@@ -195,8 +195,9 @@ type moduledata struct {
+ 	end, gcdata, gcbss    uintptr
+ 	types, etypes         uintptr
+ 
+-	typelinks []int32 // offsets from types
+-	itablinks []*itab
++	textsectmap []textsect
++	typelinks   []int32 // offsets from types
++	itablinks   []*itab
+ 
+ 	modulename   string
+ 	modulehashes []modulehash
+@@ -226,6 +227,14 @@ type functab struct {
+ 	funcoff uintptr
+ }
+ 
++// Mapping information for secondary text sections
++
++type textsect struct {
++	vaddr    uint64  // prelinked section vaddr
++	length   uint64  // section length
++	baseaddr uintptr // relocated section address
++}
++
+ const minfunc = 16                 // minimum function size
+ const pcbucketsize = 256 * minfunc // size of bucket in the pc->func lookup table
+ 
+@@ -368,12 +377,23 @@ func findfunc(pc uintptr) *_func {
+ 	ffb := (*findfuncbucket)(add(unsafe.Pointer(datap.findfunctab), b*unsafe.Sizeof(findfuncbucket{})))
+ 	idx := ffb.idx + uint32(ffb.subbuckets[i])
+ 	if pc < datap.ftab[idx].entry {
+-		throw("findfunc: bad findfunctab entry")
+-	}
+ 
+-	// linear search to find func with pc >= entry.
+-	for datap.ftab[idx+1].entry <= pc {
+-		idx++
++		// If there are multiple text sections then the buckets for the secondary
++		// text sections will be off because the addresses in those text sections
++		// were relocated to higher addresses.  Search back to find it.
++
++		for datap.ftab[idx].entry > pc && idx > 0 {
++			idx--
++		}
++		if idx == 0 {
++			throw("findfunc: bad findfunctab entry idx")
++		}
++	} else {
++
++		// linear search to find func with pc >= entry.
++		for datap.ftab[idx+1].entry <= pc {
++			idx++
++		}
+ 	}
+ 	return (*_func)(unsafe.Pointer(&datap.pclntable[datap.ftab[idx].funcoff]))
+ }
+diff --git a/src/runtime/type.go b/src/runtime/type.go
+index 5ef11a4..f641adc 100644
+--- a/src/runtime/type.go
++++ b/src/runtime/type.go
+@@ -257,7 +257,21 @@ func (t *_type) textOff(off textOff) unsafe.Pointer {
+ 		}
+ 		return res
+ 	}
+-	res := md.text + uintptr(off)
++	res := uintptr(0)
++
++	// Find the text section range that contains the offset to determine the section's base
++	// address.  In cases where there are multiple text sections, the base address might be
++	// relocated by the linker.
++
++	for i := 0; i < len(md.textsectmap); i++ {
++		sectaddr := md.textsectmap[i].vaddr
++		sectlen := md.textsectmap[i].length
++		if uint64(off) >= sectaddr && uint64(off) <= sectaddr+sectlen {
++			res = md.textsectmap[i].baseaddr + uintptr(off) - uintptr(md.textsectmap[i].vaddr)
++			break
++		}
++	}
++
+ 	if res > md.etext {
+ 		println("runtime: textOff", hex(off), "out of range", hex(md.text), "-", hex(md.etext))
+ 		throw("runtime: text offset out of range")

@@ -1,0 +1,14 @@
+[Unit]
+Description=Containerd Standalone OCI Container Daemon
+Documentation=https://containerd.tools/
+After=network.target
+
+[Service]
+ExecStart=/usr/libexec/docker/docker-containerd --listen unix:///run/containerd.sock --shim /usr/libexec/docker/docker-containerd-shim
+TasksMax=8192
+LimitNOFILE=1048576
+LimitNPROC=1048576
+LimitCORE=infinity
+
+[Install]
+WantedBy=multi-user.target

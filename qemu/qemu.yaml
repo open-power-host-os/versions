@@ -10,3 +10,5 @@ Package:
     spec: 'centOS/7.2/qemu.spec'
     rpmmacro: 'centOS/7.2/rpmmacro'
     build_files: 'centOS/7.2/SOURCES'
+    dependencies:
+     - 'libseccomp'

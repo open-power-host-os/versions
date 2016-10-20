@@ -1,0 +1,11 @@
+Package:
+ name: 'golang'
+ clone_url: 'https://github.com/golang/go.git'
+ commit_id: 'b67902f'
+ branch: 'release-branch.go1.7'
+ expects_source: 'go'
+ files:
+  centos:
+   '7.2':
+    spec: 'centOS/7.2/golang.spec'
+    build_files: 'centOS/7.2/SOURCES'
