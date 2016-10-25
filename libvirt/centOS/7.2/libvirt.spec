@@ -379,16 +379,9 @@
 Summary: Library providing a simple virtualization API
 Name: libvirt
 Version: 2.2.0
-#define ibm_release %{?repo}.1
-# This release structure is so the daily scratch builds and the weekly official builds
-#   will always yum install correctly over each other
-%define release_week 32
-%define release_day 0
-%define release_spin 0
-%define release_date .%{?release_week}0%{?release_day}.%{?release_spin}
-Release: 5%{?dist}%{?ibm_release}%{?release_date}
+Release: 6%{?dist}
 ExclusiveArch: ppc64 ppc64le x86_64 s390x
-Source0: libvirt-%{?release_week}0%{?release_day}.%{?release_spin}.tar.gz
+Source0: libvirt.tar.gz
 License: LGPLv2+
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -1239,7 +1232,7 @@ Libvirt plugin for NSS for translating domain names into IP addresses.
 %endif
 
 %prep
-%setup -n %{name}-%{?release_week}0%{?release_day}.%{?release_spin}
+%setup -n libvirt
 
 # Patches have to be stored in a temporary file because RPM has
 # a limit on the length of the result of any macro expansion;
@@ -2432,6 +2425,10 @@ exit 0
 #doc examples/systemtap
 
 %changelog
+* Wed Oct 19 2016 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 2.2.0-6
+- Remove unused macros and simplify package numbering
+- Bump release
+
 * Wed Oct 05 2016 user - 2.2.0-5.3200.0
 - ddccbf6 qemu: Fix coldplug of vcpus
 98fe4f8 qemu: process: Enforce vcpu order range to <1,maxvcpus>
