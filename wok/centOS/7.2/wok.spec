@@ -2,7 +2,7 @@
 
 Name:       wok
 Version:    2.3.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -176,6 +176,10 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed Oct 26 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.3.0-2
+- 50065e0 Github #143: non-ASCII characters in the password field
+680eb9f Fix Ginger Base issue #122: Get immediate children while looking for selected options
+
 * Wed Oct 05 2016 user - 2.2.0-8
 - bd24776 Update ChangeLog, VERSION and po files to 2.3 release
 646941d Fix make-rpm target
