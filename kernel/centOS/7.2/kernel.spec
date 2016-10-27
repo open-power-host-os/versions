@@ -20,8 +20,8 @@ Summary: The Linux kernel
 # For internal testing builds during development, it should be 0.
 %global released_kernel 1
 
-%define rpmversion 4.8.1
-%define specrelease 3
+%define rpmversion 4.8.4
+%define specrelease 1
 
 %define pkg_release %{specrelease}%{?dist}
 
@@ -1697,6 +1697,121 @@ fi
 
 
 %changelog
+* Wed Oct 26 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 4.8.4-1
+- 888abf4 Merge branch hostos-base into hostos-devel
+200b22d powerpc/mm/iommu, vfio/spapr: Put pages on VFIO container shutdown
+f27109c vfio/spapr: Reference mm in tce_container
+e96f99c powerpc/iommu: Stop using @current in mm_iommu_xxx
+5fa3141 powerpc/iommu: Pass mm_struct to init/cleanup helpers
+4948c53 Revert powerpc/iommu: Stop using @current in mm_iommu_xxx
+d0850cd Revert powerpc/mm/iommu: Put pages on process exit
+1e28a11 Merge tag v4.8.4 into hostos-devel
+a2b4234 Linux 4.8.4
+9362516 cfq: fix starvation of asynchronous writes
+afac708 acpi, nfit: check for the correct event code in notifications
+3245ff5 drm: virtio: reinstate drm_virtio_set_busid()
+336f2e1 cachefiles: Fix attempt to read i_blocks after deleting file [ver #2]
+7bf9989 vfs: move permission checking into notify_change() for utimes(NULL)
+6b74694 dlm: free workqueues after the connections
+3fae786 crypto: vmx - Fix memory corruption caused by p8_ghash
+e15e0b8 crypto: ghash-generic - move common definitions to a new header file
+fb13b62 ext4: unmap metadata when zeroing blocks
+ff50a72 ext4: release bh in make_indexed_dir
+99fa4c5 ext4: allow DAX writeback for hole punch
+5373f6c ext4: fix memory leak when symlink decryption fails
+7a68938 ext4: fix memory leak in ext4_insert_range()
+30ac674 ext4: bugfix for mmaped pages in mpage_release_unused_pages()
+eac6c9e ext4: reinforce check of i_dtime when clearing high fields of uid and gid
+ddcd996 ext4: enforce online defrag restriction for encrypted files
+4cd2546 jbd2: fix lockdep annotation in add_transaction_credits()
+3d549dc vfs,mm: fix a dead loop in truncate_inode_pages_range()
+d9cf9c3 mm/hugetlb: fix memory offline with hugepage size > memory block size
+a9d465b ipc/sem.c: fix complex_count vs. simple op race
+f653028 scsi: ibmvfc: Fix I/O hang when port is not mapped
+0f24761 scsi: arcmsr: Simplify user_len checking
+cf4dc8d scsi: arcmsr: Buffer overflow in arcmsr_iop_message_xfer()
+2f9aa71 autofs: Fix automounts by using current_real_cred()->uid
+dfca701 async_pq_val: fix DMA memory leak
+5c55afa reiserfs: Unlock superblock before calling reiserfs_quota_on_mount()
+dad1754 ASoC: Intel: Atom: add a missing star in a memcpy call
+9b3aaaa ASoC: nau8825: fix bug in FLL parameter
+9119232 brcmfmac: use correct skb freeing helper when deleting flowring
+5de3cae brcmfmac: fix memory leak in brcmf_fill_bss_param
+4a50f92 brcmfmac: fix pmksa->bssid usage
+7d5d3b1 mm: filemap: dont plant shadow entries without radix tree node
+bbf4e0b xfs: change mailing list address
+c5b4bb7 i40e: avoid NULL pointer dereference and recursive errors on early PCI error
+65fc3ba mm: filemap: fix mapping->nrpages double accounting in fuse
+0e2993e fuse: fix killing s[ug]id in setattr
+f72bae3 fuse: invalidate dir dentry after chmod
+66b8e7f fuse: listxattr: verify xattr list
+a4be745 clk: mvebu: dynamically allocate resources in Armada CP110 system controller
+a6cf0bc clk: mvebu: fix setting unwanted flags in CP110 gate clock
+51b2e35 IB/hfi1: Fix defered ack race with qp destroy
+9ae3f9e drivers: base: dma-mapping: page align the size when unmap_kernel_range
+3ec2e37 mei: amthif: fix deadlock in initialization during a reset
+f22a8a5 btrfs: assign error values to the correct bio structs
+1092e30 Btrfs: catch invalid free space trees
+6691ebe Btrfs: fix mount -o clear_cache,space_cache=v2
+1ff6341 Btrfs: fix free space tree bitmaps on big-endian systems
+ba77f1d carl9170: fix debugfs crashes
+c5054f7 b43legacy: fix debugfs crash
+d7b4155 b43: fix debugfs crash
+7c64663 debugfs: introduce a public file_operations accessor
+ead1b01 ARCv2: fix local_save_flags
+fa85ff8 ARCv2: intc: Use kflag if STATUS32.IE must be reset
+ddd8060 serial: 8250_port: fix runtime PM use in __do_stop_tx_rs485()
+80ece27 serial: 8250_dw: Check the data->pclk when get apb_pclk
+307475d BUG: atmel_serial: Interrupts not disabled on close
+40995fa serial: imx: Fix DCD reading
+f516f49 Merge tag v4.8.3 into hostos-devel
+1888926 Linux 4.8.3
+89eeba1 mm: remove gup_flags FOLL_WRITE games from __get_user_pages()
+0312017 Make __xfs_xattr_put_listen preperly report errors.
+8523011 scsi: configure runtime pm before calling device_add in scsi_add_host_with_dma
+ccb3dd2 v4l: rcar-fcp: Dont force users to check for disabled FCP support
+cb5d016 Linux 4.8.2
+87d6616 tpm_crb: fix crb_req_canceled behavior
+17b6c49 tpm: fix a race condition in tpm2_unseal_trusted()
+a8284cf ima: use file_dentry()
+8af6ecc Bluetooth: Add a new 04ca:3011 QCA_ROME device
+ec07719 ARM: cpuidle: Fix error return code
+88277ac ARM: dts: MSM8660 remove flags from SPMI/MPP IRQs
+150b065 ARM: dts: MSM8064 remove flags from SPMI/MPP IRQs
+c018058 ARM: dts: mvebu: armada-390: add missing compatibility string and bracket
+47d2e11 ARM: fix delays
+7393344 x86/dumpstack: Fix x86_32 kernel_stack_pointer() previous stack access
+36fc875 x86/mm/pkeys: Do not skip PKRU register if debug registers are not used
+0480b22 arch/x86: Handle non enumerated CPU after physical hotplug
+720aa4d x86/apic: Get rid of apic_version[] array
+4c31498 x86/platform/intel-mid: Keep SRAM powered on at boot
+768235b x86/platform/intel-mid: Add Intel Penwell to ID table
+70c6cb0 x86/cpu: Rename Merrifield2 to Moorefield
+6a667db x86/pkeys: Make protection keys an eager feature
+b36aa57 x86/irq: Prevent force migration of irqs which are not in the vector domain
+ebf5f66 x86/boot: Fix kdump, cleanup aborted E820_PRAM max_pfn manipulation
+0efaa26 arm64: fix dump_backtrace/unwind_frame with NULL tsk
+c9eb7cf KVM: PPC: BookE: Fix a sanity check
+ebc12d6 KVM: arm/arm64: vgic: Dont flush/sync without a working vgic
+4684879 KVM: arm64: Require in-kernel irqchip for PMU support
+92b2384 KVM: MIPS: Drop other CPU ASIDs on guest MMU changes
+759896f KVM: PPC: Book3s PR: Allow access to unprivileged MMCR2 register
+88540ad xen/x86: Update topology map for PV VCPUs
+c64c760 mfd: wm8350-i2c: Make sure the i2c regmap functions are compiled
+ceeddee mfd: 88pm80x: Double shifting bug in suspend/resume
+0187dcd mfd: atmel-hlcdc: Do not sleep in atomic context
+6c4c6ae mfd: rtsx_usb: Avoid setting ucr->current_sg.status
+14ca6ce ALSA: usb-line6: use the same declaration as definition in header for MIDI manufacturer ID
+e09db64 ALSA: usb-audio: Extend DragonFly dB scale quirk to cover other variants
+80e84e0 ALSA: ali5451: Fix out-of-bound position reporting
+72c6187 phy: sun4i-usb: Use spinlock to guard phyctl register access
+ac8aa11 usb: dwc3: fix Clear Stall EP command failure
+4e584cf timekeeping: Fix __ktime_get_fast_ns() regression
+c8661aa usb: storage: fix runtime pm issue in usb_stor_probe2
+945f419 powerpc/64: Fix race condition in setting lock bit in idle/wakeup code
+490b36e powerpc/64: Re-fix race condition between going idle and entering guest
+a3a03f3 Merge tag v4.8.1 into hostos-devel
+
 * Fri Oct 14 2016 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 4.8.1-3
 - Remove unused macros and simplify package numbering
 - Bump specrelease

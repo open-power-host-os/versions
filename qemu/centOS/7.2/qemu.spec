@@ -194,7 +194,7 @@ Version: 2.7.0
 %define release_spin 0
 %define release_date .%{?release_week}0%{?release_day}.%{?release_spin}
 
-Release: 1%{?dist}%{?release_date}
+Release: 2%{?dist}%{?release_date}
 Epoch: 11
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -1529,6 +1529,12 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Wed Oct 26 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 11:2.7.0-2.3200.0
+- 4f0198b virtio-pci: error out when both legacy and modern modes are disabled
+ce7dafe migration/postcopy: Explicitly disallow huge pages
+bbbbdda RAMBlocks: Store page size
+1b11fa6 spapr_pci: Add numa node id
+
 * Thu Sep 29 2016 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 11:2.6.93-9.3200.0
 - 1dc33ed Update version for v2.7.0 release
 12d2c41 Update version for v2.7.0-rc5 release

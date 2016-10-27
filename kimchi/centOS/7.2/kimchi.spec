@@ -2,7 +2,7 @@
 
 Name:       kimchi
 Version:    2.3.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -92,6 +92,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Oct 26 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.3.0-2
+- 0c5755c Issue: #1008 Issues while editing a VEPA network
+3bb1581 PCI hotplug: Check USB controller, define in template, add test in Power
+fa8a9ce Issue #651: Windows guests - default mouse type causing problems
+19b3621 Improve multifunction attach/detach operations
+
 * Wed Oct 05 2016 user - 2.2.0-7
 - bfe8c18 [HostOS] Revert Enable CPU HotPlug in UI
 3661131 [HostOS] Revert Fix frontend vcpu hotplug

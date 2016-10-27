@@ -6,7 +6,7 @@
 
 Name:       ginger-base
 Version:    2.2.1
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -77,6 +77,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Oct 26 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.2.1-2
+- a025aae test_rest.py: changing generated reports name
+0f9bf86 Improve the way Updates tab is loaded
+
 * Wed Oct 05 2016 user - 2.0.0-7
 - 2bc859f Rpmlint spec file fixes
 fe9f4fb Issue #118: Suggestion to check spec guidelines

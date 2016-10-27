@@ -2,7 +2,7 @@
 
 Name:       ginger
 Version:    2.3.0
-Release:    1%{?dist}
+Release:    2%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -122,6 +122,27 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Oct 26 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.3.0-2
+- ed6b5cc Updating ginger.css to latest versions
+e7c45de Introducing OSA port & Buffer count functionalities
+13ad599 Introducing OSA port & Buffer count functionalities
+35af4b2 Removing commented code in ui/js/host-network-vlan.js
+26e977b Issue #450 : Seperate the buttons from datatable configuration for Network Configuration.
+884bb3d Issue #448 iSCSI get operation on invalid IQN fails with 500
+03f01c6 Improve error message propagation in Filesystems
+0beaf4e Modified the network code to support OPTIONS in ifcfg file.
+bac7977 Changed volumn to volume in ui/pages/i18n.json.tmpl
+58bc368 Changed message for delete partition if VG name exist
+11c0910 Fixed Issue #449 Loading icon is always visible while creating partition
+42cab03 For FC and Iscsi devices while creating partition pass device ID as parameter to API
+648ab0a Fix for the size slider in storage devices.
+1f52e1f Check for file path for create swap API
+7d7a850 Issue #226: Show GiB instead of g for Volume Group sizes
+6920356 Issue #442 DASD create partition API does not give an error for more than 3 partitions
+4dca998 This patch removes a repeated key key in the dictionary
+1baf499 Improving Swap Device Partition listing
+1e3aaec Issue # 437 :Volume Group list is not getting refreshed post deletion of volume group.
+
 * Wed Oct 05 2016 user - 2.2.0-7
 - 3c049fb Returning rows_indexes as part of ginger.listNetworkConfig object.
 831a43b Issue #414: service disapear after stopping it at opensuse 42.1
