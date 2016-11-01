@@ -1,5 +1,5 @@
 Package:
- name: 'QEMU'
+ name: 'qemu'
  clone_url: 'https://github.com/open-power-host-os/qemu.git'
  branch: 'hostos-devel'
  commit_id: '4f0198b'
