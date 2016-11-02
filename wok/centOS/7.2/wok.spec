@@ -2,7 +2,7 @@
 
 Name:       wok
 Version:    2.3.0
-Release:    2%{?dist}
+Release:    3%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -176,6 +176,36 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed Nov 02 2016 user - 2.3.0-3
+- 5443d11 Merge remote-tracking branch upstream/master into host-devel
+80b5bab Fix pep8 issues caused by 2a7b3c6
+768cf29 Issue #116: Suggestion to check spec guidelines
+2a7b3c6 Issue #139: Do not generate logrotate config file on the fly
+6bf4254 Bug fix #176: Assume plugin URI is /plugins/<plugin-name>
+0efaeae Remove Ginger Base specific CSS from Wok source code
+64860ba Remove build warning message from Wok
+1cd86b9 Remove non-Wok strings from Wok source code
+504c67e Align _wok-variables.scss content for visual matters
+2738686 Remove unused SCSS variables
+0ccd581 Update Wok variables names for better meaning
+289af10 Bug fix #173: Get plugin color to set user log data
+e16bd91 Bug fix #173: Get color tab from tab-ext.xml file
+652c59b Bug fix #174: Automatic create navigation toolbar when loading plugin
+5fc9899 Updating css files to latest UI libs versions
+9eb347a Github #143: non-ASCII characters in the password field
+eb2118f Fix Ginger Base issue #122: Get immediate children while looking for selected options
+306dae0 Bug fix #169: Display user log date in numeric format
+d84f137 Bug fix #146: Do not display Wok tab for non-admin users
+d62440c Update tests with relative path support
+5ffb7fe CSS updates to handle relative path support.
+f1453e5 Fix UI to handle relative paths.
+78f218d Add support to relative paths.
+71ffa96 Update ChangeLog, VERSION and po files to 2.3 release
+bfdbb68 Fix make-rpm target
+ea8a2d4 Issue #166: wok is pointing to /etc/nginx/conf.d which does not exists on OpenSuse 42.1
+4bbfcd1 Fix Kimchi issue #1032: Remove Peers dropdown from Wok header
+50065e0 Github #143: non-ASCII characters in the password field
+
 * Wed Oct 26 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.3.0-2
 - 50065e0 Github #143: non-ASCII characters in the password field
 680eb9f Fix Ginger Base issue #122: Get immediate children while looking for selected options

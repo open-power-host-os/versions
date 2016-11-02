@@ -2,7 +2,7 @@ Package:
  name: 'ginger'
  clone_url: 'https://github.com/open-power-host-os/ginger.git'
  branch: 'powerkvm-v3.1.1'
- commit_id: 'ed6b5cc'
+ commit_id: 'f9164a4'
  expects_source: 'ginger'
  files:
   centos:
