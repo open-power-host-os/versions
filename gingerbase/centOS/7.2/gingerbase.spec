@@ -6,7 +6,7 @@
 
 Name:       ginger-base
 Version:    2.2.1
-Release:    2%{?dist}
+Release:    3%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -77,6 +77,37 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Nov 02 2016 user - 2.2.1-3
+- 56913b3 Merge remote-tracking branch upstream/master into hostos-devel
+ff00717 Bug fix #135: Add/Edit repository should consider host OS to ask user input
+964cdbc Issue # 146 : Miscellaneous UI issue in SMT functionality
+51b4b86 Issue # 146 : Miscellaneous UI issue in SMT functionality
+2767b78 Remove URI configuration from gingerbase.conf file
+747cb75 Fix for Multi-Culture Dashboard UI issue
+2be034d Wok issue #173: Set tab color on tab-ext.xml and update SCSS files
+f5bc5d0 Wok issue #174: Let Wok create the whole navigation bar
+cd1334d Issue #140 - Fedora 24: Bug when try to rename multiple debug reports
+d4e4d35 Issue #137 - Update All button should be disabled when the update successfully finished.
+c071b52 test_rest.py: changing generated reports name
+fbfe853 Improve the way Updates tab is loaded
+1d2027d Rpmlint spec file fixes
+75b71fc Issue #118: Suggestion to check spec guidelines
+a8f5fdd Adding pt-br translations in fuzzy statements
+722d0c0 Updating po files
+fffc8f9 Merge branch next
+d286125 Issue #108: Update APT packges list after update.
+34daea3 Bug fix: Log message got truncated because of \ on message
+c4cfbd0 Fix for adding capabilities for smt and modified UT.
+2fcf6d0 Fix issue #131: Update README to add python-mock as dependency to run tests
+457e2cc Fix PEP8 1.5.7 issues on next
+ca451c8 Fixing copyright date of test_storage_devs.py
+fbc1d06 Introducing SMT feature
+1df5936 Introducing SMT feature
+021ce3e Introducing SMT feature
+e7cc035 Added docs ,error messages and UT for SMT.
+801063e Backend code implementation for SMT
+a025aae test_rest.py: changing generated reports name
+
 * Wed Oct 26 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.2.1-2
 - a025aae test_rest.py: changing generated reports name
 0f9bf86 Improve the way Updates tab is loaded

@@ -2,7 +2,7 @@
 
 Name:       kimchi
 Version:    2.3.0
-Release:    2%{?dist}
+Release:    3%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -92,6 +92,115 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Nov 02 2016 user - 2.3.0-3
+- 71787ff Merge remote-tracking branch upstream/master into hostos-devel
+0e180c4 Remove URI configuration from kimchi.conf file
+d5b9a19 Issue #1061: For s390x, in edit template add storage path, even after changing value in path textbox its border still remains red.
+4a9b757 Issue #1060: Edit template/Guest for s390x, console drop down shows empty box along with virtio and sclp.
+8ac4fcb Issue #1059: Not able to save corrected img path after editing img based template which has incorrect img path due to the img is not available.
+27deb5d Wok issue #173: Set tab color on tab-ext.xml and update SCSS files
+c3123ca Wok issue #174: Let Wok create the whole navigation bar
+70d3d2c Issue: #1008 Issues while editing a VEPA network
+e765833 PCI hotplug: Check USB controller, define in template, add test in Power
+1d9f65a Issue #651: Windows guests - default mouse type causing problems
+af947ef Improve multifunction attach/detach operations
+81a2872 Improve Fedora 24 identification
+56ab027 Adding libvirt remote connection verification
+9329a25 Github #1007: Fixing non-root ssh key generation
+45c44c0 Github #1007: use provided user for password-less setup
+138d1db For s390x virtualization edit template display Storage as header
+25d9eb9 Added UI validation for s390x Virtualization Template Edit Add Storage module
+2c5cd0b Added UI validation for s390x Virtualization Guest Edit Add Storage module
+925fc3f Remove PowerKVM checks from memory alignment code
+b1b0e8c Use tablet_bus for tablet input instead of kbd_bus
+45b3174 Issue #733: CSS updates to handle relative path support.
+f32880d Issue #733: Fix UI to handle relative paths.
+79c6a80 Issue #1006: Invalid subnet value when editing a network raise an error
+9747324 fix for issue #1049
+a6d777e Issue #1048 : disable DASD disks without partitions on s390x
+7a8eb3c Issue #962: Suggestion to check spec guidelines
+9a17aa7 For s390x hide Netboot template for Virtualization Add Template
+2315961 Issue #1047: In xmlutils/interface.py --> get_iface_xml returns none for type Ethernet
+b67c319 Merge branch next
+d49b302 Modified unit test cases to include new s390x specific features
+c18ecbd For s390x hide VNC, PCI, Snapshot, Graphics and clone options
+7b9d4e6 Issue #999 : Attach storage to guest on s390x without libvirt
+2e4b180 Issue #1045 : boot order fix for guest edit
+7289515 Introducing s390x UI Interfaces module for Edit Template under virtualization
+2f830f0 Introducing Console for edit Guest module under virtualization
+91c76d8 Introducing Console for edit template module under virtualization
+7342092 added console parameter to vms api for s390x
+588b2f2 added console parameter to templates api for s390x
+7d28fe9 Introducing s390x UI Storage module for Edit Guest under virtualization
+faa18b0 Introducing s390x UI Storage module for Edit Template under virtualization
+89b541c Fix for Issue #1000 : Make Check fails on s390x environment
+4a62c5e Issue #992 : Create template on s390x without libvirt storage.
+d58c089 Introducing s390x UI Interfaces module for Edit Guest under virtualization
+43944df Merge remote-tracking branch upstream/stable-2.3.x into hostos-devel
+7186c53 Remove URI configuration from kimchi.conf file
+a090447 Issue #1059: Not able to save corrected img path after editing img based template which has incorrect img path due to the img is not available.
+439b4af Wok issue #173: Set tab color on tab-ext.xml and update SCSS files
+7ffe39a Wok issue #174: Let Wok create the whole navigation bar
+de50d9f Issue: #1008 Issues while editing a VEPA network
+b29e675 PCI hotplug: Check USB controller, define in template, add test in Power
+bd44fc1 Issue #651: Windows guests - default mouse type causing problems
+2c80f01 Improve multifunction attach/detach operations
+17fb7d3 Improve Fedora 24 identification
+2937bcd Adding libvirt remote connection verification
+67c5c8d Github #1007: Fixing non-root ssh key generation
+ade2c49 Github #1007: use provided user for password-less setup
+852503c Remove PowerKVM checks from memory alignment code
+475678f Use tablet_bus for tablet input instead of kbd_bus
+2cb417f Issue #1006: Invalid subnet value when editing a network raise an error
+a7f6dbc Update ChangeLog, VERSION and po files to 2.3 release
+65911fd Improve storage volume creation of XML
+7761ae4 Fixed noTemplate message display
+21fdd7a Fix make-rpm target
+2933d64 Issue #1018 - Disable volume resize option on logical pool.
+cf788ac Fix max number of memory slots for Ubuntu on Power
+b8d9171 Issue #1017: Fix upload file to logical storage pool.
+02d2d4f Fix issue #1019: Hide storage volume actions menu for iSCSI/SCSI pools
+1c75947 Bug fix #521: Extend logical pool
+6c044f9 Fix issue #1022: Remove Clone option for running guests
+16b14bb Bug fix: Recognize Fedora 24 ISO
+b8cdedd Fix issue #1005: Proper display paused guests on Gallery View
+4a2e554 Bug fix: Disable Search More ISOs button on create Template dialog when the operation is in progress
+9e863d8 Fix issue #1020: Fix alert icon position to do not overlay img/iso icon
+2d1a0e7 Fix issue #1020: Verify libvirt access on real file path instead of symlink
+52e44d1 Remove legacy check_files on Makefile
+0ec9ead Issue #1012: Boot order gets reset to only one entry after editing a VM
+063ef8b Issue #585: make clean does not revert its changes from make rpm
+f0016f4 Fix issue #1010: Convert disk size to bytes while attaching new disk to guest
+77ddaa6 remote iso listing for s390x
+2be8daa Storagebuttons not behaving properly
+3bc4697 Create test to verify graphics type change
+90299ac Issue #836: Allow user change guest graphics type
+1090f3a Issue #994: SPICE graphics does not need <channel> tag
+6bdb060 For s390x architecture, serial type is not validated in vm xml as as not supported on s390x.
+4a36120 Issue# 973 Emphasize resource name in dlg
+60e0ca6 Updated API.md for addition paramters support for VM ifaces API on s390x/s390 architecture.
+e7a6f95 Updated code to support VM ifaces on s390x/s390 architecture.
+dff38a1 Updated API.md for addition interfaces paramter in template API.
+b09bbaf Updated code to support interfaces parameter to template API only on s390x/s390 architecture.
+963a294 /plugins/kimchi/ovsbridges API
+190e612 Issue #606: Change icon to distinguish image generated template and iso generated template
+1c48656 Issue #939: [UI] Guest tab is not rendered correctly if guests are not in running or shutoff state
+c054786 Issue #921: Peers button disappears
+cc0f163 Enhancement to /plugins/kimchi/interfaces
+554be6c Enhancement to /plugins/kimchi/interfaces
+2e111ef Issue #626: Snapshot revert does not release storage volume
+298dff0 Update tests
+7624370 Do not remove storagepools linked to guests
+66bf654 mockmodel.py: fixing virtviewerfile_tmp path
+92e903a Only on s390x add default networks to template if template.conf has default network configuration uncommented.
+6ef5dc3 Update usage of add_task() method.
+26d74de Check if VM is off before detaching multifn PCI
+5f91b00 Github #986: create /data/virtviewerfiles dir automatically
+bac1972 Revert Fix frontend vcpu hotplug
+0bcc46e Fix differences from upstream code
+b3f05e5 Revert Implement CPU HotPlug/HotUnplug
+0c5755c Issue: #1008 Issues while editing a VEPA network
+
 * Wed Oct 26 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.3.0-2
 - 0c5755c Issue: #1008 Issues while editing a VEPA network
 3bb1581 PCI hotplug: Check USB controller, define in template, add test in Power

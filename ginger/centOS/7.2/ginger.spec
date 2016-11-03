@@ -2,7 +2,7 @@
 
 Name:       ginger
 Version:    2.3.0
-Release:    2%{?dist}
+Release:    3%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -122,6 +122,103 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Nov 02 2016 user - 2.3.0-3
+- f9164a4 Merge remote-tracking branch upstream/master into hostos-devel
+2cb67f9 Remove URI configuration from ginger.conf file
+80e9cae Issue #397 - Fedora 24: Network Configuration - Bring VLAN interface up
+93075c0 Wok issue #173: Set tab color on tab-ext.xml and update SCSS files
+68ba86a Wok issue #174: Let Wok create the whole navigation bar
+1346ba3 Issue # 447 : Validation failing for DNS field in Global Network Configuration.
+1d9132c Fix for multi-culture Audit UI issues
+ec67435 Introducing OSA port & Buffer count functionalities
+6b6e217 Introducing OSA port & Buffer count functionalities
+d8c1c95 Removing commented code in ui/js/host-network-vlan.js
+ba07e58 Issue #450 : Seperate the buttons from datatable configuration for Network Configuration.
+ce22a3d Issue #448 iSCSI get operation on invalid IQN fails with 500
+0ed29c9 Improve error message propagation in Filesystems
+17dcadf Modified the network code to support OPTIONS in ifcfg file.
+bb77781 Changed volumn to volume in ui/pages/i18n.json.tmpl
+8b7f3ed Changed message for delete partition if VG name exist
+4b857a1 Fixed Issue #449 Loading icon is always visible while creating partition
+59b29e7 For FC and Iscsi devices while creating partition pass device ID as parameter to API
+0675a21 Iscsi action login and logout event register onselect event
+7e8a821 Fixed issue #446 iSCSI login action button is active for logged in device
+e9712aa Fixed Issue #444 : iSCSI Target Authentication config fails to update
+af3d183 Fix for the size slider in storage devices.
+8bd1e88 Check for file path for create swap API
+bff791c Issue #226: Show GiB instead of g for Volume Group sizes
+2c74003 Issue #442 DASD create partition API does not give an error for more than 3 partitions
+e15b831 test_rules.py: fixing repeated key in dict
+129ba8d Fix for multi-culture UI issues
+c2d9ba6 Improving Swap Device Partition listing
+924b726 Issue # 437 :Volume Group list is not getting refreshed post deletion of volume group.
+aaf5535 tests/test_powermanagement.py: changes after model refactoring
+770564f Powermanagement model refactoring
+c2680c7 Github #434: Removing tuned.adm service dependency
+9a62259 Returning rows_indexes as part of ginger.listNetworkConfig object.
+10b6cf3 Issue #414: service disapear after stopping it at opensuse 42.1
+47a842d Fixed minor bugs and introduced minor enhancements for Audit rules
+57deb11 Fixed minor bugs and introduced minor enhancements for Audit rules
+b1e50c0 Fixed minor bugs and introduced minor enhancements for Audit rules
+ec29c8a Change in name of rules and fixed minor issues.
+0a6c1b3 UI changes for listing FRU devices for Platform Management
+ebbf2b2 Updating po files
+30aaaac Backend changes for listing FRU devices for Platform Management
+6088bcf Fixed URI for Importing predefined Rules
+79afabc Introducing Audit dispatcher functionality.
+0d5bf9a Introducing Audit dispatcher functionality
+4b02bb4 Introducing Audit Dispatcher functionality.
+7016532 Introducing Audit Dispatcher functionality.
+80e6e5a Introducing Audit Rule Functionalities
+63bb3a7 Introducing Audit Rule Functionalities
+87be7fc Introducing Audit Rule Functionalities
+dd4e342 Introducing Audit Rule Functionalities
+cc9c4a8 Added UT for the backend code, API.doc and error messages in i18n.py file
+e7055c1 Backend code implementation for audit dispatcher
+e7e7a66 Introducing Audit Log functionality.
+e018270 Introducing Audit Log functionality
+97f3651 Introducing Audit Log functionality.
+09155be Introducing Audit Log functionality.
+7751ca8 UI changes of Update Functionality of Platform Management
+d93506d Fixing is_feature_available method of model/graph.py
+08bbee2 Issue # 61 :Add Adapter button missing in Host -> Network tab.
+e10dcf9 Issue #412: python-pygraphviz not listed as dependency
+31fe7ed Fix build process
+16af49e Fix make-rpm target
+f5a47c3 Issue #413: spec asks for python2-crypto on opensuse 42.1, which does not exists
+c943211 Issue #433: refactor rpm building
+f5f371e Moving Platform Management data to state_dir
+79224cd Github #407: hide Audit Rules UI when auditctl isnt found
+98bd241 Issue #403 - Make system services UI more failproof
+b359903 Makefile.am: CLEANFILES must clean pyc files
+1bb4036 Issue#408:System Platform does not follow Wok style
+1519b22 Issue #381: make clean does not revert its changes from make rpm
+0eab874 Fix PEP8 issues
+0d89f4d Issue # 430 :UI displays blank in Volume Group list when checking more details for selected vg.
+0eaf985 Fixes on tests/test_graph.py:
+b4873ca Issue #384 : Fixing the broken /ginger/stgdevs API
+5fc74b6 Issue #418 : Disable iscsi target discovery auth methods for individual IQNs
+e920f13 Issue #415 : Disable auth for iSCSI target and initiator selectively
+fac72e2 Added columns in detailed report for graph creation.
+3b7eab8 Implemented audit graph backend.
+89bf175 Issue #389 : iSCSI Auth model class loading fix
+b06e89a Changes for System Platform Management
+5db9f52 Update functionalities for Platform Management
+828954b UT implemented for the new features implemented.
+c3f2169 Audit graph backend implemetation.
+048ef9c Audit predefined rules backend implementation.
+23d78a5 Updated docs and i18n.py for the new features implemented.
+fc56acf Backend code implemented to get list of system calls.
+b5d336f Audit report implementation from the backend.
+192c6e9 Audit log implementation from the backend.
+00c40c5 Audit conf implemented in the backend.
+253c8ee Modified audit rules code for comments and added new features.
+165f4d0 Issue #166 : nfs mount fails with 500
+e9118a9 Backend Changes for Sensor Data Records for Platform Management
+a0af068 [HostOS] Revert Introducing OSA port & Buffer count functionalities
+b578b49 [HostOS] Revert Introducing OSA port & Buffer count functionalities
+ed6b5cc Updating ginger.css to latest versions
+
 * Wed Oct 26 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.3.0-2
 - ed6b5cc Updating ginger.css to latest versions
 e7c45de Introducing OSA port & Buffer count functionalities
