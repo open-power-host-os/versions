@@ -1,10 +1,7 @@
-%define name librtas
-%define version 1.4.1
-%define release 1
 Summary: Libraries to provide access to RTAS calls and RTAS events.
-Name: %{name}
-Version: %{version}
-Release: %{release}
+Name: librtas
+Version: 1.4.1
+Release: 2%{?dist}
 License: GNU Lesser General Public License (LGPL)
 Source:  %{name}-%{version}.tar.gz
 Group: System Environment/Libraries
@@ -74,3 +71,9 @@ if [ "$1" = "0" ] ; then        # last uninstall
     rm -f %{_libdir}/librtasevent.so
 fi
 ldconfig
+
+%changelog
+* Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 1.4.1-2
+- added changelog section
+- spec cleanup
+

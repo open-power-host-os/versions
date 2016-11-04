@@ -1,9 +1,6 @@
-%define name lsvpd
-%define version 1.7.7
-
-Name:		%{name}
-Version:	%{version}
-Release:	4%{?dist}
+Name:		lsvpd
+Version:	1.7.7
+Release:	5%{?dist}
 Summary:	VPD/hardware inventory utilities for Linux
 Group:		Applications/System
 License:	GPLv2+
@@ -65,6 +62,9 @@ on POWER PC based systems.
 %dir %{_sysconfdir}/lsvpd
 
 %changelog
+* Thu Oct 19 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> 1.7.7-5
+- Spec cleanup: Remove indirections in Version and Name tags.
+
 * Mon Oct 12 2015 Jaromir Capik <jcapik@redhat.com> - 1.7.5-4
 - Fixing syntax error when running vpdupdate (#1184517)
 - Cleaning the spec file

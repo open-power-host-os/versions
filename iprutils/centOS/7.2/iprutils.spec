@@ -1,10 +1,7 @@
 Summary: Utilities for the IBM Power Linux RAID adapters
 Name: iprutils
 Version: 2.4.13
-# For RC releases, release_prefix should be set to 0.rc1, 0.rc2, etc.
-# For GA releases, release_prefix should be set to 1, 2, 3, etc.
-%define release_prefix 1
-Release: %{release_prefix}
+Release: 2
 License: CPL
 Group: System Environment/Base
 Vendor: IBM
@@ -292,6 +289,9 @@ fi
 %endif #WITH_STATIC
 
 %changelog
+* Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.4.13-2
+- Spec cleanup: Remove indirections in Release tag.
+
 * Thu Oct 06 2016 Lucas Tadeu Teixeira <ltadeu@br.ibm.com>
 - Run bootstrap.sh in the spec file build step
 * Tue Aug 16 2016 Brian King <brking@linux.vnet.ibm.com> 2.4.13

@@ -186,15 +186,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.7.0
-
-# This crazy release structure is so the daily scratch builds and the weekly official builds
-#   will always yum install correctly over each other
-%define release_week 32
-%define release_day 0
-%define release_spin 0
-%define release_date .%{?release_week}0%{?release_day}.%{?release_spin}
-
-Release: 2%{?dist}%{?release_date}
+Release: 3%{?dist}
 Epoch: 11
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -209,7 +201,7 @@ ExclusiveArch: %{kvm_archs}
 %define _smp_mflags %{nil}
 %endif
 
-Source0:     qemu-%{?release_week}0%{?release_day}.%{?release_spin}.tar.gz
+Source0:     %{name}.tar.gz
 
 #Source1: qemu.binfmt
 
@@ -746,7 +738,7 @@ CAC emulation development files.
 
 
 %prep
-%setup -q -n %{name}-%{?release_week}0%{?release_day}.%{?release_spin}
+%setup -q -n %{name}
 
 
 
@@ -1529,6 +1521,9 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 11:2.7.0-3
+ - Spec cleanup
+
 * Wed Oct 26 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 11:2.7.0-2.3200.0
 - 4f0198b virtio-pci: error out when both legacy and modern modes are disabled
 ce7dafe migration/postcopy: Explicitly disallow huge pages

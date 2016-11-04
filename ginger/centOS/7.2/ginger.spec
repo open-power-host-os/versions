@@ -1,8 +1,6 @@
-%define ibm_release .1
-
 Name:       ginger
 Version:    2.3.0
-Release:    3%{?dist}
+Release:    4%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -122,6 +120,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> 2.3.0-4
+- Spec cleanup
+
 * Wed Nov 02 2016 user - 2.3.0-3
 - f9164a4 Merge remote-tracking branch upstream/master into hostos-devel
 2cb67f9 Remove URI configuration from ginger.conf file
