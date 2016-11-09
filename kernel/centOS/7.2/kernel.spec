@@ -308,8 +308,8 @@ Name: kernel%{?variant}
 Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
-Version: 4.8.4
-Release: 2%{?dist}
+Version: 4.9.0
+Release: 1%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1689,6 +1689,402 @@ fi
 
 
 %changelog
+* Wed Nov 09 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.9.0-1
+- ce1fd2c Merge branch hostos-base into hostos-devel
+- 88afbd1 Merge tag v4.9-rc4 into hostos-base
+- 652917a Merge branch hostos-stable into hostos-devel
+- 528e382 KVM: PPC: Book3S HV: Save/restore XER in checkpointed register state
+- bc33b0c Linux 4.9-rc4
+- bd060ac Merge branch i2c/for-current of git://git.kernel.org/pub/scm/linux/kernel/git/wsa/linux
+- ffbcbfc Merge branches sched-urgent-for-linus and core-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- 6c286e8 Merge tag md/4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/shli/md
+- e12d8d5 Merge tag scsi-fixes of git://git.kernel.org/pub/scm/linux/kernel/git/jejb/scsi
+- f29b909 Merge branch for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/dtor/input
+- 03daa36 Merge tag firewire-fixes of git://git.kernel.org/pub/scm/linux/kernel/git/ieee1394/linux1394
+- d8d1721 Merge tag media/v4.9-3 of git://git.kernel.org/pub/scm/linux/kernel/git/mchehab/linux-media
+- 41e6410 Merge tag pci-v4.9-fixes-2 of git://git.kernel.org/pub/scm/linux/kernel/git/helgaas/pci
+- 785bcb4 Merge tag for-linus-20161104 of git://git.infradead.org/linux-mtd
+- d299704 Merge tag mmc-v4.9-rc2 of git://git.kernel.org/pub/scm/linux/kernel/git/ulfh/mmc
+- 594aef6 Merge tag gpio-v4.9-3 of git://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-gpio
+- fb415f2 Merge tag nfsd-4.9-1 of git://linux-nfs.org/~bfields/linux
+- 46d7cbb Merge branch for-4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/kdave/linux
+- bd30fac Merge branch overlayfs-linus of git://git.kernel.org/pub/scm/linux/kernel/git/mszeredi/vfs
+- d4c5f43 Merge tag drm-fixes-for-v4.9-rc4 of git://people.freedesktop.org/~airlied/linux
+- 416379f PCI: designware: Check for iATU unroll support after initializing host
+- 66cecb6 Merge tag for-linus of git://git.kernel.org/pub/scm/virt/kvm/kvm
+- 34c510b Merge branch upstream of git://git.linux-mips.org/pub/scm/ralf/upstream-linus
+- f7df76e Merge branch parisc-4.9-3 of git://git.kernel.org/pub/scm/linux/kernel/git/deller/parisc-linux
+- 147b36d i2c: core: fix NULL pointer dereference under race condition
+- 16a767e MIPS: Fix max_low_pfn with disabled highmem
+- f92722d MIPS: Correct MIPS I FP sigcontext layout
+- 758ef0a MIPS: Fix ISA I/II FP signal context offsets
+- 6daaa32 MIPS: Remove FIR from ISA I FP signal context
+- 35938a0 MIPS: Fix ISA I FP sigcontext access violation handling
+- 5a1aca4 MIPS: Fix FCSR Cause bit handling for correct SIGFPE issue
+- c9e5603 MIPS: ptrace: Also initialize the FP context on individual FCSR writes
+- 8a98495 MIPS: dump_tlb: Fix printk continuations
+- 752f549 MIPS: Fix __show_regs() output
+- 41000c5 MIPS: traps: Fix output of show_code
+- fe4e09e MIPS: traps: Fix output of show_stacktrace
+- bcf084d MIPS: traps: Fix output of show_backtrace
+- 818f38c MIPS: Fix build of compressed image
+- 9a59061 MIPS: generic: Fix KASLR for generic kernel.
+- 4736697 MIPS: KASLR: Fix handling of NULL FDT
+- 93032e3 MIPS: Malta: Fixup reboot
+- 682c1e5 MIPS: CPC: Provide default mips_cpc_default_phys_base to ignore CPC
+- e9300a4 firewire: net: fix fragmented datagram_size off-by-one
+- 667121a firewire: net: guard against rx buffer overflows
+- 8243d55 sched/core: Remove pointless printout in sched_show_task()
+- 3820050 sched/core: Fix oops in sched_show_task()
+- 74b2d9f powerpc/64: Use optimized checksum routines on little-endian
+- 59bf3bb powerpc/64: Fix checksum folding in csum_tcpudp_nofold and ip_fast_csum_nofold
+- 7ec30fc Merge tag drm-intel-fixes-2016-11-01 of git://anongit.freedesktop.org/drm-intel into drm-fixes
+- e676717 Merge tag imx-drm-fixes-20161021 of git://git.pengutronix.de/pza/linux into drm-fixes
+- eed6f0e virtio-gpu: fix vblank events
+- 18088db parisc: Ignore the pkey system calls for now
+- 6a6e2a1 parisc: Use LINUX_GATEWAY_ADDR define instead of hardcoded value
+- 6ed5183 parisc: Ensure consistent state when switching to kernel stack at syscall entry
+- f4125cf parisc: Avoid trashing sr2 and sr3 in LWS code
+- 6f63d0f parisc: use KERN_CONT when printing device inventory
+- d9092f5 kvm: x86: Check memopp before dereference (CVE-2016-8630)
+- 355f4fb kvm: nVMX: VMCLEAR an active shadow VMCS after last use
+- ea26e4e KVM: x86: drop TSC offsetting kvm_x86_ops to fix KVM_GET/SET_CLOCK
+- 577f12c Merge tag gcc-plugins-v4.9-rc4 of git://git.kernel.org/pub/scm/linux/kernel/git/kees/linux
+- 04659fe Merge tag for_linus of git://git.kernel.org/pub/scm/linux/kernel/git/mst/vhost
+- a75e003 Merge tag vfio-v4.9-rc4 of git://github.com/awilliam/linux-vfio
+- f46c445 nfsd: Fix general protection fault in release_lock_stateid()
+- 8d42629 svcrdma: backchannel cannot share a page for send and rcv buffers
+- 812d478 gpio/mvebu: Use irq_domain_add_linear
+- 405c075 fork: Add task stack refcounting sanity check and prevent premature task stack freeing
+- b0a6af8 drm/nouveau/acpi: fix check for power resources support
+- 5f7f8f6 Merge branch drm-fixes-staging of ssh://people.freedesktop.org/~/linux into drm-fixes
+- c7e9d39 gpio: of: fix GPIO drivers with multiple gpio_chip for a single node
+- 953b956 gpio: GPIO_GET_LINE{HANDLE,EVENT}_IOCTL: Fix file descriptor leak
+- 0c183d9 Merge tag spi-fix-v4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi
+- 58bea41 latent_entropy: Fix wrong gcc code generation with 64 bit variables
+- da7389a gcc-plugins: Export symbols needed by gcc
+- 3f7b55b Merge tag regulator-fix-v4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator
+- 80a306d Merge tag regmap-fix-v4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/broonie/regmap
+- 6eb3c60 Merge branch for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/jmorris/linux-security
+- befd996 tpm: remove invalid min length check from tpm_do_selftest()
+- 41ec793 Merge branch fixes of git://git.armlinux.org.uk/~rmk/linux-arm
+- 04ed7d9 Merge git://git.kernel.org/pub/scm/linux/kernel/git/davem/sparc
+- 641089c ovl: fsync after copy-up
+- b93d4a0 ovl: fix get_acl() on tmpfs
+- fd3220d ovl: update S_ISGID when setting posix ACLs
+- 75bfa81 virtio_ring: mark vring_dma_dev inline
+- 678ff27 virtio/vhost: add Jason to list of maintainers
+- 2ff9844 virtio_blk: Delete an unnecessary initialisation in init_vq()
+- 668866b virtio_blk: Use kmalloc_array() in init_vq()
+- 3dae2c6 virtio: remove config.c
+- 3456376 virtio: console: Unlock vqs while freeing buffers
+- 948a8ac ringtest: poll for new buffers once before updating event index
+- d3c3589 ringtest: commonize implementation of poll_avail/poll_used
+- 44d65ea ringtest: use link-time optimization
+- 8424af5 virtio: update balloon size in balloon probe
+- 0ea1e4a virtio_ring: Make interrupt suppression spec compliant
+- a0be1db virtio_pci: Limit DMA mask to 44 bits for legacy virtio devices
+- 2a26d99 Merge git://git.kernel.org/pub/scm/linux/kernel/git/davem/net
+- fceb9c3 geneve: avoid using stale geneve socket.
+- c6fcc4f vxlan: avoid using stale vxlan socket.
+- 087892d qede: Fix out-of-bound fastpath memory access
+- 3034783 net: phy: dp83848: add dp83822 PHY support
+- 9fe1c98 enic: fix rq disable
+- 06bd2b1 tipc: fix broadcast link synchronization problem
+- 8bf371e ibmvnic: Fix missing brackets in init_sub_crq_irqs
+- 9888d7b ibmvnic: Fix releasing of sub-CRQ IRQs in interrupt context
+- dbc34e7 Revert ibmvnic: Fix releasing of sub-CRQ IRQs in interrupt context
+- 4c96f5b Merge branch 40GbE of git://git.kernel.org/pub/scm/linux/kernel/git/jkirsher/net-queue
+- f9d4286 arch/powerpc: Update parameters for csum_tcpudp_magic & csum_tcpudp_nofold
+- a909d3e Linux 4.9-rc3
+- 42fd2b5 Merge branch x86-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- e59cc76 Merge branch mlx4-fixes
+- eb4b678 net/mlx4_en: Save slave ethtool stats command
+- d2582a0 net/mlx4_en: Fix potential deadlock in port statistics flow
+- 6f2e0d2 net/mlx4: Fix firmware command timeout during interrupt test
+- 81d1841 net/mlx4_core: Do not access comm channel if it has not yet been initialized
+- 9d2afba net/mlx4_en: Fix panic during reboot
+- 8d59de8 net/mlx4_en: Process all completions in RX rings after port goes up
+- 4850cf4 net/mlx4_en: Resolve dividing by zero in 32-bit system
+- 72da2e9 net/mlx4_core: Change the default value of enable_qos
+- 33a1f8b net/mlx4_core: Avoid setting ports to auto when only one port type is supported
+- aa0c08f net/mlx4_core: Fix the resource-type enum in res tracker to conform to FW spec
+- efa5637 Merge tag upstream-4.9-rc3 of git://git.infradead.org/linux-ubifs
+- ff57087 rds: debug messages are enabled by default
+- 880b583 Merge tag mac80211-for-davem-2016-10-27 of git://git.kernel.org/pub/scm/linux/kernel/git/jberg/mac80211
+- 8d7533e ibmvnic: Fix releasing of sub-CRQ IRQs in interrupt context
+- fd33b24 net: mv643xx_eth: Fetch the phy connection type from DT
+- 2674235 Merge tag armsoc-fixes of git://git.kernel.org/pub/scm/linux/kernel/git/arm/arm-soc
+- ad60133 Merge tag batadv-net-for-davem-20161026 of git://git.open-mesh.org/linux-merge
+- e934f68 Revert hv_netvsc: report vmbus name in ethtool
+- 104ba78 packet: on direct_xmit, limit tso and csum to supported devices
+- 4700e9c net_sched actions: use nla_parse_nested()
+- 166e604 cxgb4: Fix error handling in alloc_uld_rxqs().
+- a4256bc IB/mlx4: avoid a -Wmaybe-uninitialize warning
+- 2fbef66 Merge remote-tracking branches spi/fix/dt, spi/fix/fsl-dspi and spi/fix/fsl-espi into spi-linus
+- 5ee67b5 spi: dspi: clear SPI_SR before enable interrupt
+- ae148b0 ip6_tunnel: Update skb->protocol to ETH_P_IPV6 in ip6_tnl_xmit()
+- 96a8eb1 bpf: fix samples to add fake KBUILD_MODNAME
+- 2a29003 Merge tag char-misc-4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/char-misc
+- 74e3368 Merge remote-tracking branches regmap/fix/header and regmap/fix/macro into regmap-linus
+- b70e8be Merge tag v4.9-rockchip-dts64-fixes1 of git://git.kernel.org/pub/scm/linux/kernel/git/mmind/linux-rockchip into fixes
+- bb70e53 Merge tag arm-soc/for-4.9/devicetree-arm64-fixes of http://github.com/Broadcom/stblinux into fixes
+- fbaff05 Merge tag imx-fixes-4.9 of git://git.kernel.org/pub/scm/linux/kernel/git/shawnguo/linux into fixes
+- 10e15a6 Merge tag uniphier-fixes-v4.9 of git://git.kernel.org/pub/scm/linux/kernel/git/masahiroy/linux-uniphier into fixes
+- c636e17 Merge tag driver-core-4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/driver-core
+- db4a57e Merge tag staging-4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging
+- 37cc6bb Merge tag tty-4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/tty
+- 9af6f26 Merge tag usb-4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/usb
+- e4cabca inet: Fix missing return value in inet6_hash
+- 58a86c4 Merge branch mlx5-fixes
+- 6b27619 net/mlx5: Avoid passing dma address 0 to firmware
+- 04c0c1a net/mlx5: PCI error recovery health care simulation
+- 05ac2c0 net/mlx5: Fix race between PCI error handlers and health work
+- 2241007 net/mlx5: Clear health sick bit when starting health poll
+- 247f139 net/mlx5: Change the acl enable prototype to return status
+- 5e1e93c net/mlx5e: Unregister netdev before detaching it
+- 2b02955 net/mlx5e: Choose best nearest LRO timeout
+- e83d695 net/mlx5: Correctly initialize last use of flow counters
+- 32dba76 net/mlx5: Fix autogroups groups num not decreasing
+- eccec8d net/mlx5: Keep autogroups list ordered
+- bba1574 net/mlx5: Always Query HCA caps after setting them
+- b47bd6e {net, ib}/mlx5: Make cache line size determination at runtime.
+- bf911e9 sctp: validate chunk len before actually using it
+- 1e90a13 x86/smpboot: Init apic mapping before usage
+- 1217e1d md: be careful not lot leak internal curr_resync value into metadata. -- (all)
+- 7449f69 raid1: handle read error also in readonly mode
+- 9a8b27f raid5-cache: correct condition for empty metadata write
+- 0e2ce9d Merge tag nand/fixes-for-4.9-rc3 of github.com:linux-nand/linux
+- c067aff Merge tag acpi-4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm
+- b546e0c Merge tag pm-4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/rafael/linux-pm
+- 1308fd7 Merge tag arc-4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/vgupta/arc
+- 21e2d9d Merge branches acpica-fixes, acpi-pci-fixes and acpi-apei-fixes
+- 8633db6 ACPICA: Dispatcher: Fix interpreter locking around acpi_ev_initialize_region()
+- 8121aa2 ACPICA: Dispatcher: Fix an unbalanced lock exit path in acpi_ds_auto_serialize_method()
+- 25ccd24 ACPICA: Dispatcher: Fix order issue of method termination
+- 6fcc8ce Merge tag powerpc-4.9-4 of git://git.kernel.org/pub/scm/linux/kernel/git/powerpc/linux
+- 8b2ada2 Merge branches pm-cpufreq-fixes and pm-sleep-fixes
+- b49c317 Merge branch perf-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- 18e601d sunrpc: fix some missing rq_rbuffer assignments
+- ed99d36 Merge branch libnvdimm-fixes of git://git.kernel.org/pub/scm/linux/kernel/git/nvdimm/nvdimm
+- b92d964 Merge tag arm64-fixes of git://git.kernel.org/pub/scm/linux/kernel/git/arm64/linux
+- c38c04c Merge branch x86-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- a8006bd Merge branch timers-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- c2e169b Merge branch mlxsw-fixes
+- 8b99bec mlxsw: spectrum_router: Compare only trees which are in use during tree get
+- 2083d36 mlxsw: spectrum_router: Save requested prefix bitlist when creating tree
+- ba14fa1 regulator: core: silence warning: VDD1: ramp_delay not set
+- 72193a9 regmap: Rename ret variable in regmap_read_poll_timeout
+- 965c4b7 Merge branches core-urgent-for-linus, irq-urgent-for-linus and sched-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- b75dcd9 ARC: module: print pretty section names
+- d65283f ARC: module: elide loop to save reference to .eh_frame
+- f644e36 ARC: mm: retire ARC_DBG_TLB_MISS_COUNT...
+- c300547 ARC: build: retire old toggles
+- d975cbc ARC: boot log: refactor cpu name/release printing
+- d7c4611 ARC: boot log: remove awkward space comma from MMU line
+- a024fd9 ARC: boot log: dont assume SWAPE instruction support
+- 73e284d ARC: boot log: refactor printing abt features not captured in BCRs
+- f616751 Merge branch for-linus-4.9 of git://git.kernel.org/pub/scm/linux/kernel/git/mason/linux-btrfs
+- 711c1f2 ARCv2: boot log: print IOC exists as well as enabled status
+- 2cd0b50 Merge tag sound-4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/tiwai/sound
+- bdb5208 Merge tag drm-x86-pat-regression-fix of git://people.freedesktop.org/~airlied/linux
+- e0f3e6a Merge tag dm-4.9-fixes of git://git.kernel.org/pub/scm/linux/kernel/git/device-mapper/linux-dm
+- 4393700 Merge branch for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/jmorris/linux-security
+- a00052a ubifs: Fix regression in ubifs_readdir()
+- 40b6e61 ubi: fastmap: Fix add_vol() return value test in ubi_attach_fastmap()
+- a7d5afe MAINTAINERS: Add entry for genwqe driver
+- eb94cd6 VMCI: Doorbell create and destroy fixes
+- a7a7aee GenWQE: Fix bad page access during abort of resource allocation
+- 6ad3756 vme: vme_get_size potentially returning incorrect value on failure
+- c89d545 drm/i915: Fix SKL+ 90/270 degree rotated plane coordinate computation
+- 7e9b3f9 drm/i915: Remove two invalid warns
+- 6d9deb9 drm/i915: Rotated view does not need a fence
+- e3b9e6e drm/i915/fbc: fix CFB size calculation for gen8+
+- 1fb3672 drm: i915: Wait for fences on new fb, not old
+- 0ce140d drm/i915: Clean up DDI DDC/AUX CH sanitation
+- 198c5ee drm/i915: Respect alternate_aux_channel for all DDI ports
+- 5e33791 drm/i915/gen9: fix watermarks when using the pipe scaler
+- fd58753 drm/i915: Fix mismatched INIT power domain disabling during suspend
+- be4dd65 drm/i915: fix a read size argument
+- 47ed324 drm/i915: Use fence_write() from rpm resume
+- 01c72d6 drm/i915/gen9: fix DDB partitioning for multi-screen cases
+- 7a0e17b drm/i915: workaround sparse warning on variable length arrays
+- 9cccc76 drm/i915: keep declarations in i915_drv.h
+- d0f4bce tty: serial_core: fix NULL struct tty pointer access in uart_write_wakeup
+- 4dda864 tty: serial_core: Fix serial console crash on port shutdown
+- 9bcffe7 tty/serial: at91: fix hardware handshake on Atmel platforms
+- bd768e1 KVM: x86: fix wbinvd_dirty_mask use-after-free
+- f92b760 perf/x86/intel: Honour the CPUID for number of fixed counters in hypervisors
+- 5aab90c perf/powerpc: Dont call perf_event_disable() from atomic context
+- 0933840 perf/core: Protect PMU device removal with a pmu_bus_running check, to fix CONFIG_DEBUG_TEST_DRIVER_REMOVE=y kernel panic
+- 1c27f64 x86/microcode/AMD: Fix more fallout from CONFIG_RANDOMIZE_MEMORY=y
+- 8ff0513 mtd: mtk: avoid warning in mtk_ecc_encode
+- 73f907f mtd: nand: Fix data interface configuration logic
+- ce93bed mtd: nand: gpmi: disable the clocks on errors
+- 14970f2 Merge branch akpm (patches from Andrew)
+- 1cfa126 Merge branch drm-fixes-4.9 of git://people.freedesktop.org/~agd5f/linux into drm-fixes
+- aa72c26 Merge tag drm-misc-fixes-2016-10-27 of git://anongit.freedesktop.org/git/drm-misc into drm-fixes
+- 8e81910 drivers/misc/sgi-gru/grumain.c: remove bogus 0x prefix from printk
+- 17a8893 cris/arch-v32: cryptocop: print a hex number after a 0x prefix
+- 9105585 ipack: print a hex number after a 0x prefix
+- ee52c44 block: DAC960: print a hex number after a 0x prefix
+- 14f947c fs: exofs: print a hex number after a 0x prefix
+- 62e931f lib/genalloc.c: start search from start of chunk
+- 89a2848 mm: memcontrol: do not recurse in direct reclaim
+- 8f72cb4 CREDITS: update credit information for Martin Kepplinger
+- 06b2849 proc: fix NULL dereference when reading /proc/<pid>/auxv
+- 37df49f mm: kmemleak: ensure that the task stack is not freed during scanning
+- 02754e0 lib/stackdepot.c: bump stackdepot capacity from 16MB to 128MB
+- 0e07f66 latent_entropy: raise CONFIG_FRAME_WARN by default
+- c0a0aba kconfig.h: remove config_enabled() macro
+- 8c8d4d4 ipc: account for kmem usage on mqueue and msg
+- 07a63c4 mm/slab: improve performance of gathering slabinfo stats
+- 1f84a18 mm: page_alloc: use KERN_CONT where appropriate
+- 1bc11d7 mm/list_lru.c: avoid error-path NULL pointer deref
+- 2175358 h8300: fix syscall restarting
+- b274c0b kcov: properly check if we are in an interrupt
+- 86d9f48 mm/slab: fix kmemcg cache creation delayed issue
+- 52e73eb device-dax: fix percpu_ref_exit ordering
+- 67463e5 Allow KASAN and HOTPLUG_MEMORY to co-exist when doing build testing
+- 867dfe3 nvdimm: make CONFIG_NVDIMM_DAX bool
+- 9db4f36 mm: remove unused variable in memory hotplug
+- 4e68af0 Merge branch i2c/for-current of git://git.kernel.org/pub/scm/linux/kernel/git/wsa/linux
+- 7f2145b Merge branch next of git://git.kernel.org/pub/scm/linux/kernel/git/rzhang/linux
+- 55bea71 Merge branch for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/s390/linux
+- 599b076 i40e: fix call of ndo_dflt_bridge_getlink()
+- 9ee7837 net sched filters: fix notification of filter delete with proper handle
+- 7618c6a Merge tag modules-next-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/rusty/linux
+- 4c95aa5 i40e: disable MSI-X interrupts if we cannot reserve enough vectors
+- ea6acb7 i40e: Fix configure TCs after initial DCB disable
+- a3b8cb1 ixgbe: fix panic when using macvlan with l2-fwd-offload enabled
+- c121f72 net: bgmac: fix spelling mistake: connecton -> connection
+- bc72f3d flow_dissector: fix vlan tag handling
+- d5d32e4 net: ipv6: Do not consider link state for nexthop validation
+- 830218c net: ipv6: Fix processing of RAs in presence of VRF
+- e30520c kalmia: avoid potential uninitialized variable use
+- 3065616 MAINTAINERS: add more people to the MTD maintainer team
+- e0f841f macsec: Fix header length if SCI is added if explicitly disabled
+- e279654 MAINTAINERS: add a maintainer for the SPI NOR subsystem
+- f62265b at803x: double check SGMII side autoneg
+- 4fc6d23 Revert at803x: fix suspend/resume for SGMII link
+- e3300ff Merge tag for-linus-4.9-rc2-ofs-1 of git://git.kernel.org/pub/scm/linux/kernel/git/hubcap/linux
+- e890038 Merge tag xfs-fixes-for-linus-4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/dgc/linux-xfs
+- 796f468 kvm/x86: Show WRMSR data is in hex
+- a2941d0 drm/amd/powerplay: fix bug get wrong evv voltage of Polaris.
+- 71451bd drm/amdgpu/si_dpm: workaround for SI kickers
+- 570dd45 btrfs: fix races on root_log_ctx lists
+- 18c2152 Merge tag scsi-fixes of git://git.kernel.org/pub/scm/linux/kernel/git/jejb/scsi
+- 4a3c390 Merge branch for-4.9-fixes of git://git.kernel.org/pub/scm/linux/kernel/git/tj/libata
+- 9c953d6 Merge branch for-linus of git://git.kernel.dk/linux-block
+- 9dcb8b6 mm: remove per-zone hashtable of bitlock waitqueues
+- a74ad5e sparc64: Handle extremely large kernel TLB range flushes more gracefully.
+- 7fe3113 blk-mq: update hardware and software queues for sleeping alloc
+- 248ff02 driver core: Make Kconfig text for DEBUG_TEST_DRIVER_REMOVE stronger
+- 2a9becd kernfs: Add noop_fsync to supported kernfs_file_fops
+- 49ce5b5 Merge remote-tracking branch mkp-scsi/4.9/scsi-fixes into fixes
+- 009e39a vt: clear selection before resizing
+- 03842c1 sc16is7xx: always write state when configuring GPIO as an output
+- c03e1b8 sh-sci: document R8A7743/5 support
+- ecb988a tty: serial: 8250: 8250_core: NXP SC16C2552 workaround
+- 32b2921 tty: limit terminal size to 4M chars
+- d704b2d tty: serial: fsl_lpuart: Fix Tx DMA edge case
+- f00a7c5 serial: 8250_lpss: enable MSI for sure
+- be2c92b serial: core: fix console problems on uart_close
+- 09065c5 serial: 8250_uniphier: fix clearing divisor latch access bit
+- 0ead21a serial: 8250_uniphier: fix more unterminated string
+- beadba5 serial: pch_uart: add terminate entry for dmi_system_id tables
+- 78c2244 devicetree: bindings: uart: Add new compatible string for ZynqMP
+- 0267a4f serial: xuartps: Add new compatible string for ZynqMP
+- bc2a024 serial: SERIAL_STM32 should depend on HAS_DMA
+- b20fb13 serial: stm32: Fix comparisons with undefined register
+- 42acfc6 tty: vt, fix bogus division in csi_J
+- b5149a5 Merge tag kvm-s390-master-4.9-2 of git://git.kernel.org/pub/scm/linux/kernel/git/kvms390/linux into HEAD
+- fb479e4 powerpc/64s: relocation, register save fixes for system reset interrupt
+- bd77c44 powerpc/mm/radix: Use tlbiel only if we ever ran on the current cpu
+- 39715bf powerpc/process: Fix CONFIG_ALIVEC typo in restore_tm_state()
+- 85c856b kvm: nVMX: Fix kernel panics induced by illegal INVEPT/INVVPID types
+- bdc3478 ALSA: usb-audio: Add quirk for Syntek STK1160
+- 58e3948 KVM: document lock orders
+- d1f63f0 mmc: sdhci-msm: Fix error return code in sdhci_msm_probe()
+- f5d6d2d sched/fair: Remove unused but set variable rq
+- 56fb2d6 objtool: Fix rare switch jump table pattern detection
+- 31e6ec4 security/keys: make BIG_KEYS dependent on stdrng.
+- 7df3e59 KEYS: Sort out big_key initialisation
+- 03dab86 KEYS: Fix short sprintf buffer in /proc/keys show function
+- 67f0160 MAINTAINERS: Update qlogic networking drivers
+- e52fed7 netvsc: fix incorrect receive checksum offloading
+- 2bf7dc8 scsi: arcmsr: Send SYNCHRONIZE_CACHE command to firmware
+- 4d2b496 scsi: scsi_debug: Fix memory leak if LBP enabled and module is unloaded
+- 10df8e6 udp: fix IP_CHECKSUM handling
+- ecc515d sctp: fix the panic caused by route update
+- 293de7d doc: update docbook annotations for socket and skb
+- 92d230d rocker: fix error return code in rocker_world_check_init()
+- 2876a34 sunrpc: dont pass on-stack memory to sg_set_buf
+- 05692d7 vfio/pci: Fix integer overflows, bitmask check
+- ad11044 PCI: qcom: Fix pp->dev usage before assignment
+- 7dc86ef drm/radeon/si_dpm: workaround for SI kickers
+- 49a5d73 drm/amdgpu: fix s3 resume back, uvd dpm randomly cant disable.
+- 3fa72fe arm64: mm: fix __page_to_voff definition
+- 3f7a09f arm64/numa: fix incorrect log for memory-less node
+- 26984c3 arm64/numa: fix pcpu_cpu_distance() to get correct CPU proximity
+- a236441 sparc64: Fix illegal relative branches in hypervisor patched TLB cross-call code.
+- 830cda3 sparc64: Fix instruction count in comment for __hypervisor_flush_tlb_pending.
+- 4da5caa drm/dp/mst: Check peer device type before attempting EDID read
+- 36e3fa6 drm/dp/mst: Clear port->pdt when tearing down the i2c adapter
+- a288960 drm/fb-helper: Keep references for the current set of used connectors
+- 38d868e drm: Dont force all planes to be added to the state due to zpos
+- 94d7dea block: flush: fix IO hang in case of flood fua req
+- 7dfcb36 drm/fb-helper: Fix connector ref leak on error
+- 36343f6 KVM: fix OOPS on flush_work
+- 45c7ee4 KVM: s390: Fix STHYI buffer alignment for diag224
+- e1e575f KVM: MIPS: Precalculate MMIO load resume PC
+- ede5f3e KVM: MIPS: Make ERET handle ERL before EXL
+- 9078210 KVM: MIPS: Fix lazy user ASID regenerate for SMP
+- 5de0a8c x86: Fix export for mcount and __fentry__
+- 5c0ba57 spi: fsl-espi: avoid processing uninitalized data on error
+- 62c6151 doc: Add missing parameter for msi_setup
+- cfcc145 Merge tag extcon-fixes-for-4.9-rc3 of git://git.kernel.org/pub/scm/linux/kernel/git/chanwoo/extcon into char-misc-linus
+- 87d3b65 drm/fb-helper: Dont call dirty callback for untouched clips
+- cac5fce drm: Release reference from blob lookup after replacing property
+- 2925d36 extcon: qcom-spmi-misc: Sync the extcon state on interrupt
+- c1aa677 Merge tag usb-ci-v4.9-rc2 of git://git.kernel.org/pub/scm/linux/kernel/git/peter.chen/usb into usb-linus
+- 7cf321d drm/drivers: add support for using the arch wc mapping API.
+- b4f7f4a mac80211: fix some sphinx warnings
+- e1957db cfg80211: process events caused by suspend before suspending
+- 8ef4227 x86/io: add interface to reserve io memtype for a resource range. (v1.1)
+- 849c498 sparc64: Handle extremely large kernel TSB range flushes sanely.
+- 9d9fa23 sparc: Handle negative offsets in arch_jump_label_transform
+- a467a67 MAINTAINERS: Begin module maintainer transition
+- b429ae4 sparc64: Fix illegal relative branches in hypervisor patched TLB code.
+- 537b4b4 drm/radeon: drop register readback in cayman_cp_int_cntl_setup
+- ef6239e drm/amdgpu/vce3: only enable 3 rings on new enough firmware (v2)
+- 0ce57f8 ahci: fix the single MSI-X case in ahci_init_one
+- 6bad6bc timers: Prevent base clock corruption when forwarding
+- 041ad7b timers: Prevent base clock rewind when forwarding clock
+- 4da9152 timers: Lock base for same bucket optimization
+- b831275 timers: Plug locking race vs. timer migration
+- 9b50898 ALSA: seq: Fix time account regression
+- 533169d i2c: imx: defer probe if bus recovery GPIOs are not ready
+- 171e23e i2c: designware: Avoid aborted transfers with fast reacting I2C slaves
+- ba9ad2a i2c: i801: Fix I2C Block Read on 8-Series/C220 and later
+- 6036160 i2c: xgene: Avoid dma_buffer overrun
+- 60a951a i2c: digicolor: Fix module autoload
+- 2cb496d i2c: xlr: Fix module autoload for OF registration
+- 06e7b10 i2c: xlp9xx: Fix module autoload
+- 3855ada i2c: jz4780: Fix module autoload
+- 1779165 i2c: allow configuration of imx driver for ColdFire architecture
+- 6a676fb i2c: mark device nodes only in case of successful instantiation
+- d320b9a x86/quirks: Hide maybe-uninitialized warning
+- a2209b7 x86/build: Fix build with older GCC versions
+- 7fbe6ac x86/unwind: Fix empty stack dereference in guess unwinder
+- 399c168 i2c: rk3x: Give the tuning value 0 during rk3x_i2c_v0_calc_timings
+- ae824f0 i2c: hix5hd2: allow build with ARCH_HISI
+- 45c7a49 mmc: dw_mmc-pltfm: fix the potential NULL pointer dereference
+- 991d5ad usb: chipidea: host: fix NULL ptr dereference during shutdown
+- 1a3f099 ALSA: hda - Fix surround output pins for ASRock B150M mobo
+- 407a3ae hv: do not lose pending heartbeat vmbus packets
+- 888abf4 Merge branch hostos-base into hostos-devel
+
 * Wed Oct 31 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 4.8.4-2
 - Remove unused macros and simplify package numbering
 

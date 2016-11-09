@@ -186,7 +186,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.7.0
-Release: 3%{?dist}
+Release: 4%{?dist}
 Epoch: 11
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -1521,6 +1521,10 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Wed Nov 09 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 11:2.7.0-4
+- afb0d80 vfio: Add support for mmapping sub-page MMIO BARs
+- 4f0198b virtio-pci: error out when both legacy and modern modes are disabled
+
 * Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 11:2.7.0-3
  - Spec cleanup
 
