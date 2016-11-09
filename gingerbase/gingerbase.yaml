@@ -1,8 +1,8 @@
 Package:
  name: 'gingerbase'
  clone_url: 'https://github.com/open-power-host-os/gingerbase.git'
- branch: 'powerkvm-v3.1.1'
- commit_id: '56913b3'
+ branch: 'hostos-devel'
+ commit_id: '8296bfa'
  expects_source: 'ginger-base'
  files:
   centos:

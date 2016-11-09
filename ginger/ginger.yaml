@@ -1,8 +1,8 @@
 Package:
  name: 'ginger'
  clone_url: 'https://github.com/open-power-host-os/ginger.git'
- branch: 'powerkvm-v3.1.1'
- commit_id: 'f9164a4'
+ branch: 'hostos-devel'
+ commit_id: 'fd044e5'
  expects_source: 'ginger'
  files:
   centos:

@@ -1,8 +1,8 @@
 Package:
  name: 'kimchi'
  clone_url: 'https://github.com/open-power-host-os/kimchi.git'
- branch: 'powerkvm-v3.1.1'
- commit_id: '71787ff'
+ branch: 'hostos-devel'
+ commit_id: 'f4934ca'
  expects_source: 'kimchi'
  files:
   centos:
