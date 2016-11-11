@@ -1,7 +1,7 @@
 Package:
  name: 'golang'
  clone_url: 'https://github.com/golang/go.git'
- commit_id: 'b67902f'
+ commit_id: 'b67902fee7b56dd3235b2f489550c279248bacb9'
  branch: 'release-branch.go1.7'
  expects_source: 'go'
  files:

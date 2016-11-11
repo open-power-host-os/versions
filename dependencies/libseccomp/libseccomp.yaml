@@ -2,7 +2,7 @@ Package:
  name: 'libseccomp'
  clone_url: 'https://github.com/seccomp/libseccomp.git'
  branch: 'release-2.3'
- commit_id: 'eedd26d'
+ commit_id: 'eedd26dc59641878dabd771e2ff15e729a85ac69'
  expects_source: "libseccomp-2.3.1"
  files:
   centos:
