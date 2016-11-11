@@ -1,0 +1,11 @@
+Package:
+ name: 'flannel'
+ clone_url: 'https://github.com/coreos/flannel.git'
+ branch: 'master'
+ commit_id: 'cb8284fb60737793596dd2fc98d9608d3d0d66f0'
+ expects_source: 'flannel'
+ files:
+  centos:
+   '7.2':
+    spec: 'centOS/7.2/flannel.spec'
+    build_files: 'centOS/7.2/SOURCES'

@@ -53,6 +53,5 @@ oci-systemd-hook	      0-1.8
 
 golang			            1.7.1
 crash			              7.1.6
+flannel                 0.5.5
 ======================  =======
-
-
