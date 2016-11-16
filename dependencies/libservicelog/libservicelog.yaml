@@ -2,7 +2,7 @@ Package:
  name: 'libservicelog'
  clone_url: 'https://github.com/open-power-host-os/libservicelog.git'
  branch: 'hostos-devel'
- commit_id: 'b5ebd51'
+ commit_id: 'b5ebd51d01245a7bff961f30ca9db794629b0f8a'
  expects_source: "libservicelog"
  files:
   centos:

@@ -2,7 +2,7 @@ Package:
  name: 'servicelog'
  clone_url: 'https://github.com/open-power-host-os/servicelog.git'
  branch: 'hostos-devel'
- commit_id: '7d33cd3'
+ commit_id: '7d33cd33507d6f11fb86c4bc13d752cb122759f7'
  expects_source: "servicelog"
  files:
   centos:
