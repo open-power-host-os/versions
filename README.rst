@@ -50,8 +50,8 @@ docker            			1.1.2
 gcc			                4.8.5
 oci-register-machine	  0-1.8
 oci-systemd-hook	      0-1.8
-
 golang			            1.7.1
 crash			              7.1.6
 flannel                 0.5.5
+docker-swarm            1.1.0
 ======================  =======
