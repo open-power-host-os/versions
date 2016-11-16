@@ -2,7 +2,7 @@ Package:
  name: 'kernel'
  clone_url: 'https://github.com/open-power-host-os/linux.git'
  branch: 'hostos-devel'
- commit_id: 'ce1fd2ce4490b17d8d34db47ca8e125e139b93d3'
+ commit_id: '59349a3822819d26dca4e1ebe16cbca458a56b0b'
  version:
    file: 'Makefile'
    regex: 'VERSION.*([\d.]+)\nPATCHLEVEL\s*=\s*(?P<patch>[\d.]*)\nSUBLEVEL\s*=\s*(?(patch)([\d.]*))'
