@@ -33,6 +33,7 @@ gcc                     4.8.5
 ginger                  2.3.0
 ginger-base             2.2.1
 golang                  1.7.1
+hwdata                  0.288
 iprutils                2.4.13
 kernel                  4.8.4
 kimchi                  2.3.0
