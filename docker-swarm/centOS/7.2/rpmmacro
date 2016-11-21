@@ -1,1 +1,1 @@
-%define debug_package %{nil}
+%debug_package %{nil}
