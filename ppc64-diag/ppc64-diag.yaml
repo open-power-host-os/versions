@@ -1,7 +1,7 @@
 Package:
  name: 'ppc64-diag'
  clone_url: 'https://github.com/open-power-host-os/ppc64-diag.git'
- branch: 'master'
+ branch: 'hostos-devel'
  commit_id: '92ea7c82a54f4c1d1fe25677f205ebca781e53c3'
  expects_source: "ppc64-diag-2.7.1"
  files:
