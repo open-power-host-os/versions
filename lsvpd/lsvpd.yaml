@@ -1,9 +1,12 @@
 Package:
  name: 'lsvpd'
  clone_url: 'https://github.com/open-power-host-os/lsvpd.git'
- branch: 'master'
+ branch: 'hostos-devel'
  commit_id: '22bf31003c097d993e73d22e745c36d16b5f85a2'
  expects_source: "lsvpd"
+ version:
+   file: 'configure.ac'
+   regex: 'AC_INIT\(\[[^]]+\],\s*\[([\d.]+)\]'
  files:
   centos:
    '7.2':
