@@ -4,6 +4,9 @@ Package:
  branch: 'hostos-devel'
  commit_id: 'b5ebd51d01245a7bff961f30ca9db794629b0f8a'
  expects_source: "libservicelog"
+ version:
+   file: 'configure.ac'
+   regex: 'm4_define\(\[ppu_version\],\s*([\d.]+)\)'
  files:
   centos:
    '7.2':
