@@ -1,0 +1,5 @@
+#! /bin/bash
+
+/usr/bin/pkexec /usr/sbin/gtk-lshw
+
+
