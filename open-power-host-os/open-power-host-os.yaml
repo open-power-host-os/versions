@@ -1,0 +1,34 @@
+Package:
+ files:
+  CentOS:
+   '7':
+    install_dependencies:
+     - SLOF
+     - crash
+     - docker-swarm
+     - docker
+     - flannel
+     - gcc
+     - ginger-base
+     - ginger
+     - golang-github-russross-blackfriday
+     - golang-github-shurcooL-sanitized_anchor_name
+     - golang
+     - hwdata
+     - kernel
+     - kimchi
+     - kubernetes
+     - libnl3
+     - librtas
+     - libservicelog
+     - libvirt
+     - libvpd
+     - lshw
+     - lsvpd
+     - novnc
+     - ppc64-diag
+     - qemu
+     - servicelog
+     - sos
+     - systemtap
+     - wok
