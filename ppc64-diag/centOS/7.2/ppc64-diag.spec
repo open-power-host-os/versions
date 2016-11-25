@@ -18,7 +18,7 @@ Requires:	librtas
 # License change
 Requires:	powerpc-utils >= 1.3.2
 
-Source0:        http://downloads.sourceforge.net/project/linux-diag/ppc64-diag/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{name}.tar.gz
 Source1:        rtas_errd.service
 Patch0:         ppc64-diag-2.4.2-messagecatalog-location.patch
 Patch1:         ppc64-diag-2.4.2-chkconfig.patch
@@ -47,7 +47,7 @@ administrators or connected service frameworks.
 %global __requires_exclude %{?__requires_exclude:%__requires_exclude|}\/usr\/libexec\/ppc64-diag\/servevent_parse.pl
 
 %prep
-%setup -q
+%setup -q -n %{name}
 %patch0 -p1 -b .msg_loc
 %patch1 -p1 -b .chkconfig
 %patch2 -p1 -b .script_loc

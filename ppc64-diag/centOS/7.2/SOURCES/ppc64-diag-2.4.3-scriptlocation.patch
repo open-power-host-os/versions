@@ -8,14 +8,14 @@ diff -up ppc64-diag-2.6.7/scripts/Makefile.script_loc ppc64-diag-2.6.7/scripts/M
 -	@$(call install_files,$(SCRIPTS),744,$(DESTDIR)/etc/ppc64-diag)
 +	@$(call install_files,$(SCRIPTS),744,$(DESTDIR)/usr/libexec/ppc64-diag)
  	@$(call install_files,$(INIT_FILES),755,$(DESTDIR)/$(LIBEXEC_DIR))
- 	@$(call install_files,$(SERVICE_SCRIPT),755,$(DESTDIR)/$(SYSTEMD_DIR))
+ 	@$(call install_files,$(SERVICE_SCRIPT),644,$(DESTDIR)/$(SYSTEMD_DIR))
  	@$(call install_files,$(CFG_FILES),644,$(DESTDIR)/etc/ppc64-diag)
  
  uninstall: 
 -	@$(call uninstall_files,$(SCRIPTS),$(DESTDIR)/etc/ppc64-diag)
 +	@$(call uninstall_files,$(SCRIPTS),$(DESTDIR)/usr/libexec/ppc64-diag)
  	@$(call uninstall_files,$(INIT_FILES),$(DESTDIR)/$(LIBEXEC_DIR))
- 	@$(call uninstall_files,$(SERVICE_SCRIPT),755,$(DESTDIR)/$(SYSTEMD_DIR))
+ 	@$(call uninstall_files,$(SERVICE_SCRIPT),644,$(DESTDIR)/$(SYSTEMD_DIR))
  	@$(call uninstall_files,$(CFG_FILES),$(DESTDIR)/etc/ppc64-diag)
 diff -up ppc64-diag-2.6.7/scripts/ppc64_diag_mkrsrc.script_loc ppc64-diag-2.6.7/scripts/ppc64_diag_mkrsrc
 --- ppc64-diag-2.6.7/scripts/ppc64_diag_mkrsrc.script_loc	2014-08-16 07:35:55.000000000 +0200
