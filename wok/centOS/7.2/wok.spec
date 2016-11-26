@@ -1,6 +1,6 @@
 Name:       wok
 Version:    2.3.0
-Release:    5%{?dist}
+Release:    6%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -152,7 +152,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/share/locale/*/LC_MESSAGES/wok.mo
 %{_datadir}/wok/ui/
 %{_datadir}/wok
-%{_sysconfdir}/nginx/conf.d/wok.conf.in
 %{_sysconfdir}/wok/wok.conf
 %{_sysconfdir}/wok/
 %{_sysconfdir}/logrotate.d/wokd
@@ -174,6 +173,16 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Fri Nov 25 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-6
+- e8d1bfe1fae19bbda8bdd17edc3981caa124911b Bug fix #151: Wok settings page not working when locale not set
+- a682998c917b7ce18eb60b12c8801556673259ae Remove nginx-specific parameters from wok.conf file
+- 1b6c8110d802d06ba38e2f02e6ad4997868bec81 Bug fix #175: Do not generate nginx configuration file on the fly
+- 118d3562f067640353cc7fb58f722b412a58f27f Generate SSL self signed certificate on package post installation script
+- 9180d4809968c8e2e1a63076647039460b2ea652 Add nginx.service as wokd.service dependency
+- e3916814f1823a98e69a67ccb49b52f22b85d4a4 Remove log size information from Wok config
+- 48ebb52b572f3fa7cf30fa647b1d00318086f42b Fix make check issues
+- 8d8db1384e01224de28944330da5541bd99ac3f0 Merge remote-tracking branch upstream/master into hostos-devel
+
 * Wed Nov 09 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.3.0-5
 - wok rebase
 
