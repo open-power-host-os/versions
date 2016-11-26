@@ -2,7 +2,7 @@ Package:
  name: 'libvpd'
  clone_url: 'https://github.com/open-power-host-os/libvpd.git'
  branch: 'hostos-devel'
- commit_id: 'cf5d29342e449032d6c7d1f4f8b7516052a2210b'
+ commit_id: '8cb3fe06b8d2e6125235eb1973e624a0fb12837c'
  expects_source: "libvpd"
  version:
    file: 'configure.ac'

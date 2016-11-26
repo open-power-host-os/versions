@@ -1,6 +1,6 @@
 Name:		lsvpd
 Version:	1.7.7
-Release:	5%{?dist}
+Release:	6%{?dist}
 Summary:	VPD/hardware inventory utilities for Linux
 Group:		Applications/System
 License:	GPLv2+
@@ -62,6 +62,10 @@ on POWER PC based systems.
 %dir %{_sysconfdir}/lsvpd
 
 %changelog
+* Sat Nov 26 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 1.7.7-6
+- 3a5f5e1fdf82ebc6efdda4cfc51fd24776bad8be Fix NVMe device description field
+- 22bf31003c097d993e73d22e745c36d16b5f85a2 Add check if lstat gets failed
+
 * Thu Oct 19 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> 1.7.7-5
 - Spec cleanup: Remove indirections in Version and Name tags.
 

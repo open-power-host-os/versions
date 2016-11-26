@@ -1,6 +1,6 @@
 Name:       kimchi
 Version:    2.3.0
-Release:    5%{?dist}
+Release:    6%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -90,6 +90,21 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Nov 26 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-6
+- 429e8ec8c5a290197408d59c965e3bf2b6c488bb Merge remote-tracking branch upstream/master into hostos-devel
+- f3fd6c943e99d34d5def59a8404aa8409cbde6b4 Fix pep8 issue
+- 38a06b616e3525fdfa9268d58b37954ac1c929b0 Fixed issue #1076 s390x : n/w shows twice same interface while adding for template
+- f367ac242d91f198760b66c335b11b0051953f6b Fixed issue #1075 s390x : Edit Template storage tab Storage dropdown shows default text
+- f621ecdc21c5705c606b98eada53511998b41c0b Fixed issue #1062 Disk path not taking input properly
+- f11af4bc644f38546c95dd046bed0c16ec782b61 Update Kimchi code due chnages on Wok configuration parameters
+- d75b2ae0a6ed5738e2e55ea9eeaa75b8373c284c po/ja_JP.po: fix trailing whitespace
+- b436a6e8987027cd12fb348160e4e794e13232c3 rpmlint fixes on Fedora and Suse specs
+- 3d81b206f732a15eb05f4aa6172845b1dd590a50 Issue #1050: Rename template with existing template name
+- a4c77ec2ff06adacc0937a77dbcffc3b4176972f s390x specific changes to support storage path and storage pool as disk.
+- 5f7a29f8db472767f95093808f36f8c8d4e9830b Edit template storage path should start with /
+- 6381c26a083891324d6b0a95bd443b2a8603d0b7 Fixed issue #1074 IP address for the guest under Interfaces tab is blank
+- f4934ca08d45760a16b4e39ebb2ee3704f64b445 Merge remote-tracking branch upstream/master into hostos-devel
+
 * Wed Nov 09 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.3.0-5
 - Kimchi rebase
 

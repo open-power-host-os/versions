@@ -1,6 +1,6 @@
 Name:       ginger
 Version:    2.3.0
-Release:    5%{?dist}
+Release:    6%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -120,6 +120,28 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Nov 26 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-6
+- 347d9861372707fe65616654695cbb15f3dcbea8 Merge remote-tracking branch upstream/master into hostos-devel
+- 0f7d7dd77cfc15665222e26fcdf4efc448187a79 Bug fix #473: Refresh on User Mgmt
+- 5d033d0cb2f9c5a03ac94b958984ca2b7d2f2f4b Fix for issue #474
+- 9bd1f6311eaac68177044ddf512abf2d0d7bbba2 Bug fix #396: Network Configuration - Add/Delete BOND interface errors
+- abcc531e4ee1019d044a623ed7ba493dd83c73e6 Update tests to new service list code
+- deba8491985f6ed51faa2865d79f55ed7a03de82 Bug fix #414: service disapear after stopping it at opensuse 42.1
+- e74295ddd1485f64ba914e0b70963656764736bb Fix for ginger issue #467
+- ffa1680fe6c5ea6d4f531494a251a074dc39c377 Issue # 472 : System Services Filter does not show messssage No records found for unmatch criteria.
+- 39a0564527bedabaec20bbfdc8d8871127608760 Fix for ginger issue #471
+- a1f202d7c3728586e5b32fcb4ab632a57cc40400 Fix for ginger issue #470
+- 4834098f656c50fae0901134f889bc44f2e9ad77 Fixing typo in GINAUD0031E message of i18n.py
+- 21d48fa7dc4ddc160bc0a969ad8ba50115e653f8 Fix for ginger issue #461 #462
+- a44c9ea53c8f1ecf8232d53e82a1a7ccc55da6bb Fix for issue #466
+- 1e756db3c29115bcf41483077aeb60be9b269441 Issue #465:UI validaiton missing for Audit rule creation/ modification.
+- 5f8876bd1fddccc7d9c143e3634211652058c31e Update Ginger code due chnages on Wok configuration parameters
+- 3ad0c117f8c1ff41f89d912e62da27f089fb94c2 Fixed issue #440 filter or messages are not visible while scrolling the service listing
+- cebb0446592c841ca4df0fce95a2c0bb87c3e03f Issue #457 : Minor UI issues Related to Audit Logs section
+- 3c3bcd40b09cb80df0118b21961e77d154fb0b68 Issue # 463 : UI issues for System Call rule.
+- dba174ea8b0cf2f64cc3d6be4cf7db319bd41754 Fix for issue #439
+- fd044e599d16a1120102aa1bca17a314833b4400 Merge remote-tracking branch upstream/master into hostos-devel
+
 * Wed Nov 09 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.3.0-5
 - Ginger rebase
 
