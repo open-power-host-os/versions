@@ -5,7 +5,7 @@ Package:
  commit_id: '968c61815916312b756653b1b57351a1e44d7176'
  version:
    file: 'Makefile'
-   regex: 'VERSION.*([\d.]+)\nPATCHLEVEL\s*=\s*(?P<patch>[\d.]*)\nSUBLEVEL\s*=\s*(?(patch)([\d.]*))'
+   regex: 'VERSION.*([\d.]+)\nPATCHLEVEL\s*=\s*(?P<patch>[\d.]*)\nSUBLEVEL\s*=\s*(?(patch)([\d.]*))\nEXTRAVERSION\s*=\s*([-\w.]*)\n'
  expects_source: "linux-source"
  files:
   centos:
