@@ -4,7 +4,7 @@
 
 Name:       ginger-base
 Version:    2.2.1
-Release:    6%{?dist}
+Release:    7%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -74,6 +74,13 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Nov 30 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-7
+- 0f006534e799ba44ccfee5cb3af186b2998db9fa Merge remote-tracking branch upstream/master into hostos-devel
+- 1201b6bc602ca214fb976cfd007f9a79df142477 Bug fix #111: Do not return package dependencies on package lookup()
+- a4525c3ea0802f111e55612542bd4bccbb58b7c6 Update UI to use /host/packagesupdate/<pkg>/deps API to get the package dependencies
+- e31f3f165c4498f4a739781b420ec858ad9167c2 Create a new API to return the package dependencies
+- f481c2c2f6b31d8b1607f815bb297b3bdf2155cc Merge remote-tracking branch upstream/master into hostos-devel
+
 * Sat Nov 26 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-6
 - f481c2c2f6b31d8b1607f815bb297b3bdf2155cc Merge remote-tracking branch upstream/master into hostos-devel
 - b55043cb6e3cba5b4ea0b0260be7f3509eb60090 Bug fix #123: Do not make requests when repositories/software update section is collapsed
