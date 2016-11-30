@@ -309,7 +309,7 @@ Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: 4.9.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1689,6 +1689,17 @@ fi
 
 
 %changelog
+* Wed Nov 16 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.9.0-2
+- 59349a3822819d26dca4e1ebe16cbca458a56b0b KVM: PPC: Book3S HV: Dont lose hardware R/C bit updates in H_PROTECT
+- aa9fc673d5e9b38e56cdae367ab33e8a66c3ac69 KVM: PPC: Book3S HV: Add a per vcpu cache for recently page faulted MMIO entries
+- 115cc85ef3afa564092632d4ecb6b005983ead26 KVM: PPC: Book3S HV: Clear the key field of HPTE when the page is paged out
+- d7b3e48fb768126732b3eb5fa3a170ab3a3d401c KVM: PPC: XICS: Dont lock twice when doing check resend
+- 8643b30f7291fa314628834a99859933e0bc6605 KVM: PPC: XICS: Implement ICS P/Q states
+- ac4893d9904755c24ef49047bededbbcadcb9922 KVM: PPC: XICS: Fix potential resend twice issue
+- 636faefeff2ba7c7bbe5082bdae3a14409db4cff KVM: PPC: XICS: correct the real mode ICP rejecting counter
+- 781556f4ad17e147aff41bcfc00a5c33f99e880a KVM: PPC: XICS cleanup: remove XICS_RM_REJECT
+- ce1fd2ce4490b17d8d34db47ca8e125e139b93d3 Merge branch hostos-base into hostos-devel
+
 * Wed Nov 09 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.9.0-1
 - ce1fd2c Merge branch hostos-base into hostos-devel
 - 88afbd1 Merge tag v4.9-rc4 into hostos-base
