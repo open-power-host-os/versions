@@ -4,7 +4,7 @@
 
 Name:       ginger-base
 Version:    2.2.1
-Release:    5%{?dist}
+Release:    6%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -74,6 +74,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Nov 26 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-6
+- f481c2c2f6b31d8b1607f815bb297b3bdf2155cc Merge remote-tracking branch upstream/master into hostos-devel
+- b55043cb6e3cba5b4ea0b0260be7f3509eb60090 Bug fix #123: Do not make requests when repositories/software update section is collapsed
+- 5fd9447b44c62806342dd3f973e374fd9fd06662 Update Ginger Base code due chnages on Wok configuration parameters
+- 8296bfafd142fe2486f9d4935f098584cdd1b6a1 Merge remote-tracking branch upstream/master into hostos-devel
+
 * Wed Nov 09 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 2.2.1-5
 - ginger-base rebase
 

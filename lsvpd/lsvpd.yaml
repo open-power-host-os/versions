@@ -2,7 +2,7 @@ Package:
  name: 'lsvpd'
  clone_url: 'https://github.com/open-power-host-os/lsvpd.git'
  branch: 'hostos-devel'
- commit_id: '22bf31003c097d993e73d22e745c36d16b5f85a2'
+ commit_id: '3a5f5e1fdf82ebc6efdda4cfc51fd24776bad8be'
  expects_source: "lsvpd"
  version:
    file: 'configure.ac'

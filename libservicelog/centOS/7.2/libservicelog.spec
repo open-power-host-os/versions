@@ -1,6 +1,6 @@
 Name:           libservicelog
 Version:        1.1.16
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Servicelog Database and Library
 
 Group:          System Environment/Libraries
@@ -81,6 +81,11 @@ getent group service >/dev/null || /usr/sbin/groupadd service
 
 
 %changelog
+* Sat Nov 26 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 1.1.16-2
+- 48875ee8614eeefaa3d5d8ff92fb424915738169 NULL check before strdup call
+- 40b4f7a52e61fb9da30b4cb9b5de9a85673da262 NULL check before strlen call
+- b5ebd51d01245a7bff961f30ca9db794629b0f8a libservicelog: Creating the service group as a system one
+
 * Thu Oct 13 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 1.1.16
 - Rebase to 1.1.16
 

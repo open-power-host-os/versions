@@ -1,6 +1,6 @@
 Name:		libvpd
 Version:	2.2.5
-Release:	3%{?dist}
+Release:	4%{?dist}
 Summary:	VPD Database access library for lsvpd
 
 Group:		System Environment/Libraries
@@ -64,6 +64,11 @@ Contains header files for building with libvpd.
 %{_libdir}/pkgconfig/libvpd_cxx-2.pc
 
 %changelog
+* Sat Nov 26 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.5-4
+- 8cb3fe06b8d2e6125235eb1973e624a0fb12837c Typo correction in README file
+- a791b3134c575430b1e0d9d9644cc55236e583ca Null check before passing pointer to strlen call
+- cf5d29342e449032d6c7d1f4f8b7516052a2210b Modify char array initialization style
+
 * Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> 2.2.5-3
 - Spec cleanup: Remove indirections in Version and Name tags.
 
