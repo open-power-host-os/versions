@@ -1,6 +1,6 @@
 Name:       kimchi
 Version:    2.3.0
-Release:    6%{?dist}
+Release:    7%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -90,6 +90,23 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Nov 30 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-7
+- 9e98b5f63ffcc4b76d53aa3fd5536ceb969d9111 Merge remote-tracking branch upstream/master into hostos-devel
+- 69db14d6039af2d28d022f6e1ce1452b03f0aefa CPU Hot plug/unplug: test_rest.py changes
+- 4694423bf2e5ed4963843b9783f6134aa55b2cf5 CPU Hot plug/unplug: ui changes
+- 1aefa588159d238de2c0d2cffdd7277b1db2341d CPU Hot plug/unplug: test changes
+- 13374df1f7eef110c373d7b6a8492211a0975c39 CPU Hot plug/unplug: model changes
+- 9dfa977ed81a2980e308e61d8607cdd80bcde9e3 CPU Hot plug/unplug: i18n changes
+- ea2520874e55ca1919ca0469ce1c5b3488500030 Changing threads to be a free number field
+- e23f8144a2619e8533788e5fede416ca077d3336 Edit Guest dialog: fixing Save button on Processor tab
+- 4ff16929936b9bf9215cfb723747c3ac58a8e9f4 Adding CPU setup help text in Edit Guest/Template
+- 6de1a7f82156e0d7c6894c4936bf656c95cf3f57 CPU configuration UI: several improvements
+- ea43e85379ab77e12130b8ccd078852c86e72cba Adding Processor tab in Edit Guest dialog
+- e031c59364be2ad8409aa4071828d00398125c10 template_edit_main.js: initProcessor now a global function
+- 22c3767c724fb19d617a1428a6776ba890e5390b Adding sockets field in the topology of Templates
+- 750d0c14decc46e564829b0e374a46c65330a1cc Bug fix #1072 - changing vpus verification
+- 429e8ec8c5a290197408d59c965e3bf2b6c488bb Merge remote-tracking branch upstream/master into hostos-devel
+
 * Sat Nov 26 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-6
 - 429e8ec8c5a290197408d59c965e3bf2b6c488bb Merge remote-tracking branch upstream/master into hostos-devel
 - f3fd6c943e99d34d5def59a8404aa8409cbde6b4 Fix pep8 issue

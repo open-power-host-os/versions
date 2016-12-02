@@ -1,6 +1,6 @@
 Name:       ginger
 Version:    2.3.0
-Release:    6%{?dist}
+Release:    7%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -120,6 +120,23 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Nov 30 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-7
+- 59de2656226e73777d54eccdbc533957e15a1f72 Merge remote-tracking branch upstream/master into hostos-devel
+- 2ae952a183ece4c56152734f4547457a4a3e1917 Issue # 491: Usage icon is not displayed for File System and Swap Devices.
+- 1a23ab870980a1347d942c73b0f789fd14f8a38a Issue #492: Nfs server Ip field does not validate iPv4 address or hostname.
+- 613c8ca9151845da6be4751b556f6f10858ed4a2 Issue #490 Partitions API should be called with device IDs for FC and iSCSI devices
+- 9872f1762437501da105ec23950e978af51275d8 Fix for ginger issue #487
+- f39a1b522c3cfbbc44a121d7b37755a8135d05cf Issue #488: OVS Bridge Name allows special characters while creating Ovs bridge.
+- 05f5b73f0fcde501c1dda301e1ae44f7046b5982 Fix for issue #483
+- c50376b9398049c3c19bb0dc81e86f25f2d1acf8 Fix for ginger issue #480 and remove button in User management changed to red.
+- 7d394c9ceb1598c7ef25233a2ecdd41ee8639ccb Fix for ginger issue #478
+- aa9e359a84febe0c27dd486f22969fe4228a42bc Fix for the issue #468
+- 37d2dbbc0689f5c48d94ab920f4484de902378bf Bug fix #482: removing refreshSensors when leaving Admin tab
+- c253544c23905bfbb2fc64c805a8dc11849d4d82 Issue #481 :Audit rules details section in Administration is getting distorted for long data in rules.
+- 4c439e8b62132ae23e44d4574de354245241d8e8 Fix for issue #475
+- c4f784cd1f7d1f017a69d9693d63d1c29dbd8a23 Issue #476: Non formatted dasd devices are allowed for create partition.
+- 347d9861372707fe65616654695cbb15f3dcbea8 Merge remote-tracking branch upstream/master into hostos-devel
+
 * Sat Nov 26 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-6
 - 347d9861372707fe65616654695cbb15f3dcbea8 Merge remote-tracking branch upstream/master into hostos-devel
 - 0f7d7dd77cfc15665222e26fcdf4efc448187a79 Bug fix #473: Refresh on User Mgmt
