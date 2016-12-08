@@ -1,6 +1,6 @@
 Name:       wok
 Version:    2.3.0
-Release:    6%{?dist}
+Release:    7%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -173,6 +173,12 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Thu Dec 08 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-7
+- 55bb83d99d4bcf243f2c2103a2c45751172bacc7 Fix non-relative paths
+- 43d73d0f087ffb09f6528f1fe3485a7457d0b8e9 Fix ip-address.js directory
+- 53ee603d62815818636b5b9550090413f8532c07 Do not install firewalld conf in Debian
+- e8d1bfe1fae19bbda8bdd17edc3981caa124911b Bug fix #151: Wok settings page not working when locale not set
+
 * Fri Nov 25 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-6
 - e8d1bfe1fae19bbda8bdd17edc3981caa124911b Bug fix #151: Wok settings page not working when locale not set
 - a682998c917b7ce18eb60b12c8801556673259ae Remove nginx-specific parameters from wok.conf file
