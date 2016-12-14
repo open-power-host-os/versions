@@ -4,7 +4,7 @@
 
 Name:       ginger-base
 Version:    2.2.1
-Release:    7%{?dist}
+Release:    8%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -74,6 +74,13 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Dec 08 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-8
+- c84dc833cbab89f92bc4aeb1c73023d4f74fb504 Merge remote-tracking branch upstream/master into hostos-devel
+- 0ac1d6b34bb208a29950c89cad6d76f53ea04a15 Fix for gingerbase issue #156
+- dc57f3ad06882c1a452a0e60467ca34fe75eec02 Fix for ginger issue #489 - Introduced new method for getting physical volumes and associated volume groups
+- da13715ce50e844537b9de39b76a3bf7607a292b Fix for ginger issue #484
+- 0f006534e799ba44ccfee5cb3af186b2998db9fa Merge remote-tracking branch upstream/master into hostos-devel
+
 * Wed Nov 30 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-7
 - 0f006534e799ba44ccfee5cb3af186b2998db9fa Merge remote-tracking branch upstream/master into hostos-devel
 - 1201b6bc602ca214fb976cfd007f9a79df142477 Bug fix #111: Do not return package dependencies on package lookup()

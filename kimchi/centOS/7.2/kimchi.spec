@@ -1,6 +1,6 @@
 Name:       kimchi
 Version:    2.3.0
-Release:    7%{?dist}
+Release:    8%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -90,6 +90,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Dec 08 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-8
+- 3b2ca799f2d534984c052b770b7f6546029be10d Merge remote-tracking branch upstream/master into hostos-devel
+- 7bc8b7d89c9a206e63250e3bc4d97fe6f16fcc8b Recognize openSUSE 42.2 ISO
+- 9e98b5f63ffcc4b76d53aa3fd5536ceb969d9111 Merge remote-tracking branch upstream/master into hostos-devel
+
 * Wed Nov 30 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-7
 - 9e98b5f63ffcc4b76d53aa3fd5536ceb969d9111 Merge remote-tracking branch upstream/master into hostos-devel
 - 69db14d6039af2d28d022f6e1ce1452b03f0aefa CPU Hot plug/unplug: test_rest.py changes

@@ -1,6 +1,6 @@
 Name:       ginger
 Version:    2.3.0
-Release:    7%{?dist}
+Release:    8%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -120,6 +120,22 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Dec 08 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-8
+- 6ed879fba26c5db81360ca2023b85fa320294f05 Merge remote-tracking branch upstream/master into hostos-devel
+- 8d3cc287647d38155c70967957335f5c5efa0aab Bug fix #426: adding err parameter in error handling function
+- 52724ebe35e2a48ccea965374552d9b918d612bb Bug fix #426: fixing join call in services.py
+- 7e745ab87d741b71ce4a6380fc761effc2fa3a64 Removing the Server UI tab from Host super tab
+- 4144b0c9107388d6d7947fc0ffac0f2f7cf963f4 Merge remote-tracking branch upstream/master into hostos-devel
+- 4afb0c7509e0e30e07211f45798d16c0c8c2ad1b Bug fix #498: Action buttons in Storage and Network tab not aligned properly
+- 189d6a3859ba841aa40623dbfa83bbdeeb1efe52 Globalization implementation for admin systemrule and iSCSI pages
+- 6ab9335843696b1958b61f249523c811708b359f Removing commented code from model/cfginterfaces.py
+- 173c9754b38277125b08867269cfcc6b3a371f01 Fixed ginger issue #497
+- 35458fc56537629bfeb40907fa1bcdd3abeeb39f Fix for Issue #489 Listing of partitions for a block device or during mount operation takes too long
+- 2cfcd9b47101e0834c59fa2ec3514263179be9d9 Fix for Multi-culture UI issues in Ginger plugin.
+- 22a8cff73396a8e742c51bea376f6d9bab3388a1 Removed console log messages from ginger util
+- fe72d6d8269e843f7485dc55af40447e510b3a02 Fix for issue #486
+- 59de2656226e73777d54eccdbc533957e15a1f72 Merge remote-tracking branch upstream/master into hostos-devel
+
 * Wed Nov 30 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-7
 - 59de2656226e73777d54eccdbc533957e15a1f72 Merge remote-tracking branch upstream/master into hostos-devel
 - 2ae952a183ece4c56152734f4547457a4a3e1917 Issue # 491: Usage icon is not displayed for File System and Swap Devices.
