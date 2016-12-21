@@ -1,6 +1,6 @@
 Name:       kimchi
 Version:    2.3.0
-Release:    8%{?dist}
+Release:    9%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -90,6 +90,25 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Dec 21 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-9
+- acb4d141c45694a94ec02068309dd4e6f97fea2c Merge remote-tracking branch upstream/master into hostos-devel
+- 5b973bde305aefe61f091a0f30d4baa872a58060 Multi-culture UI issues for kimchi plugin Guest module
+- 8c49fc6c5fba997f247088042138a41031b46e26 Multi-culture UI issues for kimchi plugin Storage module
+- def86526bd09acb4a68cfe68db6be2a21ab92089 Corrected position of close icon for create a network pop up alert
+- 7ab1a308f0167b5f0844e87aa3fdd6682195bc3e Multi-culture UI issues for kimchi plugin template module
+- fb8a1f344a736699e11f6b63acfeca09ae8a30d0 Bug fix #1064: In Migrate guest window, text boxes are not taking input properly from keyboard.
+- 94a5499d7440a5f313e88f724a3b757df6381ce2 Update README file to point to http://kimchi-project.github.io/kimchi/downloads/
+- 5dcfc2bdf7039a32da4ef857fdd2f2268958372a Use libvirtd service in Ubuntu
+- 426740b727103b6f5a13974753a388bc61dde6f5 Bug fix #1026: CentOS: Unable to get and update memory values for a powered off guest
+- 69a81f6a101d586ce435b48f8d7ee060d65d5ad3 Bug fix #1057: Failed to import kimchi
+- 9dd98ccffd8386aeb48134dda48566c7b59dfb0b Add more details to error message when probing image
+- 61d3bbe25b0e7a7b686082633d6f793fc4ad6040 Add missing dependency to documentation
+- 386c7d4e0bfec39a3a5cee348cd2360ffd74d5ee Bug fix #1066: Do not stora guest storage volume information on objectstore
+- 9b68c246bdc0ef61886debd67783e9cc4ce7473e Bug fix #1015: Rename Guest Name ID header to Guest Name
+- b49cbc6e88c64d79d8f0fbaa400da061573614a6 Fix checking for libvirt daemon on Ubuntu
+- e02939371596831f7e7dc1228d7dcbfd284733b0 Fixed resize volume click input number in virtualization->storag
+- 3b2ca799f2d534984c052b770b7f6546029be10d Merge remote-tracking branch upstream/master into hostos-devel
+
 * Thu Dec 08 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-8
 - 3b2ca799f2d534984c052b770b7f6546029be10d Merge remote-tracking branch upstream/master into hostos-devel
 - 7bc8b7d89c9a206e63250e3bc4d97fe6f16fcc8b Recognize openSUSE 42.2 ISO

@@ -4,7 +4,7 @@
 
 Name:       ginger-base
 Version:    2.2.1
-Release:    8%{?dist}
+Release:    9%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -74,6 +74,15 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Dec 21 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-9
+- 82dd2bea6900e3bda3cd14ef6835586b773fc6c8 Merge remote-tracking branch upstream/master into hostos-devel
+- d8b9b8c08952a4e1f298a352113e7570ad299bc8 Bug fix #134: Allow user enable/disable multiple repositories at once
+- 9c61cfd1a1d3dc3a8f88e957cae5a08045354bb7 Bug fix: Merge repo data with the user changes to update repo information
+- a06fecdf7f92909373f280cdb2c6d7e3b083f2c6 Add error message equivalent to WOKUTILS0001E
+- 109b9cc0be4305b0478cd73a3eba31b8f252263e Bug fix #152: Only serialize visible form inputs when editing repository
+- 90c3d1d170f43c54121fb43786f8f374c4e93ce4 Fix checking for Apt tool
+- c84dc833cbab89f92bc4aeb1c73023d4f74fb504 Merge remote-tracking branch upstream/master into hostos-devel
+
 * Thu Dec 08 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-8
 - c84dc833cbab89f92bc4aeb1c73023d4f74fb504 Merge remote-tracking branch upstream/master into hostos-devel
 - 0ac1d6b34bb208a29950c89cad6d76f53ea04a15 Fix for gingerbase issue #156
