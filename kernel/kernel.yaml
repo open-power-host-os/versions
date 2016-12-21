@@ -5,7 +5,6 @@ Package:
       src: 'https://github.com/open-power-host-os/linux.git'
       branch: 'hostos-devel'
       commit_id: '968c61815916312b756653b1b57351a1e44d7176'
-      archive: "linux-source"
  version:
    file: 'Makefile'
    regex: 'VERSION.*([\d.]+)\nPATCHLEVEL\s*=\s*(?P<patch>[\d.]*)\nSUBLEVEL\s*=\s*(?(patch)([\d.]*))\nEXTRAVERSION\s*=\s*([-\w.]*)\n'

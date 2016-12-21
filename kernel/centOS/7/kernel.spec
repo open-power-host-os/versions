@@ -402,7 +402,7 @@ BuildRequires: ncurses-devel
 %{!?cross_build:BuildRequires: vim-minimal}
 %endif
 
-Source0: linux-source.tar.gz
+Source0: %{name}.tar.gz
 
 Source11: x509.genkey
 
@@ -703,8 +703,8 @@ exit 1
 %endif
 
 tar xzf %{SOURCE0}
-mv linux-source kernel-%{KVRA}
-#setup -q -n kernel-%{rheltarball} -c
+mv %{name} kernel-%{KVRA}
+#setup -q -n kernel -c
 
 
 #mv linux-%{rheltarball} linux-%{KVRA}

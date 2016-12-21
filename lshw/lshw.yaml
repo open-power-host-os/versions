@@ -5,7 +5,6 @@ Package:
       src: 'https://github.com/lyonel/lshw.git'
       branch: 'master'
       commit_id: 'f9bdcc342d525f8504b81a9a344d58f57aa9b5dc'
-      archive: 'lshw'
  files:
   centos:
    '7':

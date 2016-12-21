@@ -5,7 +5,6 @@ Package:
       src: 'https://github.com/open-power-host-os/gingerbase.git'
       branch: 'hostos-devel'
       commit_id: '82dd2bea6900e3bda3cd14ef6835586b773fc6c8'
-      archive: 'ginger-base'
  files:
   centos:
    '7':
