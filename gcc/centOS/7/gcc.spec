@@ -94,9 +94,9 @@ License: GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2
 Group: Development/Languages
 # The source for this package was pulled from upstream's vcs.  Use the
 # following commands to generate the tarball:
-# svn export svn://gcc.gnu.org/svn/gcc/branches/redhat/gcc-4_8-branch@%{SVNREV} gcc-%{version}-%{DATE}
-# tar cf - gcc-%{version}-%{DATE} | bzip2 -9 > gcc-%{version}-%{DATE}.tar.bz2
-Source0: gcc-%{version}-%{DATE}.tar.bz2
+# svn export svn://gcc.gnu.org/svn/gcc/branches/redhat/gcc-4_8-branch@%{SVNREV} gcc
+# tar zcf gcc.tar.gz gcc
+Source0: gcc.tar.gz
 %global isl_version 0.11.1
 Source1: ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-%{isl_version}.tar.bz2
 %global cloog_version 0.18.0
@@ -859,8 +859,8 @@ not stable, so plugins must be rebuilt any time GCC is updated.
 %define debug_package %{nil}
 %global __debug_package 1
 %global __debug_install_post \
-   %{_rpmconfigdir}/find-debuginfo.sh %{?_missing_build_ids_terminate_build:--strict-build-id} %{?_find_debuginfo_opts} "%{_builddir}/gcc-%{version}-%{DATE}"\
-    %{_builddir}/gcc-%{version}-%{DATE}/split-debuginfo.sh\
+   %{_rpmconfigdir}/find-debuginfo.sh %{?_missing_build_ids_terminate_build:--strict-build-id} %{?_find_debuginfo_opts} "%{_builddir}/gcc"\
+    %{_builddir}/gcc/split-debuginfo.sh\
 %{nil}
 
 %package debuginfo
@@ -893,7 +893,7 @@ package or when debugging this package.
 %endif
 
 %prep
-%setup -q -n gcc-%{version}-%{DATE} -a 1 -a 2
+%setup -q -n gcc -a 1 -a 2
 %patch0 -p0 -b .hack~
 %patch1 -p0 -b .java-nomulti~
 %patch2 -p0 -b .ppc32-retaddr~
@@ -933,7 +933,7 @@ rm -f libgo/go/crypto/elliptic/p224{,_test}.go
 %if 0%{?_enable_debug_packages}
 cat > split-debuginfo.sh <<\EOF
 #!/bin/sh
-BUILDDIR="%{_builddir}/gcc-%{version}-%{DATE}"
+BUILDDIR="%{_builddir}/gcc"
 if [ -f "${BUILDDIR}"/debugfiles.list \
      -a -f "${BUILDDIR}"/debuglinks.list ]; then
   > "${BUILDDIR}"/debugsources-base.list

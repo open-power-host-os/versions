@@ -1,7 +1,7 @@
 Package:
  name: 'gcc'
- download_source: 'svn export svn://gcc.gnu.org/svn/gcc/branches/redhat/gcc-4_8-branch@240558 gcc-4.8.5-20150702 && tar cf - gcc-4.8.5-20150702 | bzip2 -9 > gcc-4.8.5-20150702.tar.bz2'
- expects_source: 'gcc-4.8.5-20150702.tar.bz2'
+ # gcc 4.8.5-20150702
+ download_source: 'svn export svn://gcc.gnu.org/svn/gcc/branches/redhat/gcc-4_8-branch@240558 gcc && tar zcf gcc.tar.gz gcc'
  files:
   centos:
    '7':
