@@ -186,8 +186,8 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.7.0
-Release: 6%{?dist}
-Epoch: 11
+Release: 7%{?dist}
+Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
 URL: http://www.qemu.org/
@@ -1521,6 +1521,9 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Wed Dec 28 2016 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 15:2.7.0-7
+- Bump epoch to avoid obsolescence by qemu-kvm-ev in CentOS
+
 * Wed Dec 21 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 11:2.7.0-6
 - 18559e1b90ef9b1eb5cd240a80aacf20db50b0bf virtio: drop virtio_queue_get_ring_{size, addr}()
 - b0905bf402ff9f65bfa0862a6f6db7a61584cbdb vhost: drop legacy vring layout bits
