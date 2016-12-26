@@ -1,6 +1,6 @@
 Name:       wok
 Version:    2.3.0
-Release:    7%{?dist}
+Release:    8%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -173,6 +173,18 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed Dec 21 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-8
+- 7173a7979648fad2e3a8355b15b94addbb4cc949 Bug fix #163: make check-local: whitespace verification is not excluding imported files
+- af84a916765d6aa5ce6207fa7450804f46007b3a Bug fix #130: Wok does not support multiple words in plugin tag name
+- b1f1fc774953d0a70bc2608569358a8de76a87ad Bug fix #144: The filter of of the user activity log shows loading forever
+- d728a98ade06d4c4f1b6a1524bb75abcd78a156f Bug fix #168: check_ui_code_errors.sh not found by make check on dist tarball (RHEL 7.2)
+- 5e205b319a0d19b10f4437ea9cab6a9cb2f4360e Bug fix #186: make check-local fails inside tarball
+- ecf1f2f281ae012fd895f9c8462dfdc76af04e07 Bug fix #187: wok.main.js: parseTabs does not consider none mode tabs
+- da171fdf5edfc53ad15adc459f93d6d5ab9f15b7 Bug fix #191: Break lines content to be smaller than 512 characters
+- eaf4c93f38049366832928691ed98bc4b7371722 Bug fix #191: Add updated lodash.min.js file
+- 0cdf5bbbf34d0b30caa11bc8a3ad95d5d3d0ff4a Bug fix #185: make rpm fails on CentOS when firewalld isnt installed
+- 55bb83d99d4bcf243f2c2103a2c45751172bacc7 Fix non-relative paths
+
 * Thu Dec 08 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-7
 - 55bb83d99d4bcf243f2c2103a2c45751172bacc7 Fix non-relative paths
 - 43d73d0f087ffb09f6528f1fe3485a7457d0b8e9 Fix ip-address.js directory

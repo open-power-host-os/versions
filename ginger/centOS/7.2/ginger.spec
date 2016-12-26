@@ -1,6 +1,6 @@
 Name:       ginger
 Version:    2.3.0
-Release:    8%{?dist}
+Release:    9%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -120,6 +120,23 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Dec 21 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-9
+- 8eefc4fc1210825cad323a133f7e546fab3c50ce Merge remote-tracking branch upstream/master into hostos-devel
+- ada4fbb0bdac4c640bb7831348bc066946f92bb3 Fix for the ginger issue # 511
+- a471a6f5d4adc75816940365f4d4699ff56ae7ad Fix for Issue #512 - Create partition fails with 500 for iSCSI and FCP devices
+- 2252dc5e266c14a07b1cf3c7e123587ebd2492bd Fix for ginger issue #509 and #510
+- b038f17c42ab0f44fe888fdc82ac6798f80bb9c2 Fix for Issue #508 - NFS mounting automatically adds _netdev option even when not selected
+- 6fec0870f30a33cdcb581b38251408ecec866edb Fix for Issue #499
+- d3b8b6301ea607d72e740c2d66bbf3c6ace51121 Issue #504 - Removing missing package references from README.md
+- 2a2c0746667c6394f3339eaa462409b31b3176ce Bug fix #507: Reduce JS lines to be > 512 characters
+- fc899a4ddb8fb259fb14a84a60e7898333ec0c31 Fix for issue #506
+- 6ae5c02ab45929ee1b758e3967f0319a9e291cdb Fix for issue #486 - part 2
+- 556484ba3b20b0ceb055cdd1f81424f530e0e475 Fix for the ginger issue #505
+- d688feaf13ff40f95a1fb823d36bfff0b9d0d293 Bug fix #428: wrong parameter in OperationFailed message
+- 9dad1e10a087bf86fe88bbd4ed7a4bc6db8b775c Use success message for success case
+- a9db23fa3103608ec4e94af6c11244d8218d5936 Fix key error while translating error message
+- 6ed879fba26c5db81360ca2023b85fa320294f05 Merge remote-tracking branch upstream/master into hostos-devel
+
 * Thu Dec 08 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-8
 - 6ed879fba26c5db81360ca2023b85fa320294f05 Merge remote-tracking branch upstream/master into hostos-devel
 - 8d3cc287647d38155c70967957335f5c5efa0aab Bug fix #426: adding err parameter in error handling function
