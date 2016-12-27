@@ -1,0 +1,16 @@
+Package:
+ name: 'golang-github-russross-blackfriday'
+ clone_url: 'https://github.com/russross/blackfriday'
+ commit_id: '5f33e7b7878355cd2b7e6b8eefc48a5472c69f70'
+ branch: 'master'
+ expects_source: 'golang-github-russross-blackfriday'
+ files:
+  centos:
+   '7.2':
+    spec: 'centOS/7.2/golang-github-russross-blackfriday.spec'
+    build_dependencies:
+     - golang
+     - golang-github-shurcooL-sanitized_anchor_name
+    dependencies:
+     - golang
+     - golang-github-shurcooL-sanitized_anchor_name
