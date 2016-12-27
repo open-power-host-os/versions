@@ -1,0 +1,15 @@
+Package:
+ name: 'golang-github-shurcooL-sanitized_anchor_name'
+ clone_url: 'https://github.com/shurcooL/sanitized_anchor_name'
+ commit_id: '1dba4b3954bc059efc3991ec364f9f9a35f597d2'
+ branch: 'master'
+ expects_source: 'golang-github-shurcooL-sanitized_anchor_name'
+ files:
+  centos:
+   '7.2':
+    spec: 'centOS/7.2/golang-github-shurcooL-sanitized_anchor_name.spec'
+    build_dependencies:
+     - golang
+    dependencies:
+     - golang
+ 
