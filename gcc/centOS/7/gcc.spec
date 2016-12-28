@@ -96,7 +96,7 @@ Group: Development/Languages
 # following commands to generate the tarball:
 # svn export svn://gcc.gnu.org/svn/gcc/branches/redhat/gcc-4_8-branch@%{SVNREV} gcc
 # tar zcf gcc.tar.gz gcc
-Source0: gcc.tar.gz
+Source0: %{name}.tar.gz
 %global isl_version 0.11.1
 Source1: ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-%{isl_version}.tar.bz2
 %global cloog_version 0.18.0
@@ -893,7 +893,7 @@ package or when debugging this package.
 %endif
 
 %prep
-%setup -q -n gcc -a 1 -a 2
+%setup -q -n %{name} -a 1 -a 2
 %patch0 -p0 -b .hack~
 %patch1 -p0 -b .java-nomulti~
 %patch2 -p0 -b .ppc32-retaddr~

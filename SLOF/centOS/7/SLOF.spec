@@ -7,7 +7,7 @@ License:        BSD
 URL:            http://www.openfirmware.info/SLOF
 BuildArch:      noarch
 
-Source0:        SLOF.tar.gz
+Source0:        %{name}.tar.gz
 
 # LTC: building native; no need for xcompiler
 BuildRequires:  perl(Data::Dumper)
@@ -27,7 +27,7 @@ separately.  It is a dependency of qemu-system-ppc64.
 
 
 %prep
-%setup -q -n SLOF
+%setup -q -n %{name}
 
 if test -r "gitlog" ; then
     echo "This is the first 50 lines of a gitlog taken at archive creation time:"
