@@ -1,6 +1,6 @@
 Name:       kimchi
 Version:    2.3.0
-Release:    9%{?dist}
+Release:    10%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -90,6 +90,11 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Dec 28 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-10
+- 1d6bc597462f8bdd01f094b25886b1abce428dfe Merge remote-tracking branch upstream/master into hostos-devel
+- bb3e57ca12cb9189bdbced83e58d36515776eec1 mockmodel.py: unsubscribing from exit channel on cleanup
+- acb4d141c45694a94ec02068309dd4e6f97fea2c Merge remote-tracking branch upstream/master into hostos-devel
+
 * Wed Dec 21 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-9
 - acb4d141c45694a94ec02068309dd4e6f97fea2c Merge remote-tracking branch upstream/master into hostos-devel
 - 5b973bde305aefe61f091a0f30d4baa872a58060 Multi-culture UI issues for kimchi plugin Guest module
