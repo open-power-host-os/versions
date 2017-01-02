@@ -8,6 +8,6 @@ Package:
       archive: 'go'
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/golang.spec'
-    build_files: 'centOS/7.2/SOURCES'
+   '7':
+    spec: 'centOS/7/golang.spec'
+    build_files: 'centOS/7/SOURCES'

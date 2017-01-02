@@ -8,6 +8,6 @@ Package:
       archive: "libseccomp-2.3.1"
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/libseccomp.spec'
+   '7':
+    spec: 'centOS/7/libseccomp.spec'
     build_files: 

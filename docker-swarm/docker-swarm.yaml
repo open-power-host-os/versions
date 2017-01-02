@@ -8,6 +8,6 @@ Package:
        archive: 'docker-swarm'
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/docker-swarm.spec'
-    rpmmacro: 'centOS/7.2/rpmmacro'
+   '7':
+    spec: 'centOS/7/docker-swarm.spec'
+    rpmmacro: 'centOS/7/rpmmacro'

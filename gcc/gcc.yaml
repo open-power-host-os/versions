@@ -4,9 +4,9 @@ Package:
  expects_source: 'gcc-4.8.5-20150702.tar.bz2'
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/gcc.spec'
-    build_files: 'centOS/7.2/SOURCES'
+   '7':
+    spec: 'centOS/7/gcc.spec'
+    build_files: 'centOS/7/SOURCES'
     download_build_files:
      - 'ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-0.11.1.tar.bz2'
      - 'ftp://gcc.gnu.org/pub/gcc/infrastructure/cloog-0.18.0.tar.gz'

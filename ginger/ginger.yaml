@@ -8,5 +8,5 @@ Package:
        archive: 'ginger'
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/ginger.spec'
+   '7':
+    spec: 'centOS/7/ginger.spec'

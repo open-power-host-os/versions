@@ -10,7 +10,7 @@ be added here to establish a valid and tested set of software versions to build.
 Supported GNU/Linux distributions
 ---------------------------------
 
-* CentOS 7.2 PPC64LE
+* CentOS 7.3 PPC64LE
 
 Installation
 ------------

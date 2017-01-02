@@ -8,5 +8,5 @@ Package:
      archive: 'iprutils-2.4.13'
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/iprutils.spec'
+   '7':
+    spec: 'centOS/7/iprutils.spec'

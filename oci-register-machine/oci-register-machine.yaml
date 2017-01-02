@@ -8,7 +8,7 @@ Package:
       archive: 'oci-register-machine'
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/oci-register-machine.spec'
+   '7':
+    spec: 'centOS/7/oci-register-machine.spec'
     build_dependencies:
      - golang

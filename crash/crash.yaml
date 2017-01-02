@@ -11,6 +11,6 @@ Package:
    regex: '([\w.-]+)'
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/crash.spec'
-    build_files: 'centOS/7.2/SOURCES'
+   '7':
+    spec: 'centOS/7/crash.spec'
+    build_files: 'centOS/7/SOURCES'

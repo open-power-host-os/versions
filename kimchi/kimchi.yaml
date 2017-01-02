@@ -8,5 +8,5 @@ Package:
       archive: 'kimchi'
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/kimchi.spec'
+   '7':
+    spec: 'centOS/7/kimchi.spec'
