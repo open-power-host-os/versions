@@ -1,6 +1,6 @@
 Name:       ginger
 Version:    2.3.0
-Release:    9%{?dist}
+Release:    10%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -120,6 +120,13 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Dec 28 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-10
+- 0ecd4eeb8ecf67a060c2bd595bddf4f234e1e6de Merge remote-tracking branch upstream/master into hostos-devel
+- 1aba901ff28b85d441e53b3dc4d05f2bc6dc48c2 Add dependency on libuser to avoid bug
+- 0113c57f2199db6188f675496d449021b39c81eb Fixed issue #513 wrong error info when creating a user
+- 15b15b339a1921951cecd4ad2fb44082754fab5d Fix for ginger issue #518
+- 8eefc4fc1210825cad323a133f7e546fab3c50ce Merge remote-tracking branch upstream/master into hostos-devel
+
 * Wed Dec 21 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-9
 - 8eefc4fc1210825cad323a133f7e546fab3c50ce Merge remote-tracking branch upstream/master into hostos-devel
 - ada4fbb0bdac4c640bb7831348bc066946f92bb3 Fix for the ginger issue # 511

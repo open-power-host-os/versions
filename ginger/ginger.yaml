@@ -2,7 +2,7 @@ Package:
  name: 'ginger'
  clone_url: 'https://github.com/open-power-host-os/ginger.git'
  branch: 'hostos-devel'
- commit_id: '8eefc4fc1210825cad323a133f7e546fab3c50ce'
+ commit_id: '0ecd4eeb8ecf67a060c2bd595bddf4f234e1e6de'
  expects_source: 'ginger'
  files:
   centos:
