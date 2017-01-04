@@ -387,6 +387,10 @@ Requires: %{name}-img
 
 %define qemudocdir %{_docdir}/%{name}
 
+# ensures we're always chosen over qemu-kvm-ev
+%define provide_rhev() \
+Provides: %1-rhev = %{epoch}:%{version}-%{release}
+
 %description
 QEMU is a generic and open source processor emulator which achieves a good
 emulation speed by using dynamic translation. QEMU has two operating modes:
@@ -406,6 +410,7 @@ As QEMU requires no host kernel patches to run, it is safe and easy to use.
 Summary: QEMU metapackage for KVM support
 Group: Development/Tools
 Requires: qemu-%{kvm_package} = %{epoch}:%{version}-%{release}
+%provide_rhev qemu-kvm
 
 %description kvm
 This is a meta-package that provides a qemu-system-<arch> package for native
@@ -417,6 +422,7 @@ will install qemu-system-x86
 %package  img
 Summary: QEMU command line tool for manipulating disk images
 Group: Development/Tools
+%provide_rhev qemu-img
 
 %description img
 This package provides a command line tool for manipulating disk images
