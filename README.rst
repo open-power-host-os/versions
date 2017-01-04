@@ -39,7 +39,6 @@ hwdata                                        0.288
 iprutils                                      2.4.13
 kernel                                        4.8.4
 kimchi                                        2.3.0
-libguestfs                                    1.28.1
 librtas                                       1.4.1
 libseccomp                                    2.3.1
 libservicelog                                 1.1.16
