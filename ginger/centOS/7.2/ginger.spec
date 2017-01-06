@@ -1,6 +1,6 @@
 Name:       ginger
 Version:    2.3.0
-Release:    10%{?dist}
+Release:    11%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -120,6 +120,13 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jan 04 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-11
+- 875ad083ad879105a1bf0424503c9b6205df7ab3 Merge remote-tracking branch upstream/master into hostos-devel
+- cb76be8d861471879b9ed7a138e2acde0dddad5b Fixing copyright year of host-network.js
+- 1d39f18d615f2172b4a972d75b209445498ed640 Fix for ginger issue #520
+- 292a33ab2fb4557f55cf892b56dac088e0048af4 SR-IOV option not being shown
+- 0ecd4eeb8ecf67a060c2bd595bddf4f234e1e6de Merge remote-tracking branch upstream/master into hostos-devel
+
 * Wed Dec 28 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-10
 - 0ecd4eeb8ecf67a060c2bd595bddf4f234e1e6de Merge remote-tracking branch upstream/master into hostos-devel
 - 1aba901ff28b85d441e53b3dc4d05f2bc6dc48c2 Add dependency on libuser to avoid bug
