@@ -1,9 +1,11 @@
 Package:
  name: 'iprutils'
- clone_url: 'http://git.code.sf.net/p/iprdd/iprutils'
- branch: 'master'
- commit_id: 'd7d5bc6f9287aa619e11d3872c4ee544b0f8ab9d' 
- expects_source: 'iprutils-2.4.13'
+ sources:
+  - git:
+     src: 'http://git.code.sf.net/p/iprdd/iprutils'
+     branch: 'master'
+     commit_id: 'd7d5bc6f9287aa619e11d3872c4ee544b0f8ab9d' 
+     archive: 'iprutils-2.4.13'
  files:
   centos:
    '7.2':

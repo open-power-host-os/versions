@@ -1,9 +1,11 @@
 Package:
  name: 'docker'
- clone_url: 'https://github.com/docker/docker.git'
- commit_id: 'bb80604a0b200140a440675348c848a137a1b2e2'
- branch: '1.12.x'
- expects_source: 'docker'
+ sources:
+   - git:
+       src: 'https://github.com/docker/docker.git'
+       commit_id: 'bb80604a0b200140a440675348c848a137a1b2e2'
+       branch: '1.12.x'
+       archive: 'docker'
  files:
   centos:
    '7.2':

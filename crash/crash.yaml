@@ -1,12 +1,14 @@
 Package:
  name: 'crash'
- clone_url: 'https://github.com/crash-utility/crash.git'
- branch: 'master'
- commit_id: '64531dc850f2840cedafa143fe051d2cfeae5247' # 7.1.6
+ sources:
+   - git:
+      src: 'https://github.com/crash-utility/crash.git'
+      commit_id: '64531dc850f2840cedafa143fe051d2cfeae5247' # 7.1.6
+      branch: 'master'
+      archive: 'crash'
  version:
    file: '.rh_rpm_package'
    regex: '([\w.-]+)'
- expects_source: "crash"
  files:
   centos:
    '7.2':

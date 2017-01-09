@@ -1,9 +1,11 @@
 Package:
  name: 'libvirt'
- clone_url: 'https://github.com/open-power-host-os/libvirt.git'
- branch: 'hostos-devel'
- commit_id: 'ddccbf6072a3f95e053cc9934d1178cb1acd2aa7'
- expects_source: "libvirt"
+ sources:
+   - git:
+      src: 'https://github.com/open-power-host-os/libvirt.git'
+      branch: 'hostos-devel'
+      commit_id: 'ddccbf6072a3f95e053cc9934d1178cb1acd2aa7'
+      archive: "libvirt"
  version:
    file: 'configure.ac'
    regex: 'AC_INIT\(\[[^]]+\],\s*\[([\d.]+)\]'

@@ -1,9 +1,11 @@
 Package:
  name: 'gingerbase'
- clone_url: 'https://github.com/open-power-host-os/gingerbase.git'
- branch: 'hostos-devel'
- commit_id: '82dd2bea6900e3bda3cd14ef6835586b773fc6c8'
- expects_source: 'ginger-base'
+ sources:
+   - git:
+      src: 'https://github.com/open-power-host-os/gingerbase.git'
+      branch: 'hostos-devel'
+      commit_id: '82dd2bea6900e3bda3cd14ef6835586b773fc6c8'
+      archive: 'ginger-base'
  files:
   centos:
    '7.2':

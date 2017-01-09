@@ -7,8 +7,10 @@ Package:
 # clone_url: 'https://github.com/kubernetes/kubernetes.git'
 # branch: 'release-1.2'
 # commit_id: '5cb86ee022267586db386f62781338b0483733b3'
- download_source: 'wget https://github.com/kubernetes/kubernetes/archive/4a3f9c5b19c7ff804cbc1bf37a15c044ca5d2353/kubernetes-4a3f9c5.tar.gz'
- expects_source: "kubernetes-4a3f9c5.tar.gz"
+ sources:
+   - url:
+      src: 'https://github.com/kubernetes/kubernetes/archive/4a3f9c5b19c7ff804cbc1bf37a15c044ca5d2353/kubernetes-4a3f9c5.tar.gz'
+      archive: 'kubernetes-4a3f9c5.tar.gz'
  files:
   centos:
    '7.2':

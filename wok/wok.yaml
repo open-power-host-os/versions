@@ -1,9 +1,11 @@
 Package:
  name: 'wok'
- clone_url: 'https://github.com/open-power-host-os/wok.git'
- branch: 'hostos-devel'
- commit_id: '7173a7979648fad2e3a8355b15b94addbb4cc949'
- expects_source: 'wok'
+ sources:
+   - git:
+      src: 'https://github.com/open-power-host-os/wok.git'
+      branch: 'hostos-devel'
+      commit_id: '7173a7979648fad2e3a8355b15b94addbb4cc949'
+      archive: 'wok'
  files:
   centos:
    '7.2':

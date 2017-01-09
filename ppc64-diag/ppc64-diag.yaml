@@ -1,9 +1,11 @@
 Package:
  name: 'ppc64-diag'
- clone_url: 'https://github.com/open-power-host-os/ppc64-diag.git'
- branch: 'hostos-devel'
- commit_id: 'd56f7f1367bd6634605fd65997170252696178fa'
- expects_source: "ppc64-diag"
+ sources:
+   - git:
+      src: 'https://github.com/open-power-host-os/ppc64-diag.git'
+      branch: 'hostos-devel'
+      commit_id: 'd56f7f1367bd6634605fd65997170252696178fa'
+      archive: "ppc64-diag"
  files:
   centos:
    '7.2':

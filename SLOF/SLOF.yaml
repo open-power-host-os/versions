@@ -1,10 +1,12 @@
 Package:
  name: 'SLOF'
- clone_url: 'https://github.com/open-power-host-os/slof.git'
- branch: 'powerkvm-v3.1.1'
- # this is tag qemu-slof-20160525 but since nobody else uses tags let's keep it as a commit id
- commit_id: 'b2d56f3a322f2c6375a87d11274fbae1cde66ae8'
- expects_source: "SLOF"
+ sources:
+   - git:
+       src: 'https://github.com/open-power-host-os/slof.git'
+       branch: 'powerkvm-v3.1.1'
+       # this is tag qemu-slof-20160525 but since nobody else uses tags let's keep it as a commit id
+       commit_id: 'b2d56f3a322f2c6375a87d11274fbae1cde66ae8'
+       archive: "SLOF"
  files:
   centos:
    '7.2':

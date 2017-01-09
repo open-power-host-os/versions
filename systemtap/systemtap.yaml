@@ -1,9 +1,11 @@
 Package:
  name: 'systemtap'
- clone_url: 'git://sourceware.org/git/systemtap.git'
- branch: 'master'
- commit_id: '616ec7a0b916df7785d911b824c3df6eb022b213' # release-3.0
- expects_source: "systemtap-3.0"
+ sources:
+  - git:
+     src: 'git://sourceware.org/git/systemtap.git'
+     branch: 'master'
+     commit_id: '616ec7a0b916df7785d911b824c3df6eb022b213' # release-3.0
+     archive: "systemtap-3.0"
  files:
   centos:
    '7.2':
