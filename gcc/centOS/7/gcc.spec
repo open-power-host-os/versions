@@ -1,3 +1,8 @@
+# The tests are disabled by default.
+# Set --with tests or bcond_without to run tests.
+# Original behaviour is preserved.
+%bcond_with tests
+
 %global DATE 20150702
 %global SVNREV 225304
 # Note, gcc_release must be integer, if you want to add suffixes to
@@ -2078,6 +2083,7 @@ rm -f %{buildroot}%{mandir}/man3/ffi*
 # Help plugins find out nvra.
 echo gcc-%{version}-%{release}.%{_arch} > $FULLPATH/rpmver
 
+%if %{with tests}
 %check
 cd obj-%{gcc_target_platform}
 
@@ -2105,6 +2111,7 @@ done
 tar cf - testlogs-%{_target_platform}-%{version}-%{release} | bzip2 -9c \
   | uuencode testlogs-%{_target_platform}.tar.bz2 || :
 rm -rf testlogs-%{_target_platform}-%{version}-%{release}
+%endif
 
 %clean
 rm -rf %{buildroot}
