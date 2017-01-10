@@ -1,3 +1,8 @@
+# The tests are disabled by default.
+# Set --with tests or bcond_without to run tests.
+# Original behaviour is preserved.
+%bcond_with tests
+
 %if 0%{?fedora}
 %global with_devel 1
 %global with_bundled 1
@@ -727,6 +732,7 @@ done
 cp -a *.md %{buildroot}%{_sharedstatedir}/kubernetes-unit-test/
 popd
 
+%if %{with tests}
 %check
 # Fedora, RHEL7 and CentOS are tested via unit-test subpackage
 if [ 1 != 1 ]; then
@@ -743,6 +749,7 @@ echo "******Testing integration******"
 hack/test-integration.sh --use_go_build
 %endif
 fi
+%endif
 
 #define license tag if not already defined
 %{!?_licensedir:%global license %doc}
