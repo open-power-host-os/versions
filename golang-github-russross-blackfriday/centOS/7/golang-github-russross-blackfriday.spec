@@ -1,3 +1,8 @@
+# The tests are disabled by default.
+# Set --with tests or bcond_without to run tests.
+# Original behaviour is preserved.
+%bcond_with tests
+
 %global debug_package   %{nil}
 %global provider        github
 %global provider_tld    com
@@ -52,7 +57,9 @@ install -d -p %{buildroot}%{gopath}/src/%{import_path}/testdata
 cp -pav *.go %{buildroot}%{gopath}/src/%{import_path}/
 cp -pav testdata/* %{buildroot}%{gopath}/src/%{import_path}/testdata/
 
+%if %{with tests}
 %check
+%endif
 
 %files devel
 %doc README.md
