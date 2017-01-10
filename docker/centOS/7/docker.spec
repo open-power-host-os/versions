@@ -1,3 +1,8 @@
+# The tests are disabled by default.
+# Set --with tests or bcond_without to run tests.
+# Original behaviour is preserved.
+%bcond_with tests
+
 %if 0%{?fedora}
 %global with_devel 1
 %global with_debug 1
@@ -694,6 +699,7 @@ mkdir -p %{buildroot}/etc/%{name}/certs.d/redhat.{com,io}
 ln -s %{_sysconfdir}/rhsm/ca/redhat-uep.pem %{buildroot}/%{_sysconfdir}/%{name}/certs.d/redhat.com/redhat-ca.crt
 ln -s %{_sysconfdir}/rhsm/ca/redhat-uep.pem %{buildroot}/%{_sysconfdir}/%{name}/certs.d/redhat.io/redhat-ca.crt
 
+%if %{with tests}
 %check
 [ ! -w /run/%{repo}.sock ] || {
     mkdir test_dir
@@ -704,6 +710,7 @@ ln -s %{_sysconfdir}/rhsm/ca/redhat-uep.pem %{buildroot}/%{_sysconfdir}/%{name}/
     popd
     popd
 }
+%endif
 
 %post
 %systemd_post %{repo}
