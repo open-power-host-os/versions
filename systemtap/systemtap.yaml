@@ -5,7 +5,3 @@ Package:
      src: 'git://sourceware.org/git/systemtap.git'
      branch: 'master'
      commit_id: '616ec7a0b916df7785d911b824c3df6eb022b213' # release-3.0
- files:
-  CentOS:
-   '7':
-    rpmmacro: 'CentOS/7/rpmmacro'

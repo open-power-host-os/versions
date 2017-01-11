@@ -5,7 +5,3 @@ Package:
      src: 'https://github.com/open-power-host-os/qemu.git'
      branch: 'hostos-devel'
      commit_id: '169a53efae579f51022612577e7b17c8aead237c'
- files:
-  CentOS:
-   '7':
-    rpmmacro: 'CentOS/7/rpmmacro'

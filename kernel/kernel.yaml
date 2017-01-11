@@ -11,6 +11,5 @@ Package:
  files:
   CentOS:
    '7':
-    rpmmacro: 'CentOS/7/rpmmacro'
     build_dependencies:
      - 'gcc'
