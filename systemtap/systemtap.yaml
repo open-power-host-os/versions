@@ -8,7 +8,7 @@ Package:
      archive: "systemtap-3.0"
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/systemtap.spec'
-    build_files: 'centOS/7.2/SOURCES'
-    rpmmacro: 'centOS/7.2/rpmmacro'
+   '7':
+    spec: 'centOS/7/systemtap.spec'
+    build_files: 'centOS/7/SOURCES'
+    rpmmacro: 'centOS/7/rpmmacro'

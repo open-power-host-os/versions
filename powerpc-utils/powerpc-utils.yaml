@@ -8,6 +8,6 @@ Package:
       archive: "powerpc-utils"
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/powerpc-utils.spec'
-    build_files: 'centOS/7.2/SOURCES'
+   '7':
+    spec: 'centOS/7/powerpc-utils.spec'
+    build_files: 'centOS/7/SOURCES'

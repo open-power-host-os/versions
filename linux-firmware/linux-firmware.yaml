@@ -8,6 +8,6 @@ Package:
       archive: "linux-firmware"
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/linux-firmware.spec'
-    rpmmacro: 'centOS/7.2/rpmmacro'
+   '7':
+    spec: 'centOS/7/linux-firmware.spec'
+    rpmmacro: 'centOS/7/rpmmacro'

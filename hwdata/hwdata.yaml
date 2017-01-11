@@ -8,5 +8,5 @@ Package:
       archive: "hwdata"
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/hwdata.spec'
+   '7':
+    spec: 'centOS/7/hwdata.spec'

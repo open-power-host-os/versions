@@ -8,6 +8,6 @@ Package:
        archive: 'flannel'
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/flannel.spec'
-    build_files: 'centOS/7.2/SOURCES'
+   '7':
+    spec: 'centOS/7/flannel.spec'
+    build_files: 'centOS/7/SOURCES'

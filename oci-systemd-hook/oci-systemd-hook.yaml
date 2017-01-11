@@ -8,7 +8,7 @@ Package:
        archive: 'oci-systemd-hook'
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/oci-systemd-hook.spec'
+   '7':
+    spec: 'centOS/7/oci-systemd-hook.spec'
     build_dependencies:
      - golang

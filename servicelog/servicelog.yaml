@@ -11,7 +11,7 @@ Package:
    regex: 'm4_define\(\[ppu_version\],\s*([\d.]+)\)'
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/servicelog.spec'
+   '7':
+    spec: 'centOS/7/servicelog.spec'
     dependencies:
      - 'libservicelog'

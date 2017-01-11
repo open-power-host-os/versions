@@ -8,9 +8,9 @@ Package:
       archive: "qemu"
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/qemu.spec'
-    rpmmacro: 'centOS/7.2/rpmmacro'
-    build_files: 'centOS/7.2/SOURCES'
+   '7':
+    spec: 'centOS/7/qemu.spec'
+    rpmmacro: 'centOS/7/rpmmacro'
+    build_files: 'centOS/7/SOURCES'
     dependencies:
      - 'libseccomp'

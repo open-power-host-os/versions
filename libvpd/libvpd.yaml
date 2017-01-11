@@ -11,5 +11,5 @@ Package:
    regex: 'AC_INIT\(\[[^]]+\],\s*\[([\d.]+)\]'
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/libvpd.spec'
+   '7':
+    spec: 'centOS/7/libvpd.spec'

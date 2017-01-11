@@ -8,5 +8,5 @@ Package:
       archive: "librtas-1.4.1"
  files:
   centos:
-   '7.2':
-    spec: 'centOS/7.2/librtas.spec'
+   '7':
+    spec: 'centOS/7/librtas.spec'

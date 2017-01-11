@@ -2,7 +2,7 @@
 %global SVNREV 225304
 # Note, gcc_release must be integer, if you want to add suffixes to
 # %{release}, append them after %{gcc_release} on Release: line.
-%global gcc_release 4
+%global gcc_release 12
 %global _unpackaged_files_terminate_build 0
 %global _performance_build 1
 %global multilib_64_archs sparc64 ppc64 ppc64p7 s390x x86_64
@@ -79,7 +79,7 @@ Name: gcc
 %global gcc_version 4.8.5
 %endif
 Version: 4.8.5
-Release: %{gcc_release}%{?dist}.2
+Release: %{gcc_release}%{?dist}
 %if "%{version}" != "%{gcc_version}"
 %define gcc_provides %{gcc_version}-16%{?dist}
 %endif
@@ -3365,6 +3365,8 @@ fi
 %{_prefix}/libexec/gcc/%{gcc_target_platform}/%{gcc_version}/plugin
 
 %changelog
+* Tue Jan 03 2017 Lisiane M. B. Ambiel <lisianem@linux.vnet.ibm.com> - 4.8.5-12
+- Bump gcc_release to avoid error when installing kernel dependencies
 * Tue Sep 20 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 4.8.5-4.2
 - Adding patch series to be able to compile kernel with livepatch feature:
   gcc48-enable-livepatch-000{1,2,3}.patch
