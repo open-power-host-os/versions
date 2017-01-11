@@ -1,5 +1,5 @@
 Package:
- name: 'gingerbase'
+ name: 'ginger-base'
  sources:
    - git:
       src: 'https://github.com/open-power-host-os/gingerbase.git'
@@ -9,4 +9,4 @@ Package:
  files:
   centos:
    '7':
-    spec: 'centOS/7/gingerbase.spec'
+    spec: 'centOS/7/ginger-base.spec'
