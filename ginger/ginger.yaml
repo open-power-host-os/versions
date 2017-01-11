@@ -5,7 +5,3 @@ Package:
      src: 'https://github.com/open-power-host-os/ginger.git'
      branch: 'hostos-devel'
      commit_id: '50b2b552c0ee4cbca6004572830fac38e9954ba3'
- files:
-  CentOS:
-   '7':
-    spec: 'CentOS/7/ginger.spec'

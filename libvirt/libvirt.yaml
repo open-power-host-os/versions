@@ -8,7 +8,3 @@ Package:
  version:
   file: 'configure.ac'
   regex: 'AC_INIT\(\[[^]]+\],\s*\[([\d.]+)\]'
- files:
-  CentOS:
-   '7':
-    spec: 'CentOS/7/libvirt.spec'

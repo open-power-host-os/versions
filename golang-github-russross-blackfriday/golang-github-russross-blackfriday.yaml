@@ -7,7 +7,6 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/golang-github-russross-blackfriday.spec'
     build_dependencies:
      - golang
      - golang-github-shurcooL-sanitized_anchor_name

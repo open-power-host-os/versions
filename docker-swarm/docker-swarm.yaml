@@ -8,5 +8,4 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/docker-swarm.spec'
     rpmmacro: 'CentOS/7/rpmmacro'

@@ -8,5 +8,4 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/lshw.spec'
     build_files: 'CentOS/7/SOURCES'

@@ -8,6 +8,5 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/systemtap.spec'
     build_files: 'CentOS/7/SOURCES'
     rpmmacro: 'CentOS/7/rpmmacro'

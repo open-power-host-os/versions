@@ -8,6 +8,5 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/qemu.spec'
     rpmmacro: 'CentOS/7/rpmmacro'
     build_files: 'CentOS/7/SOURCES'

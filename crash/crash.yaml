@@ -11,5 +11,4 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/crash.spec'
     build_files: 'CentOS/7/SOURCES'

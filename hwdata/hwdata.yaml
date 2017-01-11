@@ -5,7 +5,3 @@ Package:
      src: 'https://git.fedorahosted.org/git/hwdata.git'
      branch: 'master'
      commit_id: '625a1194eaf9b764985ebec3a5da78dc71299238'
- files:
-  CentOS:
-   '7':
-    spec: 'CentOS/7/hwdata.spec'

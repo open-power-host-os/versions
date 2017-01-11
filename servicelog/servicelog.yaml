@@ -11,6 +11,5 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/servicelog.spec'
     dependencies:
      - 'libservicelog'

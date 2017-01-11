@@ -11,7 +11,6 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/libservicelog.spec'
     build_files: 'CentOS/7/SOURCES'
     build_dependencies:
      - 'librtas'

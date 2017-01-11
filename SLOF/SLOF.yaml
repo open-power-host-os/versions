@@ -9,7 +9,6 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/SLOF.spec'
     build_files:
     build_dependencies:
      - 'gcc'

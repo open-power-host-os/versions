@@ -18,7 +18,6 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/kubernetes.spec'
     build_files: 'CentOS/7/SOURCES'
     build_dependencies:
      - golang
