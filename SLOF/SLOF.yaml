@@ -9,6 +9,5 @@ Package:
  files:
   CentOS:
    '7':
-    build_files:
     build_dependencies:
      - 'gcc'

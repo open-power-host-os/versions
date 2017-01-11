@@ -9,4 +9,3 @@ Package:
   CentOS:
    '7':
     rpmmacro: 'CentOS/7/rpmmacro'
-    build_files: 'CentOS/7/SOURCES'

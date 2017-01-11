@@ -8,5 +8,4 @@ Package:
  files:
   CentOS:
    '7':
-    build_files: 'CentOS/7/SOURCES'
     rpmmacro: 'CentOS/7/rpmmacro'
