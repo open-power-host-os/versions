@@ -1,3 +1,8 @@
+# The tests are disabled by default.
+# Set --with tests or bcond_without to run tests.
+# Original behaviour is preserved.
+%bcond_with tests
+
 %if 0%{?fedora}
 %global with_devel 0
 %global with_bundled 0
@@ -142,6 +147,7 @@ done
 sort -u -o devel.file-list devel.file-list
 %endif
 
+%if %{with tests}
 %check
 %if 0%{?with_check} && 0%{?with_unit_test} && 0%{?with_devel}
 %if ! 0%{?with_bundled}
@@ -150,6 +156,7 @@ export GOPATH=%{buildroot}%{gopath}:%{gopath}
 export GOPATH=%{buildroot}%{gopath}:$(pwd)/Godeps/_workspace:%{gopath}
 %endif
 
+%endif
 %endif
 
 #define license tag if not already defined

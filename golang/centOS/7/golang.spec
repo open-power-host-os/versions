@@ -1,3 +1,8 @@
+# The tests are disabled by default.
+# Set --with tests or bcond_without to run tests.
+# Original behaviour is preserved.
+%bcond_with tests
+
 # build ids are not currently generated:
 # https://code.google.com/p/go/issues/detail?id=5238
 #
@@ -418,7 +423,7 @@ mkdir -p $RPM_BUILD_ROOT%{_rpmconfigdir}/macros.d
 cp -av %{SOURCE102} $RPM_BUILD_ROOT%{_rpmconfigdir}/macros.d/macros.golang
 %endif
 
-
+%if %{with tests}
 %check
 %if %{runtests}
 export GOROOT=$(pwd -P)
@@ -445,6 +450,7 @@ export GO_TEST_TIMEOUT_SCALE=2
 %endif
 cd ..
 
+%endif
 %endif
 
 

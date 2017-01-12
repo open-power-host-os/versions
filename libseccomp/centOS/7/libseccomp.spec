@@ -1,3 +1,8 @@
+# The tests are disabled by default. 
+# Set --with tests or bcond_without to run tests.
+# Original behaviour is preserved.
+%bcond_with tests
+
 Summary: Enhanced seccomp library
 Name: libseccomp
 %define ibm_release %{?repo}.1
@@ -59,8 +64,10 @@ mkdir -p "%{buildroot}/%{_mandir}"
 make V=1 DESTDIR="%{buildroot}" install
 rm -f "%{buildroot}/%{_libdir}/libseccomp.la"
 
+%if %{with tests}
 %check
 make V=1 check
+%endif
 
 %post -p /sbin/ldconfig
 

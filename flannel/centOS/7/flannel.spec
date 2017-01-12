@@ -1,3 +1,8 @@
+# The tests are disabled by default.
+# Set --with tests or bcond_without to run tests.
+# Original behaviour is preserved.
+%bcond_with tests
+
 %global with_devel 0
 %global with_bundled 1
 %global with_debug 1
@@ -167,12 +172,14 @@ install -d -p %{buildroot}/%{gopath}/src/%{import_path}/
 cp -pav {backend,pkg,subnet} %{buildroot}/%{gopath}/src/%{import_path}/
 %endif
 
+%if %{with tests}
 %check
 %if 0%{?with_check}
 export GOPATH=${PWD}/_build:%{gopath}
 go test %{import_path}/pkg/ip
 #go test %{import_path}/remote
 go test %{import_path}/subnet
+%endif
 %endif
 
 %post

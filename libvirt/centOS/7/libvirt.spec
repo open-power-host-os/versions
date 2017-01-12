@@ -1,3 +1,8 @@
+# The tests are disabled by default.
+# Set --with tests or bcond_without to run tests.
+# Original behaviour is preserved.
+%bcond_with tests
+
 # -*- rpm-spec -*-
 
 # This spec file assumes you are building for Fedora 13 or newer,
@@ -1657,6 +1662,7 @@ rm -f $RPM_BUILD_ROOT%{_prefix}/lib/sysctl.d/60-libvirtd.conf
 %clean
 rm -fr %{buildroot}
 
+%if %{with tests}
 %check
 cd tests
 make
@@ -1673,6 +1679,7 @@ then
   cat test-suite.log || true
   exit 1
 fi
+%endif
 
 %if %{with_libvirtd}
 %pre daemon
