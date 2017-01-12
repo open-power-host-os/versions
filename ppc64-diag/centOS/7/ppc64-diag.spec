@@ -1,6 +1,6 @@
 Name:           ppc64-diag
-Version:        2.7.1
-Release:        2%{?dist}
+Version:        2.7.2
+Release:        1%{?dist}
 Summary:        PowerLinux Platform Diagnostics
 URL:            http://sourceforge.net/projects/linux-diag/files/ppc64-diag/
 Group:          System Environment/Base
@@ -135,6 +135,9 @@ fi
 
 
 %changelog
+* Wed Jan 11 2017 open-power-host-os-builds-bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.7.2-1
+- Version update
+
 * Mon May 9 2016 - Vasant Hegde <hegdevasant@linux.vnet.ibm.com> - 2.7.1
 - Fixed endianness issues in diagnostics code
 
