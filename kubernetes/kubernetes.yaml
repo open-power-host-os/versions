@@ -10,7 +10,7 @@ Package:
  sources:
    - url:
       src: 'https://github.com/kubernetes/kubernetes/archive/4a3f9c5b19c7ff804cbc1bf37a15c044ca5d2353/kubernetes-4a3f9c5.tar.gz'
-      archive: 'kubernetes-4a3f9c5.tar.gz'
+      archive: 'kubernetes-4a3f9c5'
  files:
   centos:
    '7':
