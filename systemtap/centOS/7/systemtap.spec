@@ -60,7 +60,7 @@
 
 Name: systemtap
 Version: 3.0
-Release: 4%{?dist}
+Release: 8%{?dist}
 # for version, see also configure.ac
 
 
@@ -1059,6 +1059,9 @@ done
 #   http://sourceware.org/systemtap/wiki/SystemTapReleases
 
 %changelog
+* Fri Jan 13 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.0-8
+- Bump release so we take precedence over CentOS version (3.0-7)
+
 * Wed Sep 07 2016 Frank Ch. Eigler <fche@redhat.com> - 3.0-4
 - fix kernel-4.7 conflicts (PR20132)
 
