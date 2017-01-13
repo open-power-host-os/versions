@@ -21,6 +21,5 @@ Package:
     build_dependencies:
      - golang
     dependencies:
-     - libseccomp
      - oci-register-machine
      - oci-systemd-hook

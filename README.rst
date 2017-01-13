@@ -39,7 +39,6 @@ hwdata                                        0.288
 kernel                                        4.8.4
 kimchi                                        2.3.0
 librtas                                       1.4.1
-libseccomp                                    2.3.1
 libservicelog                                 1.1.16
 libvirt                                       2.2.0
 libvpd                                        2.2.5
