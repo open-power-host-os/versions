@@ -36,7 +36,6 @@ golang                                        1.7.1
 golang-github-shurcooL-sanitized_anchor_name  0-0.1
 golang-github-russross-blackfriday            1.2-5
 hwdata                                        0.288
-iprutils                                      2.4.13
 kernel                                        4.8.4
 kimchi                                        2.3.0
 librtas                                       1.4.1
