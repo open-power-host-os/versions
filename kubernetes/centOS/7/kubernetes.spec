@@ -72,7 +72,7 @@ License:        ASL 2.0
 URL:            %{import_path}
 ExclusiveArch:  x86_64 ppc64le
 Source0:        https://%{provider_prefix}/archive/%{commit}/%{repo}-%{shortcommit}.tar.gz
-Source1:        https://%{k8s_provider_prefix}/archive/%{k8s_commit}/%{k8s_repo}-%{k8s_shortcommit}.tar.gz
+Source1:        %{k8s_repo}-%{k8s_shortcommit}.tar.gz
 Source2:        https://%{con_provider_prefix}/archive/%{con_commit}/%{con_repo}-%{con_shortcommit}.tar.gz
 
 Source33:       genmanpages.sh
@@ -933,7 +933,7 @@ getent passwd kube >/dev/null || useradd -r -g kube -d / -s /sbin/nologin \
   related: #1211266
 
 * Fri Oct 09 2015 jchaloup <jchaloup@redhat.com> - 1.1.0-0.39.alpha1.git5f38cb0
-- Add normalization of flags 
+- Add normalization of flags
   related: #1211266
 
 * Fri Oct 02 2015 jchaloup <jchaloup@redhat.com> - 1.1.0-0.38.alpha1.git5f38cb0

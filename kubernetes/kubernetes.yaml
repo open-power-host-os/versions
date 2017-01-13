@@ -1,15 +1,10 @@
 Package:
  name: 'kubernetes'
-# Keeping this commented out cause the stable commit id used by centOS isn't
-# available in any branch in the default remote. We need to wait for the hook
-# functionality and or the ability to clone multiple repositories to get this
-# yaml in its best shape.
-# clone_url: 'https://github.com/kubernetes/kubernetes.git'
-# branch: 'release-1.2'
-# commit_id: '5cb86ee022267586db386f62781338b0483733b3'
  sources:
-   - url:
-      src: 'https://github.com/kubernetes/kubernetes/archive/4a3f9c5b19c7ff804cbc1bf37a15c044ca5d2353/kubernetes-4a3f9c5.tar.gz'
+   - git:
+      src: 'https://github.com/openshift/kubernetes.git'
+      branch: 'release-1.2-stable-20160316'
+      commit_id: '4a3f9c5b19c7ff804cbc1bf37a15c044ca5d2353'
       archive: 'kubernetes-4a3f9c5'
  files:
   centos:
