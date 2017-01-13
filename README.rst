@@ -44,8 +44,6 @@ libvirt                                       2.2.0
 libvpd                                        2.2.5
 lsvpd                                         1.7.7
 novnc                                         0.5.1
-oci-register-machine                          0-1.8
-oci-systemd-hook                              0-1.8
 ppc64-diag                                    2.7.1
 qemu                                          2.7.0
 servicelog                                    1.1.14
