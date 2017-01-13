@@ -136,6 +136,7 @@ BuildRequires: device-mapper-devel
 BuildRequires: godep
 BuildRequires: libseccomp-static >= 2.3.1
 %endif
+BuildRequires: libseccomp-devel >= 2.3.0
 BuildRequires: pkgconfig(audit)
 BuildRequires: btrfs-progs-devel
 BuildRequires: sqlite-devel
