@@ -43,7 +43,6 @@ libseccomp                                    2.3.1
 libservicelog                                 1.1.16
 libvirt                                       2.2.0
 libvpd                                        2.2.5
-linux-firmware                                20150904
 lsvpd                                         1.7.7
 novnc                                         0.5.1
 oci-register-machine                          0-1.8
