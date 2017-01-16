@@ -6,12 +6,16 @@ Package:
       branch: 'release-1.2-stable-20160316'
       commit_id: '4a3f9c5b19c7ff804cbc1bf37a15c044ca5d2353'
       archive: 'kubernetes'
-   - url:
-      src: 'https://github.com/openshift/origin/archive/ef1caba064de975387860175c3138aad432cf356/origin-ef1caba.tar.gz'
-      archive: 'origin-ef1caba'
-   - url:
-      src: 'https://github.com/kubernetes/contrib/archive/18bb93d3509bd13a15639969c8b0ebe39a7f9b50/contrib-18bb93d.tar.gz'
-      archive: 'contrib-18bb93d'
+   - git:
+      src: 'https://github.com/openshift/origin.git'
+      branch: 'release-1.2'
+      commit_id: 'ef1caba064de975387860175c3138aad432cf356'
+      archive: 'origin-ef1caba064de975387860175c3138aad432cf356'
+   - git:
+      src: 'https://github.com/kubernetes/contrib.git'
+      branch: 'master'
+      commit_id: '18bb93d3509bd13a15639969c8b0ebe39a7f9b50'
+      archive: 'contrib-18bb93d3509bd13a15639969c8b0ebe39a7f9b50'
  files:
   centos:
    '7':

@@ -71,9 +71,9 @@ Summary:        Container cluster management
 License:        ASL 2.0
 URL:            %{import_path}
 ExclusiveArch:  x86_64 ppc64le
-Source0:        https://%{provider_prefix}/archive/%{commit}/%{repo}-%{shortcommit}.tar.gz
+Source0:        %{repo}-%{commit}.tar.gz
 Source1:        %{name}.tar.gz
-Source2:        https://%{con_provider_prefix}/archive/%{con_commit}/%{con_repo}-%{con_shortcommit}.tar.gz
+Source2:        %{con_repo}-%{con_commit}.tar.gz
 
 Source33:       genmanpages.sh
 Patch2:         Change-etcd-server-port.patch
