@@ -107,18 +107,18 @@ URL: https://%{provider}.%{provider_tld}/projectatomic/%{repo}
 #ExclusiveArch: %%{go_arches}
 ExclusiveArch: %{ix86} x86_64 %{arm} aarch64 ppc64le s390x %{mips}
 Source0: %{name}.tar.gz
-Source1: %{git1}/archive/%{commit1}/%{repo}-storage-setup-%{shortcommit1}.tar.gz
-Source2: %{git2}/archive/%{commit2}/%{repo}-selinux-%{shortcommit2}.tar.gz
-Source4: %{git4}/archive/%{commit4}/%{repo}-novolume-plugin-%{shortcommit4}.tar.gz
+Source1: %{repo}-storage-setup-%{commit1}.tar.gz
+Source2: container-selinux-%{commit2}.tar.gz
+Source4: %{repo}-novolume-plugin-%{commit4}.tar.gz
 Source5: %{repo}.service
 Source6: %{repo}.sysconfig
 Source7: %{repo}-storage.sysconfig
 Source8: %{repo}-logrotate.sh
 Source9: README.%{repo}-logrotate
 Source10: %{repo}-network.sysconfig
-Source11: %{git5}/archive/%{commit5}/v1.10-migrator-%{shortcommit5}.tar.gz
-Source12: %{git6}/archive/%{commit6}/runc-%{shortcommit6}.tar.gz
-Source13: %{git7}/archive/%{commit7}/containerd-%{shortcommit7}.tar.gz
+Source11: v1.10-migrator-%{commit5}.tar.gz
+Source12: runc-%{commit6}.tar.gz
+Source13: containerd-%{commit7}.tar.gz
 Source14: %{repo}-containerd.service
 Source15: v1.10-migrator-helper
 
