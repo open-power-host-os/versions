@@ -1,6 +1,6 @@
 Name:           servicelog
 Version:        1.1.14
-Release:        1%{?dist}
+Release:        4%{?dist}
 Summary:        Servicelog Tools
 
 Group:          System Environment/Base
@@ -52,6 +52,10 @@ of service operations that have been performed on the system.
 %{_mandir}/man[18]/*.[18]*
 
 %changelog
+* Fri Jan 13 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 1.1.14-4
+- Bump release so that this package takes precedence over CentOS version
+  (1.1.14-3)
+
 * Thu Oct 13 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 1.1.16
 - Rebase to 1.1.14i
 - Remove man page generation of slog_common_event (with help2man) cause it's not
