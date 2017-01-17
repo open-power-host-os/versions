@@ -71,9 +71,9 @@ Summary:        Container cluster management
 License:        ASL 2.0
 URL:            %{import_path}
 ExclusiveArch:  x86_64 ppc64le
-Source0:        https://%{provider_prefix}/archive/%{commit}/%{repo}-%{shortcommit}.tar.gz
-Source1:        https://%{k8s_provider_prefix}/archive/%{k8s_commit}/%{k8s_repo}-%{k8s_shortcommit}.tar.gz
-Source2:        https://%{con_provider_prefix}/archive/%{con_commit}/%{con_repo}-%{con_shortcommit}.tar.gz
+Source0:        %{repo}-%{commit}.tar.gz
+Source1:        %{name}.tar.gz
+Source2:        %{con_repo}-%{con_commit}.tar.gz
 
 Source33:       genmanpages.sh
 Patch2:         Change-etcd-server-port.patch
@@ -580,7 +580,7 @@ BuildRequires: golang >= 1.2-7
 Kubernetes client tools like kubectl
 
 %prep
-%setup -q -n %{k8s_repo}-%{k8s_commit} -T -b 1
+%setup -q -n %{name} -T -b 1
 %if 0%{?with_debug}
 %patch3 -p1
 %endif
@@ -601,27 +601,27 @@ rm -rf $dirs
 # move k8s code from Godeps
 mv Godeps/_workspace/src/k8s.io/kubernetes/* .
 # copy missing source code
-cp ../%{k8s_repo}-%{k8s_commit}/cmd/kube-apiserver/apiserver.go cmd/kube-apiserver/.
-cp ../%{k8s_repo}-%{k8s_commit}/cmd/kube-controller-manager/controller-manager.go cmd/kube-controller-manager/.
-cp ../%{k8s_repo}-%{k8s_commit}/cmd/kubelet/kubelet.go cmd/kubelet/.
-cp ../%{k8s_repo}-%{k8s_commit}/cmd/kube-proxy/proxy.go cmd/kube-proxy/.
-cp ../%{k8s_repo}-%{k8s_commit}/plugin/cmd/kube-scheduler/scheduler.go plugin/cmd/kube-scheduler/.
-cp -r ../%{k8s_repo}-%{k8s_commit}/cmd/kubectl cmd/.
+cp ../%{name}/cmd/kube-apiserver/apiserver.go cmd/kube-apiserver/.
+cp ../%{name}/cmd/kube-controller-manager/controller-manager.go cmd/kube-controller-manager/.
+cp ../%{name}/cmd/kubelet/kubelet.go cmd/kubelet/.
+cp ../%{name}/cmd/kube-proxy/proxy.go cmd/kube-proxy/.
+cp ../%{name}/plugin/cmd/kube-scheduler/scheduler.go plugin/cmd/kube-scheduler/.
+cp -r ../%{name}/cmd/kubectl cmd/.
 # copy hack directory
-cp -r ../%{k8s_repo}-%{k8s_commit}/hack .
-cp -r ../%{k8s_repo}-%{k8s_commit}/cluster .
+cp -r ../%{name}/hack .
+cp -r ../%{name}/cluster .
 # copy contrib directory
-cp -r ../%{k8s_repo}-%{k8s_commit}/contrib .
+cp -r ../%{name}/contrib .
 # copy contrib folder
 cp -r ../%{con_repo}-%{con_commit}/init contrib/.
 # copy docs
-cp -r ../%{k8s_repo}-%{k8s_commit}/docs/admin docs/.
-cp -r ../%{k8s_repo}-%{k8s_commit}/docs/man docs/.
+cp -r ../%{name}/docs/admin docs/.
+cp -r ../%{name}/docs/man docs/.
 # copy LICENSE and *.md
-cp ../%{k8s_repo}-%{k8s_commit}/LICENSE .
-cp ../%{k8s_repo}-%{k8s_commit}/*.md .
+cp ../%{name}/LICENSE .
+cp ../%{name}/*.md .
 # copy hyperkube
-cp -r ../%{k8s_repo}-%{k8s_commit}/cmd/hyperkube cmd/.
+cp -r ../%{name}/cmd/hyperkube cmd/.
 
 %patch2 -p1
 
@@ -721,7 +721,7 @@ sort -u -o devel.file-list devel.file-list
 
 # place files for unit-test rpm
 install -d -m 0755 %{buildroot}%{_sharedstatedir}/kubernetes-unit-test/
-pushd ../%{k8s_repo}-%{k8s_commit}
+pushd ../%{name}
 # basically, everything from the root directory is needed
 # unit-tests needs source code
 # integration tests needs docs and other files
@@ -933,7 +933,7 @@ getent passwd kube >/dev/null || useradd -r -g kube -d / -s /sbin/nologin \
   related: #1211266
 
 * Fri Oct 09 2015 jchaloup <jchaloup@redhat.com> - 1.1.0-0.39.alpha1.git5f38cb0
-- Add normalization of flags 
+- Add normalization of flags
   related: #1211266
 
 * Fri Oct 02 2015 jchaloup <jchaloup@redhat.com> - 1.1.0-0.38.alpha1.git5f38cb0
