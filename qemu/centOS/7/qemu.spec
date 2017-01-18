@@ -186,7 +186,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.7.0
-Release: 7%{?dist}
+Release: 8%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -422,6 +422,7 @@ will install qemu-system-x86
 %package  img
 Summary: QEMU command line tool for manipulating disk images
 Group: Development/Tools
+Obsoletes: qemu-img-ev
 %provide_rhev qemu-img
 
 %description img
@@ -1527,6 +1528,9 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Wed Jan 18 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 15:2.7.0-8
+- Obsolete qemu-img-ev in qemu-img subpackage
+
 * Wed Dec 28 2016 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 15:2.7.0-7
 - Bump epoch to avoid obsolescence by qemu-kvm-ev in CentOS
 
