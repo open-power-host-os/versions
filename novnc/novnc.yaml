@@ -1,5 +1,5 @@
 Package:
- name: 'noVNC'
+ name: 'novnc'
  sources:
    - git:
       src: 'https://github.com/kanaka/noVNC.git'
@@ -9,5 +9,5 @@ Package:
  files:
   centos:
    '7':
-    spec: 'centOS/7/noVNC.spec'
+    spec: 'centOS/7/novnc.spec'
     build_files: 'centOS/7/SOURCES'
