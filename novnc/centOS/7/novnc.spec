@@ -19,7 +19,7 @@ BuildRequires:  python2-devel
 Websocket implementation of VNC client
 
 %prep
-%setup -q -n novnc
+%setup -q -n %{name}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1

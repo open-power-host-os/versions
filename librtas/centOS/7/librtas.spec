@@ -3,7 +3,7 @@ Name: librtas
 Version: 1.4.1
 Release: 2%{?dist}
 License: GNU Lesser General Public License (LGPL)
-Source:  %{name}-%{version}.tar.gz
+Source:  %{name}.tar.gz
 Group: System Environment/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
@@ -28,7 +28,7 @@ The librtas-devel packages contains the header files necessary for
 developing programs using librtas.
 
 %prep
-%setup -q
+%setup -q -n %{name}
 
 %build
 %{__make} %{?_smp_mflags}

@@ -93,7 +93,7 @@ Summary: Programmable system-wide instrumentation system
 Group: Development/System
 License: GPLv2+
 URL: http://sourceware.org/systemtap/
-Source: ftp://sourceware.org/pub/systemtap/releases/systemtap-%{version}.tar.gz
+Source: %{name}.tar.gz
 
 # Build*
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -400,7 +400,7 @@ systemtap-runtime-virthost machine to execute systemtap scripts.
 # ------------------------------------------------------------------------
 
 %prep
-%setup -q %{?setup_elfutils}
+%setup -q %{?setup_elfutils} -n %{name}
 
 %if %{with_bundled_elfutils}
 cd elfutils-%{elfutils_version}

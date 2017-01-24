@@ -5,7 +5,6 @@ Package:
       src: 'https://github.com/openshift/kubernetes.git'
       branch: 'release-1.2-stable-20160316'
       commit_id: '4a3f9c5b19c7ff804cbc1bf37a15c044ca5d2353'
-      archive: 'kubernetes'
    - git:
       src: 'https://github.com/openshift/origin.git'
       branch: 'release-1.2'

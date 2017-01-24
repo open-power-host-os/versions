@@ -472,7 +472,7 @@ Provides: %{repo}-io-rhsubscription = %{version}-%{release}
 In order to work with RHEL containers, the host (RHEL, or other) must export susbcription information to the container.
 
 %prep
-%setup -q -n %{repo}
+%setup -q -n %{name}
 
 # here keep the new line above otherwise autosetup fails when applying patch
 cp %{SOURCE9} .

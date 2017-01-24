@@ -108,7 +108,7 @@ Summary:        The Go Programming Language
 # source tree includes several copies of Mark.Twain-Tom.Sawyer.txt under Public Domain
 License:        BSD and Public Domain
 URL:            http://golang.org/
-Source0:        go.tar.gz
+Source0:        %{name}.tar.gz
 
 # The compiler is written in Go. Needs go(1.4+) compiler for build.
 %if !%{golang_bootstrap}
@@ -261,7 +261,7 @@ Summary:        Golang shared object libraries
 %endif
 
 %prep
-%setup -q -n go
+%setup -q -n %{name}
 
 # increase verbosity of build
 %patch0 -p1 -b .verbose
