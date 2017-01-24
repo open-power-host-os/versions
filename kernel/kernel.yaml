@@ -9,10 +9,10 @@ Package:
    file: 'Makefile'
    regex: 'VERSION.*([\d.]+)\nPATCHLEVEL\s*=\s*(?P<patch>[\d.]*)\nSUBLEVEL\s*=\s*(?(patch)([\d.]*))\nEXTRAVERSION\s*=\s*([-\w.]*)\n'
  files:
-  centos:
+  CentOS:
    '7':
-    spec: 'centOS/7/kernel.spec'
-    rpmmacro: 'centOS/7/rpmmacro'
-    build_files: 'centOS/7/SOURCES'
+    spec: 'CentOS/7/kernel.spec'
+    rpmmacro: 'CentOS/7/rpmmacro'
+    build_files: 'CentOS/7/SOURCES'
     build_dependencies:
      - 'gcc'

@@ -6,7 +6,7 @@ Package:
        branch: 'master'
        commit_id: 'cb8284fb60737793596dd2fc98d9608d3d0d66f0'
  files:
-  centos:
+  CentOS:
    '7':
-    spec: 'centOS/7/flannel.spec'
-    build_files: 'centOS/7/SOURCES'
+    spec: 'CentOS/7/flannel.spec'
+    build_files: 'CentOS/7/SOURCES'

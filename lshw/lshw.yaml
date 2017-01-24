@@ -6,7 +6,7 @@ Package:
       branch: 'master'
       commit_id: 'f9bdcc342d525f8504b81a9a344d58f57aa9b5dc'
  files:
-  centos:
+  CentOS:
    '7':
-    spec: 'centOS/7/lshw.spec'
-    build_files: 'centOS/7/SOURCES'
+    spec: 'CentOS/7/lshw.spec'
+    build_files: 'CentOS/7/SOURCES'

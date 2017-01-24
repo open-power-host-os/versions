@@ -5,9 +5,9 @@ Package:
  branch: 'master'
  expects_source: 'golang-github-russross-blackfriday'
  files:
-  centos:
+  CentOS:
    '7':
-    spec: 'centOS/7/golang-github-russross-blackfriday.spec'
+    spec: 'CentOS/7/golang-github-russross-blackfriday.spec'
     build_dependencies:
      - golang
      - golang-github-shurcooL-sanitized_anchor_name

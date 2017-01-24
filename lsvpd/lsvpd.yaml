@@ -9,9 +9,9 @@ Package:
    file: 'configure.ac'
    regex: 'AC_INIT\(\[[^]]+\],\s*\[([\d.]+)\]'
  files:
-  centos:
+  CentOS:
    '7':
-    spec: 'centOS/7/lsvpd.spec'
+    spec: 'CentOS/7/lsvpd.spec'
     dependencies:
      - 'libvpd'
     build_dependencies:

@@ -16,9 +16,9 @@ Package:
       commit_id: '18bb93d3509bd13a15639969c8b0ebe39a7f9b50'
       archive: 'contrib-18bb93d3509bd13a15639969c8b0ebe39a7f9b50'
  files:
-  centos:
+  CentOS:
    '7':
-    spec: 'centOS/7/kubernetes.spec'
-    build_files: 'centOS/7/SOURCES'
+    spec: 'CentOS/7/kubernetes.spec'
+    build_files: 'CentOS/7/SOURCES'
     build_dependencies:
      - golang

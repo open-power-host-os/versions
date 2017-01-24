@@ -6,8 +6,8 @@ Package:
       branch: 'hostos-devel'
       commit_id: '169a53efae579f51022612577e7b17c8aead237c'
  files:
-  centos:
+  CentOS:
    '7':
-    spec: 'centOS/7/qemu.spec'
-    rpmmacro: 'centOS/7/rpmmacro'
-    build_files: 'centOS/7/SOURCES'
+    spec: 'CentOS/7/qemu.spec'
+    rpmmacro: 'CentOS/7/rpmmacro'
+    build_files: 'CentOS/7/SOURCES'

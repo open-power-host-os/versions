@@ -6,6 +6,6 @@ Package:
       branch: 'hostos-devel'
       commit_id: 'e6939383c4803297bd4587c2602a0e9da152e7c0'
  files:
-  centos:
+  CentOS:
    '7':
-    spec: 'centOS/7/kimchi.spec'
+    spec: 'CentOS/7/kimchi.spec'
