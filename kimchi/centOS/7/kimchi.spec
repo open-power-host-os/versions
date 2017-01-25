@@ -1,6 +1,6 @@
 Name:       kimchi
 Version:    2.3.0
-Release:    10%{?dist}
+Release:    11%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -90,6 +90,25 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jan 25 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-11
+- e6939383c4803297bd4587c2602a0e9da152e7c0 Merge remote-tracking branch upstream/master into hostos-devel
+- a20630073f45e275a92f883f964f0ce8401a42af Add test to live snapshot
+- 930a41177de27b4a4f0fa8bf19ebb3977cdaf976 Bug fix #1029: Unable to create a snapshot on a running guest
+- 3358b6e65c797b04e7ed340195f1d874699a8a8b Live migration RDMA support: mockmodel changes
+- e449623f0f491d51911a76095985780b6d75a17e Live migration RDMA support: test changes
+- fff5e82647fafb585686c0e2abbdfad7d4315b53 Live migration RDMA support: ui changes
+- ecee41ed4f63fe7e286517dd48abbc7164b2773f Live migration RDMA support: model changes
+- 25d900fd35daea10c9fa2841e889ab45277d1f41 Live migration RDMA support: doc changes
+- 823c1b2d375b7eab08ddb62d2e36c7553e53b960 Bug fix #1016: Display current storage volume size on resize dialog
+- ed8b4eb5b1cd26afe0b8088c6c664e0a519eba98 Merge remote-tracking branch upstream/master into hostos-devel
+- 9c39955d003b2efcaf63baf0bcea91a59e4835e8 VEPA interface not listed with VM running
+- 1aa94415d91c452bb54d9e8d0065774a8ee0d051 Merge remote-tracking branch upstream/master into hostos-devel
+- b507ce0d8e053a01532ea5421d2255b63770a10d Fix issue #1069: Allow user specifies the Template name when creating it
+- 12ab67a2f6a0a03e08c0c4b42e9ddaf8c546111c Update copyright date
+- a45663bffaf1497db59d67705511ad1ba30ca1e6 Bug fix #1073: Re-attach device to host when detaching it from guest
+- 1d6bc597462f8bdd01f094b25886b1abce428dfe Merge remote-tracking branch upstream/master into hostos-devel
+- bb3e57ca12cb9189bdbced83e58d36515776eec1 mockmodel.py: unsubscribing from exit channel on cleanup
+
 * Wed Dec 28 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-10
 - 1d6bc597462f8bdd01f094b25886b1abce428dfe Merge remote-tracking branch upstream/master into hostos-devel
 - bb3e57ca12cb9189bdbced83e58d36515776eec1 mockmodel.py: unsubscribing from exit channel on cleanup

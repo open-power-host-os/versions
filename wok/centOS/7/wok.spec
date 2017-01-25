@@ -1,6 +1,6 @@
 Name:       wok
 Version:    2.3.0
-Release:    8%{?dist}
+Release:    9%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -173,6 +173,23 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed Jan 25 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-9
+- d21e3f6d8db014f2c7100f93f1686afa3a437a84 Remove whitespace from COPYING file
+- 9c07e522851ce0242c1cf7ef1d3582e9111d1188 Add Documentation for systemd service
+- 50bf5286258f865b42433d5a955f24c7eea40e0b Fix typo in license header
+- fb3b616c0fa7b18263c0d7303114e0fa4ba13bc3 Update man page document
+- 490b22cd77758ea031b22b624918d32f59c4bd2d Update COPYING file to reflect all the imported code
+- 5569693af1367d4cd33d1f31ab713e2cc8bd1403 Update AUTHORS content according to git-log command
+- d52f90617b0e4e51c27d0be28953cea945286895 Use underscore in all wokd command options
+- 8fba89d2a370cf5a4cd7929248b778f6d74ee48b Remove --access-log and --error-log options from wokd command
+- 7feae0471826b36b330ec34fbc1ddeed3ce736b5 Issue #160: Fedora 25: Make check breaks on wok
+- 7835c18d8462b489dc092ba3028b2a8bcdef0ae8 Remove spice-html5 references from Wok build
+- 72377b6ec5b25e267b2d0c52226446d0f476a882 Fix issue #40: Improve WOKAUTH0002E error message and remove references to Kimchi
+- 852c8501dc24f7816d0dd8c16637497884d307ae Always install firewalld conf for all distributions
+- 3fcb8c544a2aac9ba03edb657765946b01a103a9 Update Copyright date
+- 001456bfb26c9f2b43e12f8fb16f647a020edd2b Remove execution permission from css files
+- 4adf824cf12397428f7ad2eb6134ae2508fae671 Fix typo in settings.css
+
 * Wed Dec 21 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-8
 - 7173a7979648fad2e3a8355b15b94addbb4cc949 Bug fix #163: make check-local: whitespace verification is not excluding imported files
 - af84a916765d6aa5ce6207fa7450804f46007b3a Bug fix #130: Wok does not support multiple words in plugin tag name

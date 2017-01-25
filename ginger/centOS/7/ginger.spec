@@ -1,6 +1,6 @@
 Name:       ginger
 Version:    2.3.0
-Release:    11%{?dist}
+Release:    12%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -120,6 +120,26 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jan 25 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-12
+- 0c770d8c653846005c878923d224eccdac06e241 Merge remote-tracking branch upstream/master into hostos-devel
+- f015905ebe3839c69bb14d0f7fed9fd90038329c Fixing copyright year of UI files after previous commit
+- 905d0980bc54e83c26fbd249c8136d4b738e2d7f Bug fix #517: Restore system backup
+- 62f1414e7721133251dd5e2fd0d668b8f999decd Minor issue fixes in create partition
+- 9b75863e7ab520f191b3c7be9ddb6a3b2a714ca1 Fixing copyright year of storage_devs.py
+- a3b8cdb485d699814d398fdd5dd809a4586042ca Fix for ginger issue #526
+- d6c7a2f8073d2f7b81fc75c1e862ff23cf67fc40 Updating ginger.css with latest changes
+- fedb212f42c5575e37b146d091b3464fd46bbf32 Merge remote-tracking branch upstream/master into hostos-devel
+- efa56f95adf4f1af693ee5dfc0476828c0fef1da Remove related functions to VGs Actions
+- dab1560a106b7c3800407382461243d9751afd7c Bug fix #149: No Option for LVM Logical Volumes
+- ad6b775a83503a048acd49c8fd67130d68b6c446 Fix for confirmation message for delete partition
+- b7f51b2f24858a178bfee486203426f2942c999f Fixing URI of Archives Resource in API.md
+- 0c0e8947fbb1a555abdf32e63f6a8ddd83aa0c66 Bug fix #517: Restore system backup
+- a3def7875f0e3f33ee117e704f75183063864b71 Fixing copyright year after the previous commits
+- b010d4ea96772df0db5186e5673c041f69fbc7bf Bug fix #469: Invalid argument when try to bring an interface up
+- 0267c99c3146b3a2e9a73227d1e46f230fa8a247 Support Bond type for bonding interfaces
+- 385db34188e20fc2683ad904175c4119b0b9a50e Bug fix #390: Ubuntu-16.04: Make Network Configuration able to manage with /etc/network/interfaces
+- cc04471080c0488782c115b126bdca17d08c2554 Fix for ginger issue #523
+
 * Wed Jan 04 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-11
 - 875ad083ad879105a1bf0424503c9b6205df7ab3 Merge remote-tracking branch upstream/master into hostos-devel
 - cb76be8d861471879b9ed7a138e2acde0dddad5b Fixing copyright year of host-network.js

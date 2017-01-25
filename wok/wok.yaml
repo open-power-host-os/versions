@@ -4,7 +4,7 @@ Package:
    - git:
       src: 'https://github.com/open-power-host-os/wok.git'
       branch: 'hostos-devel'
-      commit_id: '7173a7979648fad2e3a8355b15b94addbb4cc949'
+      commit_id: 'd21e3f6d8db014f2c7100f93f1686afa3a437a84'
  files:
   centos:
    '7':
