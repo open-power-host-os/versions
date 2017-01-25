@@ -2,9 +2,12 @@
 %global with_systemd 1
 %endif
 
+%global commit          593bf276645a98717586c2b532e379b3cf050810
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
+
 Name:       ginger-base
 Version:    2.2.1
-Release:    11%{?dist}
+Release:    11.git%{shortcommit}%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch

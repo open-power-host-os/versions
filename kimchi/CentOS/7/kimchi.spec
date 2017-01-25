@@ -1,6 +1,9 @@
+%global commit          4ea4cef057617b43381e7e3b913b4a34104cac40
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
+
 Name:       kimchi
 Version:    2.3.0
-Release:    12%{?dist}
+Release:    12.git%{shortcommit}%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch

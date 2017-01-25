@@ -8,14 +8,14 @@
 %global project         russross
 %global repo            blackfriday
 %global import_path     %{provider}.%{provider_tld}/%{project}/%{repo}
-%global commit          77efab57b2f74dd3f9051c79752b2e8995c8b789
+%global commit          5f33e7b7878355cd2b7e6b8eefc48a5472c69f70
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gccgo_version  >= 5
 %global golang_version >= 1.2.1-3
 
 Name:       golang-%{provider}-%{project}-%{repo}
 Version:    1.2
-Release:    5s%{?dist}
+Release:    5s.git%{shortcommit}%{?dist}
 # Be ahead of Fedora
 Epoch:      1
 Summary:    Markdown processor implemented in Go

@@ -15,10 +15,12 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
+%global commit          a0fd82b90932741bda54245e990df433a9ee06a7
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 Name:           docker-swarm
 Version:        1.1.0
-Release:        1
+Release:        1.git%{shortcommit}
 Summary:        Docker-native clustering system
 License:        Apache-2.0
 Group:          System/Management

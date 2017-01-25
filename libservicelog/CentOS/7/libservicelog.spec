@@ -1,6 +1,9 @@
+%global commit          48875ee8614eeefaa3d5d8ff92fb424915738169
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
+
 Name:           libservicelog
 Version:        1.1.16
-Release:        2%{?dist}
+Release:        2.git%{shortcommit}%{?dist}
 Summary:        Servicelog Database and Library
 
 Group:          System Environment/Libraries

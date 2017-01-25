@@ -1,3 +1,6 @@
+%global commit          169a53efae579f51022612577e7b17c8aead237c
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
+
 # Fakeroot only: this package is useful for development in fakeroots. It is not
 # available as a base package, though it may be delivered with an approved PCR.
 # We redefine base dist here to help this package stand out as fakeroot-only.
@@ -186,7 +189,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.7.0
-Release: 9%{?dist}
+Release: 9.git%{shortcommit}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools

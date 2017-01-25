@@ -8,7 +8,7 @@
 %global project         shurcooL
 %global repo            sanitized_anchor_name
 %global import_path     %{provider}.%{provider_tld}/%{project}/%{repo}
-%global commit          8e87604bec3c645a4eeaee97dfec9f25811ff20d
+%global commit          1dba4b3954bc059efc3991ec364f9f9a35f597d2
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gccgo_version  >= 5
 %global golang_version >= 1.2.1-3 

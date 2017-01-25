@@ -3,7 +3,7 @@
 %bcond_with tests
 
 %global DATE 20150702
-%global SVNREV 225304
+%global SVNREV 240558
 # Note, gcc_release must be integer, if you want to add suffixes to
 # %{release}, append them after %{gcc_release} on Release: line.
 %global gcc_release 12
@@ -83,7 +83,7 @@ Name: gcc
 %global gcc_version 4.8.5
 %endif
 Version: 4.8.5
-Release: %{gcc_release}%{?dist}
+Release: %{gcc_release}.svn%{SVNREV}%{?dist}
 %if "%{version}" != "%{gcc_version}"
 %define gcc_provides %{gcc_version}-16%{?dist}
 %endif

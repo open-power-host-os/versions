@@ -1,10 +1,13 @@
+%global commit          64531dc850f2840cedafa143fe051d2cfeae5247
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
+
 #
 # crash core analysis suite
 #
 Summary: Kernel analysis utility for live systems, netdump, diskdump, kdump, LKCD or mcore dumpfiles
 Name: crash
 Version: 7.1.6
-Release: 1%{?dist}
+Release: 1.git%{shortcommit}%{?dist}
 License: GPLv3
 Group: Development/Debuggers
 Source: %{name}.tar.gz
