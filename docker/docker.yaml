@@ -1,5 +1,4 @@
 Package:
- name: 'docker'
  sources:
   - git:
      src: 'https://github.com/docker/docker.git'

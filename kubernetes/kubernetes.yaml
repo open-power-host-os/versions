@@ -1,5 +1,4 @@
 Package:
- name: 'kubernetes'
  sources:
   - git:
      src: 'https://github.com/openshift/kubernetes.git'

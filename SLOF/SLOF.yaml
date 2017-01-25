@@ -1,5 +1,4 @@
 Package:
- name: 'SLOF'
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/slof.git'

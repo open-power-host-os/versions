@@ -1,5 +1,4 @@
 Package:
- name: 'sos'
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/sos.git'

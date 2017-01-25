@@ -1,5 +1,4 @@
 Package:
- name: 'hwdata'
  sources:
   - git:
      src: 'https://git.fedorahosted.org/git/hwdata.git'

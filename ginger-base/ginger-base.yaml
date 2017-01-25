@@ -1,5 +1,4 @@
 Package:
- name: 'ginger-base'
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/gingerbase.git'

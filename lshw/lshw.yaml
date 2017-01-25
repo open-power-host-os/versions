@@ -1,5 +1,4 @@
 Package:
- name: 'lshw'
  sources:
   - git:
      src: 'https://github.com/lyonel/lshw.git'

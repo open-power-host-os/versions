@@ -1,5 +1,4 @@
 Package:
- name: 'servicelog'
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/servicelog.git'

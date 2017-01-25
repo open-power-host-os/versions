@@ -1,5 +1,4 @@
 Package:
- name: 'golang'
  sources:
   - git:
      src: 'https://github.com/golang/go.git'

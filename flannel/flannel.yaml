@@ -1,5 +1,4 @@
 Package:
- name: 'flannel'
  sources:
   - git:
      src: 'https://github.com/coreos/flannel.git'

@@ -1,5 +1,4 @@
 Package:
- name: 'ppc64-diag'
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/ppc64-diag.git'

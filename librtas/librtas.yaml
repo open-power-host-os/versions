@@ -1,5 +1,4 @@
 Package:
- name: 'librtas'
  sources:
   - git:
      src: 'https://github.com/nfont/librtas.git'

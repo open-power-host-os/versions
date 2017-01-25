@@ -1,5 +1,4 @@
 Package:
- name: 'docker-swarm'
  sources:
   - git:
      src: 'https://github.com/docker/swarm.git'

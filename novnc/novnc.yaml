@@ -1,5 +1,4 @@
 Package:
- name: 'novnc'
  sources:
   - git:
      src: 'https://github.com/kanaka/noVNC.git'

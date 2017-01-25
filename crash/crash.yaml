@@ -1,5 +1,4 @@
 Package:
- name: 'crash'
  sources:
   - git:
      src: 'https://github.com/crash-utility/crash.git'

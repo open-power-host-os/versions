@@ -1,5 +1,4 @@
 Package:
- name: 'lsvpd'
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/lsvpd.git'

@@ -1,5 +1,4 @@
 Package:
- name: 'systemtap'
  sources:
   - git:
      src: 'git://sourceware.org/git/systemtap.git'
