@@ -1,6 +1,5 @@
 # The tests are disabled by default.
 # Set --with tests or bcond_without to run tests.
-# Original behaviour is preserved.
 %bcond_with tests
 
 # -*- rpm-spec -*-
