@@ -4,7 +4,7 @@ Package:
    - git:
        src: 'https://github.com/open-power-host-os/ginger.git'
        branch: 'hostos-devel'
-       commit_id: '875ad083ad879105a1bf0424503c9b6205df7ab3'
+       commit_id: '0c770d8c653846005c878923d224eccdac06e241'
  files:
   centos:
    '7':

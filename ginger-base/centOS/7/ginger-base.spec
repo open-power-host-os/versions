@@ -4,7 +4,7 @@
 
 Name:       ginger-base
 Version:    2.2.1
-Release:    9%{?dist}
+Release:    10%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -74,6 +74,16 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jan 25 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-10
+- 2de55c275f473eafc053c5b804af8f204810164f Merge remote-tracking branch upstream/master into hostos-devel
+- 33e9bf1a765e573fef2f2463987ab73a1e51b50a Fix available flag for multipath lun
+- 414f80520b70de50dbe088a9df2853a8e9b39269 Merge remote-tracking branch upstream/master into hostos-devel
+- 20a95807564b5d588dc8ca3ba4915b041f67c45b pep8 compatible, copyright notice added
+- 14d460e7f360120a26c01d9f5d40458a239449cc initial gentoo Linux support
+- 162f7ecab31c5a41692ebd9cc68307bab6b584cb Fixing copyright year of model/smt.py
+- efcf7e10c43ee0d744fd7742aeb60fcd34d1c75c Fix for issue #156
+- eff99e3c66b999ef7e4b5497c480487b90d223f5 fix for parsing issue of pvs command output
+
 * Wed Dec 21 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-9
 - 82dd2bea6900e3bda3cd14ef6835586b773fc6c8 Merge remote-tracking branch upstream/master into hostos-devel
 - d8b9b8c08952a4e1f298a352113e7570ad299bc8 Bug fix #134: Allow user enable/disable multiple repositories at once

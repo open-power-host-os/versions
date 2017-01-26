@@ -186,7 +186,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.7.0
-Release: 8%{?dist}
+Release: 9%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -1528,6 +1528,10 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Wed Jan 25 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 15:2.7.0-9
+- 169a53efae579f51022612577e7b17c8aead237c vfio/pci: Add support for mmapping
+  MSI-X table
+
 * Wed Jan 18 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 15:2.7.0-8
 - Obsolete qemu-img-ev in qemu-img subpackage
 
