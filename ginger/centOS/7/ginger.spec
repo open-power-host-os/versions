@@ -15,14 +15,12 @@ Requires:   gettext >= 0.17
 Requires:   wok >= 2.1.0
 Requires:   ginger-base
 Requires:   libuser-python
-Requires:       libvirt
 Requires:   python-ethtool
 Requires:   python-ipaddr
 Requires:   python-magic
 Requires:   python-netaddr
 Requires:   python-augeas
 Requires:	python2-crypto
-Requires:       libvirt-python
 
 
 %description
@@ -51,32 +49,6 @@ make DESTDIR=%{buildroot} install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-
-%post
-%if 0%{?with_systemd}
-	install -dm 0755 %{_unitdir}/wokd.service.requires
-	ln -sf ../tuned.service %{_unitdir}/wokd.service.requires
-%endif
-
-
-%postun
-%if 0%{?with_systemd}
-	if [ $1 == 0 ]; then # uninstall
-		rm -f %{_unitdir}/wokd.service.requires/tuned.service
-	fi
-%endif
-
-%posttrans
-%if 0%{?with_systemd}
-	if [ $1 == 0 ]; then # upgrade
-		if ! [ -f %{_unitdir}/wokd.service.requires ]; then
-			ln -sf ../tuned.service %{_unitdir}/wokd.service.requires
-		fi
-		/bin/systemctl daemon-reload >/dev/null 2>&1 || :
-		service wokd restart
-	fi
-%endif
 
 
 %files
