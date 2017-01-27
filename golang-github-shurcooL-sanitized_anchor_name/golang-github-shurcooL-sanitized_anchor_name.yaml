@@ -12,4 +12,3 @@ Package:
      - golang
     dependencies:
      - golang
- 
