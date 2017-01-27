@@ -36,9 +36,9 @@ Package:
        commit_id: '0ac3cd1be170d180b2baed755e8f0da547ceb267'
        archive: 'containerd-0ac3cd1be170d180b2baed755e8f0da547ceb267'
  files:
-  centos:
+  CentOS:
    '7':
-    spec: 'centOS/7/docker.spec'
-    build_files: 'centOS/7/SOURCES'
+    spec: 'CentOS/7/docker.spec'
+    build_files: 'CentOS/7/SOURCES'
     build_dependencies:
      - golang

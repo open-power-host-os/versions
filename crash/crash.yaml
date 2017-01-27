@@ -9,7 +9,7 @@ Package:
    file: '.rh_rpm_package'
    regex: '([\w.-]+)'
  files:
-  centos:
+  CentOS:
    '7':
-    spec: 'centOS/7/crash.spec'
-    build_files: 'centOS/7/SOURCES'
+    spec: 'CentOS/7/crash.spec'
+    build_files: 'CentOS/7/SOURCES'

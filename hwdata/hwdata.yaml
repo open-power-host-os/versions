@@ -6,6 +6,6 @@ Package:
       branch: 'master'
       commit_id: '625a1194eaf9b764985ebec3a5da78dc71299238'
  files:
-  centos:
+  CentOS:
    '7':
-    spec: 'centOS/7/hwdata.spec'
+    spec: 'CentOS/7/hwdata.spec'

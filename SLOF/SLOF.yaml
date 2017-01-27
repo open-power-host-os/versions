@@ -7,9 +7,9 @@ Package:
        # this is tag qemu-slof-20160525 but since nobody else uses tags let's keep it as a commit id
        commit_id: 'b2d56f3a322f2c6375a87d11274fbae1cde66ae8'
  files:
-  centos:
+  CentOS:
    '7':
-    spec: 'centOS/7/SLOF.spec'
+    spec: 'CentOS/7/SLOF.spec'
     build_files:
     build_dependencies:
      - 'gcc'

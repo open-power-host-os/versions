@@ -9,9 +9,9 @@ Package:
    file: 'configure.ac'
    regex: 'm4_define\(\[ppu_version\],\s*([\d.]+)\)'
  files:
-  centos:
+  CentOS:
    '7':
-    spec: 'centOS/7/libservicelog.spec'
-    build_files: 'centOS/7/SOURCES'
+    spec: 'CentOS/7/libservicelog.spec'
+    build_files: 'CentOS/7/SOURCES'
     build_dependencies:
      - 'librtas'

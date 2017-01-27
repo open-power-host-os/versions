@@ -6,7 +6,7 @@ Package:
       commit_id: 'b67902fee7b56dd3235b2f489550c279248bacb9'
       branch: 'release-branch.go1.7'
  files:
-  centos:
+  CentOS:
    '7':
-    spec: 'centOS/7/golang.spec'
-    build_files: 'centOS/7/SOURCES'
+    spec: 'CentOS/7/golang.spec'
+    build_files: 'CentOS/7/SOURCES'

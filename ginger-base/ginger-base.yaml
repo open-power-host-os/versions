@@ -6,6 +6,6 @@ Package:
       branch: 'hostos-devel'
       commit_id: '2de55c275f473eafc053c5b804af8f204810164f'
  files:
-  centos:
+  CentOS:
    '7':
-    spec: 'centOS/7/ginger-base.spec'
+    spec: 'CentOS/7/ginger-base.spec'
