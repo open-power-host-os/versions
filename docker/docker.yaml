@@ -1,40 +1,40 @@
 Package:
  name: 'docker'
  sources:
-   - git:
-       src: 'https://github.com/docker/docker.git'
-       commit_id: 'bb80604a0b200140a440675348c848a137a1b2e2'
-       branch: '1.12.x'
-   - git:
-       src: 'https://github.com/projectatomic/docker-storage-setup.git'
-       branch: 'master'
-       commit_id: '194eca25fd0d180b62f3ecf1b7b408992fd6a083'
-       archive: 'docker-storage-setup-194eca25fd0d180b62f3ecf1b7b408992fd6a083'
-   - git:
-       src: 'https://github.com/projectatomic/docker-selinux.git'
-       branch: 'master'
-       commit_id: '032bcda7b1eb6d9d75d3c0ce64d9d35cdb9c7b85'
-       archive: 'container-selinux-032bcda7b1eb6d9d75d3c0ce64d9d35cdb9c7b85'
-   - git:
-       src: 'https://github.com/projectatomic/docker-novolume-plugin.git'
-       branch: 'master'
-       commit_id: 'c5212546ab01b4b7b62caba888d298ab63f53984'
-       archive: 'docker-novolume-plugin-c5212546ab01b4b7b62caba888d298ab63f53984'
-   - git:
-       src: 'https://github.com/docker/v1.10-migrator.git'
-       branch: 'master'
-       commit_id: '994c35cbf7ae094d4cb1230b85631ecedd77b0d8'
-       archive: 'v1.10-migrator-994c35cbf7ae094d4cb1230b85631ecedd77b0d8'
-   - git:
-       src: 'https://github.com/projectatomic/runc.git'
-       branch: 'master'
-       commit_id: 'f509e5094de84a919e2e8ae316373689fb66c513'
-       archive: 'runc-f509e5094de84a919e2e8ae316373689fb66c513'
-   - git:
-       src: 'https://github.com/docker/containerd.git'
-       branch: 'master'
-       commit_id: '0ac3cd1be170d180b2baed755e8f0da547ceb267'
-       archive: 'containerd-0ac3cd1be170d180b2baed755e8f0da547ceb267'
+  - git:
+     src: 'https://github.com/docker/docker.git'
+     commit_id: 'bb80604a0b200140a440675348c848a137a1b2e2'
+     branch: '1.12.x'
+  - git:
+     src: 'https://github.com/projectatomic/docker-storage-setup.git'
+     branch: 'master'
+     commit_id: '194eca25fd0d180b62f3ecf1b7b408992fd6a083'
+     archive: 'docker-storage-setup-194eca25fd0d180b62f3ecf1b7b408992fd6a083'
+  - git:
+     src: 'https://github.com/projectatomic/docker-selinux.git'
+     branch: 'master'
+     commit_id: '032bcda7b1eb6d9d75d3c0ce64d9d35cdb9c7b85'
+     archive: 'container-selinux-032bcda7b1eb6d9d75d3c0ce64d9d35cdb9c7b85'
+  - git:
+     src: 'https://github.com/projectatomic/docker-novolume-plugin.git'
+     branch: 'master'
+     commit_id: 'c5212546ab01b4b7b62caba888d298ab63f53984'
+     archive: 'docker-novolume-plugin-c5212546ab01b4b7b62caba888d298ab63f53984'
+  - git:
+     src: 'https://github.com/docker/v1.10-migrator.git'
+     branch: 'master'
+     commit_id: '994c35cbf7ae094d4cb1230b85631ecedd77b0d8'
+     archive: 'v1.10-migrator-994c35cbf7ae094d4cb1230b85631ecedd77b0d8'
+  - git:
+     src: 'https://github.com/projectatomic/runc.git'
+     branch: 'master'
+     commit_id: 'f509e5094de84a919e2e8ae316373689fb66c513'
+     archive: 'runc-f509e5094de84a919e2e8ae316373689fb66c513'
+  - git:
+     src: 'https://github.com/docker/containerd.git'
+     branch: 'master'
+     commit_id: '0ac3cd1be170d180b2baed755e8f0da547ceb267'
+     archive: 'containerd-0ac3cd1be170d180b2baed755e8f0da547ceb267'
  files:
   CentOS:
    '7':

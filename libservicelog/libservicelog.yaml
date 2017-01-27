@@ -1,13 +1,13 @@
 Package:
  name: 'libservicelog'
  sources:
-   - git:
-      src: 'https://github.com/open-power-host-os/libservicelog.git'
-      branch: 'hostos-devel'
-      commit_id: '48875ee8614eeefaa3d5d8ff92fb424915738169'
+  - git:
+     src: 'https://github.com/open-power-host-os/libservicelog.git'
+     branch: 'hostos-devel'
+     commit_id: '48875ee8614eeefaa3d5d8ff92fb424915738169'
  version:
-   file: 'configure.ac'
-   regex: 'm4_define\(\[ppu_version\],\s*([\d.]+)\)'
+  file: 'configure.ac'
+  regex: 'm4_define\(\[ppu_version\],\s*([\d.]+)\)'
  files:
   CentOS:
    '7':
