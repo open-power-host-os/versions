@@ -173,6 +173,18 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Tue Jan 31 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.3.0-9
+- 0489d72cbf7f3f33da304ae83a7bacedcc1bb7d5 Make sure nginx is running before reloading its config
+- fc225d7cdaa7d6938eee7c9b5d04153d645b45ea Generate dhparams in post-install and development mode
+- 26d66e1ec07ed69d2a3a36c8750858950055769e reload API: adding user log messages
+- fee0e09d43b11e5674ab342c1c81aeb8ba93f9bf reload API: adding notification before reloading operation
+- 85b5f894acd08435abd5322b87139aabe12bfb0c reload API: added rest API tests
+- 0b4ae68134607bb716a423d6a33c14affef2cdd3 reload API: new file tests/test_config_model.py
+- b8d5e2df203c5821c846b84a2dac32f1325d63f2 reload API: control and model changes
+- db95e238b5a54523042936b1dc35a1b738cc55ee reload API: doc changes
+- a6994dbd6507cb21f1dc59ec2ac7170d8ddabccd Do not link user role with UI tabs
+- 448a94268a8553521c586ff4e98d7c7a738f082d Readd dependency on firewalld needed for HostOS
+
 * Wed Jan 25 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-9
 - d21e3f6d8db014f2c7100f93f1686afa3a437a84 Remove whitespace from COPYING file
 - 9c07e522851ce0242c1cf7ef1d3582e9111d1188 Add Documentation for systemd service
