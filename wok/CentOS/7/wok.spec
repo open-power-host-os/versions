@@ -32,7 +32,6 @@ Requires(postun): selinux-policy-targeted
 
 BuildRequires:	gettext-devel
 BuildRequires:	libxslt
-BuildRequires:	openssl
 BuildRequires:	python-lxml
 BuildRequires:	selinux-policy-devel
 BuildRequires:	policycoreutils-devel
@@ -100,8 +99,14 @@ install -Dm 0744 src/selinux/wokd.pp %{buildroot}%{_datadir}/wok/selinux/wokd.pp
 
 %post
 if [ $1 -eq 1 ] ; then
-    /bin/systemctl enable wokd.service >/dev/null 2>&1 || :
+    if [ ! -e /etc/wok/dhparams.pem ]; then
+        openssl dhparam -dsaparam -out /etc/wok/dhparams.pem 2048 >/dev/null 2>&1 || :
+    fi
+    if [ ! -e /etc/wok/wok-key.pem ] || [ ! -e /etc/wok/wok-cert.pem ]; then
+        openssl req -x509 -newkey rsa:4096 -keyout /etc/wok/wok-key.pem -out /etc/wok/wok-cert.pem -days 365 -nodes -subj "/C=US/CN=wok/O=kimchi-project.org" >/dev/null 2>&1 || :
+    fi
     # Initial installation
+    /bin/systemctl enable wokd.service >/dev/null 2>&1 || :
     /bin/systemctl daemon-reload >/dev/null 2>&1 || :
 
     # Add wokd as default service into public chain of firewalld
@@ -129,6 +134,8 @@ exit 0
 %postun
 if [ "$1" -ge 1 ] ; then
     /bin/systemctl try-restart wokd.service >/dev/null 2>&1 || :
+else
+    rm /etc/wok/wok-key.pem /etc/wok/wok-cert.pem
 fi
 if [ $1 -eq 0 ]; then
     # Remove the SELinux policy, only when uninstall the package
