@@ -46,7 +46,7 @@ Ginger Base is an open source base host management plugin for Wok
 common tools for configuring and managing the Linux systems.
 
 %prep
-%setup -n %{name}
+%setup -q -n %{name}
 
 %build
 ./autogen.sh --system

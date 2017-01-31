@@ -67,7 +67,7 @@ Wok is Webserver Originated from Kimchi.
 
 
 %prep
-%setup -n %{name}
+%setup -q -n %{name}
 
 
 %build

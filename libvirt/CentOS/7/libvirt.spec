@@ -1237,7 +1237,7 @@ Libvirt plugin for NSS for translating domain names into IP addresses.
 %endif
 
 %prep
-%setup -n %{name}
+%setup -q -n %{name}
 
 # Patches have to be stored in a temporary file because RPM has
 # a limit on the length of the result of any macro expansion;

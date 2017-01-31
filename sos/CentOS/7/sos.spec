@@ -28,7 +28,7 @@ diagnostic purposes and debugging. Sos is commonly used to help
 support technicians and developers.
 
 %prep
-%setup -n %{name}
+%setup -q -n %{name}
 
 %build
 make
