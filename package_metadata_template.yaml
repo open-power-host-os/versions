@@ -1,0 +1,102 @@
+# Package metadata YAML file documentation and template
+
+# Root attribute
+# Required: yes
+Package:
+
+ # Package name
+ # Required: no
+ # Default value: YAML file name without the extension
+ name: '<package_name>'
+
+ # Where to download the source code from. 
+ # Required: yes
+ # At least one source is required, many are allowed
+ sources:
+   # Git repository
+   # Required: no
+   - git:
+      # Repository URL
+      # Required: yes
+      # Example: 'https://github.com/crash-utility/crash.git'
+      src: '<git_repo_url>'
+      # Repository commit ID used to build. 
+      # Required: yes
+      # Example: '64531dc850f2840cedafa143fe051d2cfeae5247'
+      commit_id: '<git_repo_commit_id>'
+      # Used when updating the commit ID to the head of a branch in the packages
+      # metadata update script. 
+      # Required: no
+      # Example: 'master'
+      branch: '<git_repo_branch>'
+      # Source files archive (usually in tar.gz format) file name. 
+      # Required: no
+      # Never use it for the main source file, it is inferred from package name.
+      # Example: 'crash.tar.gz'
+      archive: '<archive_file_name>'
+   # Mercurial repository
+   # Required: no
+   - hg:
+      src:
+      commit_id:
+      branch:
+      archive:
+   # Subversion repository
+   # Required: no
+   - svn:
+      src:
+      commit_id:
+      branch:
+      archive:
+   # HTTP/FTP server
+   # Required: no
+   - url:
+      src:
+      archive:
+
+ # Information about how to update the package version in the package specification
+ # (eg rpm spec in RPM-based Linux distributions). 
+ # Required: no 
+ # Used only in the packages metadata update script
+ version:
+  # Relative path of the file which contains the version of the software in its source code
+  # repository. 
+  # Required: no 
+  # Example: '.rh_rpm_package'
+  file: '<version_file_relative_path>'
+  # Regular expression with a group (between parenthesiss) which indicates how to find the
+  # software version in the version file in the software source code repository. 
+  # Required: no
+  # Example: '([\w.-]+)'
+  regex: '<version_regex_in_version_file>'
+
+ # Extra files used by the package build, categorized by distro name and version. 
+ # Required: no 
+ files:
+  # Linux distribution name
+  # Required: yes
+  # Supported Linux distribution names: CentOS
+  CentOS:
+   # Linux distribution version number
+   # Required: yes
+   # Supported CentOS Linux distribution versions: 7
+   '7':
+    # Packages required to build this package. 
+    # Required: no
+    build_dependencies:
+     - <package_name>
+    # Packages required to install this package.
+    # Required: no
+    install_dependencies:
+     - <package_name>
+    # Path of directory in this git repository with files required to build this package,
+    # besides the ones downloaded from sources above. Optional.
+    # Path is relative to the package metadata directory in this git repository
+    # Required: no
+    # Default value: <distro_name>/<distro_version>/SOURCES
+    build_files: '<source_files_directory_relative_path>'
+    # Path of rpm package specification file in this git repository.
+    # Path is relative to the package metadata directory in this git repository
+    # Required: no
+    # Default value: <distro_name>/<distro_version>/<package_name>.spec
+    spec: '<rpm_spec_file_relative_path>'
