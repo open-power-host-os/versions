@@ -20,6 +20,7 @@ Requires:   python-psutil >= 0.6.0
 Requires:   fontawesome-fonts
 Requires:   open-sans-fonts
 Requires:   logrotate
+Requires:   openssl
 Requires:	policycoreutils
 Requires:	policycoreutils-python
 
