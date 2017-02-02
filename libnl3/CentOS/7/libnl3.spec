@@ -1,3 +1,7 @@
+# The tests are disabled by default.
+# Set --with tests or bcond_without to run tests.
+%bcond_with tests
+
 Name: libnl3
 Version: 3.2.28
 Release: 2%{?dist}
@@ -84,8 +88,10 @@ ln "%{buildroot}%{_bindir}/nl-qdisc-add"      "%{buildroot}%{_sbindir}/"
 ln "%{buildroot}%{_bindir}/nl-qdisc-delete"   "%{buildroot}%{_sbindir}/"
 ln "%{buildroot}%{_bindir}/nl-qdisc-list"     "%{buildroot}%{_sbindir}/"
 
+%if %{with tests}
 %check
 make check
+%endif
 
 %post -p /sbin/ldconfig
 %post cli -p /sbin/ldconfig
