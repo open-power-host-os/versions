@@ -1,6 +1,6 @@
 Name:       wok
 Version:    2.3.0
-Release:    9%{?dist}
+Release:    10%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -181,7 +181,7 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
-* Tue Jan 31 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.3.0-9
+* Tue Jan 31 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.3.0-10
 - 0489d72cbf7f3f33da304ae83a7bacedcc1bb7d5 Make sure nginx is running before reloading its config
 - fc225d7cdaa7d6938eee7c9b5d04153d645b45ea Generate dhparams in post-install and development mode
 - 26d66e1ec07ed69d2a3a36c8750858950055769e reload API: adding user log messages
