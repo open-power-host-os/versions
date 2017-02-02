@@ -4,7 +4,7 @@ Package:
    - git:
       src: 'https://github.com/open-power-host-os/kimchi.git'
       branch: 'hostos-devel'
-      commit_id: 'e6939383c4803297bd4587c2602a0e9da152e7c0'
+      commit_id: '4ea4cef057617b43381e7e3b913b4a34104cac40'
  files:
   CentOS:
    '7':

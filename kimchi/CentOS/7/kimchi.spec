@@ -1,6 +1,6 @@
 Name:       kimchi
 Version:    2.3.0
-Release:    11%{?dist}
+Release:    12%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -90,6 +90,15 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Feb 02 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-12
+- 4ea4cef057617b43381e7e3b913b4a34104cac40 Merge remote-tracking branch upstream/master into hostos-devel
+- 000754a45b0dffb805cf4db2dc652117846cb1f6 Fixed truncation for Guest Interface GUI OVS network/interface scroll bar
+- 9894bf5251c45b1b4bad8f54298b7417fa1e97c1 Fixed Truncation appeared on Virtualization->add network of Japanese language
+- b557edf02c52434287aaa4b717dda4a89da107fb Fixed for Truncation occurs in edit a guest panel console row
+- 4692db0d0b98bb0342aa41537beb0faa72fde7e3 Bug fix #1096 - Prevent mass detach based on source PCI address
+- cce0ec7377a07ae8321bcc3f7702723580888c87 Remove role_key parameter
+- bf479e55f8aa33fb8ad22d1bf0c74c3187eb74d7 Remove whitespaces
+
 * Wed Jan 25 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-11
 - e6939383c4803297bd4587c2602a0e9da152e7c0 Merge remote-tracking branch upstream/master into hostos-devel
 - a20630073f45e275a92f883f964f0ce8401a42af Add test to live snapshot

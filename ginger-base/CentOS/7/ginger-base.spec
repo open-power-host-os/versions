@@ -4,7 +4,7 @@
 
 Name:       ginger-base
 Version:    2.2.1
-Release:    10%{?dist}
+Release:    11%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -74,6 +74,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Feb 02 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-11
+- 593bf276645a98717586c2b532e379b3cf050810 Merge remote-tracking branch upstream/master into hostos-devel
+- 5dda16ea5f2692d792cb70fe9dab67895e3ec707 Typo at API.json
+- 6f114040fbe03bcd38c21a3f82c6d622f9d97e58 Bug fix #136: Add filter for repositories
+- ac9565153fdd6ff6b165bfd3c8e1b2e6892f01d2 Remove role_key parameter
+
 * Wed Jan 25 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-10
 - 2de55c275f473eafc053c5b804af8f204810164f Merge remote-tracking branch upstream/master into hostos-devel
 - 33e9bf1a765e573fef2f2463987ab73a1e51b50a Fix available flag for multipath lun
