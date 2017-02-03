@@ -25,7 +25,7 @@
 
 Name:           flannel
 Version:        0.5.5
-Release:        1%{?dist}
+Release:        1.git%{shortcommit}%{?dist}
 Summary:        Etcd address management agent for overlay networks
 License:        ASL 2.0
 URL:            https://%{import_path}

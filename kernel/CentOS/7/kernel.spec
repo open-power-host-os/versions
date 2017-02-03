@@ -1,3 +1,6 @@
+%global commit          bbbdfd8db1fce91da2c7625742f80c268d6671be
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
+
 # Implement magicdirs for ibm8 kernel configs
 ##{lua:
 #  sourcedir = rpm.expand("%{_sourcedir}")
@@ -311,7 +314,7 @@ Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: 4.10.0
-Release: 1%{?prerelease}%{?dist}
+Release: 1%{?prerelease}.git%{shortcommit}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476

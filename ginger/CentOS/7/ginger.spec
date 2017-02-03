@@ -1,6 +1,9 @@
+%global commit          50b2b552c0ee4cbca6004572830fac38e9954ba3
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
+
 Name:       ginger
 Version:    2.3.0
-Release:    13%{?dist}
+Release:    13.git%{shortcommit}%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base

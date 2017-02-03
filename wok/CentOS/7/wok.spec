@@ -1,6 +1,9 @@
+%global commit          0489d72cbf7f3f33da304ae83a7bacedcc1bb7d5
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
+
 Name:       wok
 Version:    2.3.0
-Release:    10%{?dist}
+Release:    10.git%{shortcommit}%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch

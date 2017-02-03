@@ -1,6 +1,9 @@
+%global commit          7d33cd33507d6f11fb86c4bc13d752cb122759f7
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
+
 Name:           servicelog
 Version:        1.1.14
-Release:        4%{?dist}
+Release:        4.git%{shortcommit}%{?dist}
 Summary:        Servicelog Tools
 
 Group:          System Environment/Base

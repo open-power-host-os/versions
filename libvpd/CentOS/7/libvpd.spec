@@ -1,6 +1,9 @@
+%global commit          8cb3fe06b8d2e6125235eb1973e624a0fb12837c
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
+
 Name:		libvpd
 Version:	2.2.5
-Release:	4%{?dist}
+Release:	4.git%{shortcommit}%{?dist}
 Summary:	VPD Database access library for lsvpd
 
 Group:		System Environment/Libraries

@@ -7,7 +7,7 @@
 Summary: HardWare LiSter
 Name: lshw
 Version: B.02.18
-Release: 1.%{shortcommit}
+Release: 1.git%{shortcommit}
 Source: %{name}.tar.gz
 URL: http://lshw.ezix.org/
 License: GPL
