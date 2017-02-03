@@ -1,10 +1,10 @@
 Package:
  name: 'librtas'
  sources:
-   - git:
-      src: 'https://github.com/nfont/librtas.git'
-      branch: 'master'
-      commit_id: '3fe4911fa9e456e6cae2f314cff46894025b7fb9'
+  - git:
+     src: 'https://github.com/nfont/librtas.git'
+     branch: 'master'
+     commit_id: '3fe4911fa9e456e6cae2f314cff46894025b7fb9'
  files:
   CentOS:
    '7':

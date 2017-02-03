@@ -1,10 +1,10 @@
 Package:
  name: 'wok'
  sources:
-   - git:
-      src: 'https://github.com/open-power-host-os/wok.git'
-      branch: 'hostos-devel'
-      commit_id: '0489d72cbf7f3f33da304ae83a7bacedcc1bb7d5'
+  - git:
+     src: 'https://github.com/open-power-host-os/wok.git'
+     branch: 'hostos-devel'
+     commit_id: '0489d72cbf7f3f33da304ae83a7bacedcc1bb7d5'
  files:
   CentOS:
    '7':
