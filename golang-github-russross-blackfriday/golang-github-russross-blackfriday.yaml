@@ -9,6 +9,6 @@ Package:
     build_dependencies:
      - golang
      - golang-github-shurcooL-sanitized_anchor_name
-    dependencies:
+    install_dependencies:
      - golang
      - golang-github-shurcooL-sanitized_anchor_name
