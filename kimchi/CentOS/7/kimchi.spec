@@ -56,7 +56,7 @@ Web application to manage KVM/Qemu virtual machines
 
 
 %prep
-%setup -n %{name}
+%setup -q -n %{name}
 ./autogen.sh --system
 
 
