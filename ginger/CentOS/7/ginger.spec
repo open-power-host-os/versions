@@ -1,6 +1,6 @@
 Name:       ginger
 Version:    2.3.0
-Release:    12%{?dist}
+Release:    13%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -92,6 +92,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Feb 02 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-13
+- 50b2b552c0ee4cbca6004572830fac38e9954ba3 Merge remote-tracking branch upstream/master into hostos-devel
+- 6fd2c635264acdc511a7e042698db6bb1c24f922 Issue #525. Disabling Set OSA Port option for bond/vlan.
+- e73e078f9b507b749468cd37b107e687091231bd Bug fix #528
+- 071121709184df7bc5bb0338596ba009a520ca77 Remove role_key parameter
+
 * Wed Jan 25 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-12
 - 0c770d8c653846005c878923d224eccdac06e241 Merge remote-tracking branch upstream/master into hostos-devel
 - f015905ebe3839c69bb14d0f7fed9fd90038329c Fixing copyright year of UI files after previous commit
