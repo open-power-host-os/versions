@@ -1,11 +1,6 @@
 Package:
- name: 'kimchi'
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/kimchi.git'
      branch: 'hostos-devel'
      commit_id: '4ea4cef057617b43381e7e3b913b4a34104cac40'
- files:
-  CentOS:
-   '7':
-    spec: 'CentOS/7/kimchi.spec'

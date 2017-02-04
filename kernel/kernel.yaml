@@ -1,5 +1,4 @@
 Package:
- name: 'kernel'
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/linux.git'
@@ -11,8 +10,5 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/kernel.spec'
-    rpmmacro: 'CentOS/7/rpmmacro'
-    build_files: 'CentOS/7/SOURCES'
     build_dependencies:
      - 'gcc'

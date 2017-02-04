@@ -9,8 +9,6 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/gcc.spec'
-    build_files: 'CentOS/7/SOURCES'
     download_build_files:
      - 'ftp://gcc.gnu.org/pub/gcc/infrastructure/isl-0.11.1.tar.bz2'
      - 'ftp://gcc.gnu.org/pub/gcc/infrastructure/cloog-0.18.0.tar.gz'

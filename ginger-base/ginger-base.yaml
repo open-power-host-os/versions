@@ -1,11 +1,6 @@
 Package:
- name: 'ginger-base'
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/gingerbase.git'
      branch: 'hostos-devel'
      commit_id: '593bf276645a98717586c2b532e379b3cf050810'
- files:
-  CentOS:
-   '7':
-    spec: 'CentOS/7/ginger-base.spec'

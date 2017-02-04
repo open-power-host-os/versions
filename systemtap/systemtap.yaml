@@ -1,13 +1,6 @@
 Package:
- name: 'systemtap'
  sources:
   - git:
      src: 'git://sourceware.org/git/systemtap.git'
      branch: 'master'
      commit_id: '616ec7a0b916df7785d911b824c3df6eb022b213' # release-3.0
- files:
-  CentOS:
-   '7':
-    spec: 'CentOS/7/systemtap.spec'
-    build_files: 'CentOS/7/SOURCES'
-    rpmmacro: 'CentOS/7/rpmmacro'

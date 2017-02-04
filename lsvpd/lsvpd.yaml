@@ -1,5 +1,4 @@
 Package:
- name: 'lsvpd'
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/lsvpd.git'
@@ -11,7 +10,6 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/lsvpd.spec'
     dependencies:
      - 'libvpd'
     build_dependencies:

@@ -1,5 +1,4 @@
 Package:
- name: 'servicelog'
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/servicelog.git'
@@ -11,6 +10,5 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/servicelog.spec'
     dependencies:
      - 'libservicelog'

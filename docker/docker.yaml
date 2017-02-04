@@ -1,5 +1,4 @@
 Package:
- name: 'docker'
  sources:
   - git:
      src: 'https://github.com/docker/docker.git'
@@ -38,7 +37,5 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/docker.spec'
-    build_files: 'CentOS/7/SOURCES'
     build_dependencies:
      - golang

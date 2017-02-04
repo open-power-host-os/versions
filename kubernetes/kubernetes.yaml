@@ -1,5 +1,4 @@
 Package:
- name: 'kubernetes'
  sources:
   - git:
      src: 'https://github.com/openshift/kubernetes.git'
@@ -18,7 +17,5 @@ Package:
  files:
   CentOS:
    '7':
-    spec: 'CentOS/7/kubernetes.spec'
-    build_files: 'CentOS/7/SOURCES'
     build_dependencies:
      - golang

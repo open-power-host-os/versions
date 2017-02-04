@@ -1,5 +1,4 @@
 Package:
- name: 'crash'
  sources:
   - git:
      src: 'https://github.com/crash-utility/crash.git'
@@ -8,8 +7,3 @@ Package:
  version:
   file: '.rh_rpm_package'
   regex: '([\w.-]+)'
- files:
-  CentOS:
-   '7':
-    spec: 'CentOS/7/crash.spec'
-    build_files: 'CentOS/7/SOURCES'

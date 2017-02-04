@@ -1,5 +1,4 @@
 Package:
- name: 'libvirt'
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/libvirt.git'
@@ -8,7 +7,3 @@ Package:
  version:
   file: 'configure.ac'
   regex: 'AC_INIT\(\[[^]]+\],\s*\[([\d.]+)\]'
- files:
-  CentOS:
-   '7':
-    spec: 'CentOS/7/libvirt.spec'
