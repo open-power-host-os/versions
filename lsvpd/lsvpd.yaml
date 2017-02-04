@@ -10,7 +10,7 @@ Package:
  files:
   CentOS:
    '7':
-    dependencies:
+    install_dependencies:
      - 'libvpd'
     build_dependencies:
      - 'librtas'
