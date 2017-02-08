@@ -3,4 +3,4 @@ Package:
   - git:
      src: 'https://github.com/open-power-host-os/wok.git'
      branch: 'hostos-devel'
-     commit_id: '0489d72cbf7f3f33da304ae83a7bacedcc1bb7d5'
+     commit_id: 'b0cf42955ce44d4981e14e9485872ecbea33edff'

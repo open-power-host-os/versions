@@ -1,9 +1,9 @@
-%global commit          4ea4cef057617b43381e7e3b913b4a34104cac40
+%global commit          ec17672b98a4723aa42c6fc114b3d428b66dcab4
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 Name:       kimchi
 Version:    2.3.0
-Release:    12.git%{shortcommit}%{?dist}
+Release:    13.git%{shortcommit}%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -93,6 +93,13 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Feb 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-13.gitec17672
+- ec17672b98a4723aa42c6fc114b3d428b66dcab4 Merge remote-tracking branch upstream/master into hostos-devel
+- f55b821fc634fc05667541f75c606591d5e14f9d Update copyright date for root.py file
+- df1b0afed6d1b699066c616bd541d2d3c9ec0f29 Bug fix #1089: osinfo.py tablet_bus=usb for x86 modern
+- 0182d004d00571b42ef36151a32eb8cb96667367 Adding self.depends option in root.py
+- e3890b31cd7e01aca54fce69b2d5d65b2a4fbd81 Fix for the kimchi #1102
+
 * Thu Feb 02 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-12
 - 4ea4cef057617b43381e7e3b913b4a34104cac40 Merge remote-tracking branch upstream/master into hostos-devel
 - 000754a45b0dffb805cf4db2dc652117846cb1f6 Fixed truncation for Guest Interface GUI OVS network/interface scroll bar

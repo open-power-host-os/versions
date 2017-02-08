@@ -1,9 +1,9 @@
-%global commit          50b2b552c0ee4cbca6004572830fac38e9954ba3
+%global commit          c840545a470e9b55e2bbb4d6a048ed67229c4891
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 Name:       ginger
 Version:    2.3.0
-Release:    13.git%{shortcommit}%{?dist}
+Release:    14.git%{shortcommit}%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -95,6 +95,25 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Feb 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-14.gitc840545
+- c840545a470e9b55e2bbb4d6a048ed67229c4891 Merge remote-tracking branch upstream/master into hostos-devel
+- 30e65e74ee51bc767106c9c17d0f0f2c33aba776 disable remove button for iscsi devices
+- 253644202d63e9db30f59f9d1b90d6f2c5e78e9b Fixing copyright of host-network-ovs.js and host-system-services.js
+- bbddec8c9514482d8a256e109577f2e1dccdef31 Fixed system service tab missed to list all active services
+- 186a7400abd348e1da84549b99429bf386e35bff Fixed ovs bond interface menu will not exit when save changes and close Edit Bridge panel
+- 84872f77a85458909d6d3f877bd179949e33b710 Fix for issue #529 and #530
+- 10be1fa9a896ced29b0a940ca3342c163c78fa5c Adding self.depends in ginger root
+- f2833807f29059ca300f149ade9b952c83745fc9 Fixing copyright of ui/js/host-storage-vg.js
+- c2d2bd0d433e990b34725bfeae1de0f8616f170b Fixed GINVG00001E and GINVG00009E error received while creating a new volume group.
+- 1cf1359ac02246d56c4793ca3d38d3c3b03e5c04 Fixed missing apply step when try to extend volume group
+- ce2b385a908cf91005c004f4cb8d405d8a19311a Fixed window hangs at the loading step when cancel the physical volume creation.
+- df814a01369e422788a8e2f6d82eab062bc32db3 Corrected wrong spelling of warning info while creating physical volume.
+- 271a4d9460af01fe6bf40864deffa830ac253151 Fixed issue #521 Audit UI: Auditlog filters which doesnt require field value are failing to accept
+- c3ee2b07185ef3d4a259cf147d5a14527ea21f70 Fix for refresh button will select all newly added file system automatically.
+- b27aba55d40eaef69e00b60a95027e9c9c4e9ad7 Fixed Audit Logs: unable to open the value input box for Event Start and Event End
+- 93f4ebb5942306d4d22d4bbcc4cc913021e5ba01 Fixing copyright date
+- f43b9ca3abdee998c96149796236551b5a6c0a80 Issue #531 Removed refresh of networkdevices on cancellation.
+
 * Thu Feb 02 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-13
 - 50b2b552c0ee4cbca6004572830fac38e9954ba3 Merge remote-tracking branch upstream/master into hostos-devel
 - 6fd2c635264acdc511a7e042698db6bb1c24f922 Issue #525. Disabling Set OSA Port option for bond/vlan.

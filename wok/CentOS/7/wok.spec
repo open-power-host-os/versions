@@ -1,9 +1,9 @@
-%global commit          0489d72cbf7f3f33da304ae83a7bacedcc1bb7d5
+%global commit          b0cf42955ce44d4981e14e9485872ecbea33edff
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 Name:       wok
 Version:    2.3.0
-Release:    10.git%{shortcommit}%{?dist}
+Release:    11.git%{shortcommit}%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -184,6 +184,11 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed Feb 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-11.gitb0cf429
+- b0cf42955ce44d4981e14e9485872ecbea33edff /config/plugins: changing existing UI calls
+- 1fd6f1a8b518ce7995d1bd01643a83f861618521 /config/plugins API: backend changes
+- 1dcb126cd94ce419faaa020919b1ccd6e383145b Fix to the WoK for the Kimchi issue #1102
+
 * Tue Jan 31 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.3.0-10
 - 0489d72cbf7f3f33da304ae83a7bacedcc1bb7d5 Make sure nginx is running before reloading its config
 - fc225d7cdaa7d6938eee7c9b5d04153d645b45ea Generate dhparams in post-install and development mode
