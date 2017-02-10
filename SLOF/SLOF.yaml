@@ -2,9 +2,9 @@ Package:
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/slof.git'
-     branch: 'powerkvm-v3.1.1'
-     # this is tag qemu-slof-20160525 but since nobody else uses tags let's keep it as a commit id
-     commit_id: 'b2d56f3a322f2c6375a87d11274fbae1cde66ae8'
+     branch: 'hostos-devel'
+     # this is tag qemu-slof-20161019 but since nobody else uses tags let's keep it as a commit id
+     commit_id: 'efd65f49929d7db775b26066d538c8120ae3db94'
  files:
   CentOS:
    '7':

@@ -1,8 +1,8 @@
-%global commit          b2d56f3a322f2c6375a87d11274fbae1cde66ae8
+%global commit          efd65f49929d7db775b26066d538c8120ae3db94
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 Name:           SLOF
-Version:        20160525
+Version:        20161019
 Release:        3.git%{shortcommit}%{?dist}
 Summary:        Slimline Open Firmware
 
@@ -57,6 +57,9 @@ cp -a boot_rom.bin $RPM_BUILD_ROOT%{_datadir}/qemu/slof.bin
 
 
 %changelog
+* Wed Feb  8 2017 Nikunj A. Dadhania <nikunj@linux.vnet.ibm.com> - 20161019
+- Pull upstream SLOF present in qemu 2.8
+
 * Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 20160525-3
 - Spec cleanup
 
