@@ -419,17 +419,17 @@ rm -rf ${RPM_BUILD_ROOT}
 - rhbz fixes from RHEL version merged into trunk
 - progressbar update
 
-* Tue Nov 19 2009 Adam Stokes <ajs at redhat dot com> = 1.8-20
+* Thu Nov 19 2009 Adam Stokes <ajs at redhat dot com> = 1.8-20
 - dont copy unwanted files due to symlinks
 - More plugin enhancements
 
-* Tue Nov 5 2009 Adam Stokes <ajs at redhat dot com> = 1.8-18
+* Thu Nov 5 2009 Adam Stokes <ajs at redhat dot com> = 1.8-18
 - Option to enable selinux fixfiles check
 - Start of replacing Thread module with multiprocessing
 - Update translations
 - More checks against conf file versus command line opts
 
-* Tue Sep 9 2009 Adam Stokes <ajs at redhat dot com> = 1.8-16
+* Wed Sep 9 2009 Adam Stokes <ajs at redhat dot com> = 1.8-16
 - Update rh-upload-core to rh-upload and allows general files
 - Fix cluster plugin with pwd mangling invalidating xml
 - Cluster support detecting invalid fence_id and fence states
@@ -448,7 +448,7 @@ rm -rf ${RPM_BUILD_ROOT}
 - More merges from reports against RHEL version of plugins
 - Remove unecessary definition of localdir in spec
 
-* Wed May 05 2009 Adam Stokes <ajs at redhat dot com> - 1.8-11
+* Tue May 05 2009 Adam Stokes <ajs at redhat dot com> - 1.8-11
 - Remove all instances of sysrq
 - Consistent macro usage in spec
 
@@ -533,20 +533,20 @@ rm -rf ${RPM_BUILD_ROOT}
 - Resolves: bz332211 apply regex to case number in sysreport for RHEL5
 - Resolves: bz400111 sos incorrectly reports cluster data in SMP machine
 
-* Wed Aug 13 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.7-8
+* Mon Aug 13 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.7-8
 - added README.rh-upload-core
 
 * Mon Aug 13 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.7-7
 - Resolves: bz251927 SOS errata needs to be respin to match 4.6 code base
 - added extras/rh-upload-core script from David Mair <dmair@redhat.com>
 
-* Mon Aug  9 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.7-6
+* Thu Aug  9 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.7-6
 - more language fixes
 - added arabic, italian and french
 - package prepared for release
 - included sysreport as sysreport.legacy
 
-* Mon Aug  9 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.7-5
+* Thu Aug  9 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.7-5
 - package obsoletes sysreport and creates a link pointing to sosreport
 - added some commands in cluster and process plugins
 - fixed html output (wrong links to cmds, thanks streeter)
@@ -557,12 +557,12 @@ rm -rf ${RPM_BUILD_ROOT}
 - Resolves: bz248252 sos to support language localization
 - Resolves: bz241282 Make SOS for RHEL 4
 
-* Mon Aug  1 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.7-4
+* Wed Aug  1 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.7-4
 - catch KeyboardInterrupt when entering sosreport name
 - added color output for increased readability
 - list was sorted twice, removing latter .sort()
 
-* Mon Jul 31 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.7-3
+* Tue Jul 31 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.7-3
 - added preliminary problem diagnosis support
 - better i18n initialization
 - better user messages
@@ -571,7 +571,7 @@ rm -rf ${RPM_BUILD_ROOT}
 - use python native commands to create symlinks
 - limit concurrent running threads
 
-* Mon Jul 28 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.7-2
+* Sat Jul 28 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.7-2
 - initial language localization support
 - added italian translation
 
@@ -586,7 +586,7 @@ rm -rf ${RPM_BUILD_ROOT}
 - rpm -Va in plugins/rpm.py sets eta_weight to 200 (plugin 200 longer than other plugins, for ETA calculation)
 - beautified command output filenames in makeCommandFilename()
 
-* Mon Jul 12 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.7-0
+* Thu Jul 12 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.7-0
 - curses menu disabled by default (enable with -c)
 - sosreport output friendlier to the user (and similar to sysreport)
 - smarter plugin listing which also shows options and disable/enabled plugins
@@ -600,10 +600,10 @@ rm -rf ${RPM_BUILD_ROOT}
 - added plugin get_description() that returns a short decription for the plugin
 - guess sosreport name from system's name
 
-* Mon Jul  5 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.6-5
+* Thu Jul  5 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.6-5
 - Yet more fixes to make package Fedora compliant.
 
-* Mon Jul  5 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.6-4
+* Thu Jul  5 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.6-4
 - More fixes to make package Fedora compliant.
 
 * Mon Jul  2 2007 Navid Sheikhol-Eslami <navid at redhat dot com> - 1.6-3

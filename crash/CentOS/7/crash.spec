@@ -112,7 +112,7 @@ rm -rf %{buildroot}
 * Tue Feb 10 2015 Dave Anderson <anderson@redhat.com> - 7.1.0-1
 - Update to latest upstream release
 
-* Fri Nov 15 2014 Dave Anderson <anderson@redhat.com> - 7.0.9-1
+* Sat Nov 15 2014 Dave Anderson <anderson@redhat.com> - 7.0.9-1
 - Update to latest upstream release
 
 * Mon Sep 15 2014 Dave Anderson <anderson@redhat.com> - 7.0.8-1
@@ -173,7 +173,7 @@ rm -rf %{buildroot}
 * Tue Nov 27 2012 Dave Anderson <anderson@redhat.com> - 6.1.1-1
 - Update to latest upstream release
 
-* Mon Sep  1 2012 Dave Anderson <anderson@redhat.com> - 6.1.0-1
+* Sat Sep  1 2012 Dave Anderson <anderson@redhat.com> - 6.1.0-1
 - Add ppc to ExclusiveArch list
 - Update to latest upstream release
 
@@ -183,7 +183,7 @@ rm -rf %{buildroot}
 * Wed Jul 18 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 6.0.8-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
-* Mon Jul  1 2012 Dave Anderson <anderson@redhat.com> - 6.0.8-1
+* Sun Jul  1 2012 Dave Anderson <anderson@redhat.com> - 6.0.8-1
 - Update to latest upstream release.
 - Replace usage of "struct siginfo" with "siginfo_t".
 
@@ -214,7 +214,7 @@ rm -rf %{buildroot}
 - Update to latest upstream release
 - Add ARM to the Exclusive arch
 
-* Wed Feb 25 2011 Dave Anderson <anderson@redhat.com> - 5.1.2-2
+* Fri Feb 25 2011 Dave Anderson <anderson@redhat.com> - 5.1.2-2
 - Fixes for gcc-4.6 -Werror compile failures in gdb module.  
 
 * Wed Feb 23 2011 Dave Anderson <anderson@redhat.com> - 5.1.2-1
@@ -237,7 +237,7 @@ rm -rf %{buildroot}
   Revision tag workaround, the crash-4.0-8.11-dwarf3.patch and 
   the crash-4.0-8.11-optflags.patch
 
-* Sun Aug 05 2009 Lubomir Rintel <lkundrak@v3.sk> - 4.0.8.11-2
+* Wed Aug 05 2009 Lubomir Rintel <lkundrak@v3.sk> - 4.0.8.11-2
 - Fix reading of dwarf 3 DW_AT_data_member_location
 - Use proper compiler flags
 

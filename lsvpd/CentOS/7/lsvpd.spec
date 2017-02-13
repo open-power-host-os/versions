@@ -69,7 +69,7 @@ on POWER PC based systems.
 - 3a5f5e1fdf82ebc6efdda4cfc51fd24776bad8be Fix NVMe device description field
 - 22bf31003c097d993e73d22e745c36d16b5f85a2 Add check if lstat gets failed
 
-* Thu Oct 19 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> 1.7.7-5
+* Wed Oct 19 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> 1.7.7-5
 - Spec cleanup: Remove indirections in Version and Name tags.
 
 * Mon Oct 12 2015 Jaromir Capik <jcapik@redhat.com> - 1.7.5-4
