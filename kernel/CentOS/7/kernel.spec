@@ -5240,7 +5240,7 @@ fi
 - 407a3ae hv: do not lose pending heartbeat vmbus packets
 - 888abf4 Merge branch hostos-base into hostos-devel
 
-* Wed Oct 31 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 4.8.4-2
+* Mon Oct 31 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 4.8.4-2
 - Remove unused macros and simplify package numbering
 
 * Wed Oct 26 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 4.8.4-1
