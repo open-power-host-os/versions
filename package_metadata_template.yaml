@@ -9,7 +9,7 @@ Package:
  # Default value: YAML file name without the extension
  name: '<package_name>'
 
- # Where to download the source code from. 
+ # Where to download the source code from.
  # Required: yes
  # At least one source is required, many are allowed
  sources:
@@ -20,16 +20,16 @@ Package:
       # Required: yes
       # Example: 'https://github.com/crash-utility/crash.git'
       src: '<git_repo_url>'
-      # Repository commit ID used to build. 
+      # Repository commit ID used to build.
       # Required: yes
       # Example: '64531dc850f2840cedafa143fe051d2cfeae5247'
       commit_id: '<git_repo_commit_id>'
       # Used when updating the commit ID to the head of a branch in the packages
-      # metadata update script. 
+      # metadata update script.
       # Required: no
       # Example: 'master'
       branch: '<git_repo_branch>'
-      # Source files archive (usually in tar.gz format) file name. 
+      # Source files archive (usually in tar.gz format) file name.
       # Required: no
       # Never use it for the main source file, it is inferred from package name.
       # Example: 'crash.tar.gz'
@@ -55,23 +55,23 @@ Package:
       archive:
 
  # Information about how to update the package version in the package specification
- # (eg rpm spec in RPM-based Linux distributions). 
- # Required: no 
+ # (eg rpm spec in RPM-based Linux distributions).
+ # Required: no
  # Used only in the packages metadata update script
  version:
   # Relative path of the file which contains the version of the software in its source code
-  # repository. 
-  # Required: no 
+  # repository.
+  # Required: no
   # Example: '.rh_rpm_package'
   file: '<version_file_relative_path>'
   # Regular expression with a group (between parenthesiss) which indicates how to find the
-  # software version in the version file in the software source code repository. 
+  # software version in the version file in the software source code repository.
   # Required: no
   # Example: '([\w.-]+)'
   regex: '<version_regex_in_version_file>'
 
- # Extra files used by the package build, categorized by distro name and version. 
- # Required: no 
+ # Extra files used by the package build, categorized by distro name and version.
+ # Required: no
  files:
   # Linux distribution name
   # Required: yes
@@ -81,7 +81,7 @@ Package:
    # Required: yes
    # Supported CentOS Linux distribution versions: 7
    '7':
-    # Packages required to build this package. 
+    # Packages required to build this package.
     # Required: no
     build_dependencies:
      - <package_name>
