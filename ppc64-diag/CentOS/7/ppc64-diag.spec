@@ -1,9 +1,10 @@
 %global commit          d56f7f1367bd6634605fd65997170252696178fa
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
 
 Name:           ppc64-diag
 Version:        2.7.2
-Release:        1.git%{shortcommit}%{?dist}
+Release:        1%{gitcommittag}%{?dist}
 Summary:        PowerLinux Platform Diagnostics
 URL:            http://sourceforge.net/projects/linux-diag/files/ppc64-diag/
 Group:          System Environment/Base

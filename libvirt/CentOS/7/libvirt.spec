@@ -1,5 +1,6 @@
 %global commit          ddccbf6072a3f95e053cc9934d1178cb1acd2aa7
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
 
 # The tests are disabled by default.
 # Set --with tests or bcond_without to run tests.
@@ -386,7 +387,7 @@
 Summary: Library providing a simple virtualization API
 Name: libvirt
 Version: 2.2.0
-Release: 6.git%{shortcommit}%{?dist}
+Release: 6%{gitcommittag}%{?dist}
 ExclusiveArch: ppc64 ppc64le x86_64 s390x
 Source0: %{name}.tar.gz
 License: LGPLv2+

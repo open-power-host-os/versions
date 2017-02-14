@@ -1,9 +1,10 @@
 %global commit          3a5f5e1fdf82ebc6efdda4cfc51fd24776bad8be
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
 
 Name:		lsvpd
 Version:	1.7.7
-Release:	6.git%{shortcommit}%{?dist}
+Release:	6%{gitcommittag}%{?dist}
 Summary:	VPD/hardware inventory utilities for Linux
 Group:		Applications/System
 License:	GPLv2+

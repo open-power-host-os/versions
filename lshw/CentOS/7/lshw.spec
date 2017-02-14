@@ -3,11 +3,12 @@
 
 %global commit f9bdcc342d525f8504b81a9a344d58f57aa9b5dc
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag .git%{shortcommit}
 
 Summary: HardWare LiSter
 Name: lshw
 Version: B.02.18
-Release: 1.git%{shortcommit}
+Release: 1%{gitcommittag}
 Source: %{name}.tar.gz
 URL: http://lshw.ezix.org/
 License: GPL

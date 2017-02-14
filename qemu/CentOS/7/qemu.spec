@@ -1,5 +1,6 @@
 %global commit          bb80805d7d5b14e886e769b5938b459a3592d882
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
 
 # Fakeroot only: this package is useful for development in fakeroots. It is not
 # available as a base package, though it may be delivered with an approved PCR.
@@ -189,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.8.0
-Release: 1.git%{shortcommit}%{?dist}
+Release: 1%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools

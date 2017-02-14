@@ -1,12 +1,13 @@
 %global commit          52dd1dbc52783e622ca0a96e3e9c182bb26887fe
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
 
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Summary: A set of tools to gather troubleshooting information from a system
 Name: sos
 Version: 3.3
-Release: 18.git%{shortcommit}%{?dist}
+Release: 18%{gitcommittag}%{?dist}
 Group: Applications/System
 Source0: %{name}.tar.gz
 License: GPLv2+

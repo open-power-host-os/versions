@@ -1,9 +1,10 @@
 %global commit          efd65f49929d7db775b26066d538c8120ae3db94
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
 
 Name:           SLOF
 Version:        20161019
-Release:        3.git%{shortcommit}%{?dist}
+Release:        3%{gitcommittag}%{?dist}
 Summary:        Slimline Open Firmware
 
 License:        BSD

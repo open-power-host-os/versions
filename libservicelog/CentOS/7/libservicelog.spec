@@ -1,9 +1,10 @@
 %global commit          48875ee8614eeefaa3d5d8ff92fb424915738169
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
 
 Name:           libservicelog
 Version:        1.1.16
-Release:        2.git%{shortcommit}%{?dist}
+Release:        2%{gitcommittag}%{?dist}
 Summary:        Servicelog Database and Library
 
 Group:          System Environment/Libraries
@@ -145,4 +146,3 @@ Resolves: rhbz#1048877
 
 * Fri Feb 20 2009 Roman Rakus <rrakus@redhat.com> - 1.0.1-1
 - Initial packaging
-

@@ -10,12 +10,13 @@
 %global import_path     %{provider}.%{provider_tld}/%{project}/%{repo}
 %global commit          5f33e7b7878355cd2b7e6b8eefc48a5472c69f70
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
 %global gccgo_version  >= 5
 %global golang_version >= 1.2.1-3
 
 Name:       golang-%{provider}-%{project}-%{repo}
 Version:    1.2
-Release:    5s.git%{shortcommit}%{?dist}
+Release:    5s%{gitcommittag}%{?dist}
 # Be ahead of Fedora
 Epoch:      1
 Summary:    Markdown processor implemented in Go
