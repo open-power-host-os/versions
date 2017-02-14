@@ -210,7 +210,7 @@ on POWER PC based systems.
 - Removing unnecessary Requires field
 
 * Fri Nov 16 2007 - Eric Munson <ebmunson@us.ibm.com> - 1.4.0-1
-- Removing udev rules from install as they are causing problems.  Hotplug 
+- Removing udev rules from install as they are causing problems.  Hotplug
   will be disabled until we find a smarter way of handling it.
 - Updating License
 - Adjusting the way vpdupdater is inserted into run control

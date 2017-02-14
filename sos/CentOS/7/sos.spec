@@ -89,10 +89,10 @@ rm -rf ${RPM_BUILD_ROOT}
 
 * Wed Sep 17 2014 Bryn M. Reeves <bmr@redhat.com> = 3.2-beta1
 - New upstream beta release
- 
+
 * Thu Jun 12 2014 Bryn M. Reeves <bmr@redhat.com> = 3.2-alpha1
 - New upstream alpha release
- 
+
 * Mon Jan 27 2014 Bryn M. Reeves <bmr@redhat.com> = 3.1-1
 - New upstream release
 
@@ -221,7 +221,7 @@ rm -rf ${RPM_BUILD_ROOT}
 - Improve sanitization of RHN user and case number in report name
   Resolves: bz771393
 - Fix verbose output and debug logging
-  Resolves: bz782339 
+  Resolves: bz782339
 - Add basic support for CloudForms data collection
   Resolves: bz752666
 - Add support for Subscription Asset Manager diagnostics
@@ -266,7 +266,7 @@ rm -rf ${RPM_BUILD_ROOT}
 * Tue Nov  1 2011 Bryn M. Reeves <bmr@redhat.com> = 2.2-17
 - Do not collect subscription manager keys in general plugin
   Resolves: bz750607
- 
+
 * Fri Sep 23 2011 Bryn M. Reeves <bmr@redhat.com> = 2.2-16
 - Fix execution of RHN hardware.py from hardware plugin
   Resolves: bz736718
@@ -324,7 +324,7 @@ rm -rf ${RPM_BUILD_ROOT}
 * Thu Apr 07 2011 Bryn M. Reeves <bmr@redhat.com> = 2.2-8
 - Use sha256 for report digest when operating in FIPS mode
   Resolves: bz689387
- 
+
 * Tue Apr 05 2011 Bryn M. Reeves <bmr@redhat.com> = 2.2-7
 - Fix parted and dumpe2fs output on s390
   Resolves: bz622784
@@ -693,4 +693,3 @@ rm -rf ${RPM_BUILD_ROOT}
 
 * Mon May 22 2006 John Berninger <jwb at redhat dot com> - 0.1-1
 - initial package build
-
