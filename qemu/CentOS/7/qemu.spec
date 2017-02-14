@@ -1,4 +1,4 @@
-%global commit          169a53efae579f51022612577e7b17c8aead237c
+%global commit          bb80805d7d5b14e886e769b5938b459a3592d882
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 
 # Fakeroot only: this package is useful for development in fakeroots. It is not
@@ -188,8 +188,8 @@
 
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
-Version: 2.7.0
-Release: 9.git%{shortcommit}%{?dist}
+Version: 2.8.0
+Release: 1.git%{shortcommit}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -1174,8 +1174,6 @@ getent passwd qemu >/dev/null || \
 %doc %{qemudocdir}/Changelog
 %doc %{qemudocdir}/README
 %doc %{qemudocdir}/qemu-doc.html
-%doc %{qemudocdir}/qemu-tech.html
-%doc %{qemudocdir}/qmp-commands.txt
 %doc %{qemudocdir}/COPYING
 %doc %{qemudocdir}/COPYING.LIB
 %doc %{qemudocdir}/LICENSE
@@ -1531,6 +1529,22 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Tue Feb 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 15:2.8.0-1.gitbb80805
+- Version update
+- Removed files qemu-tech.html and qmp-commands.txt that are not generated anymore
+- bb80805d7d5b14e886e769b5938b459a3592d882 vfio/pci: Add support for mmapping MSI-X table
+- 9feef08e90c83ee1a0174702e7275e6bdde7dd47 Merge tag v2.8.0 into hostos-devel
+- f23c070fbdaa6c594bf4ff70c81e5a59ae64f8b3 Revert spapr_pci: Add numa node id
+- 8211cc28de6f87aac44b2d23eeab9bd28216fe3e Revert RAMBlocks: Store page size
+- df8977f5ad5511d65bc04844280fd67b9067a0b7 Revert migration/postcopy: Explicitly disallow huge pages
+- b55d4399dd23e7ad6f51f96acd509bfc0a17ffb6 Revert virtio-pci: error out when both legacy and modern modes are disabled
+- 5560283f5f1aeb846eabe03e7fe9b7c7bce5ad26 Revert vfio: Add support for mmapping sub-page MMIO BARs
+- 8261d330398931852c80da9b6ceef455f4785260 Revert spapr_pci: advertise explicit numa IDs even when theres 1 node
+- beefae50a9dbdc5f268edec0718dd6416481a4e6 Revert vhost: adapt vhost_verify_ring_mappings() to virtio 1 ring layout
+- 76d98639598c7cde6f728642c26596c96361df1a Revert vhost: drop legacy vring layout bits
+- 36cffb0c3b91c5da64487d168df9a378ea320a03 Revert virtio: drop virtio_queue_get_ring_{size, addr}()
+- 652d3f7579b4a34194dc2fcd4808322353d855fd Revert vfio/pci: Add support for mmapping MSI-X table
+
 * Wed Jan 25 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 15:2.7.0-9
 - 169a53efae579f51022612577e7b17c8aead237c vfio/pci: Add support for mmapping
   MSI-X table
