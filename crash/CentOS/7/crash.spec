@@ -1,5 +1,6 @@
 %global commit          64531dc850f2840cedafa143fe051d2cfeae5247
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
 
 #
 # crash core analysis suite
@@ -7,7 +8,7 @@
 Summary: Kernel analysis utility for live systems, netdump, diskdump, kdump, LKCD or mcore dumpfiles
 Name: crash
 Version: 7.1.6
-Release: 1.git%{shortcommit}%{?dist}
+Release: 1%{gitcommittag}%{?dist}
 License: GPLv3
 Group: Development/Debuggers
 Source: %{name}.tar.gz
@@ -215,7 +216,7 @@ rm -rf %{buildroot}
 - Add ARM to the Exclusive arch
 
 * Fri Feb 25 2011 Dave Anderson <anderson@redhat.com> - 5.1.2-2
-- Fixes for gcc-4.6 -Werror compile failures in gdb module.  
+- Fixes for gcc-4.6 -Werror compile failures in gdb module.
 
 * Wed Feb 23 2011 Dave Anderson <anderson@redhat.com> - 5.1.2-1
 - Upstream version.
@@ -233,8 +234,8 @@ rm -rf %{buildroot}
   Bump version.
 
 * Fri Sep 11 2009 Dave Anderson <anderson@redhat.com> - 4.0.9-1
-- Update to upstream release, which allows the removal of the 
-  Revision tag workaround, the crash-4.0-8.11-dwarf3.patch and 
+- Update to upstream release, which allows the removal of the
+  Revision tag workaround, the crash-4.0-8.11-dwarf3.patch and
   the crash-4.0-8.11-optflags.patch
 
 * Wed Aug 05 2009 Lubomir Rintel <lkundrak@v3.sk> - 4.0.8.11-2
@@ -313,7 +314,7 @@ rm -rf %{buildroot}
   by lkcd_x86_trace.c; also for BZ #191719
 
 * Mon May 15 2006 Dave Anderson <anderson@redhat.com> - 4.0-2.26.1
-- Updated crash.patch to bring it up to 4.0-2.26, which should 
+- Updated crash.patch to bring it up to 4.0-2.26, which should
   address BZ #191719 - "crash fails to build in mock"
 
 * Tue Feb 07 2006 Jesse Keating <jkeating@redhat.com> - 4.0-2.18.1
@@ -362,7 +363,7 @@ rm -rf %{buildroot}
 - bump release for fc3
 
 * Tue Jul 13 2004 Dave Anderson <anderson@redhat.com> 3.8-4
-- Fix for gcc 3.4.x/gdb issue where vmlinux was mistakenly presumed non-debug 
+- Fix for gcc 3.4.x/gdb issue where vmlinux was mistakenly presumed non-debug
 
 * Fri Jun 25 2004 Dave Anderson <anderson@redhat.com> 3.8-3
 - remove (harmless) error message during ia64 diskdump invocation when
@@ -370,9 +371,9 @@ rm -rf %{buildroot}
 - several 2.6 kernel specific updates
 
 * Thu Jun 17 2004 Dave Anderson <anderson@redhat.com> 3.8-2
-- updated source package to crash-3.8.tar.gz 
+- updated source package to crash-3.8.tar.gz
 - diskdump support
-- x86_64 processor support 
+- x86_64 processor support
 
 * Mon Sep 22 2003 Dave Anderson <anderson@redhat.com> 3.7-5
 - make bt recovery code start fix-up only upon reaching first faulting frame
@@ -384,14 +385,14 @@ rm -rf %{buildroot}
 - patch to recognize per-cpu GDT changes that redefine __KERNEL_CS and DS
 
 * Wed Sep 10 2003 Dave Anderson <anderson@redhat.com> 3.7-2
-- patches for netdump active_set determination and slab info gathering 
+- patches for netdump active_set determination and slab info gathering
 
 * Wed Aug 20 2003 Dave Anderson <anderson@redhat.com> 3.7-1
 - updated source package to crash-3.7.tar.gz
 
 * Wed Jul 23 2003 Dave Anderson <anderson@redhat.com> 3.6-1
 - removed Packager, Distribution, and Vendor tags
-- updated source package to crash-3.6.tar.gz 
+- updated source package to crash-3.6.tar.gz
 
 * Fri Jul 18 2003 Jay Fenlason <fenlason@redhat.com> 3.5-2
 - remove ppc from arch list, since it doesn't work with ppc64 kernels

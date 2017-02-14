@@ -1,10 +1,11 @@
 %global commit          3fe4911fa9e456e6cae2f314cff46894025b7fb9
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
 
 Summary: Libraries to provide access to RTAS calls and RTAS events.
 Name: librtas
 Version: 1.4.1
-Release: 2.git%{shortcommit}%{?dist}
+Release: 2%{gitcommittag}%{?dist}
 License: GNU Lesser General Public License (LGPL)
 Source:  %{name}.tar.gz
 Group: System Environment/Libraries
@@ -79,4 +80,3 @@ ldconfig
 * Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 1.4.1-2
 - added changelog section
 - spec cleanup
-

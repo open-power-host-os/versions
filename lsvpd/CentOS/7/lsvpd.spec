@@ -1,9 +1,10 @@
 %global commit          3a5f5e1fdf82ebc6efdda4cfc51fd24776bad8be
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
 
 Name:		lsvpd
 Version:	1.7.7
-Release:	6.git%{shortcommit}%{?dist}
+Release:	6%{gitcommittag}%{?dist}
 Summary:	VPD/hardware inventory utilities for Linux
 Group:		Applications/System
 License:	GPLv2+
@@ -210,7 +211,7 @@ on POWER PC based systems.
 - Removing unnecessary Requires field
 
 * Fri Nov 16 2007 - Eric Munson <ebmunson@us.ibm.com> - 1.4.0-1
-- Removing udev rules from install as they are causing problems.  Hotplug 
+- Removing udev rules from install as they are causing problems.  Hotplug
   will be disabled until we find a smarter way of handling it.
 - Updating License
 - Adjusting the way vpdupdater is inserted into run control

@@ -20,12 +20,13 @@
 %global import_path     %{provider}.%{provider_tld}/%{project}/%{repo}
 %global commit          cb8284fb60737793596dd2fc98d9608d3d0d66f0
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
 
 %global devel_main      flannel-devel
 
 Name:           flannel
 Version:        0.5.5
-Release:        1.git%{shortcommit}%{?dist}
+Release:        1%{gitcommittag}%{?dist}
 Summary:        Etcd address management agent for overlay networks
 License:        ASL 2.0
 URL:            https://%{import_path}

@@ -1,5 +1,6 @@
 %global commit          625a1194eaf9b764985ebec3a5da78dc71299238
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
 
 # This package is arch-specific just because of bundling different files for
 # different architectures. No -debuginfo package is needed.
@@ -8,7 +9,7 @@
 Name:       hwdata
 Summary:    Hardware identification and configuration data
 Version:    0.288
-Release:    1.git%{shortcommit}%{?dist}
+Release:    1%{gitcommittag}%{?dist}
 License:    GPLv2+
 Group:      System Environment/Base
 Source0:    %{name}.tar.gz

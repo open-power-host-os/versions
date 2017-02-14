@@ -1,12 +1,13 @@
 %global commit          52dd1dbc52783e622ca0a96e3e9c182bb26887fe
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
 
 %{!?python_sitelib: %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")}
 
 Summary: A set of tools to gather troubleshooting information from a system
 Name: sos
 Version: 3.3
-Release: 18.git%{shortcommit}%{?dist}
+Release: 18%{gitcommittag}%{?dist}
 Group: Applications/System
 Source0: %{name}.tar.gz
 License: GPLv2+
@@ -89,10 +90,10 @@ rm -rf ${RPM_BUILD_ROOT}
 
 * Wed Sep 17 2014 Bryn M. Reeves <bmr@redhat.com> = 3.2-beta1
 - New upstream beta release
- 
+
 * Thu Jun 12 2014 Bryn M. Reeves <bmr@redhat.com> = 3.2-alpha1
 - New upstream alpha release
- 
+
 * Mon Jan 27 2014 Bryn M. Reeves <bmr@redhat.com> = 3.1-1
 - New upstream release
 
@@ -221,7 +222,7 @@ rm -rf ${RPM_BUILD_ROOT}
 - Improve sanitization of RHN user and case number in report name
   Resolves: bz771393
 - Fix verbose output and debug logging
-  Resolves: bz782339 
+  Resolves: bz782339
 - Add basic support for CloudForms data collection
   Resolves: bz752666
 - Add support for Subscription Asset Manager diagnostics
@@ -266,7 +267,7 @@ rm -rf ${RPM_BUILD_ROOT}
 * Tue Nov  1 2011 Bryn M. Reeves <bmr@redhat.com> = 2.2-17
 - Do not collect subscription manager keys in general plugin
   Resolves: bz750607
- 
+
 * Fri Sep 23 2011 Bryn M. Reeves <bmr@redhat.com> = 2.2-16
 - Fix execution of RHN hardware.py from hardware plugin
   Resolves: bz736718
@@ -324,7 +325,7 @@ rm -rf ${RPM_BUILD_ROOT}
 * Thu Apr 07 2011 Bryn M. Reeves <bmr@redhat.com> = 2.2-8
 - Use sha256 for report digest when operating in FIPS mode
   Resolves: bz689387
- 
+
 * Tue Apr 05 2011 Bryn M. Reeves <bmr@redhat.com> = 2.2-7
 - Fix parted and dumpe2fs output on s390
   Resolves: bz622784
@@ -693,4 +694,3 @@ rm -rf ${RPM_BUILD_ROOT}
 
 * Mon May 22 2006 John Berninger <jwb at redhat dot com> - 0.1-1
 - initial package build
-

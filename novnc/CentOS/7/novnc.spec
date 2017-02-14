@@ -1,9 +1,10 @@
 %global commit          fc00821eba469641c6c94706726c3d78e46460a2
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
 
 Name:           novnc
 Version:        0.5.1
-Release:        5.git%{shortcommit}%{?dist}
+Release:        5%{gitcommittag}%{?dist}
 Summary:        VNC client using HTML5 (Web Sockets, Canvas) with encryption support
 Requires:       python-websockify
 
