@@ -3,4 +3,4 @@ Package:
   - git:
      src: 'https://github.com/open-power-host-os/gingerbase.git'
      branch: 'hostos-devel'
-     commit_id: '593bf276645a98717586c2b532e379b3cf050810'
+     commit_id: 'be727f1f3fec4d551802940dff09fcaf061ed6e4'

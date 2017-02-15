@@ -1,10 +1,10 @@
-%global commit          efd65f49929d7db775b26066d538c8120ae3db94
+%global commit          ba46a3f133c8532a517779cc3763e8ac2409d626
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:           SLOF
 Version:        20161019
-Release:        3%{gitcommittag}%{?dist}
+Release:        4%{gitcommittag}%{?dist}
 Summary:        Slimline Open Firmware
 
 License:        BSD
@@ -58,6 +58,19 @@ cp -a boot_rom.bin $RPM_BUILD_ROOT%{_datadir}/qemu/slof.bin
 
 
 %changelog
+* Wed Feb 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 20161019-4.gitba46a3f
+- ba46a3f133c8532a517779cc3763e8ac2409d626 Remove superfluous checkpoints in tree.fs
+- a0b96fe66fcd991b407c1d67ca842921e477a6fd Provide write function in the disk-label package
+- 264553932ba3cee4b7472838daaecfaaa61c91da virtio: Implement block write support
+- eee0d12dc541dd345d7931976e352ea5a6494155 scsi: Add SCSI block write support
+- abd21203aa27435e9e5248350dcaf14940de0947 deblocker: Add a write function
+- 9290756ae1195b331373dbcfd3b37d978b3b71f4 virtio-scsi: Fix descriptor order for SCSI WRITE commands
+- 9b8945ecbde65b06ea2ab9e28a6178024b0420fb board-qemu: Add a possibility to use hvterm input instead of USB keyboard
+- 38bf852e73ce6f0ac801dfe8ef1545c4cd0b5ddb Do not try to use virtio-gpu in VGA mode
+- b294381e48ed9c3300e7aea4c4ba7f17729ffd9f virtio: Fix stack comment of virtio-blk-read
+- 7412f9e058132a9218827c23369b8cba33d756af envvar: Do not read default values for /options from the NVRAM anymore
+- 32568e8e1119e3308b3c97d4a290fd5e8a273e11 envvar: Set properties in /options during (set-defaults)
+
 * Wed Feb  8 2017 Nikunj A. Dadhania <nikunj@linux.vnet.ibm.com> - 20161019
 - Pull upstream SLOF present in qemu 2.8
 

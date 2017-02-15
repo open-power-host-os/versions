@@ -2,13 +2,13 @@
 %global with_systemd 1
 %endif
 
-%global commit          593bf276645a98717586c2b532e379b3cf050810
+%global commit          be727f1f3fec4d551802940dff09fcaf061ed6e4
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:       ginger-base
 Version:    2.2.1
-Release:    11%{gitcommittag}%{?dist}
+Release:    12%{gitcommittag}%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -78,6 +78,13 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Feb 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-12.gitbe727f1
+- be727f1f3fec4d551802940dff09fcaf061ed6e4 Merge remote-tracking branch upstream/master into hostos-devel
+- 676b5ff056c867c04d564538a06b8afd90d8e5e2 Remove unused temporary directory
+- 79275c2a5f7cee458a892cf2cd99a5aea837e1ce Merge remote-tracking branch upstream/master into hostos-devel
+- 2971b2f384bf66af94c2efa1e463702d2fa62935 Update run_server() calls to do not pass model instance
+- b4ca94343a04bc75e1680a08816570c56b526fdd Specify objectstore location when running on test mode
+
 * Thu Feb 02 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-11
 - 593bf276645a98717586c2b532e379b3cf050810 Merge remote-tracking branch upstream/master into hostos-devel
 - 5dda16ea5f2692d792cb70fe9dab67895e3ec707 Typo at API.json

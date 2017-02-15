@@ -1,10 +1,10 @@
-%global commit          c840545a470e9b55e2bbb4d6a048ed67229c4891
+%global commit          f350f33f7c310269121cc1e8a0c187eb32fd4ed0
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:       ginger
 Version:    2.3.0
-Release:    14%{gitcommittag}%{?dist}
+Release:    15%{gitcommittag}%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -96,6 +96,18 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Feb 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-15.gitf350f33
+- f350f33f7c310269121cc1e8a0c187eb32fd4ed0 Merge remote-tracking branch upstream/master into hostos-devel
+- 9560100688e3e58df5ceafb9a55cd8b0f25ecf3e Fixing copyright date of UI files
+- 68c6ecf0975bef3ebd1b2c5e0a1349b6f161918b Changes to show translated value of rules types in rules listing and edit rule panel.
+- bc9b25deb17471c6456265ff5f836e417b53f05c Externalise Network on-off button for ipv4/ipv6 panels and Host Administration messages
+- 7296802a3dd67069118a52b51ad8f95d713cb8d9 Multi culture UI issues fixed
+- e67ff84e5a28b40214ab917ea2aeff7b9d3cc752 Merge remote-tracking branch upstream/master into hostos-devel
+- 6721ad82c11fcc9c8fd654fa1a643a0f9dc96ea0 Collapse all Network tab sections
+- f0f20b37f9af7e83e5aac9588c821402849db7d1 Issue #520. Auto refresh of ovsbridges.
+- 57b0e8fbbbc0a34c7b0072fe1fd3e97680837764 Update run_server() calls to do not pass model instance
+- b203d32a47235ec0e93779e994411794f1d49fdb Fixing test_interfaces.py
+
 * Wed Feb 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-14.gitc840545
 - c840545a470e9b55e2bbb4d6a048ed67229c4891 Merge remote-tracking branch upstream/master into hostos-devel
 - 30e65e74ee51bc767106c9c17d0f0f2c33aba776 disable remove button for iscsi devices
