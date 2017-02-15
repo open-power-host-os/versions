@@ -1,10 +1,10 @@
-%global commit          b0cf42955ce44d4981e14e9485872ecbea33edff
+%global commit          c0890261c6e237e874272e9d8377f3a8cb585a98
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:       wok
 Version:    2.3.0
-Release:    11%{gitcommittag}%{?dist}
+Release:    12%{gitcommittag}%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -185,6 +185,13 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed Feb 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-12.gitc089026
+- c0890261c6e237e874272e9d8377f3a8cb585a98 Bug fix #35: Option to specific logging levels
+- da07288a110714316adeed4a3f8ae37640887ce5 Avoid log functionality to break due to missing argument
+- 836e5acc57df9e9c887de592d98bf9bad2b45c5d Bug fix: Do not allow specifying model instance directly to Server()
+- 384dfc9508cd3ccf635f1b613559a6193a5d2631 Bug fix: Set application options globally on Server() instead of wokd command
+- 6dc801ea7a3ebfbe1c680739d5fa605e2c22a82e Bug fix #147: Block authentication request after too many failures
+
 * Wed Feb 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-11.gitb0cf429
 - b0cf42955ce44d4981e14e9485872ecbea33edff /config/plugins: changing existing UI calls
 - 1fd6f1a8b518ce7995d1bd01643a83f861618521 /config/plugins API: backend changes

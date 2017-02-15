@@ -1,10 +1,10 @@
-%global commit          ec17672b98a4723aa42c6fc114b3d428b66dcab4
+%global commit          801facd867d55033f33ad3f2e6aea3dbce767c3f
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:       kimchi
 Version:    2.3.0
-Release:    13%{gitcommittag}%{?dist}
+Release:    14%{gitcommittag}%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -94,6 +94,16 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Feb 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-14.git801facd
+- 801facd867d55033f33ad3f2e6aea3dbce767c3f Merge remote-tracking branch upstream/master into hostos-devel
+- 2c98a2bca9ce465b5df64929e601be7a17e2b4cd Improve logic to identify if a network is in use or not
+- 6e21e0e90f79f49477bbaadc5b07b7743ee1ef02 Fix memory hotplug test case
+- fe6c4b2efcce89913aa8ef9883407a6ef1c31623 Fix snapshots test case
+- d077c8eae1a16f5f67b213fa4f38ddfad0fd9830 Bug fix: Set default host value while generating the virt-viewer config file
+- 26b14dd93d77fafed55e0695402b3784f0172bd7 Update run_server() calls to do not pass model instance
+- 759cceaf3fb0ebe2d857bd054c7c53710fbb85b0 Specify objectstore location when running on test mode
+- aabfe36155b85018205148b51a136717f3cd9033 Bug Fix #979 - Change boot order UI
+
 * Wed Feb 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-13.gitec17672
 - ec17672b98a4723aa42c6fc114b3d428b66dcab4 Merge remote-tracking branch upstream/master into hostos-devel
 - f55b821fc634fc05667541f75c606591d5e14f9d Update copyright date for root.py file

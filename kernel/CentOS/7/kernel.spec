@@ -1,4 +1,4 @@
-%global commit          bbbdfd8db1fce91da2c7625742f80c268d6671be
+%global commit          d8e9273fa27a343d48cdb9652def3ae3d06848ec
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
@@ -308,14 +308,14 @@ Summary: The Linux kernel
 %define kernel_prereq  fileutils, module-init-tools >= 3.16-2, initscripts >= 8.11.1-1, grubby >= 8.28-2
 %define initrd_prereq  dracut >= 001-7
 
-%define prerelease .rc6
+%define prerelease .rc7
 
 Name: kernel%{?variant}
 Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: 4.10.0
-Release: 1%{?prerelease}%{gitcommittag}%{?dist}
+Release: 2%{?prerelease}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1695,6 +1695,105 @@ fi
 
 
 %changelog
+* Wed Feb 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.10.0-2.rc7.gitd8e9273
+- d8e9273fa27a343d48cdb9652def3ae3d06848ec PCI: Revert remaining pieces of BAR alignment patchset
+- 1492b8884389a4f2fe7b77101844046fd3808a1a Revert PCI: Ignore enforced alignment when kernel uses existing firmware setup
+- b38e722a9ecaec84b607fc17c7f39c6eca655bd1 Revert PCI: Ignore enforced alignment to VF BARs
+- 58b5a4ba9e4b7a902fbb8dfdacdd0197940369c5 Revert PCI: Do not disable memory decoding in pci_reassigndev_resource_alignment()
+- 14dd54b500cecad060592c92e39506688673268d Merge tag v4.10-rc7 into hostos-devel
+- cf4fbae24593a53617ef9f0f14545fad31f60680 Merge branch kvm-ppc-next into hostos-devel
+- a4a741a04814170358f470d7103f8b13ceb6fefc Merge remote-tracking branch remotes/powerpc/topic/ppc-kvm into kvm-ppc-next
+- ab9bad0ead9ab179ace09988a3f1cfca122eb7c2 powerpc/powernv: Remove separate entry for OPAL real mode calls
+- 2337d207288f163e10bd8d4d7eeb0c1c75046a0c powerpc/64: CONFIG_RELOCATABLE support for hmi interrupts
+- d5adbfcd5f7bcc6fa58a41c5c5ada0e5c826ce2c Linux 4.10-rc7
+- a572a1b999489efb591287632279c6c9eca3e4ed Merge branch irq-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- 24bc5fe716855e5e608c515340b3ceacfb143bcc Merge tag for-linus of git://git.kernel.org/pub/scm/virt/kvm/kvm
+- 412e6d3fec247b2bc83106514b0fb3b17e2eb7fe Merge tag char-misc-4.10-rc7 of git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/char-misc
+- 252bf9f4c43fd58f96587a97866cb7cc980e7544 Merge tag staging-4.10-rc7 of git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/staging
+- 8fcdcc42a5268f298ac91962a5e816294435006f Merge tag usb-4.10-rc7 of git://git.kernel.org/pub/scm/linux/kernel/git/gregkh/usb
+- a0a28644c1cf191e514dd64bf438e69c178b8440 Merge tag scsi-fixes of git://git.kernel.org/pub/scm/linux/kernel/git/jejb/scsi
+- a49e6f584e29785f9e5eb8dd31435746818dd5c4 Merge tag for_linus of git://git.kernel.org/pub/scm/linux/kernel/git/mst/vhost
+- e9f7f17d53003ee46ccbaf057f7820bfb6e76b9d Merge tag vfio-v4.10-rc7 of git://github.com/awilliam/linux-vfio
+- 7a92cc6bcbc90bf72e57eff2dc29900a636c2d0d Merge branch akpm (patches from Andrew)
+- 5abf186a30a89d5b9c18a6bf93a2c192c9fd52f6 mm, fs: check for fatal signals in do_generic_file_read()
+- d1908f52557b3230fbd63c0429f3b4b748bf2b6d fs: break out of iomap_file_buffered_write on fatal signals
+- a96dfddbcc04336bbed50dc2b24823e45e09e80c base/memory, hotplug: fix a kernel oops in show_valid_zones()
+- deb88a2a19e85842d79ba96b05031739ec327ff4 mm/memory_hotplug.c: check start_pfn in test_pages_in_a_zone()
+- 35f860f9ba6aac56cc38e8b18916d833a83f1157 jump label: pass kbuild_cflags when checking for asm goto support
+- 253fd0f02040a19c6fe80e4171659fa3482a422d shmem: fix sleeping from atomic context
+- 4f40c6e5627ea73b4e7c615c59631f38cc880885 kasan: respect /proc/sys/kernel/traceoff_on_warning
+- d7b028f56a971a2e4d8d7887540a144eeefcd4ab zswap: disable changing params if init fails
+- 3f67790d2b7e322bcf363ec717085dd78c3ea7cd Merge tag regulator-fix-v4.10-rc6 of git://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator
+- 79134d11d030b886106bf45a5638c1ccb1f0856c MAINTAINERS: update email address for Amit Shah
+- cda8bba0f99d25d2061c531113c14fa41effc3ae vhost: fix initialization for vq->is_le
+- 0d5415b489f68b58e1983a53793d25d53098ed4b Revert vring: Force use of DMA API for ARM-based systems with legacy devices
+- 424414947da3dd5cb0d60e4f299f7c51e472ae77 Merge tag usb-serial-4.10-rc7 of git://git.kernel.org/pub/scm/linux/kernel/git/johan/usb-serial into usb-linus
+- cd44691f7177b2c1e1509d1a17d9b198ebaa34eb Merge tag mmc-v4.10-rc6 of git://git.kernel.org/pub/scm/linux/kernel/git/ulfh/mmc
+- 79c9089f97d37ffac88c3ddb6d359b2cf75058b7 Merge tag drm-fixes-for-v4.10-rc7 of git://people.freedesktop.org/~airlied/linux
+- 57480b98af696795ab0daff0a6ed572172060a0f Merge tag powerpc-4.10-3 of git://git.kernel.org/pub/scm/linux/kernel/git/powerpc/linux
+- 2d47b8aac7ba697ffe05f839a3b4c3c628b4e430 Merge tag trace-v4.10-rc2-2 of git://git.kernel.org/pub/scm/linux/kernel/git/rostedt/linux-trace
+- 2cb54ce9ee92ae627bc1cef8bea236905910a86d Merge branch modversions (modversions fixes for powerpc from Ard)
+- 29905b52fad0854351f57bab867647e4982285bf log2: make order_base_2() behave correctly on const input value zero
+- 00c87e9a70a17b355b81c36adedf05e84f54e10d KVM: x86: do not save guest-unsupported XSAVE state
+- 4b9eee96fcb361a5e16a8d2619825e8a048f81f7 module: unify absolute krctab definitions for 32-bit and 64-bit
+- 71810db27c1c853b335675bee335d893bc3d324b modversions: treat symbol CRCs as 32 bit quantities
+- 56067812d5b0e737ac2063e94a50f76b810d6ca3 kbuild: modversions: add infrastructure for emitting relative CRCs
+- 206c4720092d2a24bfefc041b377e889a220ffbf Merge remote-tracking branches regulator/fix/fixed and regulator/fix/twl6040 into regulator-linus
+- f63cf464fc379382a271f94ddef36e8c5a0628eb Merge branch drm-fixes-4.10 of git://people.freedesktop.org/~agd5f/linux into drm-fixes
+- a20def95401112358bcc90242f252a96084a2d47 Merge tag topic/vma-fix-for-4.10-2017-02-02 of git://anongit.freedesktop.org/git/drm-intel into drm-fixes
+- 34e00accf612bc5448ae709245c2b408edf39f46 Merge branch x86-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- 891aa1e0f13c3aaa756c69b343d6ab6f3357009b Merge branch perf-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- c67b42f3a3f03e68bf915f32c8f7be0b726fec1a Merge branch efi-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- 027eb72cbcf81561867a764074964e2ce9828398 Merge branch core-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- 1fc576b82b96d9bb033ff0098e1c0bf68de282b2 Merge tag nfsd-4.10-2 of git://linux-nfs.org/~bfields/linux
+- e4178c75049c581114998a850ecdfa5a2811cde6 Merge tag xtensa-20170202 of git://github.com/jcmvbkbc/linux-xtensa
+- f2557779e1a9cfbf69c99b74da26cc1b2b10e752 Merge tag pci-v4.10-fixes-2 of git://git.kernel.org/pub/scm/linux/kernel/git/helgaas/pci
+- 51964e9e12d0a054002a1a0d1dec4f661c7aaf28 drm/radeon: Fix vram_size/visible values in DRM_RADEON_GEM_INFO ioctl
+- 57bcd0a6364cd4eaa362d7ff1777e88ddf501602 drm/amdgpu/si: fix crash on headless asics
+- 26a346f23c5291d1d9521e72763103daf2c6f0d1 tracing/kprobes: Fix __init annotation
+- c8f325a59cfc718d13a50fbc746ed9b415c25e92 efi/fdt: Avoid FDT manipulation after ExitBootServices()
+- 6d04dfc8966019b8b0977b2cb942351f13d2b178 Merge git://git.kernel.org/pub/scm/linux/kernel/git/davem/net
+- 2883aaea363f7a897ff06d2e6c73ae7aae285bcb Merge branch for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/viro/vfs
+- 06425c308b92eaf60767bc71d359f4cbc7a561f8 tcp: fix 0 divide in __tcp_select_window()
+- 63117f09c768be05a0bf465911297dc76394f686 ipv6: pointer math error in ip6_tnl_parse_tlv_enc_lim()
+- e387dc122fc7c70c2a5df2567f4e2d1114f5a5da Merge branch linus of git://git.kernel.org/pub/scm/linux/kernel/git/herbert/crypto-2.6
+- 35609502ac5dea2b149ec0368791d9c0e246bd65 Merge tag dmaengine-fix-4.10-rc7 of git://git.infradead.org/users/vkoul/slave-dma
+- 1a2a14444d32b89b28116daea86f63ced1716668 net: fix ndo_features_check/ndo_fix_features comment ordering
+- fd62d9f5c575f0792f150109f1fd24a0d4b3f854 net/sched: matchall: Fix configuration race
+- 2da64d20a0b20046d688e44f4033efd09157e29d vfio/spapr: Fix missing mutex unlock when creating a window
+- c325b3533730016ca5cdaf902d62550b4243fe43 Merge tag pinctrl-v4.10-4 of git://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-pinctrl
+- 4993b39ab04b083ff6ee1147e7e7f120feb6bf7f be2net: fix initial MAC setting
+- e8fe4f4b2b7b93048729538321c681c0cff33b39 drm/i915: Track pinned vma in intel_plane_state
+- eeee74a4f6625b77c3e8db0693c2d4546507ba0d drm/atomic: Unconditionally call prepare_fb.
+- fff4b87e594ad3d2e4f51e8d3d86a6f9d3d8b654 perf/x86/intel/uncore: Make package handling more robust
+- 1aa6cfd33df492939b0be15ebdbcff1f8ae5ddb6 perf/x86/intel/uncore: Clean up hotplug conversion fallout
+- dd86e373e09fb16b83e8adf5c48c421a4ca76468 perf/x86/intel/rapl: Make package handling more robust
+- 4b3e6f2ef3722f1a6a97b6034ed492c1a21fd4ae xtensa: fix noMMU build on cores with MMU
+- a2ca3d617944417e9dd5f09fc8a4549cda115f4f Merge tag trace-4.10-rc2 of git://git.kernel.org/pub/scm/linux/kernel/git/rostedt/linux-trace
+- 52b679f60e2a68af88411f12318675a2424a0e14 Merge tag drm-misc-fixes-2017-01-31 of git://anongit.freedesktop.org/git/drm-misc into drm-fixes
+- 283725af0bd2a4a8600bbe5edeb9d7c72780d3a2 Merge branch for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/dtor/input
+- f1774f46d49f806614d81854321ee9e5138135e5 Merge branch for-4.10-fixes of git://git.kernel.org/pub/scm/linux/kernel/git/tj/cgroup
+- 298a2d87518ec01bb36070fafe31da7746556db0 Merge branch for-4.10-fixes of git://git.kernel.org/pub/scm/linux/kernel/git/tj/percpu
+- 52e02f2797cf44e00da987a7736cc0f5192132f7 Merge branch for-4.10-fixes of git://git.kernel.org/pub/scm/linux/kernel/git/tj/libata
+- c9194b99ae1825bdbafc701965442a47739ff0ad Merge branch for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/jikos/hid
+- 0becc0ae5b42828785b589f686725ff5bc3b9b25 x86/mce: Make timer handling more robust
+- 415f9b71d17d294c2f2075b3fc7717d72e5e48f9 Merge branch for-next of git://git.samba.org/sfrench/cifs-2.6
+- edc67410449c668434b183bb0f770b7bf456c750 Merge branch linux-4.10 of git://github.com/skeggsb/linux into drm-fixes
+- aaaec6fc755447a1d056765b11b24d8ff2b81366 x86/irq: Make irq activate operations symmetric
+- e26bfebdfc0d212d366de9990a096665d5c0209a fscache: Fix dead object requeue
+- 6bdded59c8933940ac7e5b416448276ac89d1144 fscache: Clear outstanding writes when disabling a cookie
+- 62deb8187d116581c88c69a2dd9b5c16588545d4 FS-Cache: Initialise stores_lock in netfs cookie
+- 90427ef5d2a4b9a24079889bf16afdcdaebc4240 ipv6: fix flow labels when the traffic class is non-0
+- c73e44269369e936165f0f9b61f1f09a11dae01c net: thunderx: avoid dereferencing xcv when NULL
+- 034dd34ff4916ec1f8f74e39ca3efb04eab2f791 svcrpc: fix oops in absence of krb5 module
+- 41f53350a0f36a7b8e31bec0d0ca907e028ab4cd nfsd: special case truncates some more
+- d19fb70dd68c4e960e2ac09b0b9c79dfdeefa726 NFSD: Fix a null reference case in find_or_create_lock_stateid()
+- d07830db1bdb254e4b50d366010b219286b8c937 USB: serial: pl2303: add ATEN device ID
+- 79c6f448c8b79c321e4a1f31f98194e4f6b6cae7 tracing: Fix hwlat kthread migration
+- 92c715fca907686f5298220ece53423e38ba3aed drm/atomic: Fix double free in drm_atomic_state_default_clear
+- 8e9faa15469ed7c7467423db4c62aeed3ff4cae3 HID: cp2112: fix gpio-callback error handling
+- 7a7b5df84b6b4e5d599c7289526eed96541a0654 HID: cp2112: fix sleep-while-atomic
+
 * Thu Feb 02 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.10.0-1.rc6
 - Version update
 - bbbdfd8db1fce91da2c7625742f80c268d6671be Merge branch kvm-ppc-next into hostos-devel
