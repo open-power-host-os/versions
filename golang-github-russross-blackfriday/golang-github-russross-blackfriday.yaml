@@ -1,7 +1,9 @@
 Package:
- clone_url: 'https://github.com/russross/blackfriday'
- commit_id: '5f33e7b7878355cd2b7e6b8eefc48a5472c69f70'
- branch: 'master'
+ sources:
+  - git:
+     src: 'https://github.com/russross/blackfriday'
+     commit_id: '5f33e7b7878355cd2b7e6b8eefc48a5472c69f70'
+     branch: 'master'
  expects_source: 'golang-github-russross-blackfriday'
  files:
   CentOS:
