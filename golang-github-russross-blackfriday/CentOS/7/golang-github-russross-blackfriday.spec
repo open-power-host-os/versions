@@ -16,7 +16,7 @@
 
 Name:       golang-%{provider}-%{project}-%{repo}
 Version:    1.2
-Release:    5s%{gitcommittag}%{?dist}
+Release:    6%{gitcommittag}%{?dist}
 # Be ahead of Fedora
 Epoch:      1
 Summary:    Markdown processor implemented in Go
@@ -75,6 +75,9 @@ cp -pav testdata/* %{buildroot}%{gopath}/src/%{import_path}/testdata/
 %{gopath}/src/%{import_path}/*/*
 
 %changelog
+* Wed Feb 22 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 1.2-6.git5f33e7b
+- Remove extraneous letter from release number
+
 * Mon Mar 02 2015 jchaloup <jchaloup@redhat.com> - 1.2-5
 - Bump to upstream 77efab57b2f74dd3f9051c79752b2e8995c8b789
   Update spec file to used commit tarball
