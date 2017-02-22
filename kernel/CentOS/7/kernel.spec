@@ -1,4 +1,4 @@
-%global commit          d8e9273fa27a343d48cdb9652def3ae3d06848ec
+%global commit          eaaddb6b7ab31c5fd71db37d0f681bd6a88c2e22
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
@@ -308,14 +308,14 @@ Summary: The Linux kernel
 %define kernel_prereq  fileutils, module-init-tools >= 3.16-2, initscripts >= 8.11.1-1, grubby >= 8.28-2
 %define initrd_prereq  dracut >= 001-7
 
-%define prerelease .rc7
+%define prerelease %{nil}
 
 Name: kernel%{?variant}
 Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: 4.10.0
-Release: 2%{?prerelease}%{gitcommittag}%{?dist}
+Release: 3%{?prerelease}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1695,6 +1695,139 @@ fi
 
 
 %changelog
+* Wed Feb 22 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.10.0-3.giteaaddb6
+- eaaddb6b7ab31c5fd71db37d0f681bd6a88c2e22 powernv: Pass PSSCR value and mask to power9_idle_stop
+- 4bfb3830d13ed553d9adf0621f34440669b2e8e0 cpuidle:powernv: Add helper function to populate powernv idle states.
+- 63e525efa4ccdc9b5fa2d19ac132469c26e32211 powernv:stop: Rename pnv_arch300_idle_init to pnv_power9_idle_init
+- e557702be29484cdfe5d98437337a732842f8897 powernv:idle: Add IDLE_STATE_ENTER_SEQ_NORET macro
+- 1491d41907969885e164a36282d7887c5a32e6dc Merge tag v4.10 into hostos-devel
+- fda8051665b5d8b65d17a4d8cf667e0447c800c5 Merge branch kvm-ppc-next into hostos-devel
+- 95084d98def7bf448e9793ccc99bb28bebf454bf PCI: Dont extend devices size when using default alignment for all devices
+- 19e8df5107af6f5f77ab2ffd277530819b2a9a8f PCI: Add a macro to set default alignment for all PCI devices
+- c470abd4fde40ea6a0846a2beab642a578c0b8cd Linux 4.10
+- 137d01df511b3afe1f05499aea05f3bafc0fb221 Fix missing sanity check in /dev/sg
+- fd3fc0b4d7305fa7246622dcc0dec69c42443f45 scsi: dont BUG_ON() empty DMA transfers
+- 00ea1ceebe0d9f2dc1cc2b7bd575a00100c27869 ipv6: release dst on error in ip6_dst_lookup_tail
+- 2763f92f858f7c4c3198335c0542726eaed07ba3 Merge tag fixes-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/arm/arm-soc
+- b92ce305fcbc8d85d1732fecf17c823c760868bd Merge branch fixes of git://git.armlinux.org.uk/~rmk/linux-arm
+- 17a984bccde4c9ea34d78de1535760a25ad87993 Merge branch x86-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- 244ff16fb4717708491fa1b3b2a68f9074742d71 Merge branch locking-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- e602e700842104096e96a7deee453183e4ed278a Merge branch timers-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- 3dd9c12726ffd1d548ad5264731dfe7a785768ed Merge git://git.kernel.org/pub/scm/linux/kernel/git/davem/net
+- fc98c3c8c9dcafd67adcce69e6ce3191d5306c9c printk: use rcuidle console tracepoint
+- 69e05170ef0d0c00e1098dd6a625b44f39903a6a ARM: multi_v7_defconfig: enable Qualcomm RPMCC
+- bcd3bb63dbc87a3bbb21e95a09cd26bb6479c332 KVM: PPC: Book3S HV: Disable HPT resizing on POWER9 for now
+- 4c03b862b12f980456f9de92db6d508a4999b788 irda: Fix lockdep annotations in hashbin_delete().
+- 6dc39c50e4aeb769c8ae06edf2b1a732f3490913 Merge branch for-linus of git://git.kernel.dk/linux-block
+- 22f0708a718daea5e79de2d29b4829de016a4ff4 vxlan: fix oops in dev_fill_metadata_dst
+- 5edabca9d4cff7f1f2b68f0bac55ef99d9798ba4 dccp: fix freeing skb too early for IPV6_RECVPKTINFO
+- 2fe1e8a7b2f4dcac3fcb07ff06b0ae7396201fd6 Merge tag powerpc-4.10-5 of git://git.kernel.org/pub/scm/linux/kernel/git/powerpc/linux
+- a0d5ef457393a240869d837cda1ccb22bbbe3dc2 Merge branch for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/dtor/input
+- 444a034d390da1b636bb2c5f02ebaa08cdbe8de1 Merge branch i2c/for-current of git://git.kernel.org/pub/scm/linux/kernel/git/wsa/linux
+- 6adfd6aceba0b315406b56a48733610aa24c70f8 Merge tag mmc-v4.10-rc8 of git://git.kernel.org/pub/scm/linux/kernel/git/ulfh/mmc
+- 7ed1b1255919ac46c4b2aab87d1220ec3bd4cbae Merge tag ntb-4.10-bugfixes of git://github.com/jonmason/ntb
+- 785f35775d968e0f45231b754e945fcb3ed6bded dpaa_eth: small leak on error
+- 6fe1bfc46cad54a4ef337f9935f764a90865236b Merge tag reset-for-4.10-fixes of https://git.pengutronix.de/git/pza/linux into fixes
+- 2bd624b4611ffee36422782d16e1c944d1351e98 packet: Do not call fanout_release from atomic contexts
+- 3a4f17608162bbbdcdd9680789b1bc61017cefa3 KVM: PPC: Book3S HV: Turn KVM guest htab message into a debug message
+- e5a1dadec3648019a838b85357b67f241fbb02e8 reset: fix shared reset triggered_count decrement on error
+- 939ada5fb587840ae4db47846087be4162477b13 ntb: ntb_hw_intel: link_poll isnt clearing the pending status properly
+- 8fcd0950c021d7be8493280541332b924b9de962 ntb_transport: Pick an unused queue
+- 9644347c5240d0ee3ba7472ef332aaa4ff4db398 ntb: ntb_perf missing dmaengine_unmap_put
+- dd62245e73de9138333cb0e7a42c8bc1215c3ce6 NTB: ntb_transport: fix debugfs_remove_recursive
+- 4da934dc6515afaa1db4e02548803de0cd279734 KVM: PPC: Book3S PR: Ratelimit copy data failure error messages
+- 0722f57bfae9abbc673b9dbe495c7da2f64676ea Merge tag drm-fixes-for-v4.10-final of git://people.freedesktop.org/~airlied/linux
+- 18a0de8816766a0da7537ef82156b5418ba5cd6e Merge branch drm-fixes-4.10 of git://people.freedesktop.org/~agd5f/linux into drm-fixes
+- 558e8e27e73f53f8a512485be538b07115fe5f3c Revert nohz: Fix collision between tick and other hrtimers
+- 4695daefba8df8a11fa0b0edd595eedae9ea59ae Merge tag media/v4.10-5 of git://git.kernel.org/pub/scm/linux/kernel/git/mchehab/linux-media
+- 5a81e6a171cdbd1fa8bc1fdd80c23d3d71816fac vfs: fix uninitialized flags in splice_to_pipe()
+- 58f6eaee7bef8faa1259784d72ee2f51bacead4d Merge branch for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/mszeredi/fuse
+- aa6fba55cc5fac205768f6c7b94276390ee74052 Merge tag pci-v4.10-fixes-4 of git://git.kernel.org/pub/scm/linux/kernel/git/helgaas/pci
+- 3c7a9f32f9392c9dfce24f33bdc6799852903e27 Merge git://git.kernel.org/pub/scm/linux/kernel/git/davem/net
+- d74c67dd7800fc7aae381f272875c337f268806c drm/radeon: Use mode h/vdisplay fields to hide out of bounds HW cursor
+- 9e3440481845b2ec22508f60837ee2cab2b6054f ARM: 8658/1: uaccess: fix zeroing of 64-bit get_user()
+- 32b143637e8180f5d5cea54320c769210dea4f19 ARM: 8657/1: uaccess: consistently check object sizes
+- 5d7f5ce15156af205e175e8fa5c669ba40bf0c5e cfq-iosched: dont call wbt_disable_default() with IRQs disabled
+- 84588a93d097bace24b9233930f82511d4f34210 fuse: fix uninitialized flags in pipe_buffer
+- 5b73d6347eb82cd2a26698fc339607e25e0ad917 KVM: PPC: Book3S HV: Prevent double-free on HPT resize commit path
+- bf3f14d6342cfb37eab8f0cddd0e4d4063fd9fc9 rhashtable: Revert nested table changes.
+- b7a26998590c5efb371562fb8a84bc93094009f5 Merge tag drm-misc-fixes-2017-02-15 of git://anongit.freedesktop.org/git/drm-misc into drm-fixes
+- 3f91a89d424a79f8082525db5a375e438887bb3e powerpc/64: Disable use of radix under a hypervisor
+- 75224c93fa985f4a6fb983f53208f5c5aa555fbf ibmvnic: Fix endian errors in error reporting output
+- 28f4d16570dcf440e54a4d72666d5be452f27d0e ibmvnic: Fix endian error when requesting device capabilities
+- 7627ae6030f56a9a91a5b3867b21f35d79c16e64 net: neigh: Fix netevent NETEVENT_DELAY_PROBE_TIME_UPDATE notification
+- acf138f1b00bdd1b7cd9894562ed0c2a1670888e net: xilinx_emaclite: fix freezes due to unordered I/O
+- cd224553641848dd17800fe559e4ff5d208553e8 net: xilinx_emaclite: fix receive buffer overflow
+- afe3e4d11bdf50a4c3965eb6465ba6bebbcf5dcf PCI/PME: Restore pcie_pme_driver.remove
+- ee10689117c0186fd4fe7feca8d48c7316f65d70 Merge branch kvm-ppc-next of git://git.kernel.org/pub/scm/linux/kernel/git/paulus/powerpc into HEAD
+- f222449c9dfad7c9bb8cb53e64c5c407b172ebbc timekeeping: Use deferred printk() in debug code
+- bb08c04dc867b5f392caec635c097d5d5fcd8c9f drm/dp/mst: fix kernel oops when turning off secondary monitor
+- 6ba4d2722d06960102c981322035239cd66f7316 fuse: fix use after free issue in fuse_dev_do_read()
+- 5463b3d043826ff8ef487edbd1ef1bfffb677437 bpf: kernel header files need to be copied into the tools directory
+- e70ac171658679ecf6bea4bbd9e9325cd6079d2b tcp: tcp_probe: use spin_lock_bh()
+- a725eb15db80643a160310ed6bcfd6c5a6c907f2 uapi: fix linux/if_pppol2tp.h userspace compilation errors
+- 12688dc21f71f4dcc9e2b8b5556b0c6cc8df1491 Revert i2c: designware: detect when dynamic tar update is possible
+- f9c85ee67164b37f9296eab3b754e543e4e96a1c [media] siano: make it work again with CONFIG_VMAP_STACK
+- d199fab63c11998a602205f7ee7ff7c05c97164b packet: fix races in fanout_add()
+- f39f0d1e1e93145a0e91d9a7a639c42fd037ecc3 ibmvnic: Fix initial MTU settings
+- a60ced990e309666915d21445e95347d12406694 net: ethernet: ti: cpsw: fix cpsw assignment in resume
+- cd27b96bc13841ee7af25837a6ae86fee87273d6 kcm: fix a null pointer dereference in kcm_sendmsg()
+- 01f8902bcf3ff124d0aeb88a774180ebcec20ace net: fec: fix multicast filtering hardware setup
+- 144adc655fac089d485ee66354d402b319cff6d2 Merge branch ipv6-v4mapped
+- 052d2369d1b479cdbbe020fdd6d057d3c342db74 ipv6: Handle IPv4-mapped src to in6addr_any dst.
+- ec5e3b0a1d41fbda0cc33a45bc9e54e91d9d12c7 ipv6: Inhibit IPv4-mapped src address on the wire.
+- fed06ee89b78d3af32e235e0e89ad0d946fcb95d net/mlx5e: Disable preemption when doing TC statistics upcall
+- 747ae0a96f1a78b35c5a3d93ad37a16655e16340 Merge tag media/v4.10-4 of git://git.kernel.org/pub/scm/linux/kernel/git/mchehab/linux-media
+- 3d4ef329757cfd5e0b23cce97cdeca7e2df89c99 mmc: core: fix multi-bit bus width without high-speed mode
+- 1541574f477d4478079ef7a13f6038f4f15ec480 powerpc/mm/radix: Skip ptesync in pte update helpers
+- e174793ca9c4ef4494158d9355877443e1675639 powerpc/mm/radix: Use ptep_get_and_clear_full when clearing pte for full mm
+- 2dba87682a436e6289aa8dff74f6ab1abe344b8e powerpc/mm/radix: Update pte update sequence for pte clear case
+- 3634bf18238eba79caa2b4e7ded6d61ae0f68ed7 Merge tag v4.10-rc8 into hostos-devel
+- 0c8ef291d976221319f70753c62e18b48d892590 Merge branch rhashtable-allocation-failure-during-insertion
+- 40137906c5f55c252194ef5834130383e639536f rhashtable: Add nested tables
+- 9dbbfb0ab6680c6a85609041011484e6658e7d3c tipc: Fix tipc_sk_reinit race conditions
+- 6a25478077d987edc5e2f880590a2bc5fcab4441 gfs2: Use rhashtable walk interface in glock_hash_walk
+- 4872e57c812dd312bf8193b5933fa60585cda42f NET: Fix /proc/net/arp for AX.25
+- ebf692f85ff78092cd238166d8d7ec51419f9c02 xen-netback: vif counters from int/long to u64
+- 3ba5b5ea7dc3a10ef50819b43a9f8de2705f4eec x86/vm86: Fix unused variable warning if THP is disabled
+- 0c59d28121b96d826c188280f367e754b5d83350 MAINTAINERS: Remove old e-mail address
+- 42980da2eb7eb9695d8efc0c0ef145cbbb993b2c [media] cec: initiator should be the same as the destination for, poll
+- 35879ee4769099905fa3bda0b21e73d434e2df6a [media] videodev2.h: go back to limited range YCbCr for SRGB and, ADOBERGB
+- 25f71d1c3e98ef0e52371746220d66458eac75bc futex: Move futex_init() to core_initcall
+- 202461e2f3c15dbfb05825d29ace0d20cdf55fa4 tick/broadcast: Prevent deadlock on tick_broadcast_lock
+- 8b74d439e1697110c5e5c600643e823eb1dd0762 net/llc: avoid BUG_ON() in skb_orphan()
+- 7f677633379b4abb3281cdbe7e7006f049305c03 bpf: introduce BPF_F_ALLOW_OVERRIDE flag
+- 722c5ac708b4f5c1fcfad5fed4c95234c8b06590 Input: elan_i2c - add ELAN0605 to the ACPI table
+- 7089db84e356562f8ba737c29e472cc42d530dbc Linux 4.10-rc8
+- e722af6391949e8851310441bb0cec157d25611d ibmvnic: Call napi_disable instead of napi_enable in failure path
+- db5d0b597bc27bbddf40f2f8359a73be4eb77104 ibmvnic: Initialize completion variables before starting work
+- 1ce42845f987e92eabfc6e026d44d826c25c74a5 Merge branch x86-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- fdb0ee7c65781464168e2943a3fd6f1e66a397c9 Merge branch timers-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- d5b76bef01047843cc65bd018046c76182b1fc81 Merge branch perf-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- 4e4f74a7eebbc52eaa1dc3c0be6b3c68c0875b09 Merge branch locking-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- 21a7061c5ec300a8a12a0d6468eb7094e9c54a32 Merge branch irq-urgent-for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/tip/tip
+- 2b95550a4323e501e133dac1c9c9cad6ff17f4c1 Merge branch for-linus-4.10 of git://git.kernel.org/pub/scm/linux/kernel/git/mason/linux-btrfs
+- 13ebfd0601228fbbd92707ce4944ab1a09a4d821 Merge tag scsi-fixes of git://git.kernel.org/pub/scm/linux/kernel/git/jejb/scsi
+- 6e78b3f7a193546b1c00a6d084596e774f147169 Btrfs: fix btrfs_decompress_buf2page()
+- 1ee18329fae936089c6c599250ae92482ff2b81f Merge git://git.kernel.org/pub/scm/linux/kernel/git/davem/net
+- a9dbf5c8d4c90f54777f89daf0e34d390808b672 Merge tag for-linus of git://git.kernel.org/pub/scm/linux/kernel/git/dledford/rdma
+- aca9fa0c8d225b1446dbed798b1d2f20e37e52cf Merge branch i2c/for-current of git://git.kernel.org/pub/scm/linux/kernel/git/wsa/linux
+- fc6f41ba8b2e705f91324db158c3cc28209a15b1 Merge tag mmc-v4.10-rc7 of git://git.kernel.org/pub/scm/linux/kernel/git/ulfh/mmc
+- 1f369d1655c1de415a186c6ce9004e40ca790989 Merge tag sound-4.10 of git://git.kernel.org/pub/scm/linux/kernel/git/tiwai/sound
+- 7fe654dca20892f37226c31bdd2d5b932f8d843a Merge tag nfsd-4.10-3 of git://linux-nfs.org/~bfields/linux
+- 3ebc7033168d43d12e4941f48a6f257d3f1ea1b5 Merge tag powerpc-4.10-4 of git://git.kernel.org/pub/scm/linux/kernel/git/powerpc/linux
+- 72fb96e7bdbbdd4421b0726992496531060f3636 l2tp: do not use udp_ioctl()
+- f3c7bfbda7ce03c603b4292efddc944228dccc55 Merge branch for-chris of git://git.kernel.org/pub/scm/linux/kernel/git/kdave/linux into for-linus-4.10
+- 74470954857c264168d2b5a113904cf0cfd27d18 xen-netfront: Delete rx_refill_timer in xennet_disconnect_backend()
+- 7ba1b689038726d34e3244c1ac9e2e18c2ea4787 NET: mkiss: Fix panic
+- b85ea006b6bebb692628f11882af41c3e12e1e09 net: hns: Fix the device being used for dma mapping during TX
+- d128dfb514f55af040c38a6b3b131d72b6f115d0 Merge tag irqchip-fixes-4.10 of git://git.infradead.org/users/jcooper/linux into irq/urgent
+- 146fbb766934dc003fcbf755b519acef683576bf x86/mm/ptdump: Fix soft lockup in page table walker
+- 5f2e71e71410ecb858cfec184ba092adaca61626 x86/tsc: Make the TSC ADJUST sanitizing work for tsc_reliable
+- f2e04214ef7f7e49d1e06109ad1b2718155dab25 x86/tsc: Avoid the large time jump when sanitizing TSC ADJUST
+- 7bdb59f1ad474bd7161adc8f923cdef10f2638d1 tick/nohz: Fix possible missing clock reprog after tick soft restart
+- 451d24d1e5f40bad000fa9abe36ddb16fc9928cb perf/core: Fix crash in perf_event_read()
+
 * Wed Feb 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.10.0-2.rc7.gitd8e9273
 - d8e9273fa27a343d48cdb9652def3ae3d06848ec PCI: Revert remaining pieces of BAR alignment patchset
 - 1492b8884389a4f2fe7b77101844046fd3808a1a Revert PCI: Ignore enforced alignment when kernel uses existing firmware setup
