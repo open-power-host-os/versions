@@ -1,10 +1,10 @@
-%global commit          f350f33f7c310269121cc1e8a0c187eb32fd4ed0
+%global commit          22d9e36233ba60f6d37cf12c0c48e9fc74640516
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:       ginger
 Version:    2.3.0
-Release:    15%{gitcommittag}%{?dist}
+Release:    16%{gitcommittag}%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -96,6 +96,19 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Feb 22 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-16.git22d9e36
+- 22d9e36233ba60f6d37cf12c0c48e9fc74640516 Revert Introducing Volume group action buttons
+- 6ba958aac572ae97e0ff7a0530fbe12492bef823 Merge remote-tracking branch upstream/master into hostos-devel
+- bcbd516661b47167610531075d5c7910747cde72 Bug fix #378: Change confirmation dialog of password mismatch in Add User window
+- cb20d1aa1e865abf8cb61c07b6f031b5d87b2c60 Fixing copyright date after previous commits
+- f4062921eb8d95119170c41a060cffaa4aeeae5d Externalized active value in audit dispatcher details and list sections.
+- ff80f99615c3efcf2f906bfdc6b6e83d0fc4c86d Fixed duplication of user list in user management user list
+- f61d64d81705601a69fa3442358623eb9ed8c042 Introducing Volume group action buttons
+- e89a82ceed16b7051e65fb7c09c45351762d1112 Added validation and fixed error message while adding swap device
+- c29973ca1e594af43cd87f38f21a8b606f2c76b6 Fixed volume group listing will not refresh after extend/reduce volume
+- 34e32f834a7149b5ee2ef31dc3e5f9366940e696 Fixed Apply button of audit config can be clicked when no changes was made to audit config panel
+- b5afa322768eb7390a55da19ddc2c2893416d8e9 Issue #527.Adding /dev/dasd based swap device yields an error.
+
 * Wed Feb 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-15.gitf350f33
 - f350f33f7c310269121cc1e8a0c187eb32fd4ed0 Merge remote-tracking branch upstream/master into hostos-devel
 - 9560100688e3e58df5ceafb9a55cd8b0f25ecf3e Fixing copyright date of UI files

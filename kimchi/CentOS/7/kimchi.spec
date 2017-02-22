@@ -1,10 +1,10 @@
-%global commit          801facd867d55033f33ad3f2e6aea3dbce767c3f
+%global commit          3fe09a9d232d236b14d11d8e025563cee8b63780
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:       kimchi
 Version:    2.3.0
-Release:    14%{gitcommittag}%{?dist}
+Release:    15%{gitcommittag}%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -94,6 +94,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Feb 22 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-15.git3fe09a9
+- 3fe09a9d232d236b14d11d8e025563cee8b63780 Merge remote-tracking branch upstream/master into hostos-devel
+- 7e91dd255326a8e6a2fd2e1c2d7622b1cf8d66b4 Fix patch_auth() call according to Wok changes
+
 * Wed Feb 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-14.git801facd
 - 801facd867d55033f33ad3f2e6aea3dbce767c3f Merge remote-tracking branch upstream/master into hostos-devel
 - 2c98a2bca9ce465b5df64929e601be7a17e2b4cd Improve logic to identify if a network is in use or not

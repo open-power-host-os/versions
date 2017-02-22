@@ -3,4 +3,4 @@ Package:
   - git:
      src: 'https://github.com/open-power-host-os/ginger.git'
      branch: 'hostos-devel'
-     commit_id: 'f350f33f7c310269121cc1e8a0c187eb32fd4ed0'
+     commit_id: '22d9e36233ba60f6d37cf12c0c48e9fc74640516'

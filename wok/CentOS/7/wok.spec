@@ -1,10 +1,10 @@
-%global commit          c0890261c6e237e874272e9d8377f3a8cb585a98
+%global commit          e5052ea67f772a093ab0ed2aa25d4a935cbaf985
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:       wok
 Version:    2.3.0
-Release:    12%{gitcommittag}%{?dist}
+Release:    13%{gitcommittag}%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -185,6 +185,18 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed Feb 22 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-13.gite5052ea
+- e5052ea67f772a093ab0ed2aa25d4a935cbaf985 Cache plugins information on UI to avoid multiple requests
+- b2c1664f28a397c1b9332ec843e195d68b83b260 Move User Log Activity tab to Activity Log tab instead of Settings
+- 36d304b0a8e304e4592250a139ced0262a02feea Fix indentation on wok.user-log.js file
+- f2fc9277372c73152f9afcb2fa37261e993b8cdb Move AJAX API calls to wok.api.js
+- 34e3c2e3a7e1458b996d4e69a359091449d73b0f Fix test case by removing authorization verification for css/theme-default.min.css
+- 7182098500275a53bd1a17d835de25edfc471d2b Fix last page cookie setting
+- 77502d216208f6b7faf310ed61d8cdfca02f68cf Allow protecting an resource action (POST) when resource (GET) is not protected
+- 2f5412b4713c5bdb95058a1833411914839f025f Specify user when doing a request instead of trying to override FakeUser class attribute
+- 04d2102e4787936ecfa029b17352bd274bb93554 Do not sort tests on Wok
+- 88e9512918760d254fd5de576d19e6146888d1af Fix pep 1.7.0 E711 error in root.py
+
 * Wed Feb 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-12.gitc089026
 - c0890261c6e237e874272e9d8377f3a8cb585a98 Bug fix #35: Option to specific logging levels
 - da07288a110714316adeed4a3f8ae37640887ce5 Avoid log functionality to break due to missing argument
