@@ -11,7 +11,7 @@
 %global commit          1dba4b3954bc059efc3991ec364f9f9a35f597d2
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gccgo_version  >= 5
-%global golang_version >= 1.2.1-3 
+%global golang_version >= 1.2.1-3
 
 Name:           golang-%{provider}-%{project}-%{repo}
 Version:        0
@@ -34,14 +34,14 @@ ExclusiveArch:  %{ix86} x86_64 %{arm}
 %package devel
 
 BuildRequires: golang %{?golang_version}
-Requires: golang %{?golang_version} 
+Requires: golang %{?golang_version}
 Summary:        %{summary}
 Provides:       golang(%{import_path}) = %{version}-%{release}
 
 %description devel
 %{summary}
 
-This package contains library source intended for 
+This package contains library source intended for
 building other packages which use %{project}/%{repo}.
 
 %prep
