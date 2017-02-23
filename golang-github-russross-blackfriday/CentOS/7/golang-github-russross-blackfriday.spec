@@ -16,7 +16,7 @@
 
 Name:       golang-%{provider}-%{project}-%{repo}
 Version:    1.2
-Release:    5s%{gitcommittag}%{?dist}
+Release:    6%{gitcommittag}%{?dist}
 # Be ahead of Fedora
 Epoch:      1
 Summary:    Markdown processor implemented in Go
@@ -28,6 +28,9 @@ BuildArch:  noarch
 %else
 ExclusiveArch:  %{ix86} x86_64 %{arm}
 %endif
+
+# This is required by the OpenPOWER Host OS release package
+Requires: %{name}-devel = %{epoch}:%{version}-%{release}
 
 %description
 %{summary}
@@ -61,6 +64,8 @@ cp -pav testdata/* %{buildroot}%{gopath}/src/%{import_path}/testdata/
 %check
 %endif
 
+%files
+
 %files devel
 %doc README.md
 %dir %{gopath}/src/%{provider}.%{provider_tld}/%{project}
@@ -70,6 +75,9 @@ cp -pav testdata/* %{buildroot}%{gopath}/src/%{import_path}/testdata/
 %{gopath}/src/%{import_path}/*/*
 
 %changelog
+* Wed Feb 22 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 1.2-6.git5f33e7b
+- Remove extraneous letter from release number
+
 * Mon Mar 02 2015 jchaloup <jchaloup@redhat.com> - 1.2-5
 - Bump to upstream 77efab57b2f74dd3f9051c79752b2e8995c8b789
   Update spec file to used commit tarball
