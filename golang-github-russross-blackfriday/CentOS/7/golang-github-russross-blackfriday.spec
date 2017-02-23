@@ -29,6 +29,9 @@ BuildArch:  noarch
 ExclusiveArch:  %{ix86} x86_64 %{arm}
 %endif
 
+# This is required by the OpenPOWER Host OS release package
+Requires: %{name}-devel = %{epoch}:%{version}-%{release}
+
 %description
 %{summary}
 
@@ -60,6 +63,8 @@ cp -pav testdata/* %{buildroot}%{gopath}/src/%{import_path}/testdata/
 %if %{with tests}
 %check
 %endif
+
+%files
 
 %files devel
 %doc README.md
