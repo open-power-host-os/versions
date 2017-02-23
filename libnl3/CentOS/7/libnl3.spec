@@ -4,7 +4,7 @@
 
 Name: libnl3
 Version: 3.2.28
-Release: 2%{?dist}
+Release: 4%{?dist}
 Summary: Convenience library for kernel netlink sockets
 Group: Development/Libraries
 License: LGPLv2
@@ -130,6 +130,9 @@ make check
 %doc libnl-doc-%{fullversion}/api/*
 
 %changelog
+* Thu Feb 23 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.2.28-4
+- Bump release to one higher than CentOS
+
 * Fri Aug 26 2016 Thomas Haller <thaller@redhat.com> - 3.2.28-2
 - route: fix nl_object_identical() comparing AF_INET addresses (rh #1370503)
 
