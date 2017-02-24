@@ -10,5 +10,5 @@ Package:
  files:
   CentOS:
    '7':
-    install_dependencies:
+    build_dependencies:
      - 'libservicelog'
