@@ -190,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.8.0
-Release: 1%{gitcommittag}%{?dist}
+Release: 2%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -414,6 +414,7 @@ As QEMU requires no host kernel patches to run, it is safe and easy to use.
 Summary: QEMU metapackage for KVM support
 Group: Development/Tools
 Requires: qemu-%{kvm_package} = %{epoch}:%{version}-%{release}
+Obsoletes: qemu-kvm-ev
 %provide_rhev qemu-kvm
 
 %description kvm
@@ -1530,6 +1531,9 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Mon Feb 27 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 15:2.8.0-2.gitbb80805
+- Obsolete qemu-kvm-ev in qemu-kvm subpackage
+
 * Tue Feb 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 15:2.8.0-1.gitbb80805
 - Version update
 - Removed files qemu-tech.html and qmp-commands.txt that are not generated anymore
