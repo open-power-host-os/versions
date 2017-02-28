@@ -190,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.8.0
-Release: 1%{gitcommittag}%{?dist}
+Release: 3%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -414,6 +414,7 @@ As QEMU requires no host kernel patches to run, it is safe and easy to use.
 Summary: QEMU metapackage for KVM support
 Group: Development/Tools
 Requires: qemu-%{kvm_package} = %{epoch}:%{version}-%{release}
+Obsoletes: qemu-kvm-ev
 %provide_rhev qemu-kvm
 
 %description kvm
@@ -435,6 +436,7 @@ This package provides a command line tool for manipulating disk images
 %package  common
 Summary: QEMU common files needed by all QEMU targets
 Group: Development/Tools
+Obsoletes: qemu-kvm-common-ev
 %if %{with separate_kvm}
 Requires: qemu-kvm-common
 %endif
@@ -667,6 +669,7 @@ This package provides the system emulator for SPARC and SPARC64 systems.
 %package %{system_ppc}
 Summary: QEMU system emulator for PPC
 Group: Development/Tools
+Obsoletes: qemu-kvm-common-ev
 Requires: %{name}-common = %{epoch}:%{version}-%{release}
 #Requires: openbios
 #Requires: SLOF >= 0.1.git%{SLOF_gittagdate}
@@ -1530,6 +1533,12 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Tue Feb 28 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 15:2.8.0-3.gitbb80805
+- Obsolete qemu-kvm-common-ev in qemu-common and qemu-system-ppc subpackages
+
+* Mon Feb 27 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 15:2.8.0-2.gitbb80805
+- Obsolete qemu-kvm-ev in qemu-kvm subpackage
+
 * Tue Feb 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 15:2.8.0-1.gitbb80805
 - Version update
 - Removed files qemu-tech.html and qmp-commands.txt that are not generated anymore
