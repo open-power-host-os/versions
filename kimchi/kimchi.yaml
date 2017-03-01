@@ -3,4 +3,4 @@ Package:
   - git:
      src: 'https://github.com/open-power-host-os/kimchi.git'
      branch: 'hostos-devel'
-     commit_id: '3fe09a9d232d236b14d11d8e025563cee8b63780'
+     commit_id: 'eb28bd36b28c724a10f330da4e7594aa0f834104'

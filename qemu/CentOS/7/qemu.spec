@@ -1,4 +1,4 @@
-%global commit          bb80805d7d5b14e886e769b5938b459a3592d882
+%global commit          a6ef3e6d8783a5feb1dbb9d5c4c68c2552cdea4b
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
@@ -190,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.8.0
-Release: 3%{gitcommittag}%{?dist}
+Release: 4%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -1533,6 +1533,10 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Wed Mar 01 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 15:2.8.0-4.gita6ef3e6
+- a6ef3e6d8783a5feb1dbb9d5c4c68c2552cdea4b memory: Introduce DEVICE_HOST_ENDIAN for ram device
+- 988829739e415805e9cc2642110f92c6cd43350a sysemu: support up to 1024 vCPUs
+
 * Tue Feb 28 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 15:2.8.0-3.gitbb80805
 - Obsolete qemu-kvm-common-ev in qemu-common and qemu-system-ppc subpackages
 

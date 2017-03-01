@@ -1,10 +1,10 @@
-%global commit          e5052ea67f772a093ab0ed2aa25d4a935cbaf985
+%global commit          5ec073db4b0bf92f36e2fff6aada7c9edd12999f
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:       wok
 Version:    2.3.0
-Release:    13%{gitcommittag}%{?dist}
+Release:    14%{gitcommittag}%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -185,6 +185,10 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed Mar 01 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-14.git5ec073d
+- 5ec073db4b0bf92f36e2fff6aada7c9edd12999f Do not use proxy when running tests
+- ac72c790f440ddaec9fcf8003ec8b7b250c22e05 Bug fix #203: set default loglevel to INFO
+
 * Wed Feb 22 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-13.gite5052ea
 - e5052ea67f772a093ab0ed2aa25d4a935cbaf985 Cache plugins information on UI to avoid multiple requests
 - b2c1664f28a397c1b9332ec843e195d68b83b260 Move User Log Activity tab to Activity Log tab instead of Settings
