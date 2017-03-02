@@ -2,13 +2,13 @@
 %global with_systemd 1
 %endif
 
-%global commit          be727f1f3fec4d551802940dff09fcaf061ed6e4
+%global commit          109815ccb5bbcbdc5dc5cef847accf9a3b9083d4
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:       ginger-base
 Version:    2.2.1
-Release:    12%{gitcommittag}%{?dist}
+Release:    13%{gitcommittag}%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -78,6 +78,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Mar 01 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-13.git109815c
+- 109815ccb5bbcbdc5dc5cef847accf9a3b9083d4 Merge remote-tracking branch upstream/master into hostos-devel
+- 4b90d6cbfccace5fa9528e57acfa046d4c523d40 Fix patch_auth() call according to Wok changes
+
 * Wed Feb 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-12.gitbe727f1
 - be727f1f3fec4d551802940dff09fcaf061ed6e4 Merge remote-tracking branch upstream/master into hostos-devel
 - 676b5ff056c867c04d564538a06b8afd90d8e5e2 Remove unused temporary directory

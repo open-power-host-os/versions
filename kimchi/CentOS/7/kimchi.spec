@@ -1,10 +1,10 @@
-%global commit          3fe09a9d232d236b14d11d8e025563cee8b63780
+%global commit          eb28bd36b28c724a10f330da4e7594aa0f834104
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:       kimchi
 Version:    2.3.0
-Release:    15%{gitcommittag}%{?dist}
+Release:    16%{gitcommittag}%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -94,6 +94,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Mar 01 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-16.giteb28bd3
+- eb28bd36b28c724a10f330da4e7594aa0f834104 Merge remote-tracking branch upstream/master into hostos-devel
+- 5c80d731eec41c65f6d241a7898c832f1629b263 fix wrong tab enumeration
+- b80f40d0a5eb3138a4ae8360911d3a9aa79f5ba0 Fix storage volume test to run without nginx
+- 668e6661734811753419479452f4062b94c51e47 Fix tests to run without proxy
+
 * Wed Feb 22 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-15.git3fe09a9
 - 3fe09a9d232d236b14d11d8e025563cee8b63780 Merge remote-tracking branch upstream/master into hostos-devel
 - 7e91dd255326a8e6a2fd2e1c2d7622b1cf8d66b4 Fix patch_auth() call according to Wok changes

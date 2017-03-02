@@ -1,4 +1,4 @@
-%global commit          eaaddb6b7ab31c5fd71db37d0f681bd6a88c2e22
+%global commit          8f27d36a72398378566cda5afe6a066b8e6b58f9
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
@@ -315,7 +315,7 @@ Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: 4.10.0
-Release: 3%{?prerelease}%{gitcommittag}%{?dist}
+Release: 4%{?prerelease}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1695,6 +1695,21 @@ fi
 
 
 %changelog
+* Wed Mar 01 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.10.0-4.git8f27d36
+- 8f27d36a72398378566cda5afe6a066b8e6b58f9 KVM: PPC: Book3S HV: Dont use ASDR for real-mode HPT faults on POWER9
+- 05a77197a94399fb24c1c6cd4bf7623481302a8d KVM: PPC: Book3S HV: Fix POWER9 DD1 SLB workaround
+- e56637d6e0c2b811ebb83c9b943cf94314e3ccc7 KVM: PPC: Book3S HV: Fix software walk of guest process page tables
+- 3421f2effa9ca74dbe2291c0007f54caaf12c921 powerpc/64: Invalidate process table caching after setting process table
+- ba3f7517e2b58331c056c6c83972f6b347e4dcb3 PCI: Dont apply default alignment when PCI_PROBE_ONLY is set
+- 37f590f50c1593be9d03b98a87449762dfbf01bc powerpc/CAS: Update to new option-vector-5 format for CAS
+- bd850866b2477fc4fb07210685ab3ff64f1d7c7e powerpc/prom_init: Parse the command line before calling CAS
+- 617a91762714f1c1d997e67142e4b2c6eea651cf PCI: A fix for caculating bridge windows size and alignment
+- 3212c4c3f81860c073d8ddd50e068cf4847fe069 powerpc: Add POWER9 architected mode to cputable
+- 152490356ea89026dd2665bb4670d95dc89cadee powerpc/64: Fix checksum folding in csum_add
+- b0b8bcc67ead2e486dca161a7aa27ac67495d263 powerpc/64: Clear UPRT on POWER9 when initializing HPT
+- a136365d53aef9a6a43f16f0fadf0529123b0a34 powerpc: P9 DD1 SLB invalidate workaround with P8 mode fix
+- 0330b51a096dc55c255be2dcfcd729381b8fdb36 powerpc/mm: Update PROTFAULT handling in the page fault path
+
 * Wed Feb 22 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.10.0-3.giteaaddb6
 - eaaddb6b7ab31c5fd71db37d0f681bd6a88c2e22 powernv: Pass PSSCR value and mask to power9_idle_stop
 - 4bfb3830d13ed553d9adf0621f34440669b2e8e0 cpuidle:powernv: Add helper function to populate powernv idle states.
