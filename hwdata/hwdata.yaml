@@ -1,6 +1,5 @@
 Package:
- sources:
-  - git:
-     src: 'https://git.fedorahosted.org/git/hwdata.git'
-     branch: 'master'
-     commit_id: '625a1194eaf9b764985ebec3a5da78dc71299238'
+ name: hwdata
+ # This software's Git repository was retired by Fedora and so we have
+ # nowhere to download the sources. A tarball is kept in the SOURCES
+ # directory.
