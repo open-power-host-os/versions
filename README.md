@@ -26,7 +26,7 @@ refered in its config.yaml.
   <tbody>
     <tr>
       <td>SLOF</td>
-      <td>20161019</td>
+      <td>20170303</td>
     </tr>
     <tr>
       <td>crash</td>

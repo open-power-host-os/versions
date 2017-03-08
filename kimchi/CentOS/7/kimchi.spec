@@ -1,10 +1,10 @@
-%global commit          eb28bd36b28c724a10f330da4e7594aa0f834104
+%global commit          3830c259b7628028dddac3a55aeb33ea964bae2b
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:       kimchi
 Version:    2.3.0
-Release:    16%{gitcommittag}%{?dist}
+Release:    17%{gitcommittag}%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -94,6 +94,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Mar 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-17.git3830c25
+- 3830c259b7628028dddac3a55aeb33ea964bae2b Merge remote-tracking branch upstream/master into hostos-devel
+- 3195f7b1e49bf536cf6f4b9c0545c06c2fdd550d Fix typo
+
 * Wed Mar 01 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-16.giteb28bd3
 - eb28bd36b28c724a10f330da4e7594aa0f834104 Merge remote-tracking branch upstream/master into hostos-devel
 - 5c80d731eec41c65f6d241a7898c832f1629b263 fix wrong tab enumeration

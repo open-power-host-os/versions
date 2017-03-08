@@ -1,10 +1,10 @@
-%global commit          5ec073db4b0bf92f36e2fff6aada7c9edd12999f
+%global commit          7f5e0aea58ce406eccbaa46d6326ab883154950d
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:       wok
 Version:    2.3.0
-Release:    14%{gitcommittag}%{?dist}
+Release:    15%{gitcommittag}%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -185,6 +185,11 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Wed Mar 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-15.git7f5e0ae
+- 7f5e0aea58ce406eccbaa46d6326ab883154950d Updated PO files
+- 178c8b59d8d33d4c37abbda535413e660cf1c7e6 Bug fix: Pass function parameters when calling setTimeout
+- 0fb63c2b0e44e499db42e70511e5834225deaf65 Allow a plugin extends any HTML page from another one instead of only tabs content
+
 * Wed Mar 01 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-14.git5ec073d
 - 5ec073db4b0bf92f36e2fff6aada7c9edd12999f Do not use proxy when running tests
 - ac72c790f440ddaec9fcf8003ec8b7b250c22e05 Bug fix #203: set default loglevel to INFO

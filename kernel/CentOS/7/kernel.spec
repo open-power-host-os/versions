@@ -1,4 +1,4 @@
-%global commit          8f27d36a72398378566cda5afe6a066b8e6b58f9
+%global commit          b0bad18237cef1541a5d98067a4008772a80f724
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
@@ -315,7 +315,7 @@ Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: 4.10.0
-Release: 4%{?prerelease}%{gitcommittag}%{?dist}
+Release: 5%{?prerelease}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1695,6 +1695,12 @@ fi
 
 
 %changelog
+* Wed Mar 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.10.0-5.gitb0bad18
+- b0bad18237cef1541a5d98067a4008772a80f724 PCI: Disable IOV before pcibios_sriov_disable()
+- 7c2a09b55febc2ac36257e0183f304c1f8cada70 PCI: Lock each enable/disable num_vfs operation in sysfs
+- 6c25973efba804c78ef09c9047c6484bf89a3631 powerpc: Update to new option-vector-5 format for CAS
+- aeed990c0b088fbd1002c5bdf4ee5ce106dacc6c Revert powerpc/CAS: Update to new option-vector-5 format for CAS
+
 * Wed Mar 01 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.10.0-4.git8f27d36
 - 8f27d36a72398378566cda5afe6a066b8e6b58f9 KVM: PPC: Book3S HV: Dont use ASDR for real-mode HPT faults on POWER9
 - 05a77197a94399fb24c1c6cd4bf7623481302a8d KVM: PPC: Book3S HV: Fix POWER9 DD1 SLB workaround

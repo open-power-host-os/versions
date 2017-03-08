@@ -1,10 +1,10 @@
-%global commit          ba46a3f133c8532a517779cc3763e8ac2409d626
+%global commit          66d250ef0fd06bb88b7399b9563b5008201f2d63
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:           SLOF
-Version:        20161019
-Release:        4%{gitcommittag}%{?dist}
+Version:        20170303
+Release:        1%{gitcommittag}%{?dist}
 Summary:        Slimline Open Firmware
 
 License:        BSD
@@ -58,6 +58,13 @@ cp -a boot_rom.bin $RPM_BUILD_ROOT%{_datadir}/qemu/slof.bin
 
 
 %changelog
+* Wed Mar 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 20170303-1.git66d250e
+- Version update
+- 66d250ef0fd06bb88b7399b9563b5008201f2d63 version: update to 20170303
+- ef5286f020d850f47fe196297f673769f6d63198 qemu-bootlist: Take the -boot strict=off setting properly into account
+- 007a175410f919a4368499bd8ef11c32bbf3e01e virtio-scsi: initialize vring avail queue buffers
+- f8ad6d0ae9c2861e2106580d7a2b8f72e95fb29f virtio: Remove global variables in block and 9p driver
+
 * Wed Feb 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 20161019-4.gitba46a3f
 - ba46a3f133c8532a517779cc3763e8ac2409d626 Remove superfluous checkpoints in tree.fs
 - a0b96fe66fcd991b407c1d67ca842921e477a6fd Provide write function in the disk-label package
