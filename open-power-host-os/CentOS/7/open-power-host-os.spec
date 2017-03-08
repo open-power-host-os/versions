@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 2.0
-Release: 4%{?milestone_tag}%{dist}
+Release: 5%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -18,6 +18,9 @@ BuildArch: noarch
 %package release
 
 Summary: OpenPOWER Host OS release
+
+Source0: open-power-host-os-smt.service
+Source1: 90-open-power-host-os-default.preset
 
 Requires: centos-release >= 7
 Requires: epel-release >= 7
@@ -164,6 +167,8 @@ Requires(post): systemtap = 3.0-8.el7.centos
 
 
 %prep
+install -pm 644 %{SOURCE0} .
+install -pm 644 %{SOURCE1} .
 
 %build
 
@@ -179,6 +184,12 @@ mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}
 install -pm 444 open-power-host-os-release \
         $RPM_BUILD_ROOT%{_sysconfdir}/open-power-host-os-release
 
+mkdir -p $RPM_BUILD_ROOT%{_libdir}/systemd/system-preset
+cp 90-open-power-host-os-default.preset $RPM_BUILD_ROOT%{_libdir}/systemd/system-preset
+
+mkdir -p $RPM_BUILD_ROOT%{_libdir}/systemd
+cp open-power-host-os-smt.service $RPM_BUILD_ROOT%{_libdir}/systemd
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -186,6 +197,10 @@ rm -rf $RPM_BUILD_ROOT
 %files release
 %defattr(-,root,root,-)
 %attr(0444, root, root) %{_sysconfdir}/open-power-host-os-release
+
+%attr(0644, root, root) %{_libdir}/systemd/system-preset/90-open-power-host-os-default.preset
+
+%attr(0644, root, root) %{_libdir}/systemd/open-power-host-os-smt.service
 
 %files all
 %files base
@@ -196,6 +211,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Mar 29 2017 Lucas Tadeu Teixeira <ltadeu@br.ibm.com> 2.0-5.alpha
+- Add systemd service to disable SMT
+
 * Fri Mar 24 2017 Olav Philipp Henschel  <olavph@linux.vnet.ibm.com> - 2.0-4.alpha
 - Explicitly mention transitive dependencies. This forces the packages versions
   to match when reinstalling a package group.

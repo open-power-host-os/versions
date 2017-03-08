@@ -1,0 +1,11 @@
+[Unit]
+Description=Disable SMT
+Before=libvirtd.service tuned.service
+
+[Service]
+Type=simple
+ExecStart=/usr/sbin/ppc64_cpu --smt=off
+TimeoutSec=300
+
+[Install]
+WantedBy=multi-user.target
