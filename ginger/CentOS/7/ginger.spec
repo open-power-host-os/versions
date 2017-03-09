@@ -1,10 +1,10 @@
-%global commit          22d9e36233ba60f6d37cf12c0c48e9fc74640516
+%global commit          e9b8a1bf149d1f2b45b618e6897c96d23c52c373
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:       ginger
 Version:    2.3.0
-Release:    16%{gitcommittag}%{?dist}
+Release:    17%{gitcommittag}%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -96,6 +96,22 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Mar 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-17.gite9b8a1b
+- e9b8a1bf149d1f2b45b618e6897c96d23c52c373 Revert Ginger sidebar
+- 0a64f30140f67ad3e6364b446c435de0a238986e Revert Move Audit features to a sidebar entry
+- b250bff1550840eb5d6b71bb620ab533bf3e472f Revert Move System Modules to a sidebar entry
+- 4be5ef9da5331076bbad7dd3fc064745f0128c1a Merge remote-tracking branch upstream/master into hostos-devel
+- 503be72c904ef4abfab3898e59d6484b862988d8 Move System Modules to a sidebar entry
+- ffca4f7980be3faf7987890aa8907f83574c7c34 Move Audit features to a sidebar entry
+- 33a343cc8e7ef0e12d4c741a5bee32cc283eecc4 Ginger sidebar
+- b3bb3406c1817dc9b07d92758428ce0f4a34dad2 Fix expand/collpase widget configuration in Network tab
+- aedb1e57d19b90a85396cd157a6b27966904769c Updated PO files
+- b3510f0b37566ae284703a6ab182face13266b1e Fix mocking of test_get_list_of_audit_conf
+- 9551e0ab844cee7119f1168e826160a8ee7abfd2 Skip tests that need sudo
+- 744e29ce7f7a772846397a6ba37835c91aed5d33 Fix and mock test_update for Audit rules
+- 044a8f407b98e5859ab5a9b6be08b2f74ee9f68e Fix and improve test_get_list_of_pre_rules
+- 16b6a20977f943ba7246ed5388206bc249d2a304 Adapt filesystem tests to also run without sudo permission
+
 * Wed Feb 22 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-16.git22d9e36
 - 22d9e36233ba60f6d37cf12c0c48e9fc74640516 Revert Introducing Volume group action buttons
 - 6ba958aac572ae97e0ff7a0530fbe12492bef823 Merge remote-tracking branch upstream/master into hostos-devel

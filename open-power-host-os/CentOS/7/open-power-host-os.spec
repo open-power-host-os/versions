@@ -42,7 +42,7 @@ Summary: OpenPOWER Host OS basic packages
 
 Requires: %{name}-release = %{version}-%{release}
 
-Requires(post): kernel = 4.10.0-4.git8f27d36.el7.centos
+Requires(post): kernel = 4.10.0-5.gitb0bad18.el7.centos
 
 
 %package container
@@ -63,9 +63,9 @@ Summary: OpenPOWER Host OS hypervisor packages
 
 Requires: %{name}-base = %{version}-%{release}
 
-Requires(post): SLOF = 20161019-4.gitba46a3f.el7.centos
+Requires(post): SLOF = 20170303-1.git66d250e.el7.centos
 Requires(post): libvirt = 2.2.0-6.gitddccbf6.el7.centos
-Requires(post): qemu = 15:2.8.0-4.gita6ef3e6.el7.centos
+Requires(post): qemu = 15:2.8.0-5.git733b1b5.el7.centos
 
 
 %package virt-management
@@ -76,10 +76,10 @@ Requires: %{name}-base = %{version}-%{release}
 Requires: %{name}-virt = %{version}-%{release}
 
 Requires(post): novnc = 0.5.1-5.gitfc00821.el7.centos
-Requires(post): ginger = 2.3.0-16.git22d9e36.el7.centos
+Requires(post): ginger = 2.3.0-17.gite9b8a1b.el7.centos
 Requires(post): ginger-base = 2.2.1-13.git109815c.el7.centos
-Requires(post): kimchi = 2.3.0-16.giteb28bd3.el7.centos
-Requires(post): wok = 2.3.0-14.git5ec073d.el7.centos
+Requires(post): kimchi = 2.3.0-17.git3830c25.el7.centos
+Requires(post): wok = 2.3.0-15.git7f5e0ae.el7.centos
 
 
 %package ras
@@ -153,5 +153,8 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Mar 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.0-1.alpha
+- Update package dependencies
+
 * Mon Mar 06 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> 2.0-1.alpha
 - Create release file and package groups
