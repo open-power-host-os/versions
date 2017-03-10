@@ -36,3 +36,7 @@ If the rpm specification file has a %check macro for running tests during rpm pa
    make V=1 check
    %endif
 
+Contact us
+----------
+
+If you are interested, you might always stop by in #hostos on irc.freenode.net.
