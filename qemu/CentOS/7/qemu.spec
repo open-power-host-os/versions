@@ -1,4 +1,4 @@
-%global commit          733b1b5e4c1e5be1fdefa4c7d0933e18e3289fe1
+%global commit          27ddb62b6526f44c9eff0797ba49b1b14f122f07
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
@@ -190,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.8.0
-Release: 5%{gitcommittag}%{?dist}
+Release: 6%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -1533,6 +1533,10 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Wed Mar 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 15:2.8.0-6.git27ddb62
+- 27ddb62b6526f44c9eff0797ba49b1b14f122f07 numa: make -numa parser dynamically
+  allocate CPUs masks
+
 * Wed Mar 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 15:2.8.0-5.git733b1b5
 - 733b1b5e4c1e5be1fdefa4c7d0933e18e3289fe1 spapr/pci: populate PCI DT in reverse
   order

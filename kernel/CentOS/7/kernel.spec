@@ -1,4 +1,4 @@
-%global commit          b0bad18237cef1541a5d98067a4008772a80f724
+%global commit          fb71deab42a6d5f6dd631386f0defc954ad7eb19
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
@@ -315,7 +315,7 @@ Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: 4.10.0
-Release: 5%{?prerelease}%{gitcommittag}%{?dist}
+Release: 6%{?prerelease}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1695,6 +1695,11 @@ fi
 
 
 %changelog
+* Wed Mar 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.10.0-6.gitfb71dea
+- fb71deab42a6d5f6dd631386f0defc954ad7eb19 vfio-pci: Allow to expose MSI-X table to userspace if interrupt remapping is enabled
+- 2465b36e24d89ae2e6b312bcd77d9502b267c8dd Revert vfio-pci: Allow to expose MSI-X table to userspace if interrupt remapping is enabled
+- 4b6cdf6a8d5b0debadfb8c67f607c5f54031ce39 powerpc/powernv/ioda2: Update iommu table base on ownership change
+
 * Wed Mar 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.10.0-5.gitb0bad18
 - b0bad18237cef1541a5d98067a4008772a80f724 PCI: Disable IOV before pcibios_sriov_disable()
 - 7c2a09b55febc2ac36257e0183f304c1f8cada70 PCI: Lock each enable/disable num_vfs operation in sysfs

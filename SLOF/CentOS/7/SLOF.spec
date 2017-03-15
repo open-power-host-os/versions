@@ -1,10 +1,10 @@
-%global commit          66d250ef0fd06bb88b7399b9563b5008201f2d63
+%global commit          1903174472f8800caf50c959b304501b4c01153c
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
 Name:           SLOF
 Version:        20170303
-Release:        1%{gitcommittag}%{?dist}
+Release:        2%{gitcommittag}%{?dist}
 Summary:        Slimline Open Firmware
 
 License:        BSD
@@ -58,6 +58,10 @@ cp -a boot_rom.bin $RPM_BUILD_ROOT%{_datadir}/qemu/slof.bin
 
 
 %changelog
+* Wed Mar 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 20170303-2.git1903174
+- 1903174472f8800caf50c959b304501b4c01153c pci: force minimum mem bar alignment
+  of 64K for board-qemu
+
 * Wed Mar 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 20170303-1.git66d250e
 - Version update
 - 66d250ef0fd06bb88b7399b9563b5008201f2d63 version: update to 20170303
