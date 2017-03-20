@@ -8,7 +8,7 @@
 %global project         shurcooL
 %global repo            sanitized_anchor_name
 %global import_path     %{provider}.%{provider_tld}/%{project}/%{repo}
-%global commit          1dba4b3954bc059efc3991ec364f9f9a35f597d2
+%global commit          %{?git_commit_id}
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 %global gccgo_version  >= 5

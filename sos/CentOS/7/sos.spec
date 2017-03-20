@@ -1,4 +1,4 @@
-%global commit          52dd1dbc52783e622ca0a96e3e9c182bb26887fe
+%global commit          %{?git_commit_id}
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
