@@ -32,7 +32,7 @@
 
 # docker
 %global git0 https://github.com/projectatomic/%{repo}
-%global commit0 bb80604a0b200140a440675348c848a137a1b2e2
+%global commit0 %{?git_commit_id}
 %global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
 # docker_branch used in %%check
 %global docker_branch docker-1.12

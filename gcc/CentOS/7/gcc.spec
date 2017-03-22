@@ -3,7 +3,7 @@
 %bcond_with tests
 
 %global DATE 20150702
-%global SVNREV 240558
+%global SVNREV %{svn_revision}
 # Note, gcc_release must be integer, if you want to add suffixes to
 # %{release}, append them after %{gcc_release} on Release: line.
 %global gcc_release 12

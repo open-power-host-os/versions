@@ -1,7 +1,7 @@
 # Conditional build (--with/--without option)
 #   --without gui
 
-%global commit f9bdcc342d525f8504b81a9a344d58f57aa9b5dc
+%global commit %{?git_commit_id}
 %global shortcommit %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag .git%{shortcommit}
 

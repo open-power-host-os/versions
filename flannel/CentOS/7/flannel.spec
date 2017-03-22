@@ -18,7 +18,7 @@
 %global project         coreos
 %global repo            flannel
 %global import_path     %{provider}.%{provider_tld}/%{project}/%{repo}
-%global commit          cb8284fb60737793596dd2fc98d9608d3d0d66f0
+%global commit          %{?git_commit_id}
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 

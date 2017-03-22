@@ -8,7 +8,7 @@
 %global project         russross
 %global repo            blackfriday
 %global import_path     %{provider}.%{provider_tld}/%{project}/%{repo}
-%global commit          5f33e7b7878355cd2b7e6b8eefc48a5472c69f70
+%global commit          %{?git_commit_id}
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 %global gccgo_version  >= 5

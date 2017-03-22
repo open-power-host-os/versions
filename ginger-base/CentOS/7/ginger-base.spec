@@ -2,7 +2,7 @@
 %global with_systemd 1
 %endif
 
-%global commit          109815ccb5bbcbdc5dc5cef847accf9a3b9083d4
+%global commit          %{?git_commit_id}
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
