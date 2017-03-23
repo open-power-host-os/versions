@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 2.0
-Release: 2%{?milestone_tag}%{dist}
+Release: 3%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -42,7 +42,7 @@ Summary: OpenPOWER Host OS basic packages
 
 Requires: %{name}-release = %{version}-%{release}
 
-Requires(post): kernel = 4.10.0-6.gitfb71dea.el7.centos
+Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
 
 
 %package container
@@ -64,8 +64,8 @@ Summary: OpenPOWER Host OS hypervisor packages
 Requires: %{name}-base = %{version}-%{release}
 
 Requires(post): SLOF = 20170303-2.git1903174.el7.centos
-Requires(post): libvirt = 2.2.0-6.gitddccbf6.el7.centos
-Requires(post): qemu = 15:2.8.0-6.git27ddb62.el7.centos
+Requires(post): libvirt = 2.2.0-7.gitf25cbfd.el7.centos
+Requires(post): qemu = 15:2.8.0-7.git2c99cbf.el7.centos
 
 
 %package virt-management
@@ -153,6 +153,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Mar 23 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.0-3.alpha
+- Update package dependencies
+
 * Wed Mar 15 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.0-2.alpha
 - Update package dependencies
 
