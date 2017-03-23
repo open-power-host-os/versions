@@ -387,7 +387,7 @@
 Summary: Library providing a simple virtualization API
 Name: libvirt
 Version: 2.2.0
-Release: 6%{gitcommittag}%{?dist}
+Release: 7%{gitcommittag}%{?dist}
 ExclusiveArch: ppc64 ppc64le x86_64 s390x
 Source0: %{name}.tar.gz
 License: LGPLv2+
@@ -2435,6 +2435,9 @@ exit 0
 #doc examples/systemtap
 
 %changelog
+* Thu Mar 23 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.0-7.git
+- Updating to f25cbfd virtlogd.socket: Tie lifecycle to libvirtd.service
+
 * Wed Oct 19 2016 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 2.2.0-6
 - Remove unused macros and simplify package numbering
 - Bump release
