@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 2.0
-Release: 3%{?milestone_tag}%{dist}
+Release: 4%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -26,15 +26,45 @@ Requires: epel-release >= 7
 %{summary}
 
 
+# The OpenPOWER Host OS packages need to require the transitive dependencies
+# to force the correct versions of packages to be present on reinstallation,
+# since the post section of the subpackages that are already installed will
+# not be executed in this case.
+
 %package all
 
 Summary: OpenPOWER Host OS full package set
 
 Requires: %{name}-base = %{version}-%{release}
+Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
 Requires: %{name}-container = %{version}-%{release}
+Requires(post): docker = 2:1.12.2-47.el7.centos
+Requires(post): docker-swarm = 1.1.0-1.gita0fd82b
+Requires(post): flannel = 0.5.5-1.gitcb8284f.el7.centos
+Requires(post): kubernetes = 1.2.0-0.21.git4a3f9c5.el7.centos
 Requires: %{name}-virt = %{version}-%{release}
+Requires(post): SLOF = 20170303-2.git1903174.el7.centos
+Requires(post): libvirt = 2.2.0-7.gitf25cbfd.el7.centos
+Requires(post): qemu = 15:2.8.0-7.git2c99cbf.el7.centos
 Requires: %{name}-virt-management = %{version}-%{release}
+Requires(post): novnc = 0.5.1-5.gitfc00821.el7.centos
+Requires(post): ginger = 2.3.0-17.gite9b8a1b.el7.centos
+Requires(post): ginger-base = 2.2.1-13.git109815c.el7.centos
+Requires(post): kimchi = 2.3.0-17.git3830c25.el7.centos
+Requires(post): wok = 2.3.0-15.git7f5e0ae.el7.centos
 Requires: %{name}-ras = %{version}-%{release}
+Requires(post): crash = 7.1.6-1.git64531dc.el7.centos
+Requires(post): hwdata = 0.288-1.git625a119.el7.centos
+Requires(post): libnl3 = 3.2.28-4.el7.centos
+Requires(post): librtas = 1.4.1-2.git3fe4911.el7.centos
+Requires(post): libservicelog = 1.1.16-2.git48875ee.el7.centos
+Requires(post): libvpd = 2.2.5-4.git8cb3fe0.el7.centos
+Requires(post): lshw = B.02.18-1.gitf9bdcc3
+Requires(post): lsvpd = 1.7.7-6.git3a5f5e1.el7.centos
+Requires(post): ppc64-diag = 2.7.2-1.gitd56f7f1.el7.centos
+Requires(post): servicelog = 1.1.14-4.git7d33cd3.el7.centos
+Requires(post): sos = 3.3-18.git52dd1db.el7.centos
+Requires(post): systemtap = 3.0-8.el7.centos
 
 Requires(post): gcc = 4.8.5-12.svn240558.el7.centos
 Requires(post): golang-github-russross-blackfriday = 1:1.2-6.git5f33e7b.el7.centos
@@ -62,6 +92,7 @@ Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
 Summary: OpenPOWER Host OS container packages
 
 Requires: %{name}-base = %{version}-%{release}
+Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
 
 Requires(post): docker = 2:1.12.2-47.el7.centos
 Requires(post): docker-swarm = 1.1.0-1.gita0fd82b
@@ -77,6 +108,7 @@ Requires(post): kubernetes = 1.2.0-0.21.git4a3f9c5.el7.centos
 Summary: OpenPOWER Host OS hypervisor packages
 
 Requires: %{name}-base = %{version}-%{release}
+Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
 
 Requires(post): SLOF = 20170303-2.git1903174.el7.centos
 Requires(post): libvirt = 2.2.0-7.gitf25cbfd.el7.centos
@@ -91,7 +123,11 @@ Requires(post): qemu = 15:2.8.0-7.git2c99cbf.el7.centos
 Summary: OpenPOWER Host OS hypervisor management packages
 
 Requires: %{name}-base = %{version}-%{release}
+Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
 Requires: %{name}-virt = %{version}-%{release}
+Requires(post): SLOF = 20170303-2.git1903174.el7.centos
+Requires(post): libvirt = 2.2.0-7.gitf25cbfd.el7.centos
+Requires(post): qemu = 15:2.8.0-7.git2c99cbf.el7.centos
 
 Requires(post): novnc = 0.5.1-5.gitfc00821.el7.centos
 Requires(post): ginger = 2.3.0-17.gite9b8a1b.el7.centos
@@ -108,6 +144,7 @@ Requires(post): wok = 2.3.0-15.git7f5e0ae.el7.centos
 Summary: OpenPOWER Host OS RAS (Reliability Availability Serviceability) packages
 
 Requires: %{name}-base = %{version}-%{release}
+Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
 
 Requires(post): crash = 7.1.6-1.git64531dc.el7.centos
 Requires(post): hwdata = 0.288-1.git625a119.el7.centos
@@ -159,6 +196,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Mar 24 2017 Olav Philipp Henschel  <olavph@linux.vnet.ibm.com> - 2.0-4.alpha
+- Explicitly mention transitive dependencies. This forces the packages versions
+  to match when reinstalling a package group.
+
 * Thu Mar 23 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.0-3.alpha
 - Update package dependencies
 
