@@ -11,6 +11,9 @@ Group: System Environment/Base
 License: GPLv3
 BuildArch: noarch
 
+%description
+%{summary}
+
 
 %package release
 
@@ -18,6 +21,9 @@ Summary: OpenPOWER Host OS release
 
 Requires: centos-release >= 7
 Requires: epel-release >= 7
+
+%description release
+%{summary}
 
 
 %package all
@@ -35,6 +41,9 @@ Requires(post): golang-github-russross-blackfriday = 1:1.2-6.git5f33e7b.el7.cent
 Requires(post): golang-github-shurcooL-sanitized_anchor_name = 1:0-1.git1dba4b3.el7.centos
 Requires(post): golang = 1.7.1-3.el7.centos
 
+%description all
+%{summary}
+
 
 %package base
 
@@ -43,6 +52,9 @@ Summary: OpenPOWER Host OS basic packages
 Requires: %{name}-release = %{version}-%{release}
 
 Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
+
+%description base
+%{summary}
 
 
 %package container
@@ -56,6 +68,9 @@ Requires(post): docker-swarm = 1.1.0-1.gita0fd82b
 Requires(post): flannel = 0.5.5-1.gitcb8284f.el7.centos
 Requires(post): kubernetes = 1.2.0-0.21.git4a3f9c5.el7.centos
 
+%description container
+%{summary}
+
 
 %package virt
 
@@ -66,6 +81,9 @@ Requires: %{name}-base = %{version}-%{release}
 Requires(post): SLOF = 20170303-2.git1903174.el7.centos
 Requires(post): libvirt = 2.2.0-7.gitf25cbfd.el7.centos
 Requires(post): qemu = 15:2.8.0-7.git2c99cbf.el7.centos
+
+%description virt
+%{summary}
 
 
 %package virt-management
@@ -80,6 +98,9 @@ Requires(post): ginger = 2.3.0-17.gite9b8a1b.el7.centos
 Requires(post): ginger-base = 2.2.1-13.git109815c.el7.centos
 Requires(post): kimchi = 2.3.0-17.git3830c25.el7.centos
 Requires(post): wok = 2.3.0-15.git7f5e0ae.el7.centos
+
+%description virt-management
+%{summary}
 
 
 %package ras
@@ -101,21 +122,6 @@ Requires(post): servicelog = 1.1.14-4.git7d33cd3.el7.centos
 Requires(post): sos = 3.3-18.git52dd1db.el7.centos
 Requires(post): systemtap = 3.0-8.el7.centos
 
-
-%description
-%{summary}
-%description release
-%{summary}
-%description all
-%{summary}
-%description base
-%{summary}
-%description container
-%{summary}
-%description virt
-%{summary}
-%description virt-management
-%{summary}
 %description ras
 %{summary}
 
