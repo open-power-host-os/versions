@@ -142,3 +142,64 @@ refered in its config.yaml.
     </tr>
   </tbody>
 </table>
+
+## Packages groups
+
+We have "metapackages" that require the installation of certain sets of
+related packages. All of those also install the open-power-host-os-release
+package, which places a file at `/etc/open-power-host-os-release` indicating
+the current OpenPOWER Host OS version.
+
+The packages installed by each metapackage are as follows:
+
+- open-power-host-os-all
+  - open-power-host-os-base
+  - open-power-host-os-container
+  - open-power-host-os-ras
+  - open-power-host-os-virt
+  - open-power-host-os-virt-management
+  - gcc
+  - golang-github-russross-blackfriday
+  - golang-github-shurcooL-sanitized_anchor_name
+  - golang
+
+- open-power-host-os-base
+  - open-power-host-os-release
+  - kernel
+
+- open-power-host-os-container
+  - open-power-host-os-base
+  - docker
+  - docker-swarm
+  - flannel
+  - kubernetes
+
+- open-power-host-os-ras
+  - open-power-host-os-base
+  - crash
+  - hwdata
+  - libnl3
+  - librtas
+  - libservicelog
+  - libvpd
+  - lshw
+  - lsvpd
+  - ppc64-diag
+  - servicelog
+  - sos
+  - systemtap
+
+- open-power-host-os-virt
+  - open-power-host-os-base
+  - SLOF
+  - libvirt
+  - qemu
+
+- open-power-host-os-virt-management
+  - open-power-host-os-base
+  - open-power-host-os-virt
+  - novnc
+  - ginger
+  - ginger-base
+  - kimchi
+  - wok 
