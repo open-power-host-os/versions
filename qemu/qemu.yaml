@@ -3,4 +3,4 @@ Package:
   - git:
      src: 'https://github.com/open-power-host-os/qemu.git'
      branch: 'hostos-devel'
-     commit_id: '2c99cbf6b7dfe4d0c22e965d5456cddb48715f68'
+     commit_id: '1216973c652ed476b4fc074cafd16c2d0a658aec'

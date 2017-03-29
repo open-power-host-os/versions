@@ -1,11 +1,11 @@
-%define milestone alpha
+%define milestone beta
 %if "%{milestone}"
 %define milestone_tag .%{milestone}
 %endif
 
 Name: open-power-host-os
 Version: 2.0
-Release: 5%{?milestone_tag}%{dist}
+Release: 6%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -48,7 +48,7 @@ Requires(post): kubernetes = 1.2.0-0.21.git4a3f9c5.el7.centos
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170303-2.git1903174.el7.centos
 Requires(post): libvirt = 2.2.0-7.gitf25cbfd.el7.centos
-Requires(post): qemu = 15:2.8.0-7.git2c99cbf.el7.centos
+Requires(post): qemu = 15:2.8.0-8.git1216973.el7.centos
 Requires: %{name}-virt-management = %{version}-%{release}
 Requires(post): novnc = 0.5.1-5.gitfc00821.el7.centos
 Requires(post): ginger = 2.3.0-17.gite9b8a1b.el7.centos
@@ -115,7 +115,7 @@ Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
 
 Requires(post): SLOF = 20170303-2.git1903174.el7.centos
 Requires(post): libvirt = 2.2.0-7.gitf25cbfd.el7.centos
-Requires(post): qemu = 15:2.8.0-7.git2c99cbf.el7.centos
+Requires(post): qemu = 15:2.8.0-8.git1216973.el7.centos
 
 %description virt
 %{summary}
@@ -130,7 +130,7 @@ Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170303-2.git1903174.el7.centos
 Requires(post): libvirt = 2.2.0-7.gitf25cbfd.el7.centos
-Requires(post): qemu = 15:2.8.0-7.git2c99cbf.el7.centos
+Requires(post): qemu = 15:2.8.0-8.git1216973.el7.centos
 
 Requires(post): novnc = 0.5.1-5.gitfc00821.el7.centos
 Requires(post): ginger = 2.3.0-17.gite9b8a1b.el7.centos
@@ -211,6 +211,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Mar 29 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.0-6.beta
+- Update package dependencies
+
 * Wed Mar 29 2017 Lucas Tadeu Teixeira <ltadeu@br.ibm.com> 2.0-5.alpha
 - Add systemd service to disable SMT
 
