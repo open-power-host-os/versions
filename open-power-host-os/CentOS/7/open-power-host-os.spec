@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 2.0
-Release: 6%{?milestone_tag}%{dist}
+Release: 7%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -24,6 +24,14 @@ Source1: 90-open-power-host-os-default.preset
 
 Requires: centos-release >= 7
 Requires: epel-release >= 7
+
+# openvswitch selinux issue
+# https://github.com/open-power-host-os/builds/issues/226
+Source1001: hostos-openvswitch.te
+Requires(post): policycoreutils
+BuildRequires: checkpolicy
+BuildRequires: policycoreutils-python
+
 
 %description release
 %{summary}
@@ -172,8 +180,17 @@ install -pm 644 %{SOURCE1} .
 
 %build
 
+# build openvswitch selinux policy
+checkmodule -M -m -o hostos-openvswitch.mod %{SOURCE1001}
+semodule_package -o hostos-openvswitch.pp -m hostos-openvswitch.mod
+
 %install
 rm -rf $RPM_BUILD_ROOT
+
+# install openvswitch selinux policy
+%{__mkdir_p} %{buildroot}%{_sysconfdir}/selinux/open-power-host-os
+%{__cp} -f %{SOURCE1001} %{buildroot}%{_sysconfdir}/selinux/open-power-host-os/
+%{__cp} -f hostos-openvswitch.{mod,pp} %{buildroot}%{_sysconfdir}/selinux/open-power-host-os/
 
 BUILD_TIMESTAMP=$(date +"%Y-%m-%d")
 VERSION_STRING=%{version}-%{milestone}
@@ -190,6 +207,11 @@ cp 90-open-power-host-os-default.preset $RPM_BUILD_ROOT%{_libdir}/systemd/system
 mkdir -p $RPM_BUILD_ROOT%{_libdir}/systemd
 cp open-power-host-os-smt.service $RPM_BUILD_ROOT%{_libdir}/systemd
 
+%post release
+
+# load openvswitch selinux policy
+semodule -i %{_sysconfdir}/selinux/open-power-host-os/hostos-openvswitch.pp >/tmp/hostos-openvswitch.log 2>&1 || :
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -197,6 +219,9 @@ rm -rf $RPM_BUILD_ROOT
 %files release
 %defattr(-,root,root,-)
 %attr(0444, root, root) %{_sysconfdir}/open-power-host-os-release
+%attr(0644, root, root) %{_sysconfdir}/selinux/open-power-host-os/hostos-openvswitch.te
+%attr(0644, root, root) %{_sysconfdir}/selinux/open-power-host-os/hostos-openvswitch.mod
+%attr(0644, root, root) %{_sysconfdir}/selinux/open-power-host-os/hostos-openvswitch.pp
 
 %attr(0644, root, root) %{_libdir}/systemd/system-preset/90-open-power-host-os-default.preset
 
@@ -211,6 +236,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Mar 29 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> 2.0-7.beta
+- Add selinux policy to allow openvswitch generic netlink socket
+- Fix https://github.com/open-power-host-os/builds/issues/226
+
 * Wed Mar 29 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.0-6.beta
 - Update package dependencies
 
