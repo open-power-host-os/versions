@@ -3,4 +3,4 @@ Package:
   - git:
      src: 'git://sourceware.org/git/systemtap.git'
      branch: 'master'
-     commit_id: '616ec7a0b916df7785d911b824c3df6eb022b213' # release-3.0
+     commit_id: 'b8ea350dc13adb6190d9044a5b80110a4c441270' # release-3.1
