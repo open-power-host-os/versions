@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 2.0
-Release: 7%{?milestone_tag}%{dist}
+Release: 8%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -75,7 +75,7 @@ Requires(post): lsvpd = 1.7.7-6.git3a5f5e1.el7.centos
 Requires(post): ppc64-diag = 2.7.2-1.gitd56f7f1.el7.centos
 Requires(post): servicelog = 1.1.14-4.git7d33cd3.el7.centos
 Requires(post): sos = 3.3-18.git52dd1db.el7.centos
-Requires(post): systemtap = 3.0-8.el7.centos
+Requires(post): systemtap = 3.1-2.el7.centos
 
 Requires(post): gcc = 4.8.5-12.svn240558.el7.centos
 Requires(post): golang-github-russross-blackfriday = 1:1.2-6.git5f33e7b.el7.centos
@@ -168,7 +168,7 @@ Requires(post): lsvpd = 1.7.7-6.git3a5f5e1.el7.centos
 Requires(post): ppc64-diag = 2.7.2-1.gitd56f7f1.el7.centos
 Requires(post): servicelog = 1.1.14-4.git7d33cd3.el7.centos
 Requires(post): sos = 3.3-18.git52dd1db.el7.centos
-Requires(post): systemtap = 3.0-8.el7.centos
+Requires(post): systemtap = 3.1-2.el7.centos
 
 %description ras
 %{summary}
@@ -236,6 +236,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Mar 31 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.0-8.beta
+- Update package dependencies
+
 * Wed Mar 29 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> 2.0-7.beta
 - Add selinux policy to allow openvswitch generic netlink socket
 - Fix https://github.com/open-power-host-os/builds/issues/226

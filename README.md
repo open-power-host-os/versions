@@ -134,7 +134,7 @@ refered in its config.yaml.
     </tr>
     <tr>
       <td>systemtap</td>
-      <td>3.0</td>
+      <td>3.1</td>
     </tr>
     <tr>
       <td>wok</td>
