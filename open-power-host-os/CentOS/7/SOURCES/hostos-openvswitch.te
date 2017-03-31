@@ -1,0 +1,9 @@
+module hostos-openvswitch 0.1;
+
+require {
+        type openvswitch_t;
+        class netlink_generic_socket { ioctl read write create getattr setattr lock append bind connect getopt setopt shutdown };
+}
+
+#============= openvswitch_t ==============
+allow openvswitch_t self:netlink_generic_socket { ioctl read write create getattr setattr lock append bind connect getopt setopt shutdown };
