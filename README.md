@@ -143,12 +143,20 @@ refered in its config.yaml.
   </tbody>
 </table>
 
+## Release package
+
+The release package (`open-power-host-os-release`) takes care
+of system-wide configurations. It places a file at
+`/etc/open-power-host-os-release` indicating the current
+OpenPOWER Host OS version. It also prepares the POWER system
+for KVM virtualization, by disabling simultaneous multi-threading
+and creating necessary preset files.
+
 ## Packages groups
 
 We have "metapackages" that require the installation of certain sets of
-related packages. All of those also install the open-power-host-os-release
-package, which places a file at `/etc/open-power-host-os-release` indicating
-the current OpenPOWER Host OS version.
+related packages. All of those also install the
+[`open-power-host-os-release`](#release-package) package.
 
 The packages installed by each metapackage are as follows:
 
