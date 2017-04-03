@@ -76,6 +76,7 @@ Requires(post): ppc64-diag = 2.7.2-1.gitd56f7f1%{dist}
 Requires(post): servicelog = 1.1.14-4.git7d33cd3%{dist}
 Requires(post): sos = 3.3-18.git52dd1db%{dist}
 Requires(post): systemtap = 3.1-2%{dist}
+
 Requires(post): gcc = 4.8.5-12.svn240558%{dist}
 Requires(post): golang-github-russross-blackfriday = 1:1.2-6.git5f33e7b%{dist}
 Requires(post): golang-github-shurcooL-sanitized_anchor_name = 1:0-1.git1dba4b3%{dist}
