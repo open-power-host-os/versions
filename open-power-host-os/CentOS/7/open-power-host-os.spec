@@ -47,40 +47,40 @@ BuildRequires: policycoreutils-python
 Summary: OpenPOWER Host OS full package set
 
 Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
+Requires(post): kernel = 4.10.0-7.gitb729957%{dist}
 Requires: %{name}-container = %{version}-%{release}
-Requires(post): docker = 2:1.12.2-47.el7.centos
+Requires(post): docker = 2:1.12.2-47%{dist}
 Requires(post): docker-swarm = 1.1.0-1.gita0fd82b
-Requires(post): flannel = 0.5.5-1.gitcb8284f.el7.centos
-Requires(post): kubernetes = 1.2.0-0.21.git4a3f9c5.el7.centos
+Requires(post): flannel = 0.5.5-1.gitcb8284f%{dist}
+Requires(post): kubernetes = 1.2.0-0.21.git4a3f9c5%{dist}
 Requires: %{name}-virt = %{version}-%{release}
-Requires(post): SLOF = 20170303-2.git1903174.el7.centos
-Requires(post): libvirt = 2.2.0-7.gitf25cbfd.el7.centos
-Requires(post): qemu = 15:2.8.0-8.git1216973.el7.centos
+Requires(post): SLOF = 20170303-2.git1903174%{dist}
+Requires(post): libvirt = 2.2.0-7.gitf25cbfd%{dist}
+Requires(post): qemu = 15:2.8.0-8.git1216973%{dist}
 Requires: %{name}-virt-management = %{version}-%{release}
-Requires(post): novnc = 0.5.1-5.gitfc00821.el7.centos
-Requires(post): ginger = 2.3.0-17.gite9b8a1b.el7.centos
-Requires(post): ginger-base = 2.2.1-13.git109815c.el7.centos
-Requires(post): kimchi = 2.3.0-17.git3830c25.el7.centos
-Requires(post): wok = 2.3.0-15.git7f5e0ae.el7.centos
+Requires(post): novnc = 0.5.1-5.gitfc00821%{dist}
+Requires(post): ginger = 2.3.0-17.gite9b8a1b%{dist}
+Requires(post): ginger-base = 2.2.1-13.git109815c%{dist}
+Requires(post): kimchi = 2.3.0-17.git3830c25%{dist}
+Requires(post): wok = 2.3.0-15.git7f5e0ae%{dist}
 Requires: %{name}-ras = %{version}-%{release}
-Requires(post): crash = 7.1.6-1.git64531dc.el7.centos
-Requires(post): hwdata = 0.288-1.git625a119.el7.centos
-Requires(post): libnl3 = 3.2.28-4.el7.centos
-Requires(post): librtas = 1.4.1-2.git3fe4911.el7.centos
-Requires(post): libservicelog = 1.1.16-2.git48875ee.el7.centos
-Requires(post): libvpd = 2.2.5-4.git8cb3fe0.el7.centos
+Requires(post): crash = 7.1.6-1.git64531dc%{dist}
+Requires(post): hwdata = 0.288-1.git625a119%{dist}
+Requires(post): libnl3 = 3.2.28-4%{dist}
+Requires(post): librtas = 1.4.1-2.git3fe4911%{dist}
+Requires(post): libservicelog = 1.1.16-2.git48875ee%{dist}
+Requires(post): libvpd = 2.2.5-4.git8cb3fe0%{dist}
 Requires(post): lshw = B.02.18-1.gitf9bdcc3
-Requires(post): lsvpd = 1.7.7-6.git3a5f5e1.el7.centos
-Requires(post): ppc64-diag = 2.7.2-1.gitd56f7f1.el7.centos
-Requires(post): servicelog = 1.1.14-4.git7d33cd3.el7.centos
-Requires(post): sos = 3.3-18.git52dd1db.el7.centos
-Requires(post): systemtap = 3.1-2.el7.centos
+Requires(post): lsvpd = 1.7.7-6.git3a5f5e1%{dist}
+Requires(post): ppc64-diag = 2.7.2-1.gitd56f7f1%{dist}
+Requires(post): servicelog = 1.1.14-4.git7d33cd3%{dist}
+Requires(post): sos = 3.3-18.git52dd1db%{dist}
+Requires(post): systemtap = 3.1-2%{dist}
 
-Requires(post): gcc = 4.8.5-12.svn240558.el7.centos
-Requires(post): golang-github-russross-blackfriday = 1:1.2-6.git5f33e7b.el7.centos
-Requires(post): golang-github-shurcooL-sanitized_anchor_name = 1:0-1.git1dba4b3.el7.centos
-Requires(post): golang = 1.7.1-3.el7.centos
+Requires(post): gcc = 4.8.5-12.svn240558%{dist}
+Requires(post): golang-github-russross-blackfriday = 1:1.2-6.git5f33e7b%{dist}
+Requires(post): golang-github-shurcooL-sanitized_anchor_name = 1:0-1.git1dba4b3%{dist}
+Requires(post): golang = 1.7.1-3%{dist}
 
 %description all
 %{summary}
@@ -92,7 +92,7 @@ Summary: OpenPOWER Host OS basic packages
 
 Requires: %{name}-release = %{version}-%{release}
 
-Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
+Requires(post): kernel = 4.10.0-7.gitb729957%{dist}
 
 %description base
 %{summary}
@@ -103,12 +103,12 @@ Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
 Summary: OpenPOWER Host OS container packages
 
 Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
+Requires(post): kernel = 4.10.0-7.gitb729957%{dist}
 
-Requires(post): docker = 2:1.12.2-47.el7.centos
+Requires(post): docker = 2:1.12.2-47%{dist}
 Requires(post): docker-swarm = 1.1.0-1.gita0fd82b
-Requires(post): flannel = 0.5.5-1.gitcb8284f.el7.centos
-Requires(post): kubernetes = 1.2.0-0.21.git4a3f9c5.el7.centos
+Requires(post): flannel = 0.5.5-1.gitcb8284f%{dist}
+Requires(post): kubernetes = 1.2.0-0.21.git4a3f9c5%{dist}
 
 %description container
 %{summary}
@@ -119,11 +119,11 @@ Requires(post): kubernetes = 1.2.0-0.21.git4a3f9c5.el7.centos
 Summary: OpenPOWER Host OS hypervisor packages
 
 Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
+Requires(post): kernel = 4.10.0-7.gitb729957%{dist}
 
-Requires(post): SLOF = 20170303-2.git1903174.el7.centos
-Requires(post): libvirt = 2.2.0-7.gitf25cbfd.el7.centos
-Requires(post): qemu = 15:2.8.0-8.git1216973.el7.centos
+Requires(post): SLOF = 20170303-2.git1903174%{dist}
+Requires(post): libvirt = 2.2.0-7.gitf25cbfd%{dist}
+Requires(post): qemu = 15:2.8.0-8.git1216973%{dist}
 
 %description virt
 %{summary}
@@ -134,17 +134,17 @@ Requires(post): qemu = 15:2.8.0-8.git1216973.el7.centos
 Summary: OpenPOWER Host OS hypervisor management packages
 
 Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
+Requires(post): kernel = 4.10.0-7.gitb729957%{dist}
 Requires: %{name}-virt = %{version}-%{release}
-Requires(post): SLOF = 20170303-2.git1903174.el7.centos
-Requires(post): libvirt = 2.2.0-7.gitf25cbfd.el7.centos
-Requires(post): qemu = 15:2.8.0-8.git1216973.el7.centos
+Requires(post): SLOF = 20170303-2.git1903174%{dist}
+Requires(post): libvirt = 2.2.0-7.gitf25cbfd%{dist}
+Requires(post): qemu = 15:2.8.0-8.git1216973%{dist}
 
-Requires(post): novnc = 0.5.1-5.gitfc00821.el7.centos
-Requires(post): ginger = 2.3.0-17.gite9b8a1b.el7.centos
-Requires(post): ginger-base = 2.2.1-13.git109815c.el7.centos
-Requires(post): kimchi = 2.3.0-17.git3830c25.el7.centos
-Requires(post): wok = 2.3.0-15.git7f5e0ae.el7.centos
+Requires(post): novnc = 0.5.1-5.gitfc00821%{dist}
+Requires(post): ginger = 2.3.0-17.gite9b8a1b%{dist}
+Requires(post): ginger-base = 2.2.1-13.git109815c%{dist}
+Requires(post): kimchi = 2.3.0-17.git3830c25%{dist}
+Requires(post): wok = 2.3.0-15.git7f5e0ae%{dist}
 
 %description virt-management
 %{summary}
@@ -155,20 +155,20 @@ Requires(post): wok = 2.3.0-15.git7f5e0ae.el7.centos
 Summary: OpenPOWER Host OS RAS (Reliability Availability Serviceability) packages
 
 Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.10.0-7.gitb729957.el7.centos
+Requires(post): kernel = 4.10.0-7.gitb729957%{dist}
 
-Requires(post): crash = 7.1.6-1.git64531dc.el7.centos
-Requires(post): hwdata = 0.288-1.git625a119.el7.centos
-Requires(post): libnl3 = 3.2.28-4.el7.centos
-Requires(post): librtas = 1.4.1-2.git3fe4911.el7.centos
-Requires(post): libservicelog = 1.1.16-2.git48875ee.el7.centos
-Requires(post): libvpd = 2.2.5-4.git8cb3fe0.el7.centos
+Requires(post): crash = 7.1.6-1.git64531dc%{dist}
+Requires(post): hwdata = 0.288-1.git625a119%{dist}
+Requires(post): libnl3 = 3.2.28-4%{dist}
+Requires(post): librtas = 1.4.1-2.git3fe4911%{dist}
+Requires(post): libservicelog = 1.1.16-2.git48875ee%{dist}
+Requires(post): libvpd = 2.2.5-4.git8cb3fe0%{dist}
 Requires(post): lshw = B.02.18-1.gitf9bdcc3
-Requires(post): lsvpd = 1.7.7-6.git3a5f5e1.el7.centos
-Requires(post): ppc64-diag = 2.7.2-1.gitd56f7f1.el7.centos
-Requires(post): servicelog = 1.1.14-4.git7d33cd3.el7.centos
-Requires(post): sos = 3.3-18.git52dd1db.el7.centos
-Requires(post): systemtap = 3.1-2.el7.centos
+Requires(post): lsvpd = 1.7.7-6.git3a5f5e1%{dist}
+Requires(post): ppc64-diag = 2.7.2-1.gitd56f7f1%{dist}
+Requires(post): servicelog = 1.1.14-4.git7d33cd3%{dist}
+Requires(post): sos = 3.3-18.git52dd1db%{dist}
+Requires(post): systemtap = 3.1-2%{dist}
 
 %description ras
 %{summary}
