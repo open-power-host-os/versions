@@ -3,7 +3,7 @@
 %{!?with_htmldocs: %global with_htmldocs 0}
 %{!?with_monitor: %global with_monitor 1}
 # crash is not available
-%ifarch ppc ppc64 %{sparc} aarch64 ppc64le
+%ifarch ppc ppc64 %{sparc} aarch64 ppc64le %{mips}
 %{!?with_crash: %global with_crash 0}
 %else
 %{!?with_crash: %global with_crash 1}
@@ -23,7 +23,7 @@
 %{!?with_java: %global with_java 0%{?fedora} >= 19 || 0%{?rhel} >= 7}
 %{!?with_virthost: %global with_virthost 0%{?fedora} >= 19 || 0%{?rhel} >= 7}
 %{!?with_virtguest: %global with_virtguest 1}
-%{!?with_dracut: %global with_dracut 0%{?fedora} >= 19 || 0%{?rhel} >= 7}
+%{!?with_dracut: %global with_dracut 0%{?fedora} >= 19 || 0%{?rhel} >= 6}
 %ifarch x86_64
 %{!?with_mokutil: %global with_mokutil 0%{?fedora} >= 18 || 0%{?rhel} >= 7}
 %{!?with_openssl: %global with_openssl 0%{?fedora} >= 18 || 0%{?rhel} >= 7}
@@ -33,6 +33,8 @@
 %endif
 %{!?with_pyparsing: %global with_pyparsing 0%{?fedora} >= 18 || 0%{?rhel} >= 7}
 %{!?with_python3: %global with_python3 0%{?fedora} >= 23}
+%{!?with_python2_probes: %global with_python2_probes 1}
+%{!?with_python3_probes: %global with_python3_probes 0%{?fedora} >= 23}
 
 %ifarch ppc64le aarch64
 %global with_virthost 0
@@ -56,11 +58,21 @@
    %endif
 %endif
 
-%define dracutstap %{_prefix}/lib/dracut/modules.d/99stap
+%if 0%{?fedora} >= 19 || 0%{?rhel} >= 7
+   %define dracutstap %{_prefix}/lib/dracut/modules.d/99stap
+%else
+   %define dracutstap %{_prefix}/share/dracut/modules.d/99stap
+%endif
+
+%if 0%{?rhel} >= 6
+    %define dracutbindir /sbin
+%else
+    %define dracutbindir %{_bindir}
+%endif
 
 Name: systemtap
-Version: 3.0
-Release: 8%{?dist}
+Version: 3.1
+Release: 2%{?dist}
 # for version, see also configure.ac
 
 
@@ -77,6 +89,8 @@ Release: 8%{?dist}
 # systemtap-runtime-java libHelperSDT.so, HelperSDT.jar, stapbm, req:-runtime
 # systemtap-runtime-virthost  /usr/bin/stapvirt, req:libvirt req:libxml2
 # systemtap-runtime-virtguest udev rules, init scripts/systemd service, req:-runtime
+# systemtap-runtime-python2 HelperSDT python2 module, req:-runtime
+# systemtap-runtime-python3 HelperSDT python3 module, req:-runtime
 #
 # Typical scenarios:
 #
@@ -99,16 +113,21 @@ Source: %{name}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: gcc-c++
 BuildRequires: gettext-devel
-BuildRequires: nss-devel avahi-devel pkgconfig
+BuildRequires: pkgconfig(nss)
+BuildRequires: pkgconfig(avahi-client)
 %if %{with_dyninst}
 BuildRequires: dyninst-devel >= 8.0
-BuildRequires: libselinux-devel
+BuildRequires: pkgconfig(libselinux)
 %endif
 %if %{with_sqlite}
 BuildRequires: sqlite-devel
 %endif
 %if %{with_monitor}
-BuildRequires: json-c-devel ncurses-devel
+BuildRequires: pkgconfig(json-c)
+BuildRequires: pkgconfig(ncurses)
+%endif
+%if %{with_systemd}
+BuildRequires: systemd
 %endif
 # Needed for libstd++ < 4.0, without <tr1/memory>
 %if %{with_boost}
@@ -118,7 +137,7 @@ BuildRequires: boost-devel
 BuildRequires: crash-devel zlib-devel
 %endif
 %if %{with_rpm}
-BuildRequires: rpm-devel glibc-headers
+BuildRequires: rpm-devel
 %endif
 %if %{with_bundled_elfutils}
 Source1: elfutils-%{elfutils_version}.tar.gz
@@ -150,17 +169,22 @@ BuildRequires: emacs
 BuildRequires: jpackage-utils java-devel
 %endif
 %if %{with_virthost}
-BuildRequires: libvirt-devel >= 1.0.2
-BuildRequires: libxml2-devel
+# BuildRequires: libvirt-devel >= 1.0.2
+BuildRequires: pkgconfig(libvirt)
+BuildRequires: pkgconfig(libxml-2.0)
 %endif
 BuildRequires: readline-devel
 %if 0%{?rhel} <= 5
-BuildRequires: ncurses-devel
+BuildRequires: pkgconfig(ncurses)
 %endif
-
-Patch10: pr19874.patch
-Patch11: systemtap-3.0-kernel-4.6.patch
-Patch12: systemtap-3.0-kernel-4.7.patch
+%if %{with_python2_probes}
+BuildRequires: python-devel
+BuildRequires: python-setuptools
+%endif
+%if %{with_python3_probes}
+BuildRequires: python3-devel
+BuildRequires: python3-setuptools
+%endif
 
 # Install requirements
 Requires: systemtap-client = %{version}-%{release}
@@ -194,6 +218,9 @@ BuildRequires: nss-devel avahi-devel
 %if %{with_openssl}
 Requires: openssl
 %endif
+%if %{with_systemd}
+Requires: systemd
+%endif
 
 %description server
 This is the remote script compilation server component of systemtap.
@@ -206,10 +233,11 @@ Summary: Programmable system-wide instrumentation system - development headers, 
 Group: Development/System
 License: GPLv2+
 URL: http://sourceware.org/systemtap/
-# Alternate kernel packages kernel-PAE-devel et al. have a virtual
-# provide for kernel-devel, so this requirement does the right thing,
-# at least past RHEL4.
-Requires: kernel-devel
+# The virtual provide 'kernel-devel-uname-r' tries to get the right
+# kernel variant  (kernel-PAE, kernel-debug, etc.) devel package
+# installed.
+Requires: kernel-devel-uname-r
+%{?fedora:Suggests: kernel-devel}
 Requires: gcc make
 # Suggest: kernel-debuginfo
 
@@ -325,6 +353,12 @@ Requires: crash
 %if %{with_java}
 Requires: systemtap-runtime-java = %{version}-%{release}
 %endif
+%if %{with_python2_probes}
+Requires: systemtap-runtime-python2 = %{version}-%{release}
+%endif
+%if %{with_python3_probes}
+Requires: systemtap-runtime-python3 = %{version}-%{release}
+%endif
 %ifarch x86_64
 Requires: /usr/lib/libc.so
 # ... and /usr/lib/libgcc_s.so.*
@@ -358,6 +392,32 @@ Requires: net-tools
 This package includes support files needed to run systemtap scripts
 that probe Java processes running on the OpenJDK 1.6 and OpenJDK 1.7
 runtimes using Byteman.
+%endif
+
+%if %{with_python2_probes}
+%package runtime-python2
+Summary: Systemtap Python 2 Runtime Support
+Group: Development/System
+License: GPLv2+
+URL: http://sourceware.org/systemtap/
+Requires: systemtap-runtime = %{version}-%{release}
+
+%description runtime-python2
+This package includes support files needed to run systemtap scripts
+that probe python 2 processes.
+%endif
+
+%if %{with_python3_probes}
+%package runtime-python3
+Summary: Systemtap Python 3 Runtime Support
+Group: Development/System
+License: GPLv2+
+URL: http://sourceware.org/systemtap/
+Requires: systemtap-runtime = %{version}-%{release}
+
+%description runtime-python3
+This package includes support files needed to run systemtap scripts
+that probe python 3 processes.
 %endif
 
 %if %{with_virthost}
@@ -411,10 +471,6 @@ sleep 1
 find . \( -name configure -o -name config.h.in \) -print | xargs touch
 cd ..
 %endif
-
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
 
 %build
 
@@ -485,6 +541,22 @@ cd ..
 %global java_config --without-java
 %endif
 
+%if %{with_python3}
+%global python3_config --with-python3
+%else
+%global python3_config --without-python3
+%endif
+%if %{with_python2_probes}
+%global python2_probes_config --with-python2-probes
+%else
+%global python2_probes_config --without-python2-probes
+%endif
+%if %{with_python3_probes}
+%global python3_probes_config --with-python3-probes
+%else
+%global python3_probes_config --without-python3-probes
+%endif
+
 %if %{with_virthost}
 %global virt_config --enable-virt
 %else
@@ -492,20 +564,15 @@ cd ..
 %endif
 
 %if %{with_dracut}
-%global dracut_config --with-dracutstap=%{dracutstap}
+%global dracut_config --with-dracutstap=%{dracutstap} --with-dracutbindir=%{dracutbindir}
 %else
 %global dracut_config %{nil}
 %endif
 
-%if %{with_python3}
-%global python3_config --with-python3
-%else
-%global python3_config --without-python3
-%endif
 # We don't ship compileworthy python code, just oddball samples
 %global py_auto_byte_compile 0
 
-%configure %{?elfutils_config} %{dyninst_config} %{sqlite_config} %{crash_config} %{docs_config} %{pie_config} %{rpm_config} %{java_config} %{virt_config} %{dracut_config} %{python3_config} --disable-silent-rules --with-extra-version="rpm %{version}-%{release}"
+%configure %{?elfutils_config} %{dyninst_config} %{sqlite_config} %{crash_config} %{docs_config} %{pie_config} %{rpm_config} %{java_config} %{virt_config} %{dracut_config} %{python3_config} %{python2_probes_config} %{python3_probes_config} --disable-silent-rules --with-extra-version="rpm %{version}-%{release}"
 make %{?_smp_mflags}
 
 %if %{with_emacsvim}
@@ -522,14 +589,10 @@ for dir in $(ls -1d $RPM_BUILD_ROOT%{_mandir}/{??,??_??}) ; do
     echo "%%lang($lang) $dir/man*/*" >> %{name}.lang
 done
 
-# We want the examples in the special doc dir, not the build install dir.
-# We build it in place and then move it away so it doesn't get installed
-# twice. rpm can specify itself where the (versioned) docs go with the
-# %doc directive.
-mv $RPM_BUILD_ROOT%{_datadir}/doc/systemtap/examples examples
+ln -s %{_datadir}/systemtap/examples
 
 # Fix paths in the example scripts.
-find examples -type f -name '*.stp' -print0 | xargs -0 sed -i -r -e '1s@^#!.+stap@#!%{_bindir}/stap@'
+find $RPM_BUILD_ROOT%{_datadir}/systemtap/examples -type f -name '*.stp' -print0 | xargs -0 sed -i -r -e '1s@^#!.+stap@#!%{_bindir}/stap@'
 
 # To make rpmlint happy, remove any .gitignore files in the testsuite.
 find testsuite -type f -name '.gitignore' -print0 | xargs -0 rm -f
@@ -620,6 +683,8 @@ done
 %if %{with_dracut}
    mkdir -p $RPM_BUILD_ROOT%{dracutstap}
    install -p -m 755 initscript/99stap/module-setup.sh $RPM_BUILD_ROOT%{dracutstap}
+   install -p -m 755 initscript/99stap/install $RPM_BUILD_ROOT%{dracutstap}
+   install -p -m 755 initscript/99stap/check $RPM_BUILD_ROOT%{dracutstap}
    install -p -m 755 initscript/99stap/start-staprun.sh $RPM_BUILD_ROOT%{dracutstap}
    touch $RPM_BUILD_ROOT%{dracutstap}/params.conf
 %endif
@@ -666,11 +731,6 @@ test -e %{_localstatedir}/log/stap-server/log || {
      chmod 644 %{_localstatedir}/log/stap-server/log
      chown stap-server:stap-server %{_localstatedir}/log/stap-server/log
 }
-# If it does not already exist, as stap-server, generate the certificate
-# used for signing and for ssl.
-if test ! -e ~stap-server/.systemtap/ssl/server/stap.cert; then
-   runuser -s /bin/sh - stap-server -c %{_libexecdir}/systemtap/stap-gen-cert >/dev/null
-fi
 # Prepare the service
 %if %{with_systemd}
      # Note, Fedora policy doesn't allow network services enabled by default
@@ -929,6 +989,13 @@ done
 %{_emacs_sitestartdir}/systemtap-init.el
 %{_datadir}/vim/vimfiles/*/*.vim
 %endif
+# Notice that the stap-resolve-module-function.py file is used by
+# *both* the python2 and python3 subrpms.  Both subrpms use that same
+# python script to help list python probes.
+%if %{with_python3_probes} || %{with_python2_probes}
+%{_libexecdir}/systemtap/python/stap-resolve-module-function.py
+%exclude %{_libexecdir}/systemtap/python/stap-resolve-module-function.py?
+%endif
 
 
 %files runtime -f systemtap.lang
@@ -963,7 +1030,8 @@ done
 
 %files client -f systemtap.lang
 %defattr(-,root,root)
-%doc README README.unprivileged AUTHORS NEWS examples
+%doc README README.unprivileged AUTHORS NEWS
+%{_datadir}/systemtap/examples
 %{!?_licensedir:%global license %%doc}
 %license COPYING
 %if %{with_docs}
@@ -1031,6 +1099,17 @@ done
 %{_libexecdir}/systemtap/stapbm
 %endif
 
+%if %{with_python2_probes}
+%files runtime-python2
+%{python_sitearch}/HelperSDT
+%{python_sitearch}/HelperSDT-*.egg-info
+%endif
+%if %{with_python3_probes}
+%files runtime-python3
+%{python3_sitearch}/HelperSDT
+%{python3_sitearch}/HelperSDT-*.egg-info
+%endif
+
 %if %{with_virthost}
 %files runtime-virthost
 %{_mandir}/man1/stapvirt.1*
@@ -1058,7 +1137,15 @@ done
 # - Upstream release, see wiki page below for detailed notes.
 #   http://sourceware.org/systemtap/wiki/SystemTapReleases
 
+# PRERELEASE
 %changelog
+* Wed Mar 29 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.1-2
+- Merge upstream release, removing all our custom patches, which are already
+  applied.
+
+* Fri Feb 17 2017 Frank Ch. Eigler <fche@redhat.com> - 3.1-1
+- Upstream release.
+
 * Fri Jan 13 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.0-8
 - Bump release so we take precedence over CentOS version (3.0-7)
 
