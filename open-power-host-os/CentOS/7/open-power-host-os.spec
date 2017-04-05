@@ -1,11 +1,11 @@
-%define milestone %nil
+%define milestone alpha
 %if "%{milestone}"
 %define milestone_tag .%{milestone}
 %endif
 
 Name: open-power-host-os
-Version: 2.0
-Release: 9%{?milestone_tag}%{dist}
+Version: 2.5
+Release: 1%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -236,6 +236,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Apr 05 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.5-1.alpha
+- Update package dependencies
+
 * Fri Mar 31 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.0-9
 - Update package dependencies
 
