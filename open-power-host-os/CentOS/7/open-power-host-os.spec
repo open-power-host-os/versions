@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 2.0
-Release: 9%{?milestone_tag}%{dist}
+Release: 10%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -201,11 +201,12 @@ mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}
 install -pm 444 open-power-host-os-release \
         $RPM_BUILD_ROOT%{_sysconfdir}/open-power-host-os-release
 
-mkdir -p $RPM_BUILD_ROOT%{_libdir}/systemd/system-preset
-cp 90-open-power-host-os-default.preset $RPM_BUILD_ROOT%{_libdir}/systemd/system-preset
+%{__mkdir_p} %{buildroot}%{_prefix}/lib/systemd/system/
+%{__cp} %{SOURCE0} %{buildroot}%{_prefix}/lib/systemd/system/
 
-mkdir -p $RPM_BUILD_ROOT%{_libdir}/systemd
-cp open-power-host-os-smt.service $RPM_BUILD_ROOT%{_libdir}/systemd
+%{__mkdir_p} %{buildroot}%{_prefix}/lib/systemd/system-preset/
+%{__cp} %{SOURCE1} %{buildroot}%{_prefix}/lib/systemd/system-preset/
+
 
 %post release
 
@@ -223,9 +224,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(0644, root, root) %{_sysconfdir}/selinux/open-power-host-os/hostos-openvswitch.mod
 %attr(0644, root, root) %{_sysconfdir}/selinux/open-power-host-os/hostos-openvswitch.pp
 
-%attr(0644, root, root) %{_libdir}/systemd/system-preset/90-open-power-host-os-default.preset
-
-%attr(0644, root, root) %{_libdir}/systemd/open-power-host-os-smt.service
+%attr(0644, root, root) %{_prefix}/lib/systemd/system/open-power-host-os-smt.service
+%attr(0644, root, root) %{_prefix}/lib/systemd/system-preset/90-open-power-host-os-default.preset
 
 %files all
 %files base
@@ -236,6 +236,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Apr 05 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 2.0-10
+- Fix installation of open-power-host-os-smt files
+
 * Fri Mar 31 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.0-9
 - Update package dependencies
 
