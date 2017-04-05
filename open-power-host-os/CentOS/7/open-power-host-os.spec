@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 2.5
-Release: 1%{?milestone_tag}%{dist}
+Release: 2%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -28,7 +28,10 @@ Requires: epel-release >= 7
 # openvswitch selinux issue
 # https://github.com/open-power-host-os/builds/issues/226
 Source1001: hostos-openvswitch.te
-Requires(post): policycoreutils
+Requires(pre): policycoreutils
+Requires(pre): coreutils
+Requires(pre): selinux-policy
+Requires(pre): selinux-policy-targeted
 BuildRequires: checkpolicy
 BuildRequires: policycoreutils-python
 
@@ -236,6 +239,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Apr 05 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 2.5-2.alpha
+- Update package dependencies for SELinux (https://github.com/open-power-host-os/builds/issues/226)
+
 * Wed Apr 05 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.5-1.alpha
 - Update package dependencies
 
