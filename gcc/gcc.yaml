@@ -1,11 +1,11 @@
 Package:
  name: 'gcc'
  sources:
-  - svn:
+  - git:
      # gcc 4.8.5-20150702
-     src: 'svn://gcc.gnu.org/svn/gcc/branches/redhat/gcc-4_8-branch'
-     commit_id: '240558'
-     branch: 'redhat/gcc-4_8-branch'
+     src: 'https://github.com/open-power-host-os/gcc.git'
+     branch: 'redhat/gcc-4_8-branch@240558'
+     commit_id: '79a21739f1484185ecea2200ccb172e129ab4073'
  files:
   CentOS:
    '7':
