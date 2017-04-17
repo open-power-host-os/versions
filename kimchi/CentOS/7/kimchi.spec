@@ -82,7 +82,7 @@ make DESTDIR=%{buildroot} install
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%attr(-,root,root)
+%attr(-, root, root)
 %{python_sitelib}/wok/plugins/kimchi/
 %{_datadir}/kimchi/doc/
 %{_prefix}/share/locale/*/LC_MESSAGES/kimchi.mo

@@ -950,11 +950,11 @@ done
 %endif
 %config(noreplace) %{_sysconfdir}/logrotate.d/stap-server
 %dir %{_sysconfdir}/stap-server
-%dir %attr(0750,stap-server,stap-server) %{_localstatedir}/lib/stap-server
-%dir %attr(0700,stap-server,stap-server) %{_localstatedir}/lib/stap-server/.systemtap
-%dir %attr(0755,stap-server,stap-server) %{_localstatedir}/log/stap-server
-%ghost %config(noreplace) %attr(0644,stap-server,stap-server) %{_localstatedir}/log/stap-server/log
-%ghost %attr(0755,stap-server,stap-server) %{_localstatedir}/run/stap-server
+%dir %attr(0750, stap-server, stap-server) %{_localstatedir}/lib/stap-server
+%dir %attr(0700, stap-server, stap-server) %{_localstatedir}/lib/stap-server/.systemtap
+%dir %attr(0755, stap-server, stap-server) %{_localstatedir}/log/stap-server
+%ghost %config(noreplace) %attr(0644, stap-server, stap-server) %{_localstatedir}/log/stap-server/log
+%ghost %attr(0755, stap-server, stap-server) %{_localstatedir}/run/stap-server
 %doc README README.unprivileged AUTHORS NEWS 
 %{!?_licensedir:%global license %%doc}
 %license COPYING
@@ -1000,7 +1000,7 @@ done
 
 %files runtime -f systemtap.lang
 %defattr(-,root,root)
-%attr(4110,root,stapusr) %{_bindir}/staprun
+%attr(4110, root, stapusr) %{_bindir}/staprun
 %{_bindir}/stapsh
 %{_bindir}/stap-merge
 %{_bindir}/stap-report

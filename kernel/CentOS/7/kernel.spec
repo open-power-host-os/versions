@@ -1653,7 +1653,7 @@ fi
 /%{image_install_path}/dtb-%{KVRA}%{?2:+%{2}} \
 %endif\
 /%{image_install_path}/.vmlinuz-%{KVRA}%{?2:.%{2}}.hmac \
-%attr(600,root,root) /boot/System.map-%{KVRA}%{?2:.%{2}}\
+%attr(600, root, root) /boot/System.map-%{KVRA}%{?2:.%{2}}\
 %if %{with_modules}\
 /boot/symvers-%{KVRA}%{?2:.%{2}}.gz\
 %endif\

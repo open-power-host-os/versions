@@ -80,29 +80,29 @@ ln -sfv %{_sbindir}/usysattn $RPM_BUILD_ROOT/%{_sbindir}/usysfault
 %dir %{_sysconfdir}/%{name}/ses_pages
 %dir %{_var}/log/dump
 %{_mandir}/man8/*
-%config(noreplace) %attr(644,root,root) %{_sysconfdir}/%{name}/ppc64-diag.config
-%attr(755,root,root) %{_sbindir}/*
+%config(noreplace) %attr(644, root, root) %{_sysconfdir}/%{name}/ppc64-diag.config
+%attr(755, root, root) %{_sbindir}/*
 %dir %{_datadir}/%{name}
-%dir %attr(755,root,root) %{_datadir}/%{name}/message_catalog/
-%attr(755,root,root) %{_libexecdir}/%{name}/ppc64_diag_migrate
-%attr(755,root,root) %{_libexecdir}/%{name}/ppc64_diag_mkrsrc
-%attr(755,root,root) %{_libexecdir}/%{name}/ppc64_diag_notify
-#%attr(755,root,root) %{_libexecdir}/%{name}/ppc64_diag_servagent
-%attr(755,root,root) %{_libexecdir}/%{name}/ppc64_diag_setup
-%attr(755,root,root) %{_libexecdir}/%{name}/lp_diag_setup
-%attr(755,root,root) %{_libexecdir}/%{name}/lp_diag_notify
-%attr(644,root,root) %{_libexecdir}/%{name}/servevent_parse.pl
-%attr(644,root,root) %{_datadir}/%{name}/message_catalog/cxgb3
-%attr(644,root,root) %{_datadir}/%{name}/message_catalog/e1000e
-%attr(644,root,root) %{_datadir}/%{name}/message_catalog/exceptions
-%attr(644,root,root) %{_datadir}/%{name}/message_catalog/gpfs
-%attr(644,root,root) %{_datadir}/%{name}/message_catalog/reporters
-%attr(644,root,root) %{_datadir}/%{name}/message_catalog/with_regex/*
-%attr(755,root,root) %{_sysconfdir}/rc.powerfail
-%attr(755,root,root) %{_libexecdir}/%{name}/rtas_errd
-%attr(755,root,root) %{_libexecdir}/%{name}/opal_errd
-%attr(644,root,root) %{_unitdir}/rtas_errd.service
-%attr(644,root,root) %{_unitdir}/opal_errd.service
+%dir %attr(755, root, root) %{_datadir}/%{name}/message_catalog/
+%attr(755, root, root) %{_libexecdir}/%{name}/ppc64_diag_migrate
+%attr(755, root, root) %{_libexecdir}/%{name}/ppc64_diag_mkrsrc
+%attr(755, root, root) %{_libexecdir}/%{name}/ppc64_diag_notify
+#%attr(755, root, root) %{_libexecdir}/%{name}/ppc64_diag_servagent
+%attr(755, root, root) %{_libexecdir}/%{name}/ppc64_diag_setup
+%attr(755, root, root) %{_libexecdir}/%{name}/lp_diag_setup
+%attr(755, root, root) %{_libexecdir}/%{name}/lp_diag_notify
+%attr(644, root, root) %{_libexecdir}/%{name}/servevent_parse.pl
+%attr(644, root, root) %{_datadir}/%{name}/message_catalog/cxgb3
+%attr(644, root, root) %{_datadir}/%{name}/message_catalog/e1000e
+%attr(644, root, root) %{_datadir}/%{name}/message_catalog/exceptions
+%attr(644, root, root) %{_datadir}/%{name}/message_catalog/gpfs
+%attr(644, root, root) %{_datadir}/%{name}/message_catalog/reporters
+%attr(644, root, root) %{_datadir}/%{name}/message_catalog/with_regex/*
+%attr(755, root, root) %{_sysconfdir}/rc.powerfail
+%attr(755, root, root) %{_libexecdir}/%{name}/rtas_errd
+%attr(755, root, root) %{_libexecdir}/%{name}/opal_errd
+%attr(644, root, root) %{_unitdir}/rtas_errd.service
+%attr(644, root, root) %{_unitdir}/opal_errd.service
 
 %post
 # Post-install script --------------------------------------------------

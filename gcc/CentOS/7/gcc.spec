@@ -2902,7 +2902,7 @@ fi
 %config(noreplace) %{_prefix}/%{_lib}/security/classpath.security
 %{_prefix}/%{_lib}/logging.properties
 %dir %{_prefix}/%{_lib}/gcj-%{gcc_version}/classmap.db.d
-%attr(0644,root,root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) %{_prefix}/%{_lib}/gcj-%{gcc_version}/classmap.db
+%attr(0644, root, root) %verify(not md5 size mtime) %ghost %config(missingok,noreplace) %{_prefix}/%{_lib}/gcj-%{gcc_version}/classmap.db
 
 %files -n libgcj-devel
 %defattr(-,root,root,-)

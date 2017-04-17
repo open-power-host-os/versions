@@ -152,7 +152,7 @@ exit 0
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%attr(-,root,root)
+%attr(-, root, root)
 %{_bindir}/wokd
 %{python_sitelib}/wok/*.py*
 %{python_sitelib}/wok/control/*.py*

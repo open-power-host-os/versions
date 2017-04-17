@@ -74,7 +74,7 @@ getent group service >/dev/null || /usr/sbin/groupadd service
 %doc COPYING AUTHORS
 %{_libdir}/libservicelog-*.so.*
 %dir %attr(755, root, service) /var/lib/servicelog
-%verify(not md5 size mtime) %attr(644,root,service) /var/lib/servicelog/servicelog.db
+%verify(not md5 size mtime) %attr(644, root, service) /var/lib/servicelog/servicelog.db
 %config(noreplace) /var/lib/servicelog/servicelog.db
 
 %files devel
