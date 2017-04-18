@@ -48,7 +48,7 @@ go build -x -o swarm
 %{__install} -m755 swarm %{buildroot}%{_bindir}/swarm
 
 %files
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 %{_bindir}/swarm
 %doc LICENSE.docs README.md
 

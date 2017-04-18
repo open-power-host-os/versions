@@ -221,7 +221,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files release
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 %attr(0444, root, root) %{_sysconfdir}/open-power-host-os-release
 %attr(0644, root, root) %{_sysconfdir}/selinux/open-power-host-os/hostos-openvswitch.te
 %attr(0644, root, root) %{_sysconfdir}/selinux/open-power-host-os/hostos-openvswitch.mod

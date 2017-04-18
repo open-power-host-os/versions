@@ -46,7 +46,7 @@ make DESTDIR=${RPM_BUILD_ROOT} install
 rm -rf ${RPM_BUILD_ROOT}
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 %{_sbindir}/sosreport
 %{_datadir}/%{name}
 %{python_sitelib}/*

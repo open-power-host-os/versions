@@ -926,7 +926,7 @@ done
 # The master "systemtap" rpm doesn't include any files.
 
 %files server -f systemtap.lang
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/stap-server
 %dir %{_libexecdir}/systemtap
 %{_libexecdir}/systemtap/stap-serverd
@@ -999,7 +999,7 @@ done
 
 
 %files runtime -f systemtap.lang
-%defattr(-,root,root)
+%defattr(-, root, root)
 %attr(4110, root, stapusr) %{_bindir}/staprun
 %{_bindir}/stapsh
 %{_bindir}/stap-merge
@@ -1029,7 +1029,7 @@ done
 
 
 %files client -f systemtap.lang
-%defattr(-,root,root)
+%defattr(-, root, root)
 %doc README README.unprivileged AUTHORS NEWS
 %{_datadir}/systemtap/examples
 %{!?_licensedir:%global license %%doc}
@@ -1059,7 +1059,7 @@ done
 
 
 %files initscript
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{initdir}/systemtap
 %dir %{_sysconfdir}/systemtap
 %dir %{_sysconfdir}/systemtap/conf.d
@@ -1075,7 +1075,7 @@ done
 
 
 %files sdt-devel
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/dtrace
 %{_includedir}/sys/sdt.h
 %{_includedir}/sys/sdt-config.h
@@ -1086,7 +1086,7 @@ done
 
 
 %files testsuite
-%defattr(-,root,root)
+%defattr(-, root, root)
 %dir %{_datadir}/systemtap
 %{_datadir}/systemtap/testsuite
 
