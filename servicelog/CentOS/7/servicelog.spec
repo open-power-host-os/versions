@@ -44,7 +44,7 @@ of service operations that have been performed on the system.
 %{__rm} -rf $RPM_BUILD_ROOT
 
 %files
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 %doc COPYING
 %{_bindir}/servicelog
 %{_bindir}/v1_servicelog

@@ -65,13 +65,13 @@ cp -p defs.h %{buildroot}%{_includedir}/crash
 rm -rf %{buildroot}
 
 %files
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 %{_bindir}/crash
 %{_mandir}/man8/crash.8*
 %doc README COPYING3
 
 %files devel
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 %{_includedir}/*
 
 %changelog
@@ -399,7 +399,7 @@ rm -rf %{buildroot}
 - remove alpha from the arch list since we don't build it any more
 
 * Fri Jul 18 2003 Matt Wilson <msw@redhat.com> 3.5-1
-- use %%defattr(-,root,root)
+- use %%defattr(-, root, root)
 
 * Tue Jul 15 2003 Jay Fenlason <fenlason@redhat.com>
 - Updated spec file as first step in turning this into a real RPM for taroon.

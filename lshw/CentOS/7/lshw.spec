@@ -97,7 +97,7 @@ http://lshw.ezix.org/
 %{__rm} -rf %{buildroot}
 
 %files
-%defattr(-,root,root, 0555)
+%defattr(-, root, root, 0555)
 %doc README.md COPYING docs/TODO docs/Changelog docs/lshw.xsd
 %{_sbindir}/lshw
 %doc %{_mandir}/man?/*
@@ -106,7 +106,7 @@ http://lshw.ezix.org/
 
 %if %{!?_without_gui:1}0
 %files gui
-%defattr(-,root,root, 0555)
+%defattr(-, root, root, 0555)
 %doc COPYING
 %{_sbindir}/gtk-lshw
 %endif

@@ -70,15 +70,15 @@ getent group service >/dev/null || /usr/sbin/groupadd service
 /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 %doc COPYING AUTHORS
 %{_libdir}/libservicelog-*.so.*
 %dir %attr(755, root, service) /var/lib/servicelog
-%verify(not md5 size mtime) %attr(644,root,service) /var/lib/servicelog/servicelog.db
+%verify(not md5 size mtime) %attr(644, root, service) /var/lib/servicelog/servicelog.db
 %config(noreplace) /var/lib/servicelog/servicelog.db
 
 %files devel
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 %{_includedir}/servicelog-1
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/servicelog-1.pc

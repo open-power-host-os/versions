@@ -50,7 +50,7 @@ Contains header files for building with libvpd.
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 %doc COPYING README AUTHORS
 %exclude %{_libdir}/*.la
 %{_libdir}/libvpd_cxx-2.2.so.*
@@ -59,7 +59,7 @@ Contains header files for building with libvpd.
 %{_sharedstatedir}/lsvpd/run.vpdupdate
 
 %files devel
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 %exclude %{_libdir}/*.la
 %{_includedir}/libvpd-2
 %{_libdir}/libvpd_cxx.so

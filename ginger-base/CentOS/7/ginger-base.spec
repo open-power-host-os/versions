@@ -66,7 +66,7 @@ make DESTDIR=%{buildroot} install
 rm -rf $RPM_BUILD_ROOT
 
 %files
-%attr(-,root,root)
+%attr(-, root, root)
 %{python_sitelib}/wok/plugins/gingerbase
 %{_datadir}/gingerbase
 %{_prefix}/share/locale/*/LC_MESSAGES/gingerbase.mo

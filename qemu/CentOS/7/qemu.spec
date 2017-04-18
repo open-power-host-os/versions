@@ -1159,17 +1159,17 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %files
-%defattr(-,root,root)
+%defattr(-, root, root)
 
 %if %{without separate_kvm}
 %ifarch %{kvm_archs}
 %files kvm
-%defattr(-,root,root)
+%defattr(-, root, root)
 %endif
 %endif
 
 %files common
-%defattr(-,root,root)
+%defattr(-, root, root)
 /etc/qemu
 /usr/bin/ivshmem-client
 /usr/bin/ivshmem-server
@@ -1211,7 +1211,7 @@ getent passwd qemu >/dev/null || \
 
 %if %{without separate_kvm}
 %files guest-agent
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 %doc COPYING README
 %{_bindir}/qemu-ga
 %{_unitdir}/qemu-guest-agent.service
@@ -1220,7 +1220,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?user:1}
 %files %{user}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_exec_prefix}/lib/binfmt.d/qemu-*.conf
 %{_bindir}/qemu-i386
 %{_bindir}/qemu-x86_64
@@ -1280,7 +1280,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?system_x86:1}
 %files %{system_x86}
-%defattr(-,root,root)
+%defattr(-, root, root)
 #%if %{without kvmonly}
 #%{_bindir}/qemu-system-i386
 #%{_bindir}/qemu-system-x86_64
@@ -1325,13 +1325,13 @@ getent passwd qemu >/dev/null || \
 %if %{without separate_kvm}
 %ifarch %{kvm_archs}
 %files kvm-tools
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 %endif
 %endif
 
 %if 0%{?system_alpha:1}
 %files %{system_alpha}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/qemu-system-alpha
 %{_datadir}/systemtap/tapset/qemu-system-alpha.stp
 %{_mandir}/man1/qemu-system-alpha.1*
@@ -1340,7 +1340,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?system_arm:1}
 %files %{system_arm}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/qemu-system-arm
 %{_datadir}/systemtap/tapset/qemu-system-arm.stp
 %{_mandir}/man1/qemu-system-arm.1*
@@ -1355,7 +1355,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?system_mips:1}
 %files %{system_mips}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/qemu-system-mips
 %{_bindir}/qemu-system-mipsel
 %{_bindir}/qemu-system-mips64
@@ -1372,7 +1372,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?system_cris:1}
 %files %{system_cris}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/qemu-system-cris
 %{_datadir}/systemtap/tapset/qemu-system-cris.stp
 %{_mandir}/man1/qemu-system-cris.1*
@@ -1380,7 +1380,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?system_lm32:1}
 %files %{system_lm32}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/qemu-system-lm32
 %{_datadir}/systemtap/tapset/qemu-system-lm32.stp
 %{_mandir}/man1/qemu-system-lm32.1*
@@ -1388,7 +1388,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?system_m68k:1}
 %files %{system_m68k}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/qemu-system-m68k
 %{_datadir}/systemtap/tapset/qemu-system-m68k.stp
 %{_mandir}/man1/qemu-system-m68k.1*
@@ -1396,7 +1396,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?system_microblaze:1}
 %files %{system_microblaze}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/qemu-system-microblaze
 %{_bindir}/qemu-system-microblazeel
 %{_datadir}/systemtap/tapset/qemu-system-microblaze.stp
@@ -1408,7 +1408,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?system_or32:1}
 %files %{system_or32}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/qemu-system-or32
 %{_datadir}/systemtap/tapset/qemu-system-or32.stp
 %{_mandir}/man1/qemu-system-or32.1*
@@ -1416,7 +1416,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?system_s390x:1}
 %files %{system_s390x}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/qemu-system-s390x
 %{_datadir}/systemtap/tapset/qemu-system-s390x.stp
 %{_mandir}/man1/qemu-system-s390x.1*
@@ -1430,7 +1430,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?system_sh4:1}
 %files %{system_sh4}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/qemu-system-sh4
 %{_bindir}/qemu-system-sh4eb
 %{_datadir}/systemtap/tapset/qemu-system-sh4.stp
@@ -1441,7 +1441,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?system_sparc:1}
 %files %{system_sparc}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/qemu-system-sparc
 %{_bindir}/qemu-system-sparc64
 %{_datadir}/systemtap/tapset/qemu-system-sparc.stp
@@ -1456,7 +1456,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?system_ppc:1}
 %files %{system_ppc}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %if %{without kvmonly}
 #{_bindir}/qemu-system-ppc
 %{_bindir}/qemu-system-ppc64
@@ -1482,7 +1482,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?system_unicore32:1}
 %files %{system_unicore32}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/qemu-system-unicore32
 %{_datadir}/systemtap/tapset/qemu-system-unicore32.stp
 %{_mandir}/man1/qemu-system-unicore32.1*
@@ -1490,7 +1490,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?system_xtensa:1}
 %files %{system_xtensa}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/qemu-system-xtensa
 %{_bindir}/qemu-system-xtensaeb
 %{_datadir}/systemtap/tapset/qemu-system-xtensa.stp
@@ -1501,7 +1501,7 @@ getent passwd qemu >/dev/null || \
 
 %if 0%{?system_moxie:1}
 %files %{system_moxie}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/qemu-system-moxie
 %{_datadir}/systemtap/tapset/qemu-system-moxie.stp
 %{_mandir}/man1/qemu-system-moxie.1*
@@ -1509,7 +1509,7 @@ getent passwd qemu >/dev/null || \
 
 %if %{without separate_kvm}
 %files img
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/qemu-img
 %{_bindir}/qemu-io
 %{_bindir}/qemu-nbd
@@ -1518,15 +1518,15 @@ getent passwd qemu >/dev/null || \
 
 
 %files -n libcacard
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 #%{_libdir}/libcacard.so.*
 
 %files -n libcacard-tools
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 #%{_bindir}/vscclient
 
 %files -n libcacard-devel
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 #%{_includedir}/cacard
 #%{_libdir}/libcacard.so
 #%{_libdir}/pkgconfig/libcacard.pc

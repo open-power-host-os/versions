@@ -50,7 +50,7 @@ developing programs using librtas.
 %{_libdir}/librtasevent.so.%{version}
 
 %files devel
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 %{_includedir}/librtas.h
 %{_libdir}/librtas.so
 %{_libdir}/librtas.so.1

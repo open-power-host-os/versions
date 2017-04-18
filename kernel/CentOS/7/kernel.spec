@@ -1267,7 +1267,7 @@ find Documentation -type d | xargs chmod u+w
 %ifnarch noarch
 %global __debug_package 1
 %files -f debugfiles.list debuginfo-common-%{_target_cpu}
-%defattr(-,root,root)
+%defattr(-, root, root)
 %endif
 
 %endif
@@ -1530,13 +1530,13 @@ fi
 
 %if %{with_headers}
 %files headers
-%defattr(-,root,root)
+%defattr(-, root, root)
 /usr/include/*
 %endif
 
 %if %{with_bootwrapper}
 %files bootwrapper
-%defattr(-,root,root)
+%defattr(-, root, root)
 /usr/sbin/*
 %{_libdir}/kernel-wrapper
 %endif
@@ -1544,7 +1544,7 @@ fi
 # only some architecture builds need kernel-doc
 %if %{with_doc}
 %files doc
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_datadir}/doc/kernel-doc-%{version}/Documentation/*
 %dir %{_datadir}/doc/kernel-doc-%{version}/Documentation
 %dir %{_datadir}/doc/kernel-doc-%{version}
@@ -1557,14 +1557,14 @@ fi
 %if %{with_modules}
 %if %{with_kernel_abi_whitelists}
 %files -n kernel-abi-whitelists
-%defattr(-,root,root,-)
+%defattr(-, root, root, -)
 /lib/modules/kabi-*
 %endif
 %endif
 
 %if %{with_perf}
 %files -n perf
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_bindir}/perf
 %dir %{_libexecdir}/perf-core
 %{_libexecdir}/perf-core/*
@@ -1577,24 +1577,24 @@ fi
 
 %if ! 0%{?cross_build}
 %files -n python-perf
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{python_sitearch}
 %endif
 
 %if %{with_debuginfo}
 %files -f perf-debuginfo.list -n perf-debuginfo
-%defattr(-,root,root)
+%defattr(-, root, root)
 
 %if ! 0%{?cross_build}
 %files -f python-perf-debuginfo.list -n python-perf-debuginfo
-%defattr(-,root,root)
+%defattr(-, root, root)
 %endif # ! cross_build
 %endif # with_debuginfo
 %endif # with_perf
 
 %if %{with_tools}
 %files -n kernel-tools -f cpupower.lang
-%defattr(-,root,root)
+%defattr(-, root, root)
 
 %ifarch %{cpupowerarchs}
 %{_bindir}/cpupower
@@ -1615,17 +1615,17 @@ fi
 %{_bindir}/tmon
 %if %{with_debuginfo}
 %files -f kernel-tools-debuginfo.list -n kernel-tools-debuginfo
-%defattr(-,root,root)
+%defattr(-, root, root)
 %endif
 
 %ifarch %{cpupowerarchs}
 %files -n kernel-tools-libs
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_libdir}/libcpupower.so.0
 %{_libdir}/libcpupower.so.0.0.1
 
 %files -n kernel-tools-libs-devel
-%defattr(-,root,root)
+%defattr(-, root, root)
 %{_libdir}/libcpupower.so
 %{_includedir}/cpufreq.h
 %endif
@@ -1644,7 +1644,7 @@ fi
 %define kernel_variant_files(k:) \
 %if %{1}\
 %{expand:%%files %{?2}}\
-%defattr(-,root,root)\
+%defattr(-, root, root)\
 /%{image_install_path}/%{?-k:%{-k*}}%{!?-k:vmlinuz}-%{KVRA}%{?2:.%{2}}\
 %if %{with_uimage} \
 /%{image_install_path}/%{?-k:%{-k*}}%{!?-k:*Image*}-%{KVRA}%{?2:.%{2}}\
@@ -1653,7 +1653,7 @@ fi
 /%{image_install_path}/dtb-%{KVRA}%{?2:+%{2}} \
 %endif\
 /%{image_install_path}/.vmlinuz-%{KVRA}%{?2:.%{2}}.hmac \
-%attr(600,root,root) /boot/System.map-%{KVRA}%{?2:.%{2}}\
+%attr(600, root, root) /boot/System.map-%{KVRA}%{?2:.%{2}}\
 %if %{with_modules}\
 /boot/symvers-%{KVRA}%{?2:.%{2}}.gz\
 %endif\
@@ -1676,14 +1676,14 @@ fi
 %endif\
 %ghost /boot/initramfs-%{KVRA}%{?2:.%{2}}.img\
 %{expand:%%files %{?2:%{2}-}devel}\
-%defattr(-,root,root)\
+%defattr(-, root, root)\
 %if %{with_modules}\
 /usr/src/kernels/%{KVRA}%{?2:.%{2}}\
 %endif\
 %if %{with_debuginfo}\
 %ifnarch noarch\
 %{expand:%%files -f debuginfo%{?2}.list %{?2:%{2}-}debuginfo}\
-%defattr(-,root,root)\
+%defattr(-, root, root)\
 %endif\
 %endif\
 %endif\

@@ -56,7 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files
-%attr(-,root,root)
+%attr(-, root, root)
 %dir %{python_sitelib}/wok/plugins/ginger
 %{python_sitelib}/wok/plugins/ginger/*.py*
 %{python_sitelib}/wok/plugins/ginger/API.json
