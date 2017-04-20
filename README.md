@@ -98,7 +98,7 @@ refered in its config.yaml.
     </tr>
     <tr>
       <td>libvirt</td>
-      <td>2.2.0</td>
+      <td>3.2.0</td>
     </tr>
     <tr>
       <td>libvpd</td>
