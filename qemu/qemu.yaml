@@ -2,5 +2,5 @@ Package:
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/qemu.git'
-     branch: 'hostos-devel'
+     branch: 'hostos-stable'
      commit_id: '1216973c652ed476b4fc074cafd16c2d0a658aec'

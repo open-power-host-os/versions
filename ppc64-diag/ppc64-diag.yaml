@@ -2,7 +2,7 @@ Package:
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/ppc64-diag.git'
-     branch: 'hostos-devel'
+     branch: 'hostos-stable'
      commit_id: 'd56f7f1367bd6634605fd65997170252696178fa'
  files:
   CentOS:

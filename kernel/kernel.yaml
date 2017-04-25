@@ -2,7 +2,7 @@ Package:
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/linux.git'
-     branch: 'hostos-devel'
+     branch: 'hostos-stable'
      commit_id: 'b72995746dedb8a27c01f75d50f3a363fbb0bcd6'
  version:
   file: 'Makefile'
