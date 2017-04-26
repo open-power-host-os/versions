@@ -189,8 +189,8 @@
 
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
-Version: 2.8.0
-Release: 8%{gitcommittag}%{?dist}
+Version: 2.9.0
+Release: 1%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -1533,6 +1533,10 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Wed Apr 26 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 15:2.9.0-1.git
+- Version update
+- Updating to c7bd488 spapr: Workaround for broken radix guests
+
 * Wed Mar 29 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 15:2.8.0-8.git
 - Updating to 1216973 spapr: fix off-by-one error in spapr_ovec_populate_dt()
 

@@ -122,7 +122,7 @@ refered in its config.yaml.
     </tr>
     <tr>
       <td>qemu</td>
-      <td>2.8.0</td>
+      <td>2.9.0</td>
     </tr>
     <tr>
       <td>servicelog</td>
