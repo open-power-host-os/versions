@@ -2,7 +2,7 @@ Package:
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/slof.git'
-     branch: 'hostos-devel'
+     branch: 'hostos-stable'
      # this is tag qemu-slof-20161019 but since nobody else uses tags let's keep it as a commit id
      commit_id: '1903174472f8800caf50c959b304501b4c01153c'
  files:
