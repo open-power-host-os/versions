@@ -14,7 +14,7 @@ be added here to establish a valid and tested set of software versions to build.
 ## Installation ##
 The Builds project, at https://github.com/open-power-host-os/builds uses this
 repository automatically by cloning it and doing a git checkout in the tag
-refered in its config.yaml.
+refered in its configuration file.
 
 ## Supported Packages and versions ##
 
