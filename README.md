@@ -30,11 +30,9 @@ and creating necessary preset files.
 
 ## Packages groups
 
-We have "metapackages" that require the installation of certain sets of
-related packages. All of those also install the
-[`open-power-host-os-release`](#release-package) package.
-
-The packages installed by each metapackage are as follows:
+For convenience, a set of related packages is grouped into a
+"metapackage". The list of metapackages and the packages that are
+installed by them is the following:
 
 - open-power-host-os-all
   - open-power-host-os-base
