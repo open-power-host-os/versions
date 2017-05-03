@@ -74,7 +74,7 @@ refered in its config.yaml.
     </tr>
     <tr>
       <td>kernel</td>
-      <td>4.10.0</td>
+      <td>4.11.0</td>
     </tr>
     <tr>
       <td>kimchi</td>
