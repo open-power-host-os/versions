@@ -242,7 +242,7 @@
 Summary: Library providing a simple virtualization API
 Name: libvirt
 Version: 3.2.0
-Release: 1%{gitcommittag}%{?dist}
+Release: 3%{gitcommittag}%{?dist}
 License: LGPLv2+
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -2063,6 +2063,12 @@ exit 0
 
 
 %changelog
+* Tue May 30 2017 Olav Builds Bot <olav-builds-bot@users.noreply.github.com> - 3.2.0-3.git
+- Updating to 1381536 Adding POWER9 cpu model to cpu_map.xml
+
+* Tue May 30 2017 Olav Builds Bot <olav-builds-bot@users.noreply.github.com> - 3.2.0-2.git
+- Updating to 1381536 Adding POWER9 cpu model to cpu_map.xml
+
 * Wed Apr 19 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.2.0-1.git1587323
 - Updating to version 3.2.0
 

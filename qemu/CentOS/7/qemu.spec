@@ -190,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.9.0
-Release: 1%{gitcommittag}%{?dist}
+Release: 3%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -1533,6 +1533,12 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Tue May 30 2017 Olav Builds Bot <olav-builds-bot@users.noreply.github.com> - 15:2.9.0-3.git
+- Updating to ede23cf target/ppc: Allow workarounds for POWER9 DD1
+
+* Tue May 30 2017 Olav Builds Bot <olav-builds-bot@users.noreply.github.com> - 15:2.9.0-2.git
+- Updating to ede23cf target/ppc: Allow workarounds for POWER9 DD1
+
 * Wed Apr 26 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 15:2.9.0-1.git
 - Version update
 - Updating to c7bd488 spapr: Workaround for broken radix guests

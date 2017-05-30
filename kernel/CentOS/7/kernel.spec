@@ -314,8 +314,8 @@ Name: kernel%{?variant}
 Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
-Version: 4.10.0
-Release: 7%{?prerelease}%{gitcommittag}%{?dist}
+Version: 4.11.0
+Release: 2%{?prerelease}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1695,6 +1695,14 @@ fi
 
 
 %changelog
+* Tue May 30 2017 Olav Builds Bot <olav-builds-bot@users.noreply.github.com> - 4.11.0-2.git
+- Updating to 1ee4641 KVM: PPC: Book3S HV: Add radix checks in real-mode
+  hypercall handlers
+
+* Tue May 30 2017 Olav Builds Bot <olav-builds-bot@users.noreply.github.com> - 4.11.0-1.git
+- Version update
+- Updating to 1ee4641 KVM: PPC: Book3S HV: Add radix checks in real-mode hypercall handlers
+
 * Thu Mar 23 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.10.0-7.git
 - Updating to b729957 power/mm: update pte_write and pte_wrprotect to handle
   savedwrite
