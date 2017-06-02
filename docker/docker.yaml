@@ -2,15 +2,11 @@ Package:
  sources:
   - git:
      src: 'https://github.com/projectatomic/docker.git'
-     commit_id: 'bb80604a0b200140a440675348c848a137a1b2e2'
+     commit_id: 'ae7d637fcad9be396e75af430405446f9e6ab099'
   - git:
      src: 'https://github.com/projectatomic/docker-storage-setup.git'
-     commit_id: '194eca25fd0d180b62f3ecf1b7b408992fd6a083'
-     archive: 'docker-storage-setup-194eca25fd0d180b62f3ecf1b7b408992fd6a083'
-  - git:
-     src: 'https://github.com/projectatomic/docker-selinux.git'
-     commit_id: '032bcda7b1eb6d9d75d3c0ce64d9d35cdb9c7b85'
-     archive: 'container-selinux-032bcda7b1eb6d9d75d3c0ce64d9d35cdb9c7b85'
+     commit_id: 'c9faba1908b8e77f7c7c443f26e3b3cb1450d1a0'
+     archive: 'docker-storage-setup-c9faba1908b8e77f7c7c443f26e3b3cb1450d1a0'
   - git:
      src: 'https://github.com/projectatomic/docker-novolume-plugin.git'
      commit_id: 'c5212546ab01b4b7b62caba888d298ab63f53984'
@@ -21,14 +17,17 @@ Package:
      archive: 'v1.10-migrator-994c35cbf7ae094d4cb1230b85631ecedd77b0d8'
   - git:
      src: 'https://github.com/projectatomic/runc.git'
-     commit_id: 'f509e5094de84a919e2e8ae316373689fb66c513'
-     archive: 'runc-f509e5094de84a919e2e8ae316373689fb66c513'
+     commit_id: '3819cd61f5263275788f7279fe9d2bc13f086aa6'
+     archive: 'runc-3819cd61f5263275788f7279fe9d2bc13f086aa6'
   - git:
-     src: 'https://github.com/docker/containerd.git'
-     commit_id: '0ac3cd1be170d180b2baed755e8f0da547ceb267'
-     archive: 'containerd-0ac3cd1be170d180b2baed755e8f0da547ceb267'
+     src: 'https://github.com/projectatomic/containerd.git'
+     commit_id: '9f4539363c8edc73ae7bdd6ca30f83fc365bf9e1'
+     archive: 'containerd-9f4539363c8edc73ae7bdd6ca30f83fc365bf9e1'
  files:
   CentOS:
    '7':
     build_dependencies:
      - golang
+    install_dependencies:
+     - container-selinux
+     - skopeo

@@ -4,7 +4,7 @@ Documentation=https://containerd.tools/
 After=network.target
 
 [Service]
-ExecStart=/usr/libexec/docker/docker-containerd --listen unix:///run/containerd.sock --shim /usr/libexec/docker/docker-containerd-shim
+ExecStart=/usr/libexec/docker/docker-containerd-current --listen unix:///run/containerd.sock --shim /usr/libexec/docker/docker-containerd-shim-current --start-timeout 2m
 TasksMax=8192
 LimitNOFILE=1048576
 LimitNPROC=1048576
