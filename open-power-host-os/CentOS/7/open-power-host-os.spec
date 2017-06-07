@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 2.5
-Release: 11%{?milestone_tag}%{dist}
+Release: 12%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -52,10 +52,12 @@ Summary: OpenPOWER Host OS full package set
 Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.11.0-3.git3e6fda8%{dist}
 Requires: %{name}-container = %{version}-%{release}
-Requires(post): docker = 2:1.12.2-47%{dist}
+Requires(post): container-selinux = 2:2.17-1%{dist}
+Requires(post): docker = 2:1.12.6-6.gitae7d637%{dist}
 Requires(post): docker-swarm = 1.1.0-1.gita0fd82b
 Requires(post): flannel = 0.5.5-1.gitcb8284f%{dist}
 Requires(post): kubernetes = 1.2.0-0.21.git4a3f9c5%{dist}
+Requires(post): skopeo = 0.1.20-1.gite802625%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170303-2.git1903174%{dist}
 Requires(post): libvirt = 3.2.0-2.git1381536%{dist}
@@ -108,10 +110,12 @@ Summary: OpenPOWER Host OS container packages
 Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.11.0-3.git3e6fda8%{dist}
 
-Requires(post): docker = 2:1.12.2-47%{dist}
+Requires(post): container-selinux = 2:2.17-1%{dist}
+Requires(post): docker = 2:1.12.6-6.gitae7d637%{dist}
 Requires(post): docker-swarm = 1.1.0-1.gita0fd82b
 Requires(post): flannel = 0.5.5-1.gitcb8284f%{dist}
 Requires(post): kubernetes = 1.2.0-0.21.git4a3f9c5%{dist}
+Requires(post): skopeo = 0.1.20-1.gite802625%{dist}
 
 %description container
 %{summary}
@@ -239,6 +243,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Jun 06 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.5-12.alpha
+- Update package dependencies
+
 * Thu Jun 01 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.5-11.alpha
 - Update package dependencies
 

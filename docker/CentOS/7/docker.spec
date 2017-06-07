@@ -31,74 +31,44 @@
 %global import_path %{provider}.%{provider_tld}/%{project}/%{repo}
 
 # docker
-%global git0 https://github.com/projectatomic/%{repo}
-%global commit0 %{?git_commit_id}
-%global shortcommit0 %(c=%{commit0}; echo ${c:0:7})
+%global git_docker https://github.com/projectatomic/%{repo}
+%global commit_docker %{?git_commit_id}
+%global shortcommit_docker %(c=%{commit_docker}; echo ${c:0:7})
 # docker_branch used in %%check
-%global docker_branch docker-1.12
+%global docker_branch docker-1.12.6
 
 # d-s-s
-%global git1 https://github.com/projectatomic/%{repo}-storage-setup/
-%global commit1 194eca25fd0d180b62f3ecf1b7b408992fd6a083
-%global shortcommit1 %(c=%{commit1}; echo ${c:0:7})
+%global git_dss https://github.com/projectatomic/%{repo}-storage-setup/
+%global commit_dss c9faba1908b8e77f7c7c443f26e3b3cb1450d1a0
+%global shortcommit_dss %(c=%{commit_dss}; echo ${c:0:7})
 %global dss_libdir %{_exec_prefix}/lib/%{repo}-storage-setup
 
-# docker-selinux
-%global git2 https://github.com/projectatomic/%{repo}-selinux
-%if 0%{?fedora}
-%global commit2 346ed1d81aee0b85613635a041de2ed78d4ef6a4
-%else
-%global commit2 032bcda7b1eb6d9d75d3c0ce64d9d35cdb9c7b85
-%endif
-%global shortcommit2 %(c=%{commit2}; echo ${c:0:7})
-
 # docker-novolume-plugin
-%global git4 https://github.com/projectatomic/%{repo}-novolume-plugin
-%global commit4 c5212546ab01b4b7b62caba888d298ab63f53984
-%global shortcommit4 %(c=%{commit4}; echo ${c:0:7})
+%global git_novolume https://github.com/projectatomic/%{repo}-novolume-plugin
+%global commit_novolume c5212546ab01b4b7b62caba888d298ab63f53984
+%global shortcommit_novolume %(c=%{commit_novolume}; echo ${c:0:7})
 
 # v1.10-migrator
-%global git5 https://github.com/%{repo}/v1.10-migrator
-%global commit5 994c35cbf7ae094d4cb1230b85631ecedd77b0d8
-%global shortcommit5 %(c=%{commit5}; echo ${c:0:7})
+%global git_migrator https://github.com/%{repo}/v1.10-migrator
+%global commit_migrator 994c35cbf7ae094d4cb1230b85631ecedd77b0d8
+%global shortcommit_migrator %(c=%{commit_migrator}; echo ${c:0:7})
 
 # docker-runc
-%global git6 https://github.com/projectatomic/runc/
-%global commit6 f509e5094de84a919e2e8ae316373689fb66c513
-%global shortcommit6 %(c=%{commit6}; echo ${c:0:7})
+%global git_runc https://github.com/projectatomic/runc/
+%global commit_runc 3819cd61f5263275788f7279fe9d2bc13f086aa6
+%global shortcommit_runc %(c=%{commit_runc}; echo ${c:0:7})
 
 # docker-containerd
-%global git7 https://github.com/docker/containerd
-%global commit7 0ac3cd1be170d180b2baed755e8f0da547ceb267
-%global shortcommit7 %(c=%{commit7}; echo ${c:0:7})
-
-# docker-selinux stuff (prefix with ds_ for version/release etc.)
-# Some bits borrowed from the openstack-selinux package
-%global selinuxtype targeted
-%global moduletype services
-%global modulenames %{repo}
-
-# Usage: _format var format
-# Expand 'modulenames' into various formats as needed
-# Format must contain '$x' somewhere to do anything useful
-%global _format() export %1=""; for x in %{modulenames}; do %1+=%2; %1+=" "; done;
-
-# Relabel files
-%global relabel_files() %{_sbindir}/restorecon -R %{_bindir}/%{repo} %{_localstatedir}/run/containerd.sock %{_localstatedir}/run/%{repo}.sock %{_localstatedir}/run/%{repo}.pid %{_sysconfdir}/%{repo} %{_localstatedir}/log/%{repo} %{_localstatedir}/log/lxc %{_localstatedir}/lock/lxc %{_unitdir}/%{repo}.service %{_unitdir}/%{repo}-containerd.service %{_sysconfdir}/%{repo} &> /dev/null || :
-
-# Version of SELinux we were using
-%if 0%{?fedora} >= 22
-%global selinux_policyver 3.13.1-155
-%else
-%global selinux_policyver 3.13.1-39
-%endif
+%global git_containerd https://github.com/projectatomic/containerd
+%global commit_containerd 9f4539363c8edc73ae7bdd6ca30f83fc365bf9e1
+%global shortcommit_containerd %(c=%{commit_containerd}; echo ${c:0:7})
 
 Name: %{repo}
 %if 0%{?fedora} || 0%{?centos}
 Epoch: 2
 %endif
-Version: 1.12.2
-Release: 47%{?dist}
+Version: 1.12.6
+Release: 6.git%{shortcommit_docker}%{?dist}
 Summary: Automates deployment of containerized applications
 License: ASL 2.0
 URL: https://%{provider}.%{provider_tld}/projectatomic/%{repo}
@@ -106,20 +76,21 @@ URL: https://%{provider}.%{provider_tld}/projectatomic/%{repo}
 #ExclusiveArch: %%{go_arches}
 ExclusiveArch: %{ix86} x86_64 %{arm} aarch64 ppc64le s390x %{mips}
 Source0: %{name}.tar.gz
-Source1: %{repo}-storage-setup-%{commit1}.tar.gz
-Source2: container-selinux-%{commit2}.tar.gz
-Source4: %{repo}-novolume-plugin-%{commit4}.tar.gz
+Source1: %{repo}-storage-setup-%{commit_dss}.tar.gz
+Source4: %{repo}-novolume-plugin-%{commit_novolume}.tar.gz
 Source5: %{repo}.service
 Source6: %{repo}.sysconfig
 Source7: %{repo}-storage.sysconfig
 Source8: %{repo}-logrotate.sh
 Source9: README.%{repo}-logrotate
 Source10: %{repo}-network.sysconfig
-Source11: v1.10-migrator-%{commit5}.tar.gz
-Source12: runc-%{commit6}.tar.gz
-Source13: containerd-%{commit7}.tar.gz
+Source11: v1.10-migrator-%{commit_migrator}.tar.gz
+Source12: runc-%{commit_runc}.tar.gz
+Source13: containerd-%{commit_containerd}.tar.gz
 Source14: %{repo}-containerd.service
 Source15: v1.10-migrator-helper
+Source16: %{repo}-common.sh
+Source17: README-%{repo}-common
 
 %if 0%{?with_debug}
 # Build with debug
@@ -128,14 +99,17 @@ Source15: v1.10-migrator-helper
 
 BuildRequires: git
 BuildRequires: glibc-static
+BuildRequires: gpgme-devel
+BuildRequires: libassuan-devel
 BuildRequires: %{?go_compiler:compiler(go-compiler)}%{!?go_compiler:golang >= 1.6.2}
 BuildRequires: go-md2man
 BuildRequires: device-mapper-devel
 %if 0%{?fedora}
 BuildRequires: godep
-BuildRequires: libseccomp-static >= 2.3.1
+BuildRequires: libseccomp-static >= 2.3.0
+%else %if 0%{?centos}
+BuildRequires: libseccomp-devel
 %endif
-BuildRequires: libseccomp-devel >= 2.3.0
 BuildRequires: pkgconfig(audit)
 BuildRequires: btrfs-progs-devel
 BuildRequires: sqlite-devel
@@ -145,16 +119,19 @@ BuildRequires: pkgconfig(systemd)
 Requires: device-mapper-libs >= 1.02.90-1
 %endif
 
-# RE: rhbz#1195804 - ensure min NVR for selinux-policy
-Requires: selinux-policy >= %{selinux_policyver}
-Requires: %{repo}-selinux = %{epoch}:%{version}-%{release}
+Requires: skopeo-containers
+Requires: gnupg
+
+Requires: %{repo}-common = %{epoch}:%{version}-%{release}
+
+Requires(pre): container-selinux >= 2:2.2-2
 
 # Resolves: rhbz#1045220
 Requires: xz
 Provides: lxc-%{repo} = %{epoch}:%{version}-%{release}
 
 # Match with upstream name
-Provides: %{repo}-engine = %{version}-%{release}
+Provides: %{repo}-engine = %{epoch}:%{version}-%{release}
 
 # needs tar to be able to run containers
 Requires: tar
@@ -386,7 +363,7 @@ This package installs %{summary}. logrotate is assumed to be installed on
 containers for this to work, failures are silently ignored.
 
 %package novolume-plugin
-URL: %{git4}
+URL: %{git_novolume}
 License: MIT
 Summary: Block container starts with local volumes defined
 Requires: %{repo} = %{epoch}:%{version}-%{release}
@@ -410,23 +387,13 @@ local volumes defined. In particular, the plugin will block `docker run` with:
 
 The only thing allowed will be just bind mounts.
 
-%package selinux
-URL: %{git2}
-Summary: SELinux policies for Docker
-BuildRequires: selinux-policy
-BuildRequires: selinux-policy-devel
-Requires(post): selinux-policy-base >= %{selinux_policyver}
-Requires(post): policycoreutils
-%if 0%{?fedora}
-Requires(post): policycoreutils-python-utils
-%else
-Requires(post): policycoreutils-python
-%endif
-Requires(post): libselinux-utils
-Provides: %{repo}-io-selinux = %{epoch}:%{version}-%{release}
+%package common
+Summary: Common files for docker and docker-latest
 
-%description selinux
-SELinux policy modules for use with Docker.
+%description common
+This package contains the common files %{_bindir}/%{repo} which will point to
+%{_bindir}/%{repo}-current or %{_bindir}/%{repo}-latest configurable via
+%{_sysconfdir}/sysconfig/%{repo}
 
 %package vim
 Summary: vim syntax highlighting files for Docker
@@ -479,10 +446,6 @@ cp %{SOURCE9} .
 # untar d-s-s
 tar zxf %{SOURCE1}
 
-# unpack %%{repo}-selinux
-tar zxf %{SOURCE2}
-mv container-selinux-%{commit2} %{repo}-selinux-%{commit2}
-
 # untar docker-novolume-plugin
 tar zxf %{SOURCE4}
 
@@ -495,41 +458,42 @@ tar zxf %{SOURCE12}
 # untar docker-containerd
 tar zxf %{SOURCE13}
 
+# common exec script
+cp %{SOURCE16} .
+
+# common exec README
+cp %{SOURCE17} .
+
 %build
 # set up temporary build gopath, and put our directory there
 mkdir _build
 pushd _build
 mkdir -p src/%{provider}.%{provider_tld}/{%{repo},projectatomic}
 ln -s $(dirs +1 -l) src/%{import_path}
-ln -s $(dirs +1 -l)/%{repo}-novolume-plugin-%{commit4} src/%{provider}.%{provider_tld}/projectatomic/%{repo}-novolume-plugin
-ln -s $(dirs +1 -l)/containerd-%{commit7} src/%{provider}.%{provider_tld}/docker/containerd
+ln -s $(dirs +1 -l)/%{repo}-novolume-plugin-%{commit_novolume} src/%{provider}.%{provider_tld}/projectatomic/%{repo}-novolume-plugin
+ln -s $(dirs +1 -l)/containerd-%{commit_containerd} src/%{provider}.%{provider_tld}/docker/containerd
 popd
 
 # compile novolume first - otherwise deps in gopath conflict with the others below and this fails
-export GOPATH=$(pwd)/%{repo}-novolume-plugin-%{commit4}/Godeps/_workspace:$(pwd)/_build
+export GOPATH=$(pwd)/%{repo}-novolume-plugin-%{commit_novolume}/Godeps/_workspace:$(pwd)/_build
 pushd $(pwd)/_build/src
 go build -ldflags "-B 0x$(head -c20 /dev/urandom|od -An -tx1|tr -d ' \n')" github.com/projectatomic/%{repo}-novolume-plugin
 popd
 
-export DOCKER_GITCOMMIT="%{shortcommit0}/%{version}"
+export DOCKER_GITCOMMIT="%{shortcommit_docker}/%{version}"
 export DOCKER_BUILDTAGS="selinux seccomp"
-export GOPATH=$(pwd)/_build:$(pwd)/vendor:%{gopath}:$(pwd)/containerd-%{commit7}/vendor
+export GOPATH=$(pwd)/_build:$(pwd)/vendor:%{gopath}:$(pwd)/containerd-%{commit_containerd}/vendor
 
 DOCKER_DEBUG=1 bash -x hack/make.sh dynbinary
 man/md2man-all.sh
 cp contrib/syntax/vim/LICENSE LICENSE-vim-syntax
 cp contrib/syntax/vim/README.md README-vim-syntax.md
-cp %{repo}-novolume-plugin-%{commit4}/LICENSE LICENSE-novolume-plugin
-cp %{repo}-novolume-plugin-%{commit4}/README.md README-novolume-plugin.md
-go-md2man -in %{repo}-novolume-plugin-%{commit4}/man/docker-novolume-plugin.8.md -out docker-novolume-plugin.8
-
-# build %%{repo}-selinux
-pushd %{repo}-selinux-%{commit2}
-make
-popd
+cp %{repo}-novolume-plugin-%{commit_novolume}/LICENSE LICENSE-novolume-plugin
+cp %{repo}-novolume-plugin-%{commit_novolume}/README.md README-novolume-plugin.md
+go-md2man -in %{repo}-novolume-plugin-%{commit_novolume}/man/docker-novolume-plugin.8.md -out docker-novolume-plugin.8
 
 # build v1.10-migrator
-pushd v1.10-migrator-%{commit5}
+pushd v1.10-migrator-%{commit_migrator}
 %if 0%{?fedora}
 make v1.10-migrator-local
 %else
@@ -538,12 +502,12 @@ go build -o v1.10-migrator-local .
 popd
 
 # build docker-runc
-pushd runc-%{commit6}
+pushd runc-%{commit_runc}
 make BUILDTAGS="seccomp selinux"
 popd
 
 # build docker-containerd
-pushd containerd-%{commit7}
+pushd containerd-%{commit_containerd}
 make
 popd
 
@@ -552,9 +516,10 @@ popd
 install -d %{buildroot}%{_bindir}
 rm bundles/latest/dynbinary-client/*.md5 bundles/latest/dynbinary-client/*.sha256
 rm bundles/latest/dynbinary-daemon/*.md5 bundles/latest/dynbinary-daemon/*.sha256
-install -p -m 755 bundles/latest/dynbinary-client/%{repo}-%{version} %{buildroot}%{_bindir}/%{repo}
-install -p -m 755 bundles/latest/dynbinary-daemon/%{repo}d-%{version} %{buildroot}%{_bindir}/%{repo}d
-install -p -m 755 bundles/latest/dynbinary-daemon/%{repo}-proxy-%{version} %{buildroot}%{_bindir}/%{repo}-proxy
+install -p -m 755 bundles/latest/dynbinary-client/%{repo}-%{version} %{buildroot}%{_bindir}/%{repo}-current
+install -p -m 755 bundles/latest/dynbinary-daemon/%{repo}d-%{version} %{buildroot}%{_bindir}/%{repo}d-current
+install -d %{buildroot}%{_libexecdir}/%{repo}
+install -p -m 755 bundles/latest/dynbinary-daemon/%{repo}-proxy-%{version} %{buildroot}%{_libexecdir}/%{repo}/%{repo}-proxy-current
 
 # install manpages
 install -d %{buildroot}%{_mandir}/man1
@@ -606,33 +571,26 @@ install -p -m 644 %{SOURCE14} %{buildroot}%{_unitdir}
 # install novolume-plugin executable, unitfile, socket and man
 install -d %{buildroot}%{_libexecdir}/docker
 install -p -m 755 _build/src/%{repo}-novolume-plugin %{buildroot}%{_libexecdir}/docker
-install -p -m 644 %{repo}-novolume-plugin-%{commit4}/systemd/%{repo}-novolume-plugin.service %{buildroot}%{_unitdir}
-install -p -m 644 %{repo}-novolume-plugin-%{commit4}/systemd/%{repo}-novolume-plugin.socket %{buildroot}%{_unitdir}
+install -p -m 644 %{repo}-novolume-plugin-%{commit_novolume}/systemd/%{repo}-novolume-plugin.service %{buildroot}%{_unitdir}
+install -p -m 644 %{repo}-novolume-plugin-%{commit_novolume}/systemd/%{repo}-novolume-plugin.socket %{buildroot}%{_unitdir}
 install -d %{buildroot}%{_mandir}/man8
 install -p -m 644 %{repo}-novolume-plugin.8 %{buildroot}%{_mandir}/man8
 
 # install docker-runc
 install -d %{buildroot}%{_libexecdir}/%{repo}
-install -p -m 755 runc-%{commit6}/runc %{buildroot}%{_libexecdir}/%{repo}/%{repo}-runc
+install -p -m 755 runc-%{commit_runc}/runc %{buildroot}%{_libexecdir}/%{repo}/%{repo}-runc-current
 
 #install docker-containerd
 install -d %{buildroot}%{_libexecdir}/%{repo}
-install -p -m 755 containerd-%{commit7}/bin/containerd %{buildroot}%{_libexecdir}/%{repo}/%{repo}-containerd
-install -p -m 755 containerd-%{commit7}/bin/containerd-shim %{buildroot}%{_libexecdir}/%{repo}/%{repo}-containerd-shim
-install -p -m 755 containerd-%{commit7}/bin/ctr %{buildroot}%{_libexecdir}/%{repo}/%{repo}-ctr
+install -p -m 755 containerd-%{commit_containerd}/bin/containerd %{buildroot}%{_libexecdir}/%{repo}/%{repo}-containerd-current
+install -p -m 755 containerd-%{commit_containerd}/bin/containerd-shim %{buildroot}%{_libexecdir}/%{repo}/%{repo}-containerd-shim-current
+install -p -m 755 containerd-%{commit_containerd}/bin/ctr %{buildroot}%{_libexecdir}/%{repo}/%{repo}-ctr-current
 
 # for additional args
 install -d %{buildroot}%{_sysconfdir}/sysconfig/
 install -p -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/sysconfig/%{repo}
 install -p -m 644 %{SOURCE10} %{buildroot}%{_sysconfdir}/sysconfig/%{repo}-network
 install -p -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/sysconfig/%{repo}-storage
-
-# install policy modules
-%_format MODULES $x.pp.bz2
-install -d %{buildroot}%{_datadir}/selinux/packages
-install -d -p %{buildroot}%{_datadir}/selinux/devel/include/services
-install -p -m 644 %{name}-selinux-%{commit2}/docker.if %{buildroot}%{_datadir}/selinux/devel/include/services/docker.if
-install -m 0644 %{repo}-selinux-%{commit2}/$MODULES %{buildroot}%{_datadir}/selinux/packages
 
 %if 0%{?with_unit_test}
 install -d -m 0755 %{buildroot}%{_sharedstatedir}/docker-unit-test/
@@ -657,34 +615,25 @@ for file in $(find . -iname "*.go" \! -iname "*_test.go") ; do
 done
 %endif
 
-# remove %%{repo}-selinux rpm spec file
-rm -rf %{repo}-selinux-%{commit2}/%{repo}-selinux.spec
-
 # install %%{repo} config directory
 install -dp %{buildroot}%{_sysconfdir}/%{repo}
 
 # install d-s-s
-pushd %{repo}-storage-setup-%{commit1}
-install -d %{buildroot}%{_bindir}
-install -p -m 755 %{repo}-storage-setup.sh %{buildroot}%{_bindir}/%{repo}-storage-setup
-install -d %{buildroot}%{_unitdir}
-install -p -m 644 %{repo}-storage-setup.service %{buildroot}%{_unitdir}
-install -d %{buildroot}%{dss_libdir}
-install -p -m 644 %{repo}-storage-setup.conf %{buildroot}%{dss_libdir}/%{repo}-storage-setup
-install -p -m 755 libdss.sh %{buildroot}%{dss_libdir}
-install -d %{buildroot}%{_mandir}/man1
-install -p -m 644 %{repo}-storage-setup.1 %{buildroot}%{_mandir}/man1
-install -d %{buildroot}%{_sysconfdir}/sysconfig
-install -p -m 644 %{repo}-storage-setup-override.conf %{buildroot}%{_sysconfdir}/sysconfig/%{repo}-storage-setup
+pushd %{repo}-storage-setup-%{commit_dss}
+make install DESTDIR=%{buildroot}
 popd
+
+# install %%{_bindir}/%{name}
+install -d %{buildroot}%{_bindir}
+install -p -m 755 %{SOURCE16} %{buildroot}%{_bindir}/%{repo}
 
 # install v1.10-migrator
 install -d %{buildroot}%{_bindir}
-install -p -m 700 v1.10-migrator-%{commit5}/v1.10-migrator-local %{buildroot}%{_bindir}
-cp v1.10-migrator-%{commit5}/CONTRIBUTING.md CONTRIBUTING-v1.10-migrator.md
-cp v1.10-migrator-%{commit5}/README.md README-v1.10-migrator.md
-cp v1.10-migrator-%{commit5}/LICENSE.code LICENSE-v1.10-migrator.code
-cp v1.10-migrator-%{commit5}/LICENSE.docs LICENSE-v1.10-migrator.docs
+install -p -m 700 v1.10-migrator-%{commit_migrator}/v1.10-migrator-local %{buildroot}%{_bindir}
+cp v1.10-migrator-%{commit_migrator}/CONTRIBUTING.md CONTRIBUTING-v1.10-migrator.md
+cp v1.10-migrator-%{commit_migrator}/README.md README-v1.10-migrator.md
+cp v1.10-migrator-%{commit_migrator}/LICENSE.code LICENSE-v1.10-migrator.code
+cp v1.10-migrator-%{commit_migrator}/LICENSE.docs LICENSE-v1.10-migrator.docs
 
 # install v1.10-migrator-helper
 install -p -m 700 %{SOURCE15} %{buildroot}%{_bindir}
@@ -715,35 +664,11 @@ ln -s %{_sysconfdir}/rhsm/ca/redhat-uep.pem %{buildroot}/%{_sysconfdir}/%{name}/
 %post
 %systemd_post %{repo}
 
-%post selinux
-# Install all modules in a single transaction
-if [ $1 -eq 1 ]; then
-    %{_sbindir}/setsebool -P -N virt_use_nfs=1 virt_sandbox_use_all_caps=1
-fi
-%_format MODULES %{_datadir}/selinux/packages/$x.pp.bz2
-%{_sbindir}/semodule -n -s %{selinuxtype} -i $MODULES
-if %{_sbindir}/selinuxenabled ; then
-    %{_sbindir}/load_policy
-    %relabel_files
-    if [ $1 -eq 1 ]; then
-    restorecon -R %{_sharedstatedir}/%{repo} &> /dev/null || :
-    fi
-fi
-
 %preun
 %systemd_preun %{repo}
 
 %postun
 %systemd_postun_with_restart %{repo}
-
-%postun selinux
-if [ $1 -eq 0 ]; then
-%{_sbindir}/semodule -n -r %{modulenames} &> /dev/null || :
-if %{_sbindir}/selinuxenabled ; then
-%{_sbindir}/load_policy
-%relabel_files
-fi
-fi
 
 %triggerin -n %{repo}-v1.10-migrator -- %{repo} < %{version}
 %{_bindir}/v1.10-migrator-local 2>/dev/null
@@ -756,15 +681,12 @@ exit 0
 %license LICENSE LICENSE-novolume-plugin LICENSE-vim-syntax
 %doc AUTHORS CHANGELOG.md CONTRIBUTING.md MAINTAINERS NOTICE README.md
 %doc README-novolume-plugin.md README-vim-syntax.md
-%config(noreplace) %{_sysconfdir}/sysconfig/%{repo}
-%config(noreplace) %{_sysconfdir}/sysconfig/%{repo}-network
-%config(noreplace) %{_sysconfdir}/sysconfig/%{repo}-storage
+%config(noreplace) %{_sysconfdir}/sysconfig/%{repo}-*
 %{_mandir}/man1/%{repo}*.1.gz
 %{_mandir}/man5/*.5.gz
 %{_mandir}/man8/%{repo}*.8.gz
-%{_bindir}/%{repo}
-%{_bindir}/%{repo}d
-%{_bindir}/%{repo}-proxy
+%{_bindir}/%{repo}-current
+%{_bindir}/%{repo}d-current
 %{_unitdir}/%{repo}.service
 %{_unitdir}/%{repo}-containerd.service
 %{_datadir}/bash-completion/completions/%{repo}
@@ -779,10 +701,11 @@ exit 0
 %dir %{dss_libdir}
 %{dss_libdir}/*
 # >= 1.11 specific
-%{_libexecdir}/%{repo}/%{repo}-runc
-%{_libexecdir}/%{repo}/%{repo}-containerd
-%{_libexecdir}/%{repo}/%{repo}-containerd-shim
-%{_libexecdir}/%{repo}/%{repo}-ctr
+%{_libexecdir}/%{repo}/%{repo}-runc-current
+%{_libexecdir}/%{repo}/%{repo}-containerd-current
+%{_libexecdir}/%{repo}/%{repo}-containerd-shim-current
+%{_libexecdir}/%{repo}/%{repo}-ctr-current
+%{_libexecdir}/%{repo}/%{repo}-proxy-current
 
 %if 0%{?with_devel}
 %files devel -f devel.file-list
@@ -810,9 +733,10 @@ exit 0
 %{_unitdir}/%{repo}-novolume-plugin.service
 %{_unitdir}/%{repo}-novolume-plugin.socket
 
-%files selinux
-%doc %{repo}-selinux-%{commit2}/README.md
-%{_datadir}/selinux/*
+%files common
+%doc README-%{repo}-common
+%{_bindir}/%{repo}
+%config(noreplace) %{_sysconfdir}/sysconfig/%{repo}
 
 %files vim
 %{_datadir}/vim/vimfiles/doc/%{repo}file.txt
@@ -833,6 +757,346 @@ exit 0
 %{_datadir}/rhel/secrets/rhsm
 
 %changelog
+* Mon Jan 30 2017 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.6-6.gitae7d637
+- fix https://bugzilla.redhat.com/show_bug.cgi?id=1413987
+- built docker @projectatomic/docker-1.12 commit ae7d637
+- built docker-selinux commit
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit 3819cd6
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Wed Jan 18 2017 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.6-5.git037a2f5
+- Fix BZ#1413954
+- built docker @projectatomic/docker-1.12 commit 037a2f5
+- built docker-selinux commit
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit 3819cd6
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Fri Jan 13 2017 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.6-4.gitf499e8b
+- Fix BZ#1387831 - Cannot start existing containers after upgrade from docker-1.10.3
+- built docker @projectatomic/docker-1.12 commit f499e8b
+- built docker-selinux commit
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit 3819cd6
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Wed Jan 11 2017 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.6-3.git51ef5a8
+- Fix [CVE-2016-9962] Insecure opening of file-descriptor allows privilege
+escalation
+- Fix BZ#1412147
+- Fix BZ#1412148
+- built docker @projectatomic/docker-1.12 commit 51ef5a8
+- built docker-selinux commit
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit 3819cd6
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Wed Jan 11 2017 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.6-2.git51ef5a8
+- Fix [CVE-2016-9962] Insecure opening of file-descriptor allows privilege
+escalation
+- Fix BZ#1412147
+- built docker @projectatomic/docker-1.12 commit 51ef5a8
+- built docker-selinux commit
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit 3819cd6
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Sat Jan 07 2017 Lokesh Mandvekar <lsm5@fedoraproject.org> - 2:1.12.5-6.git03508cc
+- use container-selinux >= 2:2.2-2
+
+* Fri Jan 06 2017 Lokesh Mandvekar <lsm5@fedoraproject.org> - 2:1.12.5-5.git03508cc
+- use container-selinux >= 2:2.0-2 (It's a standalone package moving
+forward and no longer a docker subpackage)
+
+* Thu Jan 05 2017 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.5-4.git03508cc
+- built docker @projectatomic/docker-1.12 commit 03508cc
+- built docker-selinux commit 513572d
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Thu Dec 22 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.5-3.git079fbe3
+- built docker @projectatomic/docker-1.12 commit 079fbe3
+- built docker-selinux commit 4f7383f
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Thu Dec 22 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.5-2.gite330732
+- built docker @projectatomic/docker-1.12 commit e330732
+- built docker-selinux commit 4f7383f
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Fri Dec 16 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.5-1.git6009905
+- built docker @projectatomic/docker-1.12 commit 6009905
+- built docker-selinux commit 4f7383f
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Thu Dec 15 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.4-7.gita7cae3f
+- built docker @projectatomic/docker-1.12 commit a7cae3f
+- built docker-selinux commit 4f7383f
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Wed Dec 14 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.4-6.git1b5971a
+- built docker @projectatomic/docker-1.12 commit 1b5971a
+- built docker-selinux commit 4f7383f
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Tue Dec 13 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.4-5.git1b5971a
+- built docker @projectatomic/docker-1.12 commit 1b5971a
+- built docker-selinux commit 4f7383f
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Tue Dec 13 2016 Dan Walsh <dwalsh@fedoraproject.org> - 2:1.12.4-4.git1b5971a
+- Fix installation of container-selinux policy
+
+* Tue Dec 13 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.4-3.git1b5971a
+- built docker @projectatomic/docker-1.12 commit 1b5971a
+- built docker-selinux commit 4f7383f
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Tue Dec 13 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.4-2.git1b5971a
+- built docker @projectatomic/docker-1.12 commit 1b5971a
+- built docker-selinux commit 4f7383f
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Sat Dec 10 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.3-15.git0423d89
+- built docker @projectatomic/docker-1.12 commit 0423d89
+- built docker-selinux commit 4f7383f
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Sat Dec 10 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.3-14.git0423d89
+- built docker @projectatomic/docker-1.12 commit 0423d89
+- built docker-selinux commit 4f7383f
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Fri Dec 09 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.3-13.git0423d89
+- built docker @projectatomic/docker-1.12 commit 0423d89
+- built docker-selinux commit 9e96359
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Fri Dec 02 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.3-12.git97974ae
+- built docker @projectatomic/docker-1.12 commit 97974ae
+- built docker-selinux commit 9e96359
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Fri Dec 02 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.3-11.git97974ae
+- built docker @projectatomic/docker-1.12 commit 97974ae
+- built docker-selinux commit 9e96359
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Fri Nov 25 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.3-10.git7b5044b
+- built docker @projectatomic/docker-1.12 commit 7b5044b
+- built docker-selinux commit 9e96359
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Thu Nov 17 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.3-9.git47e22f2
+- built docker @projectatomic/docker-1.12 commit 47e22f2
+- built docker-selinux commit 9e96359
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit 9f45393
+- built docker-v1.10-migrator commit 994c35c
+
+* Thu Nov 17 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.3-8.git47e22f2
+- built docker @projectatomic/docker-1.12 commit 47e22f2
+- built docker-selinux commit 9e96359
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit b8dbc3b
+- built docker-utils commit
+- built docker-containerd commit eea83db
+- built docker-v1.10-migrator commit 994c35c
+
+* Thu Nov 10 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.3-7.git47e22f2
+- built docker @projectatomic/docker-1.12 commit 47e22f2
+- built docker-selinux commit 9e96359
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit aa86071
+- built docker-utils commit
+- built docker-containerd commit b818e74
+- built docker-v1.10-migrator commit 994c35c
+
+* Tue Nov 08 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.3-6.git9a594b9
+- built docker @projectatomic/docker-1.12 commit 9a594b9
+- built docker-selinux commit 9e96359
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit aa86071
+- built docker-utils commit
+- built docker-containerd commit b818e74
+- built docker-v1.10-migrator commit 994c35c
+
+* Fri Nov 04 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.3-5.git9a594b9
+- built docker @projectatomic/docker-1.12 commit 9a594b9
+- built docker-selinux commit 9e96359
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit aa86071
+- built docker-utils commit
+- built docker-containerd commit b818e74
+- built docker-v1.10-migrator commit 994c35c
+
+* Thu Nov 03 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.3-4.git91ae1d1
+- built docker @projectatomic/docker-1.12 commit 91ae1d1
+- built docker-selinux commit 9e96359
+- built d-s-s commit c9faba1
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit aa86071
+- built docker-utils commit
+- built docker-containerd commit b818e74
+- built docker-v1.10-migrator commit 994c35c
+
+* Wed Nov 02 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.3-3.git91ae1d1
+- built docker @projectatomic/docker-1.12 commit 91ae1d1
+- built docker-selinux commit 9e96359
+- built d-s-s commit ba0dcf3
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit aa86071
+- built docker-utils commit
+- built docker-containerd commit b818e74
+- built docker-v1.10-migrator commit 994c35c
+
+* Mon Oct 31 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.3-2.git91ae1d1
+- built docker @projectatomic/docker-1.12 commit 91ae1d1
+- built docker-selinux commit 9e96359
+- built d-s-s commit 308c5e3
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit aa86071
+- built docker-utils commit
+- built docker-containerd commit b818e74
+- built docker-v1.10-migrator commit 994c35c
+
+* Wed Oct 26 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.2-5.git8f1975c
+- built docker @projectatomic/docker-1.12 commit 8f1975c
+- built docker-selinux commit 9e96359
+- built d-s-s commit 308c5e3
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit fa7507b
+- built docker-utils commit
+- built docker-containerd commit 0366d7e
+- built docker-v1.10-migrator commit 994c35c
+
+* Wed Oct 26 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.2-4.git8f1975c
+- built docker @projectatomic/docker-1.12 commit 8f1975c
+- built docker-selinux commit 9e96359
+- built d-s-s commit 308c5e3
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit fa7507b
+- built docker-utils commit
+- built docker-containerd commit 0366d7e
+- built docker-v1.10-migrator commit 994c35c
+
+* Fri Oct 21 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.2-3.git15c82b8
+- built docker @projectatomic/docker-1.12 commit 15c82b8
+- built docker-selinux commit 9e96359
+- built d-s-s commit abe18de
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit 06a5a24
+- built docker-utils commit
+- built docker-containerd commit 0366d7e
+- built docker-v1.10-migrator commit 994c35c
+
+* Mon Oct 17 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.2-2.git15c82b8
+- built docker @projectatomic/docker-1.12 commit 15c82b8
+- built docker-selinux commit 9e96359
+- built d-s-s commit 96594f9
+- built docker-novolume-plugin commit c521254
+- built docker-runc @projectatomic/runc-1.12 commit 06a5a24
+- built docker-utils commit
+- built docker-containerd commit 0366d7e
+- built docker-v1.10-migrator commit 994c35c
+
 * Sat Sep 17 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.1-13.git9a3752d
 - built docker @projectatomic/docker-1.12 commit 9a3752d
 - built docker-selinux commit 346ed1d
