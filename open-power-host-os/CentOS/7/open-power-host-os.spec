@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 2.5
-Release: 12%{?milestone_tag}%{dist}
+Release: 13%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -50,7 +50,7 @@ BuildRequires: policycoreutils-python
 Summary: OpenPOWER Host OS full package set
 
 Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.11.0-3.git3e6fda8%{dist}
+Requires(post): kernel = 4.11.0-4.git8caa70f%{dist}
 Requires: %{name}-container = %{version}-%{release}
 Requires(post): container-selinux = 2:2.17-1%{dist}
 Requires(post): docker = 2:1.12.6-6.gitae7d637%{dist}
@@ -97,7 +97,7 @@ Summary: OpenPOWER Host OS basic packages
 
 Requires: %{name}-release = %{version}-%{release}
 
-Requires(post): kernel = 4.11.0-3.git3e6fda8%{dist}
+Requires(post): kernel = 4.11.0-4.git8caa70f%{dist}
 
 %description base
 %{summary}
@@ -108,7 +108,7 @@ Requires(post): kernel = 4.11.0-3.git3e6fda8%{dist}
 Summary: OpenPOWER Host OS container packages
 
 Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.11.0-3.git3e6fda8%{dist}
+Requires(post): kernel = 4.11.0-4.git8caa70f%{dist}
 
 Requires(post): container-selinux = 2:2.17-1%{dist}
 Requires(post): docker = 2:1.12.6-6.gitae7d637%{dist}
@@ -126,7 +126,7 @@ Requires(post): skopeo = 0.1.20-1.gite802625%{dist}
 Summary: OpenPOWER Host OS hypervisor packages
 
 Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.11.0-3.git3e6fda8%{dist}
+Requires(post): kernel = 4.11.0-4.git8caa70f%{dist}
 
 Requires(post): SLOF = 20170303-2.git1903174%{dist}
 Requires(post): libvirt = 3.2.0-2.git1381536%{dist}
@@ -141,7 +141,7 @@ Requires(post): qemu = 15:2.9.0-2.gitede23cf%{dist}
 Summary: OpenPOWER Host OS hypervisor management packages
 
 Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.11.0-3.git3e6fda8%{dist}
+Requires(post): kernel = 4.11.0-4.git8caa70f%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170303-2.git1903174%{dist}
 Requires(post): libvirt = 3.2.0-2.git1381536%{dist}
@@ -162,7 +162,7 @@ Requires(post): wok = 2.3.0-15.git7f5e0ae%{dist}
 Summary: OpenPOWER Host OS RAS (Reliability Availability Serviceability) packages
 
 Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.11.0-3.git3e6fda8%{dist}
+Requires(post): kernel = 4.11.0-4.git8caa70f%{dist}
 
 Requires(post): crash = 7.1.6-1.git64531dc%{dist}
 Requires(post): hwdata = 0.288-1.git625a119%{dist}
@@ -243,6 +243,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Jun 07 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.5-13.alpha
+- Update package dependencies
+
 * Tue Jun 06 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.5-12.alpha
 - Update package dependencies
 

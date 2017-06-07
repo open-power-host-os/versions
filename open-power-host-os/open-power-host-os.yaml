@@ -4,7 +4,6 @@ Package:
    '7':
     install_dependencies:
      - SLOF
-     - container-selinux
      - crash
      - docker-swarm
      - docker
@@ -30,7 +29,8 @@ Package:
      - ppc64-diag
      - qemu
      - servicelog
-     - skopeo
      - sos
      - systemtap
      - wok
+     - skopeo
+     - container-selinux
