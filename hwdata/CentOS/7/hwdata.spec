@@ -13,7 +13,7 @@ Release:    1%{gitcommittag}%{?dist}
 License:    GPLv2+
 Group:      System Environment/Base
 Source0:    %{name}.tar.gz
-URL:        http://git.fedorahosted.org/git/hwdata.git
+URL:        https://github.com/vcrhonek/hwdata
 
 BuildRequires   : perl
 BuildRequires   : perl(Date::Format)
