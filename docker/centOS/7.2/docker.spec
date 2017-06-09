@@ -94,7 +94,7 @@ Name: %{repo}
 Epoch: 2
 %endif
 Version: 1.12.2
-Release: 47%{?dist}
+Release: 48%{?dist}
 Summary: Automates deployment of containerized applications
 License: ASL 2.0
 URL: https://%{provider}.%{provider_tld}/projectatomic/%{repo}
@@ -659,7 +659,7 @@ rm -rf %{repo}-selinux-%{commit2}/%{repo}-selinux.spec
 install -dp %{buildroot}%{_sysconfdir}/%{repo}
 
 # install d-s-s
-pushd %{repo}-storage-setup-%{commit1}
+pushd container-storage-setup-%{commit1}
 install -d %{buildroot}%{_bindir}
 install -p -m 755 %{repo}-storage-setup.sh %{buildroot}%{_bindir}/%{repo}-storage-setup
 install -d %{buildroot}%{_unitdir}
@@ -826,6 +826,9 @@ exit 0
 %{_datadir}/rhel/secrets/rhsm
 
 %changelog
+* Thu Jun  8 2017 Murilo Opsfelder Araujo <muriloo@linux.vnet.ibm.com> - 2:1.12.2-48
+- Fix container-storage-setup directory name
+
 * Sat Sep 17 2016 Antonio Murdaca <runcom@fedoraproject.org> - 2:1.12.1-13.git9a3752d
 - built docker @projectatomic/docker-1.12 commit 9a3752d
 - built docker-selinux commit 346ed1d
