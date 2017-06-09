@@ -1,4 +1,4 @@
-%global commit          625a1194eaf9b764985ebec3a5da78dc71299238
+%global commit          %{?git_commit_id}
 %global shortcommit     %(c=%{commit}; echo ${c:0:7})
 %global gitcommittag    .git%{shortcommit}
 
@@ -13,7 +13,7 @@ Release:    1%{gitcommittag}%{?dist}
 License:    GPLv2+
 Group:      System Environment/Base
 Source0:    %{name}.tar.gz
-URL:        http://git.fedorahosted.org/git/hwdata.git
+URL:        https://github.com/vcrhonek/hwdata
 
 BuildRequires   : perl
 BuildRequires   : perl(Date::Format)
