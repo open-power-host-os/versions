@@ -242,7 +242,7 @@
 Summary: Library providing a simple virtualization API
 Name: libvirt
 Version: 3.2.0
-Release: 2%{gitcommittag}%{?dist}
+Release: 3%{gitcommittag}%{?dist}
 License: LGPLv2+
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -2063,6 +2063,10 @@ exit 0
 
 
 %changelog
+* Wed Jun 14 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.2.0-3.git
+- Updating to f81f00f util: hostcpu: Correctly report total number of vcpus in
+  virHostCPUGetMap
+
 * Wed May 24 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.2.0-2.git
 - Updating to 1381536 Adding POWER9 cpu model to cpu_map.xml
 
