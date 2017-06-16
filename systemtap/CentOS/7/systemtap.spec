@@ -70,9 +70,13 @@
     %define dracutbindir %{_bindir}
 %endif
 
+%global commit          %{?git_commit_id}
+%global shortcommit     %(c=%{commit}; echo ${c:0:7})
+%global gitcommittag    .git%{shortcommit}
+
 Name: systemtap
 Version: 3.1
-Release: 2%{?dist}
+Release: 3%{?gitcommittag}%{?dist}
 # for version, see also configure.ac
 
 
@@ -1139,6 +1143,9 @@ done
 
 # PRERELEASE
 %changelog
+* Wed Jun 14 2017 Murilo Opsfelder Araujo <muriloo@linux.vnet.ibm.com> - 3.1-3
+- Add gitcommittag to release
+
 * Wed Mar 29 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.1-2
 - Merge upstream release, removing all our custom patches, which are already
   applied.
