@@ -315,7 +315,7 @@ Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: 4.11.0
-Release: 5%{?prerelease}%{gitcommittag}%{?dist}
+Release: 6%{?prerelease}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1570,9 +1570,8 @@ fi
 %{_libexecdir}/perf-core/*
 /usr/share/perf-core/strace/groups/file
 %{_libdir}/traceevent
-%if %{with_doc}
+%{_docdir}/perf-tip/tips.txt
 %{_mandir}/man[1-8]/perf*
-%endif
 %{_sysconfdir}/bash_completion.d/perf
 
 %if ! 0%{?cross_build}
@@ -1695,6 +1694,10 @@ fi
 
 
 %changelog
+* Mon Jun 19 2017 Murilo Opsfelder Araujo <muriloo@linux.vnet.ibm.com> - 4.11.0-6.git
+- Pack unpacked files
+- Bump release
+
 * Mon Jun 19 2017 Murilo Opsfelder Araujo <muriloo@linux.vnet.ibm.com> - 4.11.0-5.git
 - Enable uprobes-based dynamic events
 - Bump release
