@@ -2029,9 +2029,31 @@ cd ..
 # Remove binaries we will not be including, so that they don't end up in
 # gcc-debuginfo
 rm -f %{buildroot}%{_prefix}/%{_lib}/{libffi*,libiberty.a}
+rm -f $FULLEPATH/install-tools/fixinc.sh
+rm -f $FULLEPATH/install-tools/mkinstalldirs
 rm -f $FULLEPATH/install-tools/{mkheaders,fixincl}
+rm -f $FULLEPATH/jc1
+rm -f $FULLEPATH/jvgenmain
+rm -f $FULLPATH/ecrti.o
+rm -f $FULLPATH/ecrtn.o
+rm -f $FULLPATH/include-fixed/README
+rm -f $FULLPATH/include/ssp/ssp.h
+rm -f $FULLPATH/include/ssp/stdio.h
+rm -f $FULLPATH/include/ssp/string.h
+rm -f $FULLPATH/include/ssp/unistd.h
+rm -f $FULLPATH/install-tools/fixinc_list
+rm -f $FULLPATH/install-tools/gsyslimits.h
+rm -f $FULLPATH/install-tools/include/README
+rm -f $FULLPATH/install-tools/include/limits.h
+rm -f $FULLPATH/install-tools/macro_list
+rm -f $FULLPATH/install-tools/mkheaders.conf
+rm -f $FULLPATH/ncrti.o
+rm -f $FULLPATH/ncrtn.o
+rm -fr $FULLPATH/include/ssp/
 rm -f %{buildroot}%{_prefix}/lib/{32,64}/libiberty.a
 rm -f %{buildroot}%{_prefix}/%{_lib}/libssp*
+rm -f %{buildroot}%{_datadir}/locale/de/LC_MESSAGES/libstdc++.mo
+rm -f %{buildroot}%{_datadir}/locale/fr/LC_MESSAGES/libstdc++.mo
 rm -f %{buildroot}%{_prefix}/bin/gappletviewer || :
 rm -f %{buildroot}%{_prefix}/bin/%{_target_platform}-gcc-%{version} || :
 rm -f %{buildroot}%{_prefix}/bin/%{_target_platform}-gfortran || :
@@ -2315,10 +2337,13 @@ fi
 %{_prefix}/bin/c89
 %{_prefix}/bin/c99
 %{_prefix}/bin/gcc
+%{_prefix}/bin/gcj
 %{_prefix}/bin/gcov
 %{_prefix}/bin/gcc-ar
 %{_prefix}/bin/gcc-nm
 %{_prefix}/bin/gcc-ranlib
+%{_prefix}/bin/gnatgcc
+%{_prefix}/bin/jcf-dump
 %ifarch ppc
 %{_prefix}/bin/%{_target_platform}-gcc
 %endif
@@ -2329,9 +2354,22 @@ fi
 %{_prefix}/bin/ppc-%{_vendor}-%{_target_os}-gcc
 %endif
 %{_prefix}/bin/%{gcc_target_platform}-gcc
+%{_mandir}/man1/aot-compile.1*
+%{_mandir}/man1/gc-analyze.1*
 %{_mandir}/man1/gcc.1*
+%{_mandir}/man1/gcj-dbtool.1*
+%{_mandir}/man1/gcj.1*
 %{_mandir}/man1/gcov.1*
+%{_mandir}/man1/gij.1*
+%{_mandir}/man1/grmic.1*
+%{_mandir}/man1/jcf-dump.1*
+%{_mandir}/man1/jv-convert.1*
+%{_mandir}/man1/rebuild-gcj-db.1*
+%{_mandir}/man7/fsf-funding.7*
+%{_mandir}/man7/gfdl.7*
+%{_mandir}/man7/gpl.7*
 %{_infodir}/gcc*
+%{_infodir}/gcj*
 %dir %{_prefix}/lib/gcc
 %dir %{_prefix}/lib/gcc/%{gcc_target_platform}
 %dir %{_prefix}/lib/gcc/%{gcc_target_platform}/%{gcc_version}
@@ -2571,6 +2609,7 @@ fi
 %defattr(-, root, root, -)
 /%{_lib}/libgcc_s-%{version}-%{DATE}.so.1
 /%{_lib}/libgcc_s.so.1
+%{_prefix}/%{_lib}/libgcc_s.so
 %doc gcc/COPYING* COPYING.RUNTIME
 
 %files c++
@@ -2615,7 +2654,7 @@ fi
 
 %files -n libstdc++
 %defattr(-, root, root, -)
-%{_prefix}/%{_lib}/libstdc++.so.6*
+%{_prefix}/%{_lib}/libstdc++.so*
 %dir %{_datadir}/gdb
 %dir %{_datadir}/gdb/auto-load
 %dir %{_datadir}/gdb/auto-load/%{_prefix}
@@ -2723,7 +2762,7 @@ fi
 
 %files -n libobjc
 %defattr(-, root, root, -)
-%{_prefix}/%{_lib}/libobjc.so.4*
+%{_prefix}/%{_lib}/libobjc.so*
 
 %files gfortran
 %defattr(-, root, root, -)
@@ -2774,7 +2813,7 @@ fi
 
 %files -n libgfortran
 %defattr(-, root, root, -)
-%{_prefix}/%{_lib}/libgfortran.so.3*
+%{_prefix}/%{_lib}/libgfortran.so*
 
 %files -n libgfortran-static
 %defattr(-, root, root, -)
@@ -3051,14 +3090,14 @@ fi
 
 %files -n libgomp
 %defattr(-, root, root, -)
-%{_prefix}/%{_lib}/libgomp.so.1*
+%{_prefix}/%{_lib}/libgomp.so*
 %{_infodir}/libgomp.info*
 %doc rpm.doc/changelogs/libgomp/ChangeLog*
 
 %files -n libmudflap
 %defattr(-, root, root, -)
-%{_prefix}/%{_lib}/libmudflap.so.0*
-%{_prefix}/%{_lib}/libmudflapth.so.0*
+%{_prefix}/%{_lib}/libmudflap.so*
+%{_prefix}/%{_lib}/libmudflapth.so*
 
 %files -n libmudflap-devel
 %defattr(-, root, root, -)
@@ -3146,7 +3185,7 @@ fi
 %if %{build_libitm}
 %files -n libitm
 %defattr(-, root, root, -)
-%{_prefix}/%{_lib}/libitm.so.1*
+%{_prefix}/%{_lib}/libitm.so*
 %{_infodir}/libitm.info*
 
 %files -n libitm-devel
@@ -3189,7 +3228,7 @@ fi
 %if %{build_libatomic}
 %files -n libatomic
 %defattr(-, root, root, -)
-%{_prefix}/%{_lib}/libatomic.so.1*
+%{_prefix}/%{_lib}/libatomic.so*
 
 %files -n libatomic-static
 %defattr(-, root, root, -)
@@ -3298,7 +3337,7 @@ fi
 
 %files -n libgo
 %defattr(-, root, root, -)
-%{_prefix}/%{_lib}/libgo.so.4*
+%{_prefix}/%{_lib}/libgo.so*
 %doc rpm.doc/libgo/*
 
 %files -n libgo-devel
