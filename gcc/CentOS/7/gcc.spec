@@ -8,7 +8,7 @@
 %global SVNREV 240558
 # Note, gcc_release must be integer, if you want to add suffixes to
 # %{release}, append them after %{gcc_release} on Release: line.
-%global gcc_release 12
+%global gcc_release 13
 %global _performance_build 1
 %global multilib_64_archs sparc64 ppc64 ppc64p7 s390x x86_64
 %ifarch %{ix86} x86_64 ia64 alpha aarch64
@@ -3412,6 +3412,10 @@ fi
 %{_prefix}/libexec/gcc/%{gcc_target_platform}/%{gcc_version}/plugin
 
 %changelog
+* Mon Jun 19 2017 Murilo Opsfelder Araujo <muriloo@linux.vnet.ibm.com> - 4.8.5-13
+- Pack unpacked files
+- Bump release
+
 * Tue Jan 03 2017 Lisiane M. B. Ambiel <lisianem@linux.vnet.ibm.com> - 4.8.5-12
 - Bump gcc_release to avoid error when installing kernel dependencies
 * Tue Sep 20 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 4.8.5-4.2
