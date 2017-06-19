@@ -190,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.9.0
-Release: 2%{gitcommittag}%{?dist}
+Release: 3%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -1178,6 +1178,11 @@ getent passwd qemu >/dev/null || \
 %doc %{qemudocdir}/Changelog
 %doc %{qemudocdir}/README
 %doc %{qemudocdir}/qemu-doc.html
+%doc %{qemudocdir}/qemu-doc.txt
+%doc %{qemudocdir}/qemu-ga-ref.html
+%doc %{qemudocdir}/qemu-ga-ref.txt
+%doc %{qemudocdir}/qemu-qmp-ref.html
+%doc %{qemudocdir}/qemu-qmp-ref.txt
 %doc %{qemudocdir}/COPYING
 %doc %{qemudocdir}/COPYING.LIB
 %doc %{qemudocdir}/LICENSE
@@ -1188,6 +1193,8 @@ getent passwd qemu >/dev/null || \
 %{_datadir}/%{name}/keymaps/
 %{_mandir}/man1/qemu.1*
 %{_mandir}/man1/virtfs-proxy-helper.1*
+%{_mandir}/man7/qemu-ga-ref.7*
+%{_mandir}/man7/qemu-qmp-ref.7*
 %{_bindir}/virtfs-proxy-helper
 %if %{without separate_kvm}
 %attr(4755, root, root) %{_libexecdir}/qemu-bridge-helper
@@ -1295,6 +1302,7 @@ getent passwd qemu >/dev/null || \
 %{_datadir}/%{name}/bios-256k.bin
 %{_datadir}/%{name}/sgabios.bin
 %{_datadir}/%{name}/linuxboot.bin
+%{_datadir}/%{name}/linuxboot_dma.bin
 %{_datadir}/%{name}/multiboot.bin
 %{_datadir}/%{name}/kvmvapic.bin
 %{_datadir}/%{name}/vgabios.bin
@@ -1304,6 +1312,8 @@ getent passwd qemu >/dev/null || \
 %{_datadir}/%{name}/vgabios-vmware.bin
 %{_datadir}/%{name}/pxe-e1000.rom
 %{_datadir}/%{name}/efi-e1000.rom
+%{_datadir}/%{name}/efi-e1000e.rom
+%{_datadir}/%{name}/efi-vmxnet3.rom
 %{_datadir}/%{name}/pxe-virtio.rom
 %{_datadir}/%{name}/efi-virtio.rom
 %{_datadir}/%{name}/pxe-pcnet.rom
@@ -1312,6 +1322,7 @@ getent passwd qemu >/dev/null || \
 %{_datadir}/%{name}/efi-rtl8139.rom
 %{_datadir}/%{name}/pxe-ne2k_pci.rom
 %{_datadir}/%{name}/efi-ne2k_pci.rom
+%{_datadir}/%{name}/skiboot.lid
 #%config(noreplace) %{_sysconfdir}/qemu/target-x86_64.conf
 %{_datadir}/%{name}/qemu-icon.bmp
 %if %{without separate_kvm}
@@ -1533,6 +1544,10 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Mon Jun 19 2017 Murilo Opsfelder Araujo <muriloo@linux.vnet.ibm.com> - 15:2.9.0-3.gitede23cf
+- Pack unpacked files
+- Bump release
+
 * Wed May 24 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 15:2.9.0-2.git
 - Updating to ede23cf target/ppc: Allow workarounds for POWER9 DD1
 
