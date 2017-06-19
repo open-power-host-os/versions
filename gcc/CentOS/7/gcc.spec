@@ -9,7 +9,6 @@
 # Note, gcc_release must be integer, if you want to add suffixes to
 # %{release}, append them after %{gcc_release} on Release: line.
 %global gcc_release 12
-%global _unpackaged_files_terminate_build 0
 %global _performance_build 1
 %global multilib_64_archs sparc64 ppc64 ppc64p7 s390x x86_64
 %ifarch %{ix86} x86_64 ia64 alpha aarch64
