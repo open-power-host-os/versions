@@ -190,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.9.0
-Release: 4%{gitcommittag}%{?dist}
+Release: 5%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -414,7 +414,7 @@ As QEMU requires no host kernel patches to run, it is safe and easy to use.
 Summary: QEMU metapackage for KVM support
 Group: Development/Tools
 Requires: qemu-%{kvm_package} = %{epoch}:%{version}-%{release}
-Obsoletes: qemu-kvm-ev
+Provides: qemu-kvm-ev = %{epoch}:%{version}-%{release}
 %provide_rhev qemu-kvm
 
 %description kvm
@@ -427,7 +427,7 @@ will install qemu-system-x86
 %package  img
 Summary: QEMU command line tool for manipulating disk images
 Group: Development/Tools
-Obsoletes: qemu-img-ev
+Provides: qemu-img-ev = %{epoch}:%{version}-%{release}
 %provide_rhev qemu-img
 
 %description img
@@ -436,7 +436,7 @@ This package provides a command line tool for manipulating disk images
 %package  common
 Summary: QEMU common files needed by all QEMU targets
 Group: Development/Tools
-Obsoletes: qemu-kvm-common-ev
+Provides: qemu-kvm-common-ev = %{epoch}:%{version}-%{release}
 %if %{with separate_kvm}
 Requires: qemu-kvm-common
 %endif
@@ -669,7 +669,6 @@ This package provides the system emulator for SPARC and SPARC64 systems.
 %package %{system_ppc}
 Summary: QEMU system emulator for PPC
 Group: Development/Tools
-Obsoletes: qemu-kvm-common-ev
 Requires: %{name}-common = %{epoch}:%{version}-%{release}
 #Requires: openbios
 #Requires: SLOF >= 0.1.git%{SLOF_gittagdate}
@@ -1544,6 +1543,10 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Thu Jul 06 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 15:2.9.0-5.git4cfb657
+- Provide qemu-*-ev instead of obsoleting them. This avoids conflicts for
+  upstream packages which require those names (libguestfs).
+
 * Thu Jun 29 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 15:2.9.0-4.git
 - Updating to 4cfb657 spapr: Fix migration of Radix guests
 
