@@ -315,7 +315,7 @@ Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: 4.11.0
-Release: 6%{?prerelease}%{gitcommittag}%{?dist}
+Release: 7%{?prerelease}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1694,6 +1694,10 @@ fi
 
 
 %changelog
+* Wed Jul 12 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.11.0-7.git
+- Updating to d255e14 KVM: PPC: Book3S: Fix typo in XICS-on-XIVE state saving
+  code
+
 * Mon Jun 19 2017 Murilo Opsfelder Araujo <muriloo@linux.vnet.ibm.com> - 4.11.0-6.git
 - Pack unpacked files
 - Bump release
