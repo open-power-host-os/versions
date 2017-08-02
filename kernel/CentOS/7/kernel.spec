@@ -308,14 +308,14 @@ Summary: The Linux kernel
 %define kernel_prereq  fileutils, module-init-tools >= 3.16-2, initscripts >= 8.11.1-1, grubby >= 8.28-2
 %define initrd_prereq  dracut >= 001-7
 
-%define prerelease %{nil}
+%define prerelease .rc3
 
 Name: kernel%{?variant}
 Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
-Version: 4.11.0
-Release: 7%{?prerelease}%{gitcommittag}%{?dist}
+Version: 4.13.0
+Release: 1%{?prerelease}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1694,6 +1694,10 @@ fi
 
 
 %changelog
+* Wed Aug 02 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.13.0-1.rc3.git
+- Version update
+- Updating to ec0d270 Merge tag v4.13-rc3 into hostos-devel
+
 * Wed Jul 12 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.11.0-7.git
 - Updating to d255e14 KVM: PPC: Book3S: Fix typo in XICS-on-XIVE state saving
   code
