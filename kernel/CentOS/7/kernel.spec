@@ -1404,8 +1404,8 @@ touch -a %{SOURCE2001}
 %endif
 
 %ifnarch noarch
- mkdir -p $RPM_BUILD_ROOT/usr/src/kernels/%{KVRA}%{?2:.%{2}}/arch/powerpc/scripts
- install -m 0755  arch/powerpc/scripts/gcc-check-mprofile-kernel.sh $RPM_BUILD_ROOT/usr/src/kernels/%{KVRA}%{?2:.%{2}}/arch/powerpc/scripts/gcc-check-mprofile-kernel.sh
+ mkdir -p $RPM_BUILD_ROOT/usr/src/kernels/%{KVRA}%{?2:.%{2}}/arch/powerpc/tools
+ install -m 0755  arch/powerpc/tools/gcc-check-mprofile-kernel.sh $RPM_BUILD_ROOT/usr/src/kernels/%{KVRA}%{?2:.%{2}}/arch/powerpc/tools/gcc-check-mprofile-kernel.sh
 %endif
 
 ###
