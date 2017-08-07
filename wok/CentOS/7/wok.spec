@@ -4,7 +4,7 @@
 
 Name:       wok
 Version:    2.3.0
-Release:    15%{gitcommittag}%{?dist}
+Release:    16%{?extraver}%{gitcommittag}%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -185,6 +185,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 2.3.0-16.git
+- Add extraver macro to Release field
+
 * Wed Mar 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-15.git7f5e0ae
 - 7f5e0aea58ce406eccbaa46d6326ab883154950d Updated PO files
 - 178c8b59d8d33d4c37abbda535413e660cf1c7e6 Bug fix: Pass function parameters when calling setTimeout

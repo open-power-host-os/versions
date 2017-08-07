@@ -8,7 +8,7 @@
 %global SVNREV 240558
 # Note, gcc_release must be integer, if you want to add suffixes to
 # %{release}, append them after %{gcc_release} on Release: line.
-%global gcc_release 13
+%global gcc_release 14
 %global _performance_build 1
 %global multilib_64_archs sparc64 ppc64 ppc64p7 s390x x86_64
 %ifarch %{ix86} x86_64 ia64 alpha aarch64
@@ -84,7 +84,7 @@ Name: gcc
 %global gcc_version 4.8.5
 %endif
 Version: 4.8.5
-Release: %{gcc_release}.svn%{SVNREV}%{?dist}
+Release: %{gcc_release}%{?extraver}.svn%{SVNREV}%{?dist}
 %if "%{version}" != "%{gcc_version}"
 %define gcc_provides %{gcc_version}-16%{?dist}
 %endif
@@ -3412,6 +3412,9 @@ fi
 %{_prefix}/libexec/gcc/%{gcc_target_platform}/%{gcc_version}/plugin
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 4.8.5-13.svn240558.1
+- Add extraver macro to Release field
+
 * Mon Jun 19 2017 Murilo Opsfelder Araujo <muriloo@linux.vnet.ibm.com> - 4.8.5-13
 - Pack unpacked files
 - Bump release

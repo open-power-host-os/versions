@@ -8,7 +8,7 @@
 
 Name:       ginger-base
 Version:    2.2.1
-Release:    13%{gitcommittag}%{?dist}
+Release:    14%{?extraver}%{gitcommittag}%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -78,6 +78,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 2.2.1-14.git
+- Add extraver macro to Release field
+
 * Wed Mar 01 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.1-13.git109815c
 - 109815ccb5bbcbdc5dc5cef847accf9a3b9083d4 Merge remote-tracking branch upstream/master into hostos-devel
 - 4b90d6cbfccace5fa9528e57acfa046d4c523d40 Fix patch_auth() call according to Wok changes

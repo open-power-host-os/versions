@@ -4,7 +4,7 @@
 
 Name:           servicelog
 Version:        1.1.14
-Release:        4%{gitcommittag}%{?dist}
+Release:        5%{?extraver}%{gitcommittag}%{?dist}
 Summary:        Servicelog Tools
 
 Group:          System Environment/Base
@@ -56,6 +56,9 @@ of service operations that have been performed on the system.
 %{_mandir}/man[18]/*.[18]*
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 1.1.14-5.git
+- Add extraver macro to Release field
+
 * Fri Jan 13 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 1.1.14-4
 - Bump release so that this package takes precedence over CentOS version
   (1.1.14-3)

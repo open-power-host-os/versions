@@ -36,7 +36,7 @@ Name: container-selinux
 Epoch: 2
 %endif
 Version: 2.17
-Release: 1%{?dist}
+Release: 2%{?extraver}%{?dist}
 License: GPLv2
 URL: %{git0}
 Summary: SELinux policies for container runtimes
@@ -118,6 +118,9 @@ fi
 %{_datadir}/selinux/*
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 2:2.17-2
+- Add extraver macro to Release field
+
 * Mon Jun 5 2017 Dan Walsh <dwalsh@fedoraproject.org> - 2.17-1
 - Revert change to run the container_runtime as ranged
 

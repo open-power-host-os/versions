@@ -190,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.9.0
-Release: 5%{gitcommittag}%{?dist}
+Release: 6%{?extraver}%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -1543,6 +1543,9 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 15:2.9.0-6.git
+- Add extraver macro to Release field
+
 * Thu Jul 06 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 15:2.9.0-5.git4cfb657
 - Provide qemu-*-ev instead of obsoleting them. This avoids conflicts for
   upstream packages which require those names (libguestfs).

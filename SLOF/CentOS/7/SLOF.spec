@@ -4,7 +4,7 @@
 
 Name:           SLOF
 Version:        20170303
-Release:        3%{gitcommittag}%{?dist}
+Release:        4%{?extraver}%{gitcommittag}%{?dist}
 Summary:        Slimline Open Firmware
 
 License:        BSD
@@ -58,6 +58,9 @@ cp -a boot_rom.bin $RPM_BUILD_ROOT%{_datadir}/qemu/slof.bin
 
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 20170303-4.git
+- Add extraver macro to Release field
+
 * Tue Jul 18 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 20170303-3.gitc39657a
 - c39657a5f7d502c132a4ae7f407f8281a2ce68e4 board_qemu: move code out of fdt-fix-node-phandle
 - 4c345ef71ecab658a17020c7780dd5a7d01029bf board_qemu: drop unused values early in fdt-fix-node-phandle

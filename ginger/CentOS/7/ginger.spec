@@ -4,7 +4,7 @@
 
 Name:       ginger
 Version:    2.3.0
-Release:    17%{gitcommittag}%{?dist}
+Release:    18%{?extraver}%{gitcommittag}%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -96,6 +96,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 2.3.0-18.git
+- Add extraver macro to Release field
+
 * Wed Mar 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-17.gite9b8a1b
 - e9b8a1bf149d1f2b45b618e6897c96d23c52c373 Revert Ginger sidebar
 - 0a64f30140f67ad3e6364b446c435de0a238986e Revert Move Audit features to a sidebar entry

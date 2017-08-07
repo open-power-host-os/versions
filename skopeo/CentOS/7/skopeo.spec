@@ -34,7 +34,7 @@ ExcludeArch: ppc64
 
 Name:           skopeo
 Version:        0.1.20
-Release:        1.git%{shortcommit}%{?dist}
+Release:        2%{?extraver}.git%{shortcommit}%{?dist}
 Summary:        Inspect Docker images and repositories on registries
 License:        ASL 2.0
 URL:            https://%{provider_prefix}
@@ -276,6 +276,9 @@ export GOPATH=%{buildroot}/%{gopath}:$(pwd)/vendor:%{gopath}
 %{_datadir}/bash-completion/completions/%{name}
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 0.1.20-2.git
+- Add extraver macro to Release field
+
 * Tue May 23 2017 bbaude <bbaude@redhat.com> - 0.1.20-1.dev.git0224d8c
 - BZ #1380078 - New release
 

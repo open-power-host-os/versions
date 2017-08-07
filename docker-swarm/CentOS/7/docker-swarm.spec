@@ -21,7 +21,7 @@
 
 Name:           docker-swarm
 Version:        1.1.0
-Release:        1%{gitcommittag}
+Release:        2%{?extraver}%{gitcommittag}
 Summary:        Docker-native clustering system
 License:        Apache-2.0
 Group:          System/Management
@@ -53,3 +53,6 @@ go build -x -o swarm
 %doc LICENSE.docs README.md
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 1.1.0-2.git
+- Add extraver macro to Release field
+

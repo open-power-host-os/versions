@@ -4,7 +4,7 @@
 
 Name:       kimchi
 Version:    2.3.0
-Release:    17%{gitcommittag}%{?dist}
+Release:    18%{?extraver}%{gitcommittag}%{?dist}
 Summary:    Kimchi server application
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -94,6 +94,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 2.3.0-18.git
+- Add extraver macro to Release field
+
 * Wed Mar 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.3.0-17.git3830c25
 - 3830c259b7628028dddac3a55aeb33ea964bae2b Merge remote-tracking branch upstream/master into hostos-devel
 - 3195f7b1e49bf536cf6f4b9c0545c06c2fdd550d Fix typo

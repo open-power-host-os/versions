@@ -242,7 +242,7 @@
 Summary: Library providing a simple virtualization API
 Name: libvirt
 Version: 3.2.0
-Release: 3%{gitcommittag}%{?dist}
+Release: 4%{?extraver}%{gitcommittag}%{?dist}
 License: LGPLv2+
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -2063,6 +2063,9 @@ exit 0
 
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.2.0-4.git
+- Add extraver macro to Release field
+
 * Wed Jun 14 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.2.0-3.git
 - Updating to f81f00f util: hostcpu: Correctly report total number of vcpus in
   virHostCPUGetMap

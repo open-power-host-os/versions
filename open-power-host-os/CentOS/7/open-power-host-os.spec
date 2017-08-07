@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.0
-Release: 1%{?milestone_tag}%{dist}
+Release: 2%{?extraver}%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -243,6 +243,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.0-2.alpha
+- Add extraver macro to Release field
+
 * Wed Aug 02 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.0-1.alpha
 - Update package dependencies
 
