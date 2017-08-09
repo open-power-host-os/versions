@@ -4,7 +4,7 @@
 
 Name:           novnc
 Version:        0.5.1
-Release:        5%{gitcommittag}%{?dist}
+Release:        6%{?extraver}%{gitcommittag}%{?dist}
 Summary:        VNC client using HTML5 (Web Sockets, Canvas) with encryption support
 Requires:       python-websockify
 
@@ -63,6 +63,9 @@ install -m 444 docs/novnc_server.1 %{buildroot}%{_mandir}/man1/
 %{_mandir}/man1/novnc_server.1*
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 0.5.1-6.git
+- Add extraver macro to Release field
+
 * Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 0.5.1-5
 - Spec file cleanup
 

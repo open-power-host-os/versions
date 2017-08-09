@@ -9,7 +9,7 @@
 Name:       hwdata
 Summary:    Hardware identification and configuration data
 Version:    0.288
-Release:    1%{gitcommittag}%{?dist}
+Release:    2%{?extraver}%{gitcommittag}%{?dist}
 License:    GPLv2+
 Group:      System Environment/Base
 Source0:    %{name}.tar.gz
@@ -56,6 +56,9 @@ udevadm hwdb --update >/dev/null 2>&1 || :
 %{_datadir}/%{name}/*
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 0.288-2.git
+- Add extraver macro to Release field
+
 * Fri Oct 23 2015 Michal Minar <miminar@redhat.com> 0.252-8.1
 - Updated pci, usb and vendor ids.
 - Resolves: rhbz#1236458

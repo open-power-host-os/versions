@@ -76,7 +76,7 @@
 
 Name: systemtap
 Version: 3.1
-Release: 3%{?gitcommittag}%{?dist}
+Release: 4%{?extraver}%{?gitcommittag}%{?dist}
 # for version, see also configure.ac
 
 
@@ -1143,6 +1143,9 @@ done
 
 # PRERELEASE
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.1-4.git
+- Add extraver macro to Release field
+
 * Wed Jun 14 2017 Murilo Opsfelder Araujo <muriloo@linux.vnet.ibm.com> - 3.1-3
 - Add gitcommittag to release
 

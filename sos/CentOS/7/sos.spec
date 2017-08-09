@@ -7,7 +7,7 @@
 Summary: A set of tools to gather troubleshooting information from a system
 Name: sos
 Version: 3.3
-Release: 18%{gitcommittag}%{?dist}
+Release: 19%{?extraver}%{gitcommittag}%{?dist}
 Group: Applications/System
 Source0: %{name}.tar.gz
 License: GPLv2+
@@ -57,6 +57,9 @@ rm -rf ${RPM_BUILD_ROOT}
 %config(noreplace) %{_sysconfdir}/sos.conf
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.3-19.git
+- Add extraver macro to Release field
+
 * Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 3.3-18
 - Spec cleanup
 

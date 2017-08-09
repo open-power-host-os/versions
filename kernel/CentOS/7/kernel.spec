@@ -315,7 +315,7 @@ Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: 4.13.0
-Release: 1%{?prerelease}%{gitcommittag}%{?dist}
+Release: 2%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1694,6 +1694,9 @@ fi
 
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 4.13.0-2.rc3.git
+- Add extraver macro to Release field
+
 * Wed Aug 02 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.13.0-1.rc3.git
 - Version update
 - Updating to ec0d270 Merge tag v4.13-rc3 into hostos-devel

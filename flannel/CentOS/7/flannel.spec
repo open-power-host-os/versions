@@ -26,7 +26,7 @@
 
 Name:           flannel
 Version:        0.5.5
-Release:        1%{gitcommittag}%{?dist}
+Release:        2%{?extraver}%{gitcommittag}%{?dist}
 Summary:        Etcd address management agent for overlay networks
 License:        ASL 2.0
 URL:            https://%{import_path}
@@ -212,6 +212,9 @@ go test %{import_path}/subnet
 %endif
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 0.5.5-2.git
+- Add extraver macro to Release field
+
 * Wed Sep 07 2016 jchaloup <jchaloup@redhat.com> - 0.5.5-1
 - Update to flannel v5.5.0
   resolves: #1373915

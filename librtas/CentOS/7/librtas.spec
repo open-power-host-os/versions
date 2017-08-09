@@ -5,7 +5,7 @@
 Summary: Libraries to provide access to RTAS calls and RTAS events.
 Name: librtas
 Version: 1.4.1
-Release: 2%{gitcommittag}%{?dist}
+Release: 3%{?extraver}%{gitcommittag}%{?dist}
 License: GNU Lesser General Public License (LGPL)
 Source:  %{name}.tar.gz
 Group: System Environment/Libraries
@@ -77,6 +77,9 @@ fi
 ldconfig
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 1.4.1-3.git
+- Add extraver macro to Release field
+
 * Thu Nov 3 2016 Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com> - 1.4.1-2
 - added changelog section
 - spec cleanup

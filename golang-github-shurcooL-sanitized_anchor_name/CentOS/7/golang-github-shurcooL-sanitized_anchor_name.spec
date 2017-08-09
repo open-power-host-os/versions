@@ -16,7 +16,7 @@
 
 Name:           golang-%{provider}-%{project}-%{repo}
 Version:        0
-Release:        1%{gitcommittag}%{?dist}
+Release:        2%{?extraver}%{gitcommittag}%{?dist}
 # Be ahead of Fedora
 Epoch:          1
 Summary:        Package sanitized_anchor_name provides a func to create sanitized anchor names
@@ -69,6 +69,9 @@ cp -pav *.go %{buildroot}/%{gopath}/src/%{import_path}/
 %{gopath}/src/%{import_path}
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 1:0-2.git
+- Add extraver macro to Release field
+
 * Wed Feb 22 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 0-1.git1dba4b3
 - Remove extraneous letter and extra number from release
 

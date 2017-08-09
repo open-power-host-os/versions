@@ -4,7 +4,7 @@
 
 Name:		libvpd
 Version:	2.2.5
-Release:	4%{gitcommittag}%{?dist}
+Release:	5%{?extraver}%{gitcommittag}%{?dist}
 Summary:	VPD Database access library for lsvpd
 
 Group:		System Environment/Libraries
@@ -68,6 +68,9 @@ Contains header files for building with libvpd.
 %{_libdir}/pkgconfig/libvpd_cxx-2.pc
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 2.2.5-5.git
+- Add extraver macro to Release field
+
 * Sat Nov 26 2016 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.5-4
 - 8cb3fe06b8d2e6125235eb1973e624a0fb12837c Typo correction in README file
 - a791b3134c575430b1e0d9d9644cc55236e583ca Null check before passing pointer to strlen call

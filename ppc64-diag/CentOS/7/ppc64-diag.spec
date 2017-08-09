@@ -4,7 +4,7 @@
 
 Name:           ppc64-diag
 Version:        2.7.2
-Release:        1%{gitcommittag}%{?dist}
+Release:        2%{?extraver}%{gitcommittag}%{?dist}
 Summary:        PowerLinux Platform Diagnostics
 URL:            http://sourceforge.net/projects/linux-diag/files/ppc64-diag/
 Group:          System Environment/Base
@@ -139,6 +139,9 @@ fi
 
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 2.7.2-2.git
+- Add extraver macro to Release field
+
 * Wed Jan 11 2017 open-power-host-os-builds-bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.7.2-1
 - Version update
 

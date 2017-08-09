@@ -65,7 +65,7 @@
 
 Name:		kubernetes
 Version:	%{kube_version}
-Release:	0.21.git%{k8s_shortcommit}%{?dist}
+Release:	0.22%{?extraver}.git%{k8s_shortcommit}%{?dist}
 Summary:        Container cluster management
 License:        ASL 2.0
 URL:            %{import_path}
@@ -841,6 +841,9 @@ getent passwd kube >/dev/null || useradd -r -g kube -d / -s /sbin/nologin \
 %systemd_postun
 
 %changelog
+* Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 1.2.0-0.22.git
+- Add extraver macro to Release field
+
 * Wed May 04 2016 jchaloup <jchaloup@redhat.com> - 1.2.0-0.21.git4a3f9c5
 - Extend uni-test subpackage to run other tests
 
