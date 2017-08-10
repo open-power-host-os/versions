@@ -37,13 +37,6 @@
 %define qemu_kvm_arches %{ix86} x86_64 ppc64le
 
 %if 0%{?fedora}
-    %if 0%{?fedora} < 16
-        # Fedora doesn't have any QEMU on ppc64 until FC16 - only ppc
-        # I think F17 is the first release with the power64 macro
-        %ifarch ppc64
-            %define with_qemu_tcg 1
-        %endif
-    %endif
     %define qemu_kvm_arches %{ix86} x86_64 %{power64} s390x %{arm} aarch64 ppc64le
 %endif
 
@@ -85,6 +78,13 @@
 %endif
 %define with_storage_gluster 0%{!?_without_storage_gluster:1}
 %define with_numactl          0%{!?_without_numactl:1}
+
+# F25+ has zfs-fuse
+%if 0%{?fedora} >= 25
+    %define with_storage_zfs      0%{!?_without_storage_zfs:1}
+%else
+    %define with_storage_zfs      0
+%endif
 
 # A few optional bits off by default, we enable later
 %define with_fuse          0%{!?_without_fuse:0}
@@ -129,6 +129,12 @@
         %define with_storage_rbd 0
     %endif
 %endif
+
+# zfs-fuse is not available on some architectures
+%ifarch s390 s390x aarch64
+    %define with_storage_zfs 0
+%endif
+
 
 # RHEL doesn't ship OpenVZ, VBox, UML, PowerHypervisor,
 # VMware, libxenserver (xenapi), libxenlight (Xen 4.1 and newer),
@@ -241,14 +247,14 @@
 
 Summary: Library providing a simple virtualization API
 Name: libvirt
-Version: 3.2.0
-Release: 4%{?extraver}%{gitcommittag}%{?dist}
+Version: 3.6.0
+Release: 1%{?extraver}%{gitcommittag}%{?dist}
 License: LGPLv2+
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
-URL: http://libvirt.org/
+URL: https://libvirt.org/
 
-%if %(echo %{version} | grep -o \\. | wc -l) == 3
+%if %(echo %{version} | grep -q "\.0$"; echo $?) == 1
     %define mainturl stable_updates/
 %endif
 Source: %{name}.tar.gz
@@ -374,7 +380,7 @@ BuildRequires: parted-devel
 # For Multipath support
 BuildRequires: device-mapper-devel
 %if %{with_storage_rbd}
-    %if 0%{?rhel} >= 7
+    %if 0%{?fedora} || 0%{?rhel} >= 7
 BuildRequires: librados2-devel
 BuildRequires: librbd1-devel
     %else
@@ -387,6 +393,12 @@ BuildRequires: glusterfs-devel >= 3.4.1
 %endif
 %if %{with_storage_sheepdog}
 BuildRequires: sheepdog
+%endif
+%if %{with_storage_zfs}
+# Support any conforming implementation of zfs. On stock Fedora
+# this is zfs-fuse, but could be zfsonlinux upstream RPMs
+BuildRequires: /sbin/zfs
+BuildRequires: /sbin/zpool
 %endif
 %if %{with_numactl}
 # For QEMU/LXC numa info
@@ -720,6 +732,21 @@ sheepdog volumes using.
 %endif
 
 
+%if %{with_storage_zfs}
+%package daemon-driver-storage-zfs
+Summary: Storage driver plugin for ZFS
+Group: Development/Libraries
+Requires: libvirt-daemon-driver-storage-core = %{version}-%{release}
+# Support any conforming implementation of zfs
+Requires: /sbin/zfs
+Requires: /sbin/zpool
+
+%description daemon-driver-storage-zfs
+The storage driver backend adding implementation of the storage APIs for
+ZFS volumes.
+%endif
+
+
 %package daemon-driver-storage
 Summary: Storage driver plugin including all backends for the libvirtd daemon
 Group: Development/Libraries
@@ -737,6 +764,9 @@ Requires: libvirt-daemon-driver-storage-rbd = %{version}-%{release}
 %endif
 %if %{with_storage_sheepdog}
 Requires: libvirt-daemon-driver-storage-sheepdog = %{version}-%{release}
+%endif
+%if %{with_storage_zfs}
+Requires: libvirt-daemon-driver-storage-zfs = %{version}-%{release}
 %endif
 
 %description daemon-driver-storage
@@ -1195,6 +1225,12 @@ rm -rf .git
     %define arg_storage_gluster --without-storage-gluster
 %endif
 
+%if %{with_storage_zfs}
+    %define arg_storage_zfs --with-storage-zfs
+%else
+    %define arg_storage_zfs --without-storage-zfs
+%endif
+
 %if %{with_numactl}
     %define arg_numactl --with-numactl
 %else
@@ -1300,7 +1336,7 @@ rm -rf .git
            %{?arg_storage_rbd} \
            %{?arg_storage_sheepdog} \
            %{?arg_storage_gluster} \
-           --without-storage-zfs \
+           %{?arg_storage_zfs} \
            --without-storage-vstorage \
            %{?arg_numactl} \
            %{?arg_numad} \
@@ -1372,6 +1408,13 @@ cp $RPM_BUILD_ROOT%{_sysconfdir}/libvirt/qemu/networks/default.xml \
    $RPM_BUILD_ROOT%{_datadir}/libvirt/networks/default.xml
 rm -f $RPM_BUILD_ROOT%{_sysconfdir}/libvirt/qemu/networks/default.xml
 rm -f $RPM_BUILD_ROOT%{_sysconfdir}/libvirt/qemu/networks/autostart/default.xml
+
+# nwfilter files are installed in /usr/share/libvirt and copied to /etc in %post
+# to avoid verification errors on changed files in /etc
+install -d -m 0755 $RPM_BUILD_ROOT%{_datadir}/libvirt/nwfilter/
+cp -a $RPM_BUILD_ROOT%{_sysconfdir}/libvirt/nwfilter/*.xml \
+    $RPM_BUILD_ROOT%{_datadir}/libvirt/nwfilter/
+
 # Strip auto-generated UUID - we need it generated per-install
 sed -i -e "/<uuid>/d" $RPM_BUILD_ROOT%{_datadir}/libvirt/networks/default.xml
 %if ! %{with_qemu}
@@ -1600,6 +1643,17 @@ if test $1 -eq 1 && test ! -f %{_sysconfdir}/libvirt/qemu/networks/default.xml ;
 
 fi
 
+
+%post daemon-config-nwfilter
+cp %{_datadir}/libvirt/nwfilter/*.xml %{_sysconfdir}/libvirt/nwfilter/
+# Make sure libvirt picks up the new nwfilter defininitons
+%if %{with_systemd}
+    /bin/systemctl try-restart libvirtd.service >/dev/null 2>&1 ||:
+%else
+    /sbin/service libvirtd condrestart > /dev/null 2>&1 || :
+%endif
+
+
 %if %{with_systemd}
 %triggerun -- libvirt < 0.9.4
 %{_bindir}/systemd-sysv-convert --save libvirtd >/dev/null 2>&1 ||:
@@ -1773,6 +1827,7 @@ exit 0
 %{_mandir}/man8/libvirtd.8*
 %{_mandir}/man8/virtlogd.8*
 %{_mandir}/man8/virtlockd.8*
+%{_mandir}/man7/virkey*.7*
 
 %doc examples/polkit/*.rules
 
@@ -1781,7 +1836,9 @@ exit 0
 %{_datadir}/libvirt/networks/default.xml
 
 %files daemon-config-nwfilter
-%{_sysconfdir}/libvirt/nwfilter/*.xml
+%dir %{_datadir}/libvirt/nwfilter/
+%{_datadir}/libvirt/nwfilter/*.xml
+%ghost %{_sysconfdir}/libvirt/nwfilter/*.xml
 
 %files daemon-driver-interface
 %{_libdir}/%{name}/connection-driver/libvirt_driver_interface.so
@@ -1842,6 +1899,11 @@ exit 0
 %if %{with_storage_sheepdog}
 %files daemon-driver-storage-sheepdog
 %{_libdir}/%{name}/storage-backend/libvirt_storage_backend_sheepdog.so
+%endif
+
+%if %{with_storage_zfs}
+%files daemon-driver-storage-zfs
+%{_libdir}/%{name}/storage-backend/libvirt_storage_backend_zfs.so
 %endif
 
 %if %{with_qemu}
@@ -2063,6 +2125,10 @@ exit 0
 
 
 %changelog
+* Thu Aug 10 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.6.0-1.git40c1264
+- Version update
+- Updating to 40c1264 Merge branch hostos-devel of https://github.com/open-power-host-os/libvirt into v3.6.0
+
 * Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.2.0-4.git
 - Add extraver macro to Release field
 

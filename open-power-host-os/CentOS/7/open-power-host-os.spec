@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.0
-Release: 3%{?extraver}%{?milestone_tag}%{dist}
+Release: 4%{?extraver}%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -60,7 +60,7 @@ Requires(post): kubernetes = 1.2.0-0.22%{?extraver}.git4a3f9c5%{dist}
 Requires(post): skopeo = 0.1.20-2%{?extraver}.gite802625%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170303-4%{?extraver}.gitc39657a%{dist}
-Requires(post): libvirt = 3.2.0-4%{?extraver}.gitf81f00f%{dist}
+Requires(post): libvirt = 3.6.0-1%{?extraver}.git40c1264%{dist}
 Requires(post): qemu = 15:2.9.0-6%{?extraver}.git4cfb657%{dist}
 Requires: %{name}-virt-management = %{version}-%{release}
 Requires(post): novnc = 0.5.1-6%{?extraver}.gitfc00821%{dist}
@@ -129,7 +129,7 @@ Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.13.0-2.rc3%{?extraver}.gitec0d270%{dist}
 
 Requires(post): SLOF = 20170303-4%{?extraver}.gitc39657a%{dist}
-Requires(post): libvirt = 3.2.0-4%{?extraver}.gitf81f00f%{dist}
+Requires(post): libvirt = 3.6.0-1%{?extraver}.git40c1264%{dist}
 Requires(post): qemu = 15:2.9.0-6%{?extraver}.git4cfb657%{dist}
 
 %description virt
@@ -144,7 +144,7 @@ Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.13.0-2.rc3%{?extraver}.gitec0d270%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170303-4%{?extraver}.gitc39657a%{dist}
-Requires(post): libvirt = 3.2.0-4%{?extraver}.gitf81f00f%{dist}
+Requires(post): libvirt = 3.6.0-1%{?extraver}.git40c1264%{dist}
 Requires(post): qemu = 15:2.9.0-6%{?extraver}.git4cfb657%{dist}
 
 Requires(post): novnc = 0.5.1-6%{?extraver}.gitfc00821%{dist}
@@ -243,6 +243,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Aug 10 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-4.alpha
+- Update package dependencies
+
 * Tue Aug 08 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.0-3.alpha
 - Update package dependencies
 
