@@ -76,7 +76,7 @@ Requires(post): servicelog = 1.1.14-7%{?extraver}.git3955e85%{dist}
 Requires(post): sos = 3.4-1%{?extraver}.git8523982%{dist}
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
 
-Requires(post): gcc = 4.8.5-15%{?extraver}.svn240558%{dist}
+Requires(post): gcc = 4.8.5-17%{?extraver}.svn240558%{dist}
 Requires(post): golang-github-russross-blackfriday = 1:1.2-8%{?extraver}.git5f33e7b%{dist}
 Requires(post): golang-github-shurcooL-sanitized_anchor_name = 1:0-3%{?extraver}.git1dba4b3%{dist}
 Requires(post): golang = 1.7.1-5%{?extraver}%{dist}
