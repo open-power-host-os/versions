@@ -2,7 +2,7 @@ Package:
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/lsvpd.git'
-     branch: 'hostos-devel'
+     branch: 'hostos-release'
      commit_id: '3a5f5e1fdf82ebc6efdda4cfc51fd24776bad8be'
  version:
   file: 'configure.ac'

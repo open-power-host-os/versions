@@ -2,7 +2,7 @@ Package:
  sources:
   - git:
      src: 'https://github.com/open-power-host-os/libvirt.git'
-     branch: 'hostos-devel'
+     branch: 'hostos-release'
      commit_id: '40c1264cb39586f061c8c3e0c3e1338e9f8d5274'
  version:
   file: 'configure.ac'
