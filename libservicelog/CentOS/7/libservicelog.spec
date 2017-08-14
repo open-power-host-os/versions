@@ -4,7 +4,7 @@
 
 Name:           libservicelog
 Version:        1.1.16
-Release:        3%{?extraver}%{gitcommittag}%{?dist}
+Release:        4%{?extraver}%{gitcommittag}%{?dist}
 Summary:        Servicelog Database and Library
 
 Group:          System Environment/Libraries
@@ -85,6 +85,9 @@ getent group service >/dev/null || /usr/sbin/groupadd service
 
 
 %changelog
+* Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 1.1.16-4.git
+- Bump release
+
 * Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 1.1.16-3.git
 - Add extraver macro to Release field
 

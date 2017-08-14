@@ -4,7 +4,7 @@
 
 Name:       ginger
 Version:    2.3.0
-Release:    18%{?extraver}%{gitcommittag}%{?dist}
+Release:    19%{?extraver}%{gitcommittag}%{?dist}
 Summary:    Host management plugin for Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 Group:      System Environment/Base
@@ -96,6 +96,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.3.0-19.git
+- Bump release
+
 * Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 2.3.0-18.git
 - Add extraver macro to Release field
 

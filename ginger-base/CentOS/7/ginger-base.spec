@@ -8,7 +8,7 @@
 
 Name:       ginger-base
 Version:    2.2.1
-Release:    14%{?extraver}%{gitcommittag}%{?dist}
+Release:    15%{?extraver}%{gitcommittag}%{?dist}
 Summary:    Wok plugin for base host management
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -78,6 +78,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.2.1-15.git
+- Bump release
+
 * Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 2.2.1-14.git
 - Add extraver macro to Release field
 

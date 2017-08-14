@@ -102,7 +102,7 @@
 
 Name:           golang
 Version:        1.7.1
-Release:        4%{?extraver}%{?dist}
+Release:        5%{?extraver}%{?dist}
 Summary:        The Go Programming Language
 # source tree includes several copies of Mark.Twain-Tom.Sawyer.txt under Public Domain
 License:        BSD and Public Domain
@@ -518,6 +518,9 @@ fi
 %endif
 
 %changelog
+* Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 1.7.1-5
+- Bump release
+
 * Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 1.7.1-4
 - Add extraver macro to Release field
 

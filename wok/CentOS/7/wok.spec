@@ -4,7 +4,7 @@
 
 Name:       wok
 Version:    2.3.0
-Release:    16%{?extraver}%{gitcommittag}%{?dist}
+Release:    17%{?extraver}%{gitcommittag}%{?dist}
 Summary:    Wok - Webserver Originated from Kimchi
 BuildRoot:  %{_topdir}/BUILD/%{name}-%{version}-%{release}
 BuildArch:  noarch
@@ -185,6 +185,9 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %changelog
+* Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.3.0-17.git
+- Bump release
+
 * Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 2.3.0-16.git
 - Add extraver macro to Release field
 
