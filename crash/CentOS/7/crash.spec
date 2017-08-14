@@ -8,7 +8,7 @@
 Summary: Kernel analysis utility for live systems, netdump, diskdump, kdump, LKCD or mcore dumpfiles
 Name: crash
 Version: 7.1.6
-Release: 2%{?extraver}%{gitcommittag}%{?dist}
+Release: 3%{?extraver}%{gitcommittag}%{?dist}
 License: GPLv3
 Group: Development/Debuggers
 Source: %{name}.tar.gz
@@ -75,6 +75,9 @@ rm -rf %{buildroot}
 %{_includedir}/*
 
 %changelog
+* Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 7.1.6-3.git
+- Bump release
+
 * Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 7.1.6-2.git
 - Add extraver macro to Release field
 
