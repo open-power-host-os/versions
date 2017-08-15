@@ -1,6 +1,0 @@
-Package:
- sources:
-  - git:
-     src: 'https://github.com/open-power-host-os/wok.git'
-     branch: 'hostos-devel'
-     commit_id: '7f5e0aea58ce406eccbaa46d6326ab883154950d'

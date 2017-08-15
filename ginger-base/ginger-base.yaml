@@ -1,6 +1,0 @@
-Package:
- sources:
-  - git:
-     src: 'https://github.com/open-power-host-os/gingerbase.git'
-     branch: 'hostos-devel'
-     commit_id: '109815ccb5bbcbdc5dc5cef847accf9a3b9083d4'
