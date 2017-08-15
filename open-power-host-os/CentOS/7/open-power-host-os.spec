@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.0
-Release: 5%{?extraver}%{?milestone_tag}%{dist}
+Release: 6%{?extraver}%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -62,12 +62,6 @@ Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170303-5%{?extraver}.gitc39657a%{dist}
 Requires(post): libvirt = 3.6.0-2%{?extraver}.git40c1264%{dist}
 Requires(post): qemu = 15:2.9.0-7%{?extraver}.git4cfb657%{dist}
-Requires: %{name}-virt-management = %{version}-%{release}
-Requires(post): novnc = 0.5.1-7%{?extraver}.gitfc00821%{dist}
-Requires(post): ginger = 2.3.0-19%{?extraver}.gite9b8a1b%{dist}
-Requires(post): ginger-base = 2.2.1-15%{?extraver}.git109815c%{dist}
-Requires(post): kimchi = 2.3.0-19%{?extraver}.git3830c25%{dist}
-Requires(post): wok = 2.3.0-17%{?extraver}.git7f5e0ae%{dist}
 Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash = 7.1.6-3%{?extraver}.git64531dc%{dist}
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
@@ -133,27 +127,6 @@ Requires(post): libvirt = 3.6.0-2%{?extraver}.git40c1264%{dist}
 Requires(post): qemu = 15:2.9.0-7%{?extraver}.git4cfb657%{dist}
 
 %description virt
-%{summary}
-
-
-%package virt-management
-
-Summary: OpenPOWER Host OS hypervisor management packages
-
-Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
-Requires: %{name}-virt = %{version}-%{release}
-Requires(post): SLOF = 20170303-5%{?extraver}.gitc39657a%{dist}
-Requires(post): libvirt = 3.6.0-2%{?extraver}.git40c1264%{dist}
-Requires(post): qemu = 15:2.9.0-7%{?extraver}.git4cfb657%{dist}
-
-Requires(post): novnc = 0.5.1-7%{?extraver}.gitfc00821%{dist}
-Requires(post): ginger = 2.3.0-19%{?extraver}.gite9b8a1b%{dist}
-Requires(post): ginger-base = 2.2.1-15%{?extraver}.git109815c%{dist}
-Requires(post): kimchi = 2.3.0-19%{?extraver}.git3830c25%{dist}
-Requires(post): wok = 2.3.0-17%{?extraver}.git7f5e0ae%{dist}
-
-%description virt-management
 %{summary}
 
 
@@ -238,11 +211,13 @@ rm -rf $RPM_BUILD_ROOT
 %files base
 %files container
 %files virt
-%files virt-management
 %files ras
 
 
 %changelog
+* Tue Aug 15 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-6.alpha
+- Remove virt-management subpackage
+
 * Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-5.alpha
 - Update package dependencies
 
