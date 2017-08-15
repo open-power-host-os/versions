@@ -4,7 +4,7 @@
 
 Name:		lsvpd
 Version:	1.7.7
-Release:	7%{?extraver}%{gitcommittag}%{?dist}
+Release:	8%{?extraver}%{gitcommittag}%{?dist}
 Summary:	VPD/hardware inventory utilities for Linux
 Group:		Applications/System
 License:	GPLv2+
@@ -66,6 +66,9 @@ on POWER PC based systems.
 %dir %{_sysconfdir}/lsvpd
 
 %changelog
+* Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 1.7.7-8.git
+- Bump release
+
 * Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 1.7.7-7.git
 - Add extraver macro to Release field
 

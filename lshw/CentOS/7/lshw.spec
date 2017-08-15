@@ -8,7 +8,7 @@
 Summary: HardWare LiSter
 Name: lshw
 Version: B.02.18
-Release: 2%{?extraver}%{gitcommittag}
+Release: 3%{?extraver}%{gitcommittag}
 Source: %{name}.tar.gz
 URL: http://lshw.ezix.org/
 License: GPL
@@ -112,6 +112,9 @@ http://lshw.ezix.org/
 %endif
 
 %changelog
+* Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - B.02.18-3.git
+- Bump release
+
 * Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - B.02.18-2.git
 - Add extraver macro to Release field
 

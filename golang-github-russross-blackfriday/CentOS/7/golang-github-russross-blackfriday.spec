@@ -16,7 +16,7 @@
 
 Name:       golang-%{provider}-%{project}-%{repo}
 Version:    1.2
-Release:    7%{?extraver}%{gitcommittag}%{?dist}
+Release:    8%{?extraver}%{gitcommittag}%{?dist}
 # Be ahead of Fedora
 Epoch:      1
 Summary:    Markdown processor implemented in Go
@@ -75,6 +75,9 @@ cp -pav testdata/* %{buildroot}%{gopath}/src/%{import_path}/testdata/
 %{gopath}/src/%{import_path}/*/*
 
 %changelog
+* Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 1:1.2-8.git
+- Bump release
+
 * Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 1:1.2-7.git
 - Add extraver macro to Release field
 
