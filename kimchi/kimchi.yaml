@@ -1,6 +1,0 @@
-Package:
- sources:
-  - git:
-     src: 'https://github.com/open-power-host-os/kimchi.git'
-     branch: 'hostos-devel'
-     commit_id: '3830c259b7628028dddac3a55aeb33ea964bae2b'

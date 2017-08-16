@@ -1,6 +1,0 @@
-Package:
- sources:
-  - git:
-     src: 'https://github.com/open-power-host-os/ginger.git'
-     branch: 'hostos-devel'
-     commit_id: 'e9b8a1bf149d1f2b45b618e6897c96d23c52c373'

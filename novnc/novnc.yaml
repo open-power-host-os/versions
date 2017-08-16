@@ -1,6 +1,0 @@
-Package:
- sources:
-  - git:
-     src: 'https://github.com/kanaka/noVNC.git'
-     branch: 'master' #v0.5.1
-     commit_id: 'fc00821eba469641c6c94706726c3d78e46460a2'
