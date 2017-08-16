@@ -68,7 +68,7 @@ Name: %{repo}
 Epoch: 2
 %endif
 Version: 1.12.6
-Release: 7%{?extraver}.git%{shortcommit_docker}%{?dist}
+Release: 8%{?extraver}.git%{shortcommit_docker}%{?dist}
 Summary: Automates deployment of containerized applications
 License: ASL 2.0
 URL: https://%{provider}.%{provider_tld}/projectatomic/%{repo}
@@ -757,6 +757,9 @@ exit 0
 %{_datadir}/rhel/secrets/rhsm
 
 %changelog
+* Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2:1.12.6-8.git
+- Bump release
+
 * Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 2:1.12.6-7.git
 - Add extraver macro to Release field
 

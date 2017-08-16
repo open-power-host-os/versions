@@ -4,7 +4,7 @@
 
 Name:		libvpd
 Version:	2.2.5
-Release:	5%{?extraver}%{gitcommittag}%{?dist}
+Release:	6%{?extraver}%{gitcommittag}%{?dist}
 Summary:	VPD Database access library for lsvpd
 
 Group:		System Environment/Libraries
@@ -68,6 +68,9 @@ Contains header files for building with libvpd.
 %{_libdir}/pkgconfig/libvpd_cxx-2.pc
 
 %changelog
+* Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.2.5-6.git
+- Bump release
+
 * Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 2.2.5-5.git
 - Add extraver macro to Release field
 

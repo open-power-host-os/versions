@@ -4,7 +4,7 @@
 
 Name: libnl3
 Version: 3.2.28
-Release: 5%{?extraver}%{?dist}
+Release: 6%{?extraver}%{?dist}
 Summary: Convenience library for kernel netlink sockets
 Group: Development/Libraries
 License: LGPLv2
@@ -130,6 +130,9 @@ make check
 %doc libnl-doc-%{fullversion}/api/*
 
 %changelog
+* Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.2.28-6
+- Bump release
+
 * Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.2.28-5
 - Add extraver macro to Release field
 

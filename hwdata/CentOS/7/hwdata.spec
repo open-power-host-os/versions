@@ -9,7 +9,7 @@
 Name:       hwdata
 Summary:    Hardware identification and configuration data
 Version:    0.288
-Release:    2%{?extraver}%{gitcommittag}%{?dist}
+Release:    3%{?extraver}%{gitcommittag}%{?dist}
 License:    GPLv2+
 Group:      System Environment/Base
 Source0:    %{name}.tar.gz
@@ -56,6 +56,9 @@ udevadm hwdb --update >/dev/null 2>&1 || :
 %{_datadir}/%{name}/*
 
 %changelog
+* Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 0.288-3.git
+- Bump release
+
 * Mon Aug 07 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 0.288-2.git
 - Add extraver macro to Release field
 
