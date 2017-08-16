@@ -4,7 +4,7 @@ Package:
      src: 'https://github.com/open-power-host-os/slof.git'
      branch: 'hostos-devel'
      # this is tag qemu-slof-20170303 plus patches
-     commit_id: 'c39657a5f7d502c132a4ae7f407f8281a2ce68e4'
+     commit_id: '685af54d8a47a42d9d06c51be45870f6f210a0dc'
  files:
   CentOS:
    '7':
