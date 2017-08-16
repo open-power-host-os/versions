@@ -15,7 +15,7 @@ Source0:        %{name}.tar.gz
 
 BuildRequires:  libservicelog-devel libtool automake
 # Without librtas, the build fails because of missing modules
-BuildRequires:  librtas
+BuildRequires:  librtas-devel
 ExclusiveArch:	ppc ppc64 ppc64le
 
 %description
