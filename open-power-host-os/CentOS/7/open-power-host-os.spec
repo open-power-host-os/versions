@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.0
-Release: 12%{?milestone_tag}%{dist}
+Release: 13%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -66,13 +66,12 @@ Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash = 7.1.6-3%{?extraver}.git64531dc%{dist}
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
-Requires(post): librtas = 1.4.1-4%{?extraver}.git3fe4911%{dist}
 Requires(post): libservicelog = 1.1.18-2%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-7%{?extraver}.git767b629%{dist}
 Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
 Requires(post): lsvpd = 1.7.8-1%{?extraver}.gitb5542ab%{dist}
 Requires(post): ppc64-diag = 2.7.4-1%{?extraver}.git2e89648%{dist}
-Requires(post): servicelog = 1.1.14-7%{?extraver}.git3955e85%{dist}
+Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
 Requires(post): sos = 3.4-1%{?extraver}.git8523982%{dist}
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
 
@@ -142,13 +141,12 @@ Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
 Requires(post): crash = 7.1.6-3%{?extraver}.git64531dc%{dist}
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
-Requires(post): librtas = 1.4.1-4%{?extraver}.git3fe4911%{dist}
 Requires(post): libservicelog = 1.1.18-2%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-7%{?extraver}.git767b629%{dist}
 Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
 Requires(post): lsvpd = 1.7.8-1%{?extraver}.gitb5542ab%{dist}
 Requires(post): ppc64-diag = 2.7.4-1%{?extraver}.git2e89648%{dist}
-Requires(post): servicelog = 1.1.14-7%{?extraver}.git3955e85%{dist}
+Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
 Requires(post): sos = 3.4-1%{?extraver}.git8523982%{dist}
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
 
@@ -217,6 +215,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Sep 18 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-13.alpha
+- Remove librtas dependency
+- Bump servicelog release
+
 * Fri Aug 25 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-12.alpha
 - Fix open-power-host-os-virt-management obsoleted version
 
