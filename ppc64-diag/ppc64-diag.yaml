@@ -9,3 +9,6 @@ Package:
    '7':
     build_dependencies:
      - 'librtas'
+ version:
+  file: 'configure.ac'
+  regex: 'm4_define\(\[ppc64_diag_version\],\s*([\d.]+)\)'
