@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.0
-Release: 6%{?extraver}%{?milestone_tag}%{dist}
+Release: 7%{?extraver}%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -71,7 +71,7 @@ Requires(post): libservicelog = 1.1.16-4%{?extraver}.git48875ee%{dist}
 Requires(post): libvpd = 2.2.5-6%{?extraver}.git8cb3fe0%{dist}
 Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
 Requires(post): lsvpd = 1.7.7-8%{?extraver}.git3a5f5e1%{dist}
-Requires(post): ppc64-diag = 2.7.2-3%{?extraver}.gitd56f7f1%{dist}
+Requires(post): ppc64-diag = 2.7.4-1%{?extraver}.git2e89648%{dist}
 Requires(post): servicelog = 1.1.14-6%{?extraver}.git7d33cd3%{dist}
 Requires(post): sos = 3.3-20%{?extraver}.git52dd1db%{dist}
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
@@ -145,7 +145,7 @@ Requires(post): libservicelog = 1.1.16-4%{?extraver}.git48875ee%{dist}
 Requires(post): libvpd = 2.2.5-6%{?extraver}.git8cb3fe0%{dist}
 Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
 Requires(post): lsvpd = 1.7.7-8%{?extraver}.git3a5f5e1%{dist}
-Requires(post): ppc64-diag = 2.7.2-3%{?extraver}.gitd56f7f1%{dist}
+Requires(post): ppc64-diag = 2.7.4-1%{?extraver}.git2e89648%{dist}
 Requires(post): servicelog = 1.1.14-6%{?extraver}.git7d33cd3%{dist}
 Requires(post): sos = 3.3-20%{?extraver}.git52dd1db%{dist}
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
@@ -215,6 +215,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Aug 22 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-7.alpha
+- Update package dependencies
+
 * Tue Aug 15 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-6.alpha
 - Remove virt-management subpackage
 
