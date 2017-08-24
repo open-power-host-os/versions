@@ -3,7 +3,7 @@ Package:
   - git:
      src: 'https://github.com/open-power-host-os/lsvpd.git'
      branch: 'hostos-devel'
-     commit_id: '3a5f5e1fdf82ebc6efdda4cfc51fd24776bad8be'
+     commit_id: 'b5542ab3d1091f812e658685ef147d25cf228ce9'
  version:
   file: 'configure.ac'
   regex: 'AC_INIT\(\[[^]]+\],\s*\[([\d.]+)\]'

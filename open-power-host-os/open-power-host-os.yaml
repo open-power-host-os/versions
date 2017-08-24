@@ -27,5 +27,5 @@ Package:
      - servicelog
      - sos
      - systemtap
-     - skopeo
      - container-selinux
+     - skopeo
