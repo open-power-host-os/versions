@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.0
-Release: 5%{?extraver}%{?milestone_tag}%{dist}
+Release: 9%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -62,12 +62,6 @@ Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170303-5%{?extraver}.gitc39657a%{dist}
 Requires(post): libvirt = 3.6.0-2%{?extraver}.git40c1264%{dist}
 Requires(post): qemu = 15:2.9.0-7%{?extraver}.git4cfb657%{dist}
-Requires: %{name}-virt-management = %{version}-%{release}
-Requires(post): novnc = 0.5.1-7%{?extraver}.gitfc00821%{dist}
-Requires(post): ginger = 2.3.0-19%{?extraver}.gite9b8a1b%{dist}
-Requires(post): ginger-base = 2.2.1-15%{?extraver}.git109815c%{dist}
-Requires(post): kimchi = 2.3.0-19%{?extraver}.git3830c25%{dist}
-Requires(post): wok = 2.3.0-17%{?extraver}.git7f5e0ae%{dist}
 Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash = 7.1.6-3%{?extraver}.git64531dc%{dist}
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
@@ -77,7 +71,7 @@ Requires(post): libservicelog = 1.1.16-4%{?extraver}.git48875ee%{dist}
 Requires(post): libvpd = 2.2.5-6%{?extraver}.git8cb3fe0%{dist}
 Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
 Requires(post): lsvpd = 1.7.7-8%{?extraver}.git3a5f5e1%{dist}
-Requires(post): ppc64-diag = 2.7.2-3%{?extraver}.gitd56f7f1%{dist}
+Requires(post): ppc64-diag = 2.7.4-1%{?extraver}.git2e89648%{dist}
 Requires(post): servicelog = 1.1.14-6%{?extraver}.git7d33cd3%{dist}
 Requires(post): sos = 3.3-20%{?extraver}.git52dd1db%{dist}
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
@@ -98,6 +92,8 @@ Summary: OpenPOWER Host OS basic packages
 Requires: %{name}-release = %{version}-%{release}
 
 Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
+
+Obsoletes: open-power-host-os-virt-management <= 3.0-6
 
 %description base
 %{summary}
@@ -136,27 +132,6 @@ Requires(post): qemu = 15:2.9.0-7%{?extraver}.git4cfb657%{dist}
 %{summary}
 
 
-%package virt-management
-
-Summary: OpenPOWER Host OS hypervisor management packages
-
-Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
-Requires: %{name}-virt = %{version}-%{release}
-Requires(post): SLOF = 20170303-5%{?extraver}.gitc39657a%{dist}
-Requires(post): libvirt = 3.6.0-2%{?extraver}.git40c1264%{dist}
-Requires(post): qemu = 15:2.9.0-7%{?extraver}.git4cfb657%{dist}
-
-Requires(post): novnc = 0.5.1-7%{?extraver}.gitfc00821%{dist}
-Requires(post): ginger = 2.3.0-19%{?extraver}.gite9b8a1b%{dist}
-Requires(post): ginger-base = 2.2.1-15%{?extraver}.git109815c%{dist}
-Requires(post): kimchi = 2.3.0-19%{?extraver}.git3830c25%{dist}
-Requires(post): wok = 2.3.0-17%{?extraver}.git7f5e0ae%{dist}
-
-%description virt-management
-%{summary}
-
-
 %package ras
 
 Summary: OpenPOWER Host OS RAS (Reliability Availability Serviceability) packages
@@ -172,7 +147,7 @@ Requires(post): libservicelog = 1.1.16-4%{?extraver}.git48875ee%{dist}
 Requires(post): libvpd = 2.2.5-6%{?extraver}.git8cb3fe0%{dist}
 Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
 Requires(post): lsvpd = 1.7.7-8%{?extraver}.git3a5f5e1%{dist}
-Requires(post): ppc64-diag = 2.7.2-3%{?extraver}.gitd56f7f1%{dist}
+Requires(post): ppc64-diag = 2.7.4-1%{?extraver}.git2e89648%{dist}
 Requires(post): servicelog = 1.1.14-6%{?extraver}.git7d33cd3%{dist}
 Requires(post): sos = 3.3-20%{?extraver}.git52dd1db%{dist}
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
@@ -238,11 +213,22 @@ rm -rf $RPM_BUILD_ROOT
 %files base
 %files container
 %files virt
-%files virt-management
 %files ras
 
 
 %changelog
+* Tue Aug 22 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-9.alpha
+- Obsolete open-power-host-os-virt-management
+
+* Tue Aug 22 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-8.alpha
+- Remove extraver macro
+
+* Tue Aug 22 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-7.alpha
+- Update package dependencies
+
+* Tue Aug 15 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-6.alpha
+- Remove virt-management subpackage
+
 * Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-5.alpha
 - Update package dependencies
 
