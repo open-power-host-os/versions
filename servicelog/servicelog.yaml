@@ -3,7 +3,7 @@ Package:
   - git:
      src: 'https://github.com/open-power-host-os/servicelog.git'
      branch: 'hostos-release'
-     commit_id: '7d33cd33507d6f11fb86c4bc13d752cb122759f7'
+     commit_id: '3955e8580ccad12de717b659f7d1c2aa2e05d6e5'
  version:
   file: 'configure.ac'
   regex: 'm4_define\(\[ppu_version\],\s*([\d.]+)\)'
@@ -11,4 +11,5 @@ Package:
   CentOS:
    '7':
     build_dependencies:
+     - 'librtas'
      - 'libservicelog'
