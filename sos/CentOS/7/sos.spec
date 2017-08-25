@@ -6,8 +6,8 @@
 
 Summary: A set of tools to gather troubleshooting information from a system
 Name: sos
-Version: 3.3
-Release: 20%{?extraver}%{gitcommittag}%{?dist}
+Version: 3.4
+Release: 1%{?extraver}%{gitcommittag}%{?dist}
 Group: Applications/System
 Source0: %{name}.tar.gz
 License: GPLv2+
@@ -57,6 +57,10 @@ rm -rf ${RPM_BUILD_ROOT}
 %config(noreplace) %{_sysconfdir}/sos.conf
 
 %changelog
+* Fri Aug 25 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.4-1.git
+- Version update
+- Updating to 8523982 [sos] bump version to 3.4
+
 * Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.3-20.git
 - Bump release
 

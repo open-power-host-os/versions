@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.0
-Release: 10%{?milestone_tag}%{dist}
+Release: 11%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -59,7 +59,7 @@ Requires(post): flannel = 0.5.5-3%{?extraver}.gitcb8284f%{dist}
 Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
 Requires(post): skopeo = 0.1.20-3%{?extraver}.gite802625%{dist}
 Requires: %{name}-virt = %{version}-%{release}
-Requires(post): SLOF = 20170303-5%{?extraver}.gitc39657a%{dist}
+Requires(post): SLOF = 20170724-1%{?extraver}.git685af54%{dist}
 Requires(post): libvirt = 3.6.0-2%{?extraver}.git40c1264%{dist}
 Requires(post): qemu = 15:2.9.0-7%{?extraver}.git4cfb657%{dist}
 Requires: %{name}-ras = %{version}-%{release}
@@ -68,12 +68,12 @@ Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
 Requires(post): librtas = 1.4.1-4%{?extraver}.git3fe4911%{dist}
 Requires(post): libservicelog = 1.1.18-2%{?extraver}.git1e39e77%{dist}
-Requires(post): libvpd = 2.2.5-6%{?extraver}.git8cb3fe0%{dist}
+Requires(post): libvpd = 2.2.5-7%{?extraver}.git767b629%{dist}
 Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
-Requires(post): lsvpd = 1.7.7-8%{?extraver}.git3a5f5e1%{dist}
+Requires(post): lsvpd = 1.7.8-1%{?extraver}.gitb5542ab%{dist}
 Requires(post): ppc64-diag = 2.7.4-1%{?extraver}.git2e89648%{dist}
 Requires(post): servicelog = 1.1.14-7%{?extraver}.git3955e85%{dist}
-Requires(post): sos = 3.3-20%{?extraver}.git52dd1db%{dist}
+Requires(post): sos = 3.4-1%{?extraver}.git8523982%{dist}
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
 
 Requires(post): gcc = 4.8.5-15%{?extraver}.svn240558%{dist}
@@ -124,7 +124,7 @@ Summary: OpenPOWER Host OS hypervisor packages
 Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
 
-Requires(post): SLOF = 20170303-5%{?extraver}.gitc39657a%{dist}
+Requires(post): SLOF = 20170724-1%{?extraver}.git685af54%{dist}
 Requires(post): libvirt = 3.6.0-2%{?extraver}.git40c1264%{dist}
 Requires(post): qemu = 15:2.9.0-7%{?extraver}.git4cfb657%{dist}
 
@@ -144,12 +144,12 @@ Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
 Requires(post): librtas = 1.4.1-4%{?extraver}.git3fe4911%{dist}
 Requires(post): libservicelog = 1.1.18-2%{?extraver}.git1e39e77%{dist}
-Requires(post): libvpd = 2.2.5-6%{?extraver}.git8cb3fe0%{dist}
+Requires(post): libvpd = 2.2.5-7%{?extraver}.git767b629%{dist}
 Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
-Requires(post): lsvpd = 1.7.7-8%{?extraver}.git3a5f5e1%{dist}
+Requires(post): lsvpd = 1.7.8-1%{?extraver}.gitb5542ab%{dist}
 Requires(post): ppc64-diag = 2.7.4-1%{?extraver}.git2e89648%{dist}
 Requires(post): servicelog = 1.1.14-7%{?extraver}.git3955e85%{dist}
-Requires(post): sos = 3.3-20%{?extraver}.git52dd1db%{dist}
+Requires(post): sos = 3.4-1%{?extraver}.git8523982%{dist}
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
 
 %description ras
@@ -217,6 +217,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Aug 25 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.0-11.alpha
+- Update package dependencies
+
 * Wed Aug 23 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-10.alpha
 - Update package dependencies
 

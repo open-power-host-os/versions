@@ -3,4 +3,4 @@ Package:
   - git:
      src: 'https://github.com/open-power-host-os/sos.git'
      branch: 'hostos-release'
-     commit_id: '52dd1dbc52783e622ca0a96e3e9c182bb26887fe'
+     commit_id: '852398227be8f1c78c70e9e054cfdef3315f6d3b'

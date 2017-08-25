@@ -3,8 +3,8 @@
 %global gitcommittag    .git%{shortcommit}
 
 Name:           SLOF
-Version:        20170303
-Release:        5%{?extraver}%{gitcommittag}%{?dist}
+Version:        20170724
+Release:        1%{?extraver}%{gitcommittag}%{?dist}
 Summary:        Slimline Open Firmware
 
 License:        BSD
@@ -58,6 +58,10 @@ cp -a boot_rom.bin $RPM_BUILD_ROOT%{_datadir}/qemu/slof.bin
 
 
 %changelog
+* Fri Aug 25 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 20170724-1.git
+- Version update
+- Updating to 685af54 virtio-net: rework the driver to support multiple open
+
 * Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 20170303-5.git
 - Bump release
 

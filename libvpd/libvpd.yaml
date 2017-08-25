@@ -3,7 +3,7 @@ Package:
   - git:
      src: 'https://github.com/open-power-host-os/libvpd.git'
      branch: 'hostos-release'
-     commit_id: '8cb3fe06b8d2e6125235eb1973e624a0fb12837c'
+     commit_id: '767b62965c2cec6cee0d11f2b688e89706f20ea6'
  version:
   file: 'configure.ac'
   regex: 'AC_INIT\(\[[^]]+\],\s*\[([\d.]+)\]'
