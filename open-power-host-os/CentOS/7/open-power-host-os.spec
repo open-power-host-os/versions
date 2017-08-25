@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.0
-Release: 12%{?milestone_tag}%{dist}
+Release: 13%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -93,7 +93,7 @@ Requires: %{name}-release = %{version}-%{release}
 
 Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
 
-Obsoletes: open-power-host-os-virt-management <= 3.0-6
+Obsoletes: open-power-host-os-virt-management < 3.0-7
 
 %description base
 %{summary}
@@ -217,6 +217,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Aug 25 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-13.dev
+- Fix open-power-host-os-virt-management obsoleted version
+
 * Thu Aug 24 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.0-12.dev
 - Update package dependencies
 
