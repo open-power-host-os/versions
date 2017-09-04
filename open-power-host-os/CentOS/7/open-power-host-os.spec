@@ -61,7 +61,7 @@ Requires(post): skopeo = 0.1.20-3%{?extraver}.gite802625%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170724-1%{?extraver}.git685af54%{dist}
 Requires(post): libvirt = 3.6.0-2%{?extraver}.git40c1264%{dist}
-Requires(post): qemu = 15:2.9.0-7%{?extraver}.git4cfb657%{dist}
+Requires(post): qemu = 15:2.10.0-1%{?extraver}.gitc334a4e%{dist}
 Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash = 7.1.6-3%{?extraver}.git64531dc%{dist}
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
@@ -126,7 +126,7 @@ Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
 
 Requires(post): SLOF = 20170724-1%{?extraver}.git685af54%{dist}
 Requires(post): libvirt = 3.6.0-2%{?extraver}.git40c1264%{dist}
-Requires(post): qemu = 15:2.9.0-7%{?extraver}.git4cfb657%{dist}
+Requires(post): qemu = 15:2.10.0-1%{?extraver}.gitc334a4e%{dist}
 
 %description virt
 %{summary}
