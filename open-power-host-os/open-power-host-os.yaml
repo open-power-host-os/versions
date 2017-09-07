@@ -4,14 +4,15 @@ Package:
    '7':
     install_dependencies:
      - SLOF
+     - container-selinux
      - crash
-     - docker-swarm
      - docker
+     - docker-swarm
      - flannel
      - gcc
+     - golang
      - golang-github-russross-blackfriday
      - golang-github-shurcooL-sanitized_anchor_name
-     - golang
      - hwdata
      - kernel
      - kubernetes
@@ -25,7 +26,6 @@ Package:
      - ppc64-diag
      - qemu
      - servicelog
+     - skopeo
      - sos
      - systemtap
-     - container-selinux
-     - skopeo
