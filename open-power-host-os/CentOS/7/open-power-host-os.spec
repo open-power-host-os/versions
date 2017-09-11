@@ -176,7 +176,7 @@ rm -rf $RPM_BUILD_ROOT
 
 BUILD_TIMESTAMP=$(date +"%Y-%m-%d")
 VERSION_STRING=%{version}-%{milestone}
-HOST_OS_RELEASE_TEXT="OpenPOWER Host OS $VERSION_STRING ($BUILD_TIMESTAMP)\n"
+HOST_OS_RELEASE_TEXT="OpenPOWER Host OS $VERSION_STRING ($BUILD_TIMESTAMP)"
 echo $HOST_OS_RELEASE_TEXT > open-power-host-os-release
 
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}
