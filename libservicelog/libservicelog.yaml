@@ -7,8 +7,3 @@ Package:
  version:
   file: 'configure.ac'
   regex: 'm4_define\(\[ppu_version\],\s*([\d.]+)\)'
- files:
-  CentOS:
-   '7':
-    build_dependencies:
-     - 'librtas'

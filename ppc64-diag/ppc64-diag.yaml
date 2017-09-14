@@ -4,11 +4,6 @@ Package:
      src: 'https://github.com/open-power-host-os/ppc64-diag.git'
      branch: 'hostos-devel'
      commit_id: '2e8964803a32f59f258008d4b278af38ded40b05'
- files:
-  CentOS:
-   '7':
-    build_dependencies:
-     - 'librtas'
  version:
   file: 'configure.ac'
   regex: 'm4_define\(\[ppc64_diag_version\],\s*([\d.]+)\)'
