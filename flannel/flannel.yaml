@@ -1,6 +1,0 @@
-Package:
- sources:
-  - git:
-     src: 'https://github.com/coreos/flannel.git'
-     branch: 'master'
-     commit_id: 'cb8284fb60737793596dd2fc98d9608d3d0d66f0'
