@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.0
-Release: 19%{?milestone_tag}%{dist}
+Release: 20%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -210,6 +210,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Sep 19 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-20.dev
+- Update package dependencies
+
 * Tue Sep 19 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.0-19.dev
 - Update package dependencies
 
