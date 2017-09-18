@@ -1,9 +1,0 @@
-Package:
- sources:
-  - git:
-     src: 'https://github.com/crash-utility/crash.git'
-     commit_id: '64531dc850f2840cedafa143fe051d2cfeae5247' # 7.1.6
-     branch: 'master'
- version:
-  file: '.rh_rpm_package'
-  regex: '([\w.-]+)'
