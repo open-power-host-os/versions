@@ -15,7 +15,6 @@ Package:
      - libservicelog
      - libvirt
      - libvpd
-     - lshw
      - lsvpd
      - ppc64-diag
      - qemu
