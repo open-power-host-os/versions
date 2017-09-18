@@ -24,6 +24,5 @@ Package:
      - ppc64-diag
      - qemu
      - servicelog
-     - skopeo
      - sos
      - systemtap

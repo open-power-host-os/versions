@@ -57,7 +57,6 @@ Requires(post): docker
 Requires(post): docker-swarm = 1.1.0-3%{?extraver}.gita0fd82b
 Requires(post): flannel = 0.5.5-3%{?extraver}.gitcb8284f%{dist}
 Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
-Requires(post): skopeo = 0.1.20-3%{?extraver}.gite802625%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170724-1%{?extraver}.git685af54%{dist}
 Requires(post): libvirt = 3.6.0-3%{?extraver}.gitdd9401b%{dist}
@@ -110,7 +109,6 @@ Requires(post): docker
 Requires(post): docker-swarm = 1.1.0-3%{?extraver}.gita0fd82b
 Requires(post): flannel = 0.5.5-3%{?extraver}.gitcb8284f%{dist}
 Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
-Requires(post): skopeo = 0.1.20-3%{?extraver}.gite802625%{dist}
 
 %description container
 %{summary}
