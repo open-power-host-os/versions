@@ -6,7 +6,6 @@ Package:
      - SLOF
      - container-selinux
      - crash
-     - docker
      - docker-swarm
      - flannel
      - gcc
