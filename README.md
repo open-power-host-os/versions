@@ -16,7 +16,7 @@ https://open-power-host-os.github.io/latest
 
 ## Supported GNU/Linux distributions
 
-* CentOS 7.3 PPC64LE
+* CentOS 7.4 PPC64LE
 
 ## Additional information
 
