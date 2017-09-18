@@ -1,5 +1,0 @@
-Package:
- sources:
-  - git:
-     src: 'https://github.com/projectatomic/skopeo.git'
-     commit_id: 'e802625b7cb7f4af9ab77bd2be9eb441ff2f28a2'
