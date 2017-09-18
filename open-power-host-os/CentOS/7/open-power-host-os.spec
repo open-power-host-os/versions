@@ -52,7 +52,6 @@ Summary: OpenPOWER Host OS full package set
 Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.13.0-4%{?extraver}.git49564cb%{dist}
 Requires: %{name}-container = %{version}-%{release}
-Requires(post): container-selinux = 2:2.17-3%{?extraver}%{dist}
 Requires(post): docker
 Requires(post): docker-swarm = 1.1.0-3%{?extraver}.gita0fd82b
 Requires(post): flannel
@@ -104,7 +103,6 @@ Summary: OpenPOWER Host OS container packages
 Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.13.0-4%{?extraver}.git49564cb%{dist}
 
-Requires(post): container-selinux = 2:2.17-3%{?extraver}%{dist}
 Requires(post): docker
 Requires(post): docker-swarm = 1.1.0-3%{?extraver}.gita0fd82b
 Requires(post): flannel
