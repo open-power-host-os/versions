@@ -66,7 +66,7 @@ Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
 Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-7%{?extraver}.git777067b%{dist}
-Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
+Requires(post): lshw
 Requires(post): lsvpd = 1.7.8-1%{?extraver}.gitb5542ab%{dist}
 Requires(post): ppc64-diag = 2.7.4-2%{?extraver}.git2e89648%{dist}
 Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
@@ -138,7 +138,7 @@ Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
 Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-7%{?extraver}.git777067b%{dist}
-Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
+Requires(post): lshw
 Requires(post): lsvpd = 1.7.8-1%{?extraver}.gitb5542ab%{dist}
 Requires(post): ppc64-diag = 2.7.4-2%{?extraver}.git2e89648%{dist}
 Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
