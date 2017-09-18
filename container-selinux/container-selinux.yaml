@@ -1,5 +1,0 @@
-Package:
- sources:
-  - git:
-     src: 'https://github.com/projectatomic/container-selinux'
-     commit_id: '583ca403b7d054594e904fdb2839ea4103e15a9a'
