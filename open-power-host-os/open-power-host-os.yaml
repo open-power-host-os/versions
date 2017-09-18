@@ -4,7 +4,6 @@ Package:
    '7':
     install_dependencies:
      - SLOF
-     - crash
      - docker-swarm
      - gcc
      - golang-github-russross-blackfriday

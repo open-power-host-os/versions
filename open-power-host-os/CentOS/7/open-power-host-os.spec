@@ -61,7 +61,7 @@ Requires(post): SLOF = 20170724-1%{?extraver}.git685af54%{dist}
 Requires(post): libvirt = 3.6.0-3%{?extraver}.gitdd9401b%{dist}
 Requires(post): qemu = 15:2.10.0-1%{?extraver}.gitc334a4e%{dist}
 Requires: %{name}-ras = %{version}-%{release}
-Requires(post): crash = 7.1.6-3%{?extraver}.git64531dc%{dist}
+Requires(post): crash
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
 Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
@@ -133,7 +133,7 @@ Summary: OpenPOWER Host OS RAS (Reliability Availability Serviceability) package
 Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
 
-Requires(post): crash = 7.1.6-3%{?extraver}.git64531dc%{dist}
+Requires(post): crash
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
 Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
