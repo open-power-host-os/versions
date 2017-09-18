@@ -14,8 +14,3 @@ Package:
      branch: 'master'
      commit_id: '18bb93d3509bd13a15639969c8b0ebe39a7f9b50'
      archive: 'contrib-18bb93d3509bd13a15639969c8b0ebe39a7f9b50'
- files:
-  CentOS:
-   '7':
-    build_dependencies:
-     - golang

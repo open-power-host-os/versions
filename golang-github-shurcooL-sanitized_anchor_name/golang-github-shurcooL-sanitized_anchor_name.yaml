@@ -5,10 +5,3 @@ Package:
      commit_id: '1dba4b3954bc059efc3991ec364f9f9a35f597d2'
      branch: 'master'
  expects_source: 'golang-github-shurcooL-sanitized_anchor_name'
- files:
-  CentOS:
-   '7':
-    build_dependencies:
-     - golang
-    install_dependencies:
-     - golang

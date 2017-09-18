@@ -76,7 +76,6 @@ Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
 Requires(post): gcc = 4.8.5-17%{?extraver}.svn240558%{dist}
 Requires(post): golang-github-russross-blackfriday = 1:1.2-8%{?extraver}.git5f33e7b%{dist}
 Requires(post): golang-github-shurcooL-sanitized_anchor_name = 1:0-3%{?extraver}.git1dba4b3%{dist}
-Requires(post): golang = 1.7.1-5%{?extraver}%{dist}
 
 %description all
 %{summary}

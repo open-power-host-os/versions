@@ -46,7 +46,6 @@ following:
   - gcc
   - golang-github-russross-blackfriday
   - golang-github-shurcooL-sanitized_anchor_name
-  - golang
 
 - open-power-host-os-base
   - open-power-host-os-release
