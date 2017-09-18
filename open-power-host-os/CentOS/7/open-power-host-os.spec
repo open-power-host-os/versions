@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.0
-Release: 15%{?milestone_tag}%{dist}
+Release: 16%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -71,7 +71,7 @@ Requires(post): libvpd = 2.2.5-7%{?extraver}.git777067b%{dist}
 Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
 Requires(post): lsvpd = 1.7.8-1%{?extraver}.gitb5542ab%{dist}
 Requires(post): ppc64-diag = 2.7.4-1%{?extraver}.git2e89648%{dist}
-Requires(post): servicelog = 1.1.14-7%{?extraver}.git3955e85%{dist}
+Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
 Requires(post): sos = 3.3-20%{?extraver}.git52dd1db%{dist}
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
 
@@ -146,7 +146,7 @@ Requires(post): libvpd = 2.2.5-7%{?extraver}.git777067b%{dist}
 Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
 Requires(post): lsvpd = 1.7.8-1%{?extraver}.gitb5542ab%{dist}
 Requires(post): ppc64-diag = 2.7.4-1%{?extraver}.git2e89648%{dist}
-Requires(post): servicelog = 1.1.14-7%{?extraver}.git3955e85%{dist}
+Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
 Requires(post): sos = 3.3-20%{?extraver}.git52dd1db%{dist}
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
 
@@ -215,6 +215,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Sep 18 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-16.dev
+- Bump servicelog release
+
 * Wed Sep 13 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-15.dev
 - Remove librtas dependency
 
