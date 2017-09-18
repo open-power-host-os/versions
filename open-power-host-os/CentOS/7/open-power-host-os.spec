@@ -55,7 +55,7 @@ Requires: %{name}-container = %{version}-%{release}
 Requires(post): container-selinux = 2:2.17-3%{?extraver}%{dist}
 Requires(post): docker
 Requires(post): docker-swarm = 1.1.0-3%{?extraver}.gita0fd82b
-Requires(post): flannel = 0.5.5-3%{?extraver}.gitcb8284f%{dist}
+Requires(post): flannel
 Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170724-1%{?extraver}.git685af54%{dist}
@@ -107,7 +107,7 @@ Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
 Requires(post): container-selinux = 2:2.17-3%{?extraver}%{dist}
 Requires(post): docker
 Requires(post): docker-swarm = 1.1.0-3%{?extraver}.gita0fd82b
-Requires(post): flannel = 0.5.5-3%{?extraver}.gitcb8284f%{dist}
+Requires(post): flannel
 Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
 
 %description container
