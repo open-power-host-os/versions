@@ -4,7 +4,7 @@
 
 Name:           servicelog
 Version:        1.1.14
-Release:        7%{?extraver}%{gitcommittag}%{?dist}
+Release:        8%{?extraver}%{gitcommittag}%{?dist}
 Summary:        Servicelog Tools
 
 Group:          System Environment/Base
@@ -52,6 +52,9 @@ of service operations that have been performed on the system.
 %{__rm} -rf $RPM_BUILD_ROOT
 
 %changelog
+* Mon Sep 18 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> 1.1.14-8.git3955e85
+- Change librtas dependency to librtas-devel
+
 * Wed Mar 16 2016  Vasant Hegde <hegdevasant at linux.vnet.ibm.com> 1.1.14
 - PowerKVM is a distro, not a platform
 - Replace popen with native time function
