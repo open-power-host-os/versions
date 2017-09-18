@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.0
-Release: 12%{?milestone_tag}%{dist}
+Release: 13%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -61,22 +61,21 @@ Requires(post): skopeo = 0.1.20-3%{?extraver}.gite802625%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170724-1%{?extraver}.git685af54%{dist}
 Requires(post): libvirt = 3.6.0-2%{?extraver}.git40c1264%{dist}
-Requires(post): qemu = 15:2.9.0-7%{?extraver}.git4cfb657%{dist}
+Requires(post): qemu = 15:2.10.0-1%{?extraver}.gitc334a4e%{dist}
 Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash = 7.1.6-3%{?extraver}.git64531dc%{dist}
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
-Requires(post): librtas = 1.4.1-4%{?extraver}.git3fe4911%{dist}
 Requires(post): libservicelog = 1.1.18-2%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-7%{?extraver}.git767b629%{dist}
 Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
 Requires(post): lsvpd = 1.7.8-1%{?extraver}.gitb5542ab%{dist}
 Requires(post): ppc64-diag = 2.7.4-1%{?extraver}.git2e89648%{dist}
-Requires(post): servicelog = 1.1.14-7%{?extraver}.git3955e85%{dist}
+Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
 Requires(post): sos = 3.4-1%{?extraver}.git8523982%{dist}
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
 
-Requires(post): gcc = 4.8.5-15%{?extraver}.svn240558%{dist}
+Requires(post): gcc = 4.8.5-17%{?extraver}.svn240558%{dist}
 Requires(post): golang-github-russross-blackfriday = 1:1.2-8%{?extraver}.git5f33e7b%{dist}
 Requires(post): golang-github-shurcooL-sanitized_anchor_name = 1:0-3%{?extraver}.git1dba4b3%{dist}
 Requires(post): golang = 1.7.1-5%{?extraver}%{dist}
@@ -126,7 +125,7 @@ Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
 
 Requires(post): SLOF = 20170724-1%{?extraver}.git685af54%{dist}
 Requires(post): libvirt = 3.6.0-2%{?extraver}.git40c1264%{dist}
-Requires(post): qemu = 15:2.9.0-7%{?extraver}.git4cfb657%{dist}
+Requires(post): qemu = 15:2.10.0-1%{?extraver}.gitc334a4e%{dist}
 
 %description virt
 %{summary}
@@ -142,13 +141,12 @@ Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
 Requires(post): crash = 7.1.6-3%{?extraver}.git64531dc%{dist}
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
-Requires(post): librtas = 1.4.1-4%{?extraver}.git3fe4911%{dist}
 Requires(post): libservicelog = 1.1.18-2%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-7%{?extraver}.git767b629%{dist}
 Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
 Requires(post): lsvpd = 1.7.8-1%{?extraver}.gitb5542ab%{dist}
 Requires(post): ppc64-diag = 2.7.4-1%{?extraver}.git2e89648%{dist}
-Requires(post): servicelog = 1.1.14-7%{?extraver}.git3955e85%{dist}
+Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
 Requires(post): sos = 3.4-1%{?extraver}.git8523982%{dist}
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
 
@@ -176,7 +174,7 @@ rm -rf $RPM_BUILD_ROOT
 
 BUILD_TIMESTAMP=$(date +"%Y-%m-%d")
 VERSION_STRING=%{version}-%{milestone}
-HOST_OS_RELEASE_TEXT="OpenPOWER Host OS $VERSION_STRING ($BUILD_TIMESTAMP)\n"
+HOST_OS_RELEASE_TEXT="OpenPOWER Host OS $VERSION_STRING ($BUILD_TIMESTAMP)"
 echo $HOST_OS_RELEASE_TEXT > open-power-host-os-release
 
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}
@@ -217,6 +215,10 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Sep 18 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-13.alpha
+- Remove librtas dependency
+- Bump servicelog release
+
 * Fri Aug 25 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-12.alpha
 - Fix open-power-host-os-virt-management obsoleted version
 

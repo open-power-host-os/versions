@@ -189,8 +189,8 @@
 
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
-Version: 2.9.0
-Release: 7%{?extraver}%{gitcommittag}%{?dist}
+Version: 2.10.0
+Release: 1%{?extraver}%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -1068,6 +1068,9 @@ rm -rf $RPM_BUILD_ROOT%{_includedir}/cacard
 rm -f $RPM_BUILD_ROOT%{_libexecdir}/qemu-bridge-helper
 %endif
 
+# Remove unpackaged files
+%{__rm} -f %{buildroot}%{_datadir}/%{name}/s390-netboot.img
+
 # When building using 'rpmbuild' or 'fedpkg local', RPATHs can be left in
 # the binaries and libraries (although this doesn't occur when
 # building in Koji, for some unknown reason). Some discussion here:
@@ -1169,7 +1172,6 @@ getent passwd qemu >/dev/null || \
 
 %files common
 %defattr(-, root, root)
-/etc/qemu
 /usr/bin/ivshmem-client
 /usr/bin/ivshmem-server
 /usr/share/man/man8/qemu-ga.8.gz
@@ -1309,6 +1311,7 @@ getent passwd qemu >/dev/null || \
 %{_datadir}/%{name}/vgabios-qxl.bin
 %{_datadir}/%{name}/vgabios-stdvga.bin
 %{_datadir}/%{name}/vgabios-vmware.bin
+%{_datadir}/%{name}/qemu_vga.ndrv
 %{_datadir}/%{name}/pxe-e1000.rom
 %{_datadir}/%{name}/efi-e1000.rom
 %{_datadir}/%{name}/efi-e1000e.rom
@@ -1543,6 +1546,9 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Mon Sep 04 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 15:2.10.0-1.git
+- Update to qemu 2.10.0
+
 * Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 15:2.9.0-7.git
 - Bump release
 

@@ -8,7 +8,7 @@
 %global SVNREV 240558
 # Note, gcc_release must be integer, if you want to add suffixes to
 # %{release}, append them after %{gcc_release} on Release: line.
-%global gcc_release 15
+%global gcc_release 17
 %global _performance_build 1
 %global multilib_64_archs sparc64 ppc64 ppc64p7 s390x x86_64
 %ifarch %{ix86} x86_64 ia64 alpha aarch64
@@ -3412,6 +3412,10 @@ fi
 %{_prefix}/libexec/gcc/%{gcc_target_platform}/%{gcc_version}/plugin
 
 %changelog
+
+* Tue Aug 15 2017 Yasmin B. A. da Silva <yasmins@br.ibm.com> - 4.8.5-17.svn240558
+- Bump release
+
 * Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 4.8.5-15.svn240558
 - Bump release
 

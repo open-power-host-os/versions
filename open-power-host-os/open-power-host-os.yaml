@@ -17,7 +17,6 @@ Package:
      - kernel
      - kubernetes
      - libnl3
-     - librtas
      - libservicelog
      - libvirt
      - libvpd
