@@ -4,7 +4,7 @@
 
 Name:           libservicelog
 Version:        1.1.18
-Release:        2%{?extraver}%{?gitcommittag}%{?dist}
+Release:        3%{?extraver}%{?gitcommittag}%{?dist}
 Summary:        Servicelog Database and Library
 Group:          System Environment/Libraries
 License:        LGPLv2
@@ -73,6 +73,9 @@ getent group service >/dev/null || /usr/sbin/groupadd -r service
 %{_libdir}/pkgconfig/servicelog-1.pc
 
 %changelog
+* Tue Sep 19 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 1.1.18-3.git1e39e77
+- Bump to update shared object dependencies
+
 * Thu Aug 24 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 1.1.18-2.git
 - Updating to 1e39e77 libservicelog v1.1.18 release
 
