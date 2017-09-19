@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.0
-Release: 18%{?milestone_tag}%{dist}
+Release: 19%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -50,7 +50,7 @@ BuildRequires: policycoreutils-python
 Summary: OpenPOWER Host OS full package set
 
 Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
+Requires(post): kernel = 4.13.0-4%{?extraver}.git49564cb%{dist}
 Requires: %{name}-container = %{version}-%{release}
 Requires(post): container-selinux = 2:2.17-3%{?extraver}%{dist}
 Requires(post): docker = 2:1.12.6-8%{?extraver}.gitae7d637%{dist}
@@ -90,7 +90,7 @@ Summary: OpenPOWER Host OS basic packages
 
 Requires: %{name}-release = %{version}-%{release}
 
-Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
+Requires(post): kernel = 4.13.0-4%{?extraver}.git49564cb%{dist}
 
 Obsoletes: open-power-host-os-virt-management < 3.0-7
 
@@ -103,7 +103,7 @@ Obsoletes: open-power-host-os-virt-management < 3.0-7
 Summary: OpenPOWER Host OS container packages
 
 Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
+Requires(post): kernel = 4.13.0-4%{?extraver}.git49564cb%{dist}
 
 Requires(post): container-selinux = 2:2.17-3%{?extraver}%{dist}
 Requires(post): docker = 2:1.12.6-8%{?extraver}.gitae7d637%{dist}
@@ -121,7 +121,7 @@ Requires(post): skopeo = 0.1.20-3%{?extraver}.gite802625%{dist}
 Summary: OpenPOWER Host OS hypervisor packages
 
 Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
+Requires(post): kernel = 4.13.0-4%{?extraver}.git49564cb%{dist}
 
 Requires(post): SLOF = 20170724-1%{?extraver}.git685af54%{dist}
 Requires(post): libvirt = 3.6.0-3%{?extraver}.gitdd9401b%{dist}
@@ -136,7 +136,7 @@ Requires(post): qemu = 15:2.10.0-2%{?extraver}.gitbf0fd83%{dist}
 Summary: OpenPOWER Host OS RAS (Reliability Availability Serviceability) packages
 
 Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
+Requires(post): kernel = 4.13.0-4%{?extraver}.git49564cb%{dist}
 
 Requires(post): crash = 7.1.6-3%{?extraver}.git64531dc%{dist}
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
@@ -215,6 +215,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Sep 19 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.0-19.dev
+- Update package dependencies
+
 * Tue Sep 19 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-18.dev
 - Update package dependencies
 
