@@ -1,6 +1,0 @@
-Package:
- sources:
-  - git:
-     src: 'https://github.com/open-power-host-os/sos.git'
-     branch: 'hostos-devel'
-     commit_id: '52dd1dbc52783e622ca0a96e3e9c182bb26887fe'

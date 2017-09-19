@@ -19,5 +19,4 @@ Package:
      - ppc64-diag
      - qemu
      - servicelog
-     - sos
      - systemtap
