@@ -70,7 +70,7 @@ Requires(post): lshw
 Requires(post): lsvpd = 1.7.8-1%{?extraver}.gitb5542ab%{dist}
 Requires(post): ppc64-diag = 2.7.4-2%{?extraver}.git2e89648%{dist}
 Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
-Requires(post): sos = 3.4-1%{?extraver}.git8523982%{dist}
+Requires(post): sos
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
 
 Requires(post): gcc = 4.8.5-17%{?extraver}.svn240558%{dist}
@@ -142,7 +142,7 @@ Requires(post): lshw
 Requires(post): lsvpd = 1.7.8-1%{?extraver}.gitb5542ab%{dist}
 Requires(post): ppc64-diag = 2.7.4-2%{?extraver}.git2e89648%{dist}
 Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
-Requires(post): sos = 3.4-1%{?extraver}.git8523982%{dist}
+Requires(post): sos
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
 
 %description ras
