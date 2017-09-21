@@ -190,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.10.0
-Release: 1%{?extraver}%{gitcommittag}%{?dist}
+Release: 2%{?extraver}%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -229,6 +229,9 @@ Source12: bridge.conf
 
 # qemu-kvm back compat wrapper
 Source13: qemu-kvm-ppc64.sh
+
+# https://github.com/open-power-host-os/qemu/issues/3
+Source14: 95-kvm-ppc64-memlock.conf
 
 BuildRequires: numactl-devel, numactl-libs
 
@@ -851,6 +854,11 @@ install -D -p -m 0644 %{SOURCE9} $RPM_BUILD_ROOT%{_sysconfdir}/ksmtuned.conf
 %if 0%{?need_kvm_modfile}
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/modules
 install -m 0755 %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/modules/kvm.modules
+%endif
+
+%ifarch %{power64}
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/security/limits.d
+install -m 0644 %{SOURCE14} $RPM_BUILD_ROOT%{_sysconfdir}/security/limits.d
 %endif
 
 mkdir -p $RPM_BUILD_ROOT%{_bindir}/
@@ -1490,6 +1498,7 @@ getent passwd qemu >/dev/null || \
 %ifarch ppc64 ppc64le
 %{?kvm_files:}
 %{?qemu_kvm_files:}
+%{_sysconfdir}/security/limits.d/95-kvm-ppc64-memlock.conf
 %endif
 %endif
 
@@ -1546,6 +1555,9 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Mon Sep 25 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 15:2.10.0-2.git
+- Increase memory locking limit for ppc64le
+
 * Mon Sep 04 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 15:2.10.0-1.git
 - Update to qemu 2.10.0
 
