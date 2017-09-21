@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.0
-Release: 14%{?milestone_tag}%{dist}
+Release: 16%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -52,33 +52,30 @@ Summary: OpenPOWER Host OS full package set
 Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
 Requires: %{name}-container = %{version}-%{release}
-Requires(post): container-selinux = 2:2.17-3%{?extraver}%{dist}
-Requires(post): docker = 2:1.12.6-8%{?extraver}.gitae7d637%{dist}
+Requires(post): docker
 Requires(post): docker-swarm = 1.1.0-3%{?extraver}.gita0fd82b
-Requires(post): flannel = 0.5.5-3%{?extraver}.gitcb8284f%{dist}
+Requires(post): flannel
 Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
-Requires(post): skopeo = 0.1.20-3%{?extraver}.gite802625%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170724-1%{?extraver}.git685af54%{dist}
 Requires(post): libvirt = 3.6.0-3%{?extraver}.gitdd9401b%{dist}
 Requires(post): qemu = 15:2.10.0-1%{?extraver}.gitc334a4e%{dist}
 Requires: %{name}-ras = %{version}-%{release}
-Requires(post): crash = 7.1.6-3%{?extraver}.git64531dc%{dist}
+Requires(post): crash
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
-Requires(post): libservicelog = 1.1.18-2%{?extraver}.git1e39e77%{dist}
+Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-7%{?extraver}.git767b629%{dist}
-Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
-Requires(post): lsvpd = 1.7.8-1%{?extraver}.gitb5542ab%{dist}
-Requires(post): ppc64-diag = 2.7.4-1%{?extraver}.git2e89648%{dist}
+Requires(post): lshw
+Requires(post): lsvpd = 1.7.8-2%{?extraver}.gitb5542ab%{dist}
+Requires(post): ppc64-diag = 2.7.4-2%{?extraver}.git2e89648%{dist}
 Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
-Requires(post): sos = 3.4-1%{?extraver}.git8523982%{dist}
+Requires(post): sos
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
 
 Requires(post): gcc = 4.8.5-17%{?extraver}.svn240558%{dist}
 Requires(post): golang-github-russross-blackfriday = 1:1.2-8%{?extraver}.git5f33e7b%{dist}
 Requires(post): golang-github-shurcooL-sanitized_anchor_name = 1:0-3%{?extraver}.git1dba4b3%{dist}
-Requires(post): golang = 1.7.1-5%{?extraver}%{dist}
 
 %description all
 %{summary}
@@ -105,12 +102,10 @@ Summary: OpenPOWER Host OS container packages
 Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
 
-Requires(post): container-selinux = 2:2.17-3%{?extraver}%{dist}
-Requires(post): docker = 2:1.12.6-8%{?extraver}.gitae7d637%{dist}
+Requires(post): docker
 Requires(post): docker-swarm = 1.1.0-3%{?extraver}.gita0fd82b
-Requires(post): flannel = 0.5.5-3%{?extraver}.gitcb8284f%{dist}
+Requires(post): flannel
 Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
-Requires(post): skopeo = 0.1.20-3%{?extraver}.gite802625%{dist}
 
 %description container
 %{summary}
@@ -138,16 +133,16 @@ Summary: OpenPOWER Host OS RAS (Reliability Availability Serviceability) package
 Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.13.0-3.rc3%{?extraver}.gitec0d270%{dist}
 
-Requires(post): crash = 7.1.6-3%{?extraver}.git64531dc%{dist}
+Requires(post): crash
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
-Requires(post): libservicelog = 1.1.18-2%{?extraver}.git1e39e77%{dist}
+Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-7%{?extraver}.git767b629%{dist}
-Requires(post): lshw = B.02.18-3%{?extraver}.gitf9bdcc3
-Requires(post): lsvpd = 1.7.8-1%{?extraver}.gitb5542ab%{dist}
-Requires(post): ppc64-diag = 2.7.4-1%{?extraver}.git2e89648%{dist}
+Requires(post): lshw
+Requires(post): lsvpd = 1.7.8-2%{?extraver}.gitb5542ab%{dist}
+Requires(post): ppc64-diag = 2.7.4-2%{?extraver}.git2e89648%{dist}
 Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
-Requires(post): sos = 3.4-1%{?extraver}.git8523982%{dist}
+Requires(post): sos
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
 
 %description ras
@@ -215,6 +210,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Sep 21 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-16.alpha
+- Update package dependencies
+
+* Thu Sep 21 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-15.alpha
+- Update package dependencies
+
 * Thu Sep 21 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.0-14.alpha
 - Update package dependencies
 

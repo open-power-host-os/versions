@@ -1,4 +1,0 @@
-docker-common installs a script at /usr/bin/docker which will point to
-/usr/bin/docker-current by default. The docker daemon user could set the
-DOCKERBINARY variable in /etc/sysconfig/docker to point this to
-/usr/bin/docker-latest instead.

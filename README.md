@@ -16,7 +16,7 @@ https://open-power-host-os.github.io/latest
 
 ## Supported GNU/Linux distributions
 
-* CentOS 7.3 PPC64LE
+* CentOS 7.4 PPC64LE
 
 ## Additional information
 
@@ -46,7 +46,6 @@ following:
   - gcc
   - golang-github-russross-blackfriday
   - golang-github-shurcooL-sanitized_anchor_name
-  - golang
 
 - open-power-host-os-base
   - open-power-host-os-release
