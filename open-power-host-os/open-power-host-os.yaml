@@ -6,13 +6,13 @@ Package:
      - SLOF
      - container-selinux
      - crash
-     - docker-swarm
      - docker
+     - docker-swarm
      - flannel
      - gcc
+     - golang
      - golang-github-russross-blackfriday
      - golang-github-shurcooL-sanitized_anchor_name
-     - golang
      - hwdata
      - kernel
      - kubernetes
