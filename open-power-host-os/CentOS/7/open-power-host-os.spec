@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.0
-Release: 20%{?milestone_tag}%{dist}
+Release: 21%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -59,7 +59,7 @@ Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170724-1%{?extraver}.git685af54%{dist}
 Requires(post): libvirt = 3.6.0-3%{?extraver}.gitdd9401b%{dist}
-Requires(post): qemu = 15:2.10.0-2%{?extraver}.gitbf0fd83%{dist}
+Requires(post): qemu = 15:2.10.0-3%{?extraver}.gitbf0fd83%{dist}
 Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
@@ -120,7 +120,7 @@ Requires(post): kernel = 4.13.0-4%{?extraver}.git49564cb%{dist}
 
 Requires(post): SLOF = 20170724-1%{?extraver}.git685af54%{dist}
 Requires(post): libvirt = 3.6.0-3%{?extraver}.gitdd9401b%{dist}
-Requires(post): qemu = 15:2.10.0-2%{?extraver}.gitbf0fd83%{dist}
+Requires(post): qemu = 15:2.10.0-3%{?extraver}.gitbf0fd83%{dist}
 
 %description virt
 %{summary}
@@ -210,6 +210,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Sep 25 2017 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.0-21.dev
+- Update package dependencies
+
 * Tue Sep 19 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-20.dev
 - Update package dependencies
 
