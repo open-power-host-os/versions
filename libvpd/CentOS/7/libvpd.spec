@@ -4,7 +4,7 @@
 
 Name:		libvpd
 Version:	2.2.5
-Release:	7%{?extraver}%{gitcommittag}%{?dist}
+Release:	8%{?extraver}%{gitcommittag}%{?dist}
 Summary:	VPD Database access library for lsvpd
 
 Group:		System Environment/Libraries
@@ -56,7 +56,6 @@ Contains header files for building with libvpd.
 %{_libdir}/libvpd_cxx-2.2.so.*
 %{_libdir}/libvpd-2.2.so.*
 %{_sysconfdir}/udev/rules.d/90-vpdupdate.rules
-%{_sharedstatedir}/lsvpd/run.vpdupdate
 
 %files devel
 %defattr(-, root, root, -)
@@ -68,6 +67,10 @@ Contains header files for building with libvpd.
 %{_libdir}/pkgconfig/libvpd_cxx-2.pc
 
 %changelog
+* Thu Sep 28 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 2.2.5-8.git7d959c5
+- Remove /var/lib/lsvpd/run.vpdupdate from files section
+- Bump release
+
 * Thu Aug 24 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 2.2.5-7.git
 - Updating to 777067b libvpd: Corrects data type of variables
 
