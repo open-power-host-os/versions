@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.0
-Release: 19%{?milestone_tag}%{dist}
+Release: 20%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -67,8 +67,8 @@ Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
 Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-8%{?extraver}.git7d959c5%{dist}
 Requires(post): lshw
-Requires(post): lsvpd = 1.7.8-2%{?extraver}.gitb5542ab%{dist}
-Requires(post): ppc64-diag = 2.7.4-2%{?extraver}.git2e89648%{dist}
+Requires(post): lsvpd = 1.7.8-3%{?extraver}.gitc36b20b%{dist}
+Requires(post): ppc64-diag = 2.7.4-3%{?extraver}.git608507e%{dist}
 Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
 Requires(post): sos
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
@@ -139,8 +139,8 @@ Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
 Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-8%{?extraver}.git7d959c5%{dist}
 Requires(post): lshw
-Requires(post): lsvpd = 1.7.8-2%{?extraver}.gitb5542ab%{dist}
-Requires(post): ppc64-diag = 2.7.4-2%{?extraver}.git2e89648%{dist}
+Requires(post): lsvpd = 1.7.8-3%{?extraver}.gitc36b20b%{dist}
+Requires(post): ppc64-diag = 2.7.4-3%{?extraver}.git608507e%{dist}
 Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
 Requires(post): sos
 Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
@@ -210,6 +210,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Sep 29 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.0-20.alpha
+- Update package dependencies
+
 * Thu Sep 28 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.0-19.alpha
 - Update package dependencies
 

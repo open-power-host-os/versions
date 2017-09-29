@@ -3,7 +3,7 @@ Package:
   - git:
      src: 'https://github.com/open-power-host-os/ppc64-diag.git'
      branch: 'hostos-release'
-     commit_id: '2e8964803a32f59f258008d4b278af38ded40b05'
+     commit_id: '608507ea8ed81209204feacbbde40e234d261141'
  version:
   file: 'configure.ac'
   regex: 'm4_define\(\[ppc64_diag_version\],\s*([\d.]+)\)'

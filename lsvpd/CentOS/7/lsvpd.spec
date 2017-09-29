@@ -4,7 +4,7 @@
 
 Name:		lsvpd
 Version:	1.7.8
-Release:	2%{?extraver}%{gitcommittag}%{?dist}
+Release:	3%{?extraver}%{gitcommittag}%{?dist}
 Summary:	VPD/hardware inventory utilities for Linux
 Group:		Applications/System
 License:	GPLv2+
@@ -66,6 +66,9 @@ on POWER PC based systems.
 %dir %{_sysconfdir}/lsvpd
 
 %changelog
+* Fri Sep 29 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 1.7.8-3.git
+- Updating to c36b20b lsvpd: Add workaround for std::ios_base::failure issue
+
 * Wed Sep 20 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 1.7.8-2.gitb5542ab
 - Bump release
 
