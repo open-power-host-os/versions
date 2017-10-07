@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.5
-Release: 1%{?milestone_tag}%{dist}
+Release: 2%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -57,7 +57,7 @@ Requires(post): docker-swarm = 1.1.0-3%{?extraver}.gita0fd82b
 Requires(post): flannel
 Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
 Requires: %{name}-virt = %{version}-%{release}
-Requires(post): SLOF = 20170724-1%{?extraver}.git685af54%{dist}
+Requires(post): SLOF = 20170724-2%{?extraver}.gitea31295%{dist}
 Requires(post): libvirt = 3.6.0-3%{?extraver}.gitdd9401b%{dist}
 Requires(post): qemu = 15:2.10.0-3%{?extraver}.gitbf0fd83%{dist}
 Requires: %{name}-ras = %{version}-%{release}
@@ -118,7 +118,7 @@ Summary: OpenPOWER Host OS hypervisor packages
 Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.13.0-5%{?extraver}.gitaf16eac%{dist}
 
-Requires(post): SLOF = 20170724-1%{?extraver}.git685af54%{dist}
+Requires(post): SLOF = 20170724-2%{?extraver}.gitea31295%{dist}
 Requires(post): libvirt = 3.6.0-3%{?extraver}.gitdd9401b%{dist}
 Requires(post): qemu = 15:2.10.0-3%{?extraver}.gitbf0fd83%{dist}
 
@@ -210,6 +210,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Oct 07 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.5-2.dev
+- Update package dependencies
+
 * Wed Oct 04 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.5-1.dev
 - Update package dependencies
 
