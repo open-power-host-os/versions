@@ -308,14 +308,14 @@ Summary: The Linux kernel
 %define kernel_prereq  fileutils, module-init-tools >= 3.16-2, initscripts >= 8.11.1-1, grubby >= 8.28-2
 %define initrd_prereq  dracut >= 001-7
 
-%define prerelease %{nil}
+%define prerelease .rc4
 
 Name: kernel%{?variant}
 Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
-Version: 4.13.0
-Release: 5%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
+Version: 4.14.0
+Release: 1%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1694,6 +1694,10 @@ fi
 
 
 %changelog
+* Sat Oct 21 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.14.0-1.rc4.git
+- Version update
+- Updating to b27fc5c Merge branch kvm-ppc-fixes into hostos-devel
+
 * Wed Oct 04 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.13.0-5.git
 - Updating to af16eac powerpc/pseries: Check memory device state before
   onlining/offlining
