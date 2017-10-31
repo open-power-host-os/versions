@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.5
-Release: 1%{?milestone_tag}%{dist}
+Release: 2%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -71,7 +71,7 @@ Requires(post): lsvpd = 1.7.8-3%{?extraver}.gitc36b20b%{dist}
 Requires(post): ppc64-diag = 2.7.4-3%{?extraver}.git608507e%{dist}
 Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
 Requires(post): sos
-Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
+Requires(post): systemtap = 3.2-1%{?extraver}.git4051c70%{dist}
 
 Requires(post): gcc = 4.8.5-17%{?extraver}.svn240558%{dist}
 Requires(post): golang-github-russross-blackfriday = 1:1.2-8%{?extraver}.git5f33e7b%{dist}
@@ -143,7 +143,7 @@ Requires(post): lsvpd = 1.7.8-3%{?extraver}.gitc36b20b%{dist}
 Requires(post): ppc64-diag = 2.7.4-3%{?extraver}.git608507e%{dist}
 Requires(post): servicelog = 1.1.14-8%{?extraver}.git3955e85%{dist}
 Requires(post): sos
-Requires(post): systemtap = 3.1-5%{?extraver}.git39b62b4%{dist}
+Requires(post): systemtap = 3.2-1%{?extraver}.git4051c70%{dist}
 
 %description ras
 %{summary}
@@ -210,6 +210,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Oct 31 2017 Murilo Opsfelder Araujo <muriloo@linux.vnet.ibm.com> - 3.5-2.alpha
+- Update deps to systemtap 3.2
+
 * Sat Oct 07 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.5-1.alpha
 - Update package dependencies
 

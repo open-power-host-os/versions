@@ -75,8 +75,8 @@
 %global gitcommittag    .git%{shortcommit}
 
 Name: systemtap
-Version: 3.1
-Release: 5%{?extraver}%{?gitcommittag}%{?dist}
+Version: 3.2
+Release: 1%{?extraver}%{?gitcommittag}%{?dist}
 # for version, see also configure.ac
 
 
@@ -1143,6 +1143,9 @@ done
 
 # PRERELEASE
 %changelog
+* Tue Oct 31 2017 Murilo Opsfelder Araujo <muriloo@linux.vnet.ibm.com> - 3.2-1
+- Update to systemtap 3.2
+
 * Mon Aug 14 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> - 3.1-5.git
 - Bump release
 
