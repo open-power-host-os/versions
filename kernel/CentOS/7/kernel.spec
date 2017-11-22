@@ -314,8 +314,8 @@ Name: kernel%{?variant}
 Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
-Version: 4.13.0
-Release: 4%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
+Version: 4.14.0
+Release: 1%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1694,6 +1694,10 @@ fi
 
 
 %changelog
+* Wed Nov 22 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.14.0-1.git
+- Version update
+- Updating to 68b4afb Merge tag v4.14 into hostos-devel
+
 * Sat Sep 23 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.13.0-4.git
 - Updating to 49564cb KVM: PPC: Book3S HV: Handle unexpected interrupts better
 
