@@ -1204,7 +1204,9 @@ getent passwd qemu >/dev/null || \
 %{_mandir}/man1/virtfs-proxy-helper.1*
 %{_mandir}/man7/qemu-ga-ref.7*
 %{_mandir}/man7/qemu-qmp-ref.7*
+%{_mandir}/man7/qemu-block-drivers.7*
 %{_bindir}/virtfs-proxy-helper
+%{_bindir}/qemu-pr-helper
 %if %{without separate_kvm}
 %attr(4755, root, root) %{_libexecdir}/qemu-bridge-helper
 %endif
@@ -1555,6 +1557,9 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Tue Dec 19 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 15:2.11.0-1.git
+- Update files section
+
 * Tue Dec 19 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 15:2.11.0-1.git
 - Version update
 - Updating to e7153e0 Merge tag v2.11.0 into hostos-devel
