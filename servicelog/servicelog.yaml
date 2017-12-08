@@ -3,7 +3,7 @@ Package:
   - git:
      src: 'https://github.com/open-power-host-os/servicelog.git'
      branch: 'hostos-devel'
-     commit_id: '3955e8580ccad12de717b659f7d1c2aa2e05d6e5'
+     commit_id: '15f2af56a53bb28df08a90763d717432e0ee73d5'
  version:
   file: 'configure.ac'
   regex: 'm4_define\(\[ppu_version\],\s*([\d.]+)\)'
