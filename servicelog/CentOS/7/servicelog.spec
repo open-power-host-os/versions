@@ -4,7 +4,7 @@
 
 Name:           servicelog
 Version:        1.1.14
-Release:        8%{?extraver}%{gitcommittag}%{?dist}
+Release:        9%{?extraver}%{gitcommittag}%{?dist}
 Summary:        Servicelog Tools
 
 Group:          System Environment/Base
@@ -52,6 +52,9 @@ of service operations that have been performed on the system.
 %{__rm} -rf $RPM_BUILD_ROOT
 
 %changelog
+* Fri Dec 08 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 1.1.14-9.git
+- Updating to 15f2af5 Add librtas-devel as dependency
+
 * Mon Sep 18 2017 Olav Philipp Henschel <olavph@linux.vnet.ibm.com> 1.1.14-8.git3955e85
 - Change librtas dependency to librtas-devel
 
