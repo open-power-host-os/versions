@@ -247,8 +247,8 @@
 
 Summary: Library providing a simple virtualization API
 Name: libvirt
-Version: 3.6.0
-Release: 3%{?extraver}%{gitcommittag}%{?dist}
+Version: 3.9.0
+Release: 1%{?extraver}%{gitcommittag}%{?dist}
 License: LGPLv2+
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -1741,7 +1741,7 @@ exit 0
 %files
 
 %files docs
-%doc AUTHORS ChangeLog.gz README TODO
+%doc AUTHORS ChangeLog.gz README
 %doc libvirt-docs/*
 
 # API docs
@@ -2125,6 +2125,9 @@ exit 0
 
 
 %changelog
+* Tue Dec 19 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 3.9.0-1.git99ed075
+- Update to 3.9.0
+
 * Thu Sep 21 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.6.0-3.git
 - Updating to dd9401b virsh: Implement managedsave-edit command
 
