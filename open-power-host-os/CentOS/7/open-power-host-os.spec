@@ -63,7 +63,7 @@ Requires(post): qemu = 15:2.11.0-1%{?extraver}.gite7153e0%{dist}
 Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
-Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
+Requires(post): libnl3
 Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-8%{?extraver}.git7d959c5%{dist}
 Requires(post): lshw
@@ -135,7 +135,7 @@ Requires(post): kernel = 4.14.0-3%{?extraver}.git68b4afb%{dist}
 
 Requires(post): crash
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
-Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
+Requires(post): libnl3
 Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-8%{?extraver}.git7d959c5%{dist}
 Requires(post): lshw
