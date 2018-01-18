@@ -225,7 +225,7 @@ rm -rf $RPM_BUILD_ROOT
 * Wed Dec 06 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.5-9.dev
 - Update package dependencies
 
-* Wed Nov 23 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 3.5-8.dev
+* Thu Nov 23 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 3.5-8.dev
 - Update package dependencies
 
 * Wed Nov 22 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.5-7.dev
