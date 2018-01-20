@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.5
-Release: 6%{?milestone_tag}%{dist}
+Release: 7%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -63,7 +63,6 @@ Requires(post): qemu = 15:2.11.0-1%{?extraver}.gite7153e0%{dist}
 Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
-Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
 Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-8%{?extraver}.git7d959c5%{dist}
 Requires(post): lshw
@@ -135,7 +134,6 @@ Requires(post): kernel = 4.14.0-1%{?extraver}.git68b4afb%{dist}
 
 Requires(post): crash
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
-Requires(post): libnl3 = 3.2.28-6%{?extraver}%{dist}
 Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-8%{?extraver}.git7d959c5%{dist}
 Requires(post): lshw
@@ -210,6 +208,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Jan 18 2018 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 3.5-7.alpha
+- Remove libnl3 from dependencies
+
 * Tue Dec 19 2017 Murilo Opsfelder Araújo <muriloo@linux.vnet.ibm.com> - 3.5-6.alpha
 - Update package dependencies
 

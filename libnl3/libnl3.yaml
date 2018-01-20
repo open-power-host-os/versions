@@ -1,7 +1,0 @@
-Package:
- name: 'libnl3'
- sources:
-  - git:
-     src: 'git://git.infradead.org/users/tgr/libnl.git'
-     branch: 'libnl3_2_28'
-     commit_id: '656f381ccf58785319bb0236595c896125d33ed0' # 3.2.28
