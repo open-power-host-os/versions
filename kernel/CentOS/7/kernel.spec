@@ -363,6 +363,7 @@ BuildRequires: gcc >= 3.4.2, binutils >= 2.12, system-rpm-config >= 9.1.0-55
 BuildRequires: hostname, net-tools, bc
 BuildRequires: xmlto, asciidoc
 BuildRequires: openssl
+BuildRequires: openssl-devel
 %{!?cross_build:BuildRequires: hmaccalc}
 %{!?cross_build:BuildRequires: python-devel, perl(ExtUtils::Embed)}
 BuildRequires: newt-devel
