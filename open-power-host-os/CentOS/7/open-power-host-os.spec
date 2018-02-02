@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.5
-Release: 8%{?milestone_tag}%{dist}
+Release: 9%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -66,7 +66,7 @@ Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-8%{?extraver}.git7d959c5%{dist}
 Requires(post): lshw
-Requires(post): lsvpd = 1.7.8-3%{?extraver}.gitc36b20b%{dist}
+Requires(post): lsvpd = 1.7.8-4%{?extraver}.git63c0dfc%{dist}
 Requires(post): ppc64-diag = 2.7.4-3%{?extraver}.git608507e%{dist}
 Requires(post): servicelog = 1.1.14-9%{?extraver}.git15f2af5%{dist}
 Requires(post): sos
@@ -137,7 +137,7 @@ Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-8%{?extraver}.git7d959c5%{dist}
 Requires(post): lshw
-Requires(post): lsvpd = 1.7.8-3%{?extraver}.gitc36b20b%{dist}
+Requires(post): lsvpd = 1.7.8-4%{?extraver}.git63c0dfc%{dist}
 Requires(post): ppc64-diag = 2.7.4-3%{?extraver}.git608507e%{dist}
 Requires(post): servicelog = 1.1.14-9%{?extraver}.git15f2af5%{dist}
 Requires(post): sos
@@ -208,6 +208,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Feb 02 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.5-9.alpha
+- Update package dependencies
+
 * Sun Jan 21 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.5-8.alpha
 - Update package dependencies
 
