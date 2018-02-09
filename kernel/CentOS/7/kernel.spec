@@ -315,7 +315,7 @@ Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: 4.15.0
-Release: 3%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
+Release: 4%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1695,6 +1695,9 @@ fi
 
 
 %changelog
+* Fri Feb 09 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.15.0-4.git
+- Updating to a707e6c Merge branch kvm-ppc-next into hostos-devel
+
 * Wed Jan 31 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.15.0-3.git
 - Updating to d34a158 KVM: PPC: Book3S HV: Drop locks before reading guest
   memory
