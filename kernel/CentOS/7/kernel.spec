@@ -314,7 +314,7 @@ Name: kernel%{?variant}
 Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
-Version: 4.14.0
+Version: 4.15.0
 Release: 1%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
@@ -1695,6 +1695,10 @@ fi
 
 
 %changelog
+* Wed Feb 14 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.15.0-1.git
+- Version update
+- Updating to 33f711f KVM: PPC: Book3S: Fix compile error that occurs with some gcc versions
+
 * Wed Nov 22 2017 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.14.0-1.git
 - Version update
 - Updating to 68b4afb Merge tag v4.14 into hostos-devel
