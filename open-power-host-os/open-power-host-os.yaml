@@ -5,7 +5,6 @@ Package:
     install_dependencies:
      - SLOF
      - docker-swarm
-     - gcc
      - golang-github-russross-blackfriday
      - golang-github-shurcooL-sanitized_anchor_name
      - hwdata
