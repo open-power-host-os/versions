@@ -5,8 +5,3 @@ Package:
      branch: 'hostos-devel'
      # this is tag qemu-slof-20170303 plus patches
      commit_id: 'ea31295cf36598852b8ffea0a4f212625878f365'
- files:
-  CentOS:
-   '7':
-    build_dependencies:
-     - 'gcc'
