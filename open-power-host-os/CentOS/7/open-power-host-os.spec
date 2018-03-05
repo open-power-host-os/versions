@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.5
-Release: 11%{?milestone_tag}%{dist}
+Release: 12%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -214,6 +214,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Mar 05 2018 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.5-12.alpha
+- Update package dependencies
+
 * Thu Mar 01 2018 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.5-11.alpha
 - Include opal-* packages
 
