@@ -59,7 +59,7 @@ Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170724-2%{?extraver}.gitea31295%{dist}
 Requires(post): libvirt = 4.0.0-1%{?extraver}.git7418247%{dist}
-Requires(post): qemu = 15:2.11.0-1%{?extraver}.gite7153e0%{dist}
+Requires(post): qemu = 15:2.11.0-2%{?extraver}.gite7153e0%{dist}
 Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
@@ -122,7 +122,7 @@ Requires(post): kernel = 4.15.0-1%{?extraver}.git33f711f%{dist}
 
 Requires(post): SLOF = 20170724-2%{?extraver}.gitea31295%{dist}
 Requires(post): libvirt = 4.0.0-1%{?extraver}.git7418247%{dist}
-Requires(post): qemu = 15:2.11.0-1%{?extraver}.gite7153e0%{dist}
+Requires(post): qemu = 15:2.11.0-2%{?extraver}.gite7153e0%{dist}
 
 %description virt
 %{summary}
