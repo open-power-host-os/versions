@@ -190,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.11.50
-Release: 2%{?extraver}%{gitcommittag}%{?dist}
+Release: 3%{?extraver}%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -900,6 +900,8 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/openbios-sparc32
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/openbios-sparc64
 # Provided by package SLOF
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/slof.bin
+# Provided by package opal-firmware
+rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/skiboot.lid
 
 # Remove possibly unpackaged files.  Unlike others that are removed
 # unconditionally, these firmware files are still distributed as a binary
@@ -1334,7 +1336,6 @@ getent passwd qemu >/dev/null || \
 %{_datadir}/%{name}/efi-rtl8139.rom
 %{_datadir}/%{name}/pxe-ne2k_pci.rom
 %{_datadir}/%{name}/efi-ne2k_pci.rom
-%{_datadir}/%{name}/skiboot.lid
 #%config(noreplace) %{_sysconfdir}/qemu/target-x86_64.conf
 %{_datadir}/%{name}/qemu-icon.bmp
 %if %{without separate_kvm}
@@ -1557,6 +1558,9 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Mon Mar 05 2018 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 15:2.11.50-3.git
+- Avoid conflict with opal-firmware package
+
 * Fri Feb 09 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 15:2.11.50-2.git
 - Updating to 59cc362 spapr: add missing break in h_get_cpu_characteristics()
 
