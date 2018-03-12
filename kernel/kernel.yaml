@@ -7,8 +7,3 @@ Package:
  version:
   file: 'Makefile'
   regex: 'VERSION.*([\d.]+)\nPATCHLEVEL\s*=\s*(?P<patch>[\d.]*)\nSUBLEVEL\s*=\s*(?(patch)([\d.]*))\nEXTRAVERSION\s*=\s*([-\w.]*)\n'
- files:
-  CentOS:
-   '7':
-    build_dependencies:
-     - 'gcc'
