@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.5
-Release: 10%{?milestone_tag}%{dist}
+Release: 12%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -59,7 +59,7 @@ Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20170724-2%{?extraver}.gitea31295%{dist}
 Requires(post): libvirt = 4.0.0-1%{?extraver}.git7418247%{dist}
-Requires(post): qemu = 15:2.11.0-1%{?extraver}.gite7153e0%{dist}
+Requires(post): qemu = 15:2.11.0-2%{?extraver}.gite7153e0%{dist}
 Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
@@ -67,6 +67,9 @@ Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-8%{?extraver}.git7d959c5%{dist}
 Requires(post): lshw
 Requires(post): lsvpd = 1.7.8-4%{?extraver}.git63c0dfc%{dist}
+Requires(post): opal-firmware
+Requires(post): opal-prd
+Requires(post): opal-utils
 Requires(post): ppc64-diag = 2.7.4-3%{?extraver}.git608507e%{dist}
 Requires(post): servicelog = 1.1.14-9%{?extraver}.git15f2af5%{dist}
 Requires(post): sos
@@ -119,7 +122,7 @@ Requires(post): kernel = 4.15.0-1%{?extraver}.git33f711f%{dist}
 
 Requires(post): SLOF = 20170724-2%{?extraver}.gitea31295%{dist}
 Requires(post): libvirt = 4.0.0-1%{?extraver}.git7418247%{dist}
-Requires(post): qemu = 15:2.11.0-1%{?extraver}.gite7153e0%{dist}
+Requires(post): qemu = 15:2.11.0-2%{?extraver}.gite7153e0%{dist}
 
 %description virt
 %{summary}
@@ -138,6 +141,9 @@ Requires(post): libservicelog = 1.1.18-3%{?extraver}.git1e39e77%{dist}
 Requires(post): libvpd = 2.2.5-8%{?extraver}.git7d959c5%{dist}
 Requires(post): lshw
 Requires(post): lsvpd = 1.7.8-4%{?extraver}.git63c0dfc%{dist}
+Requires(post): opal-firmware
+Requires(post): opal-prd
+Requires(post): opal-utils
 Requires(post): ppc64-diag = 2.7.4-3%{?extraver}.git608507e%{dist}
 Requires(post): servicelog = 1.1.14-9%{?extraver}.git15f2af5%{dist}
 Requires(post): sos
@@ -208,6 +214,12 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Mar 05 2018 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.5-12.alpha
+- Update package dependencies
+
+* Thu Mar 01 2018 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.5-11.alpha
+- Include opal-* packages
+
 * Wed Feb 14 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.5-10.alpha
 - Update package dependencies
 
