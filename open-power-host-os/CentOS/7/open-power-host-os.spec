@@ -213,7 +213,7 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
-* Fri Feb 23 2018 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.5-13.alpha
+* Tue Mar 13 2018 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.5-13.alpha
 - Stop using custom gcc package
 
 * Mon Mar 05 2018 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.5-12.alpha
