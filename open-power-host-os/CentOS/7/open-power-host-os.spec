@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.5
-Release: 13%{?milestone_tag}%{dist}
+Release: 14%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -57,7 +57,7 @@ Requires(post): docker-swarm = 1.1.0-3%{?extraver}.gita0fd82b
 Requires(post): flannel
 Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
 Requires: %{name}-virt = %{version}-%{release}
-Requires(post): SLOF = 20170724-2%{?extraver}.gitea31295%{dist}
+Requires(post): SLOF = 20171214-1%{?extraver}.git8128b8e%{dist}
 Requires(post): libvirt = 4.0.0-1%{?extraver}.git7418247%{dist}
 Requires(post): qemu = 15:2.11.0-2%{?extraver}.gite7153e0%{dist}
 Requires: %{name}-ras = %{version}-%{release}
@@ -119,7 +119,7 @@ Summary: OpenPOWER Host OS hypervisor packages
 Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.15.0-1%{?extraver}.git33f711f%{dist}
 
-Requires(post): SLOF = 20170724-2%{?extraver}.gitea31295%{dist}
+Requires(post): SLOF = 20171214-1%{?extraver}.git8128b8e%{dist}
 Requires(post): libvirt = 4.0.0-1%{?extraver}.git7418247%{dist}
 Requires(post): qemu = 15:2.11.0-2%{?extraver}.gite7153e0%{dist}
 
@@ -213,6 +213,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Mar 14 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.5-14.alpha
+- Update package dependencies
+
 * Tue Mar 13 2018 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 3.5-13.alpha
 - Stop using custom gcc package
 
