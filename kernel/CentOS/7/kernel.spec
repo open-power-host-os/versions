@@ -724,7 +724,7 @@ cp %{SOURCE1001} .config
 #/usr/bin/patch -p1 < $RPM_SOURCE_DIR/fix.script.location.patch
 
 # Any further pre-build tree manipulations happen here.
-make oldconfig
+make olddefconfig
 
 chmod +x scripts/checkpatch.pl
 
