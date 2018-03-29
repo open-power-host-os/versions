@@ -308,14 +308,14 @@ Summary: The Linux kernel
 %define kernel_prereq  fileutils, module-init-tools >= 3.16-2, initscripts >= 8.11.1-1, grubby >= 8.28-2
 %define initrd_prereq  dracut >= 001-7
 
-%define prerelease %{nil}
+%define prerelease .rc7
 
 Name: kernel%{?variant}
 Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
-Version: 4.15.0
-Release: 5%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
+Version: 4.16.0
+Release: 1%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1695,6 +1695,10 @@ fi
 
 
 %changelog
+* Thu Mar 29 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.16.0-1.rc7.git
+- Version update
+- Updating to 58079f0 Merge remote-tracking branch remotes/powerpc/topic/ppc-kvm into hostos-devel
+
 * Wed Feb 14 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.15.0-5.git
 - Updating to 33f711f KVM: PPC: Book3S: Fix compile error that occurs with some
   gcc versions
