@@ -58,7 +58,7 @@ Requires(post): flannel
 Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20171214-1%{?extraver}.git8128b8e%{dist}
-Requires(post): libvirt = 4.0.0-2%{?extraver}.git5e6f8a1%{dist}
+Requires(post): libvirt = 4.0.0-3%{?extraver}.git5e6f8a1%{dist}
 Requires(post): qemu = 15:2.11.50-5%{?extraver}.git59cc362%{dist}
 Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash
@@ -120,7 +120,7 @@ Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.16.0-1.rc7%{?extraver}.git58079f0%{dist}
 
 Requires(post): SLOF = 20171214-1%{?extraver}.git8128b8e%{dist}
-Requires(post): libvirt = 4.0.0-2%{?extraver}.git5e6f8a1%{dist}
+Requires(post): libvirt = 4.0.0-3%{?extraver}.git5e6f8a1%{dist}
 Requires(post): qemu = 15:2.11.50-5%{?extraver}.git59cc362%{dist}
 
 %description virt

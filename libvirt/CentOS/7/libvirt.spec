@@ -248,7 +248,7 @@
 Summary: Library providing a simple virtualization API
 Name: libvirt
 Version: 4.0.0
-Release: 2%{?extraver}%{gitcommittag}%{?dist}
+Release: 3%{?extraver}%{gitcommittag}%{?dist}
 License: LGPLv2+
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -1778,7 +1778,6 @@ exit 0
 %{_sysconfdir}/rc.d/init.d/virtlogd
 %{_sysconfdir}/rc.d/init.d/virtlockd
 %endif
-%doc daemon/libvirtd.upstart
 %config(noreplace) %{_sysconfdir}/sysconfig/libvirtd
 %config(noreplace) %{_sysconfdir}/sysconfig/virtlogd
 %config(noreplace) %{_sysconfdir}/sysconfig/virtlockd
@@ -2125,6 +2124,9 @@ exit 0
 
 
 %changelog
+* Tue Apr 03 2018 Fabiano Rosas <farosas@linux.ibm.com> - 4.0.0-3.git
+- Remove libvirtd.upstart
+
 * Sat Jan 20 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.0.0-2.git
 - Updating to 5e6f8a1 Merge tag v4.0.0-rc2 into hostos-devel
 
