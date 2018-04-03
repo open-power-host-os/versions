@@ -190,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.11.50
-Release: 3%{?extraver}%{gitcommittag}%{?dist}
+Release: 5%{?extraver}%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -796,6 +796,10 @@ buildldflags="VL_LDFLAGS=-Wl,--build-id"
 sed -i.debug 's/"-g $CFLAGS"/"$CFLAGS"/g' configure
 %endif
 
+%ifarch ppc64le
+%global optflags %(echo %{optflags} | sed 's/-O2 //')
+%endif
+
 ./configure \
     --prefix=%{_prefix} \
     --libdir=%{_libdir} \
@@ -934,7 +938,6 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/efi-pcnet.rom
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/efi-rtl8139.rom
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/efi-virtio.rom
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/target-x86_64.conf
-rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/acpi-dsdt.aml
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/kvmvapic.bin
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/linuxboot.bin
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/multiboot.bin
@@ -954,7 +957,6 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/vgabios-virtio.bin
 # Provided by package seabios
 #rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/bios.bin
 #rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/bios-256k.bin
-#rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/acpi-dsdt.aml
 #rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/q35-acpi-dsdt.aml
 # Provided by package sgabios
 #rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/sgabios.bin
@@ -985,7 +987,6 @@ rom_link() {
 #rom_link ../seavgabios/vgabios-vmware.bin vgabios-vmware.bin
 #rom_link ../seabios/bios.bin bios.bin
 #rom_link ../seabios/bios-256k.bin bios-256k.bin
-#rom_link ../seabios/acpi-dsdt.aml acpi-dsdt.aml
 #rom_link ../seabios/q35-acpi-dsdt.aml q35-acpi-dsdt.aml
 #rom_link ../sgabios/sgabios.bin sgabios.bin
 %endif
@@ -1309,7 +1310,6 @@ getent passwd qemu >/dev/null || \
 #%{_mandir}/man1/qemu-system-i386.1*
 #%{_mandir}/man1/qemu-system-x86_64.1*
 #%endif
-%{_datadir}/%{name}/acpi-dsdt.aml
 #%{_datadir}/%{name}/q35-acpi-dsdt.aml
 %{_datadir}/%{name}/bios.bin
 %{_datadir}/%{name}/bios-256k.bin
@@ -1558,6 +1558,12 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Tue Apr 03 2018 Fabiano Rosas <farosas@linux.ibm.com> - 15:2.11.50-5.git
+- Remove acpi-dsdt.aml which is not provided by seabios anymore
+
+* Tue Apr 03 2018 Fabiano Rosas <farosas@linux.ibm.com> - 15:2.11.50-4.git
+- Fix build on ppc64le
+
 * Mon Mar 05 2018 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 15:2.11.50-3.git
 - Avoid conflict with opal-firmware package
 
