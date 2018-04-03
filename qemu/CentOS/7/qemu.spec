@@ -190,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.11.0
-Release: 2%{?extraver}%{gitcommittag}%{?dist}
+Release: 3%{?extraver}%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -794,6 +794,10 @@ buildldflags="VL_LDFLAGS=-Wl,--build-id"
 # drop -g flag to prevent memory exhaustion by linker
 %global optflags %(echo %{optflags} | sed 's/-g//')
 sed -i.debug 's/"-g $CFLAGS"/"$CFLAGS"/g' configure
+%endif
+
+%ifarch ppc64le
+%global optflags %(echo %{optflags} | sed 's/-O2 //')
 %endif
 
 ./configure \
@@ -1558,6 +1562,9 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Tue Apr 03 2018 Fabiano Rosas <farosas@linux.ibm.com> - 15:2.11.0-3.git
+- Fix build on ppc64le
+
 * Mon Mar 05 2018 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 15:2.11.0-2.git
 - Avoid conflict with opal-firmware package
 
