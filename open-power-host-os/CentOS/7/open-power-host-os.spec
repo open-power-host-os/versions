@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.5
-Release: 15%{?milestone_tag}%{dist}
+Release: 16%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -58,7 +58,7 @@ Requires(post): flannel
 Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20171214-2%{?extraver}.gitc2a331f%{dist}
-Requires(post): libvirt = 4.0.0-1%{?extraver}.git7418247%{dist}
+Requires(post): libvirt = 4.2.0-2%{?extraver}.gitbf217de%{dist}
 Requires(post): qemu = 15:2.11.0-2%{?extraver}.gite7153e0%{dist}
 Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash
@@ -120,8 +120,9 @@ Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.15.0-1%{?extraver}.git33f711f%{dist}
 
 Requires(post): SLOF = 20171214-2%{?extraver}.gitc2a331f%{dist}
-Requires(post): libvirt = 4.0.0-1%{?extraver}.git7418247%{dist}
+Requires(post): libvirt = 4.2.0-2%{?extraver}.gitbf217de%{dist}
 Requires(post): qemu = 15:2.11.0-2%{?extraver}.gite7153e0%{dist}
+
 
 %description virt
 %{summary}
@@ -213,6 +214,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed Apr 04 2018 Fabiano Rosas <farosas@linux.ibm.com> - 3.5-16.alpha
+- Update package dependencies
+
 * Wed Apr 04 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.5-15.alpha
 - Update package dependencies
 
