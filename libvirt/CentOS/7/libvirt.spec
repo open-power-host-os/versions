@@ -247,8 +247,8 @@
 
 Summary: Library providing a simple virtualization API
 Name: libvirt
-Version: 4.0.0
-Release: 3%{?extraver}%{gitcommittag}%{?dist}
+Version: 4.2.0
+Release: 1%{?extraver}%{gitcommittag}%{?dist}
 License: LGPLv2+
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -2124,6 +2124,10 @@ exit 0
 
 
 %changelog
+* Wed Apr 04 2018 Fabiano Rosas <farosas@linux.ibm.com> - 4.2.0-1.git
+- Version update
+- Updating to bf217de Merge tag v4.2.0 into hostos-devel
+
 * Tue Apr 03 2018 Fabiano Rosas <farosas@linux.ibm.com> - 4.0.0-3.git
 - Remove libvirtd.upstart
 
