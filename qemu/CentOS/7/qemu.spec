@@ -1493,11 +1493,14 @@ getent passwd qemu >/dev/null || \
 #{_mandir}/man1/qemu-system-ppcemb.1*
 %endif
 %{_datadir}/%{name}/bamboo.dtb
+%{_datadir}/%{name}/canyonlands.dtb
+%{_datadir}/%{name}/hppa-firmware.img
 %{_datadir}/%{name}/ppc_rom.bin
 %{_datadir}/%{name}/spapr-rtas.bin
 #{_datadir}/%{name}/openbios-ppc
 #{_datadir}/%{name}/slof.bin
 %{_datadir}/%{name}/u-boot.e500
+%{_datadir}/%{name}/u-boot-sam460-20100605.bin
 %ifarch ppc64 ppc64le
 %{?kvm_files:}
 %{?qemu_kvm_files:}
