@@ -189,8 +189,8 @@
 
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
-Version: 2.11.50
-Release: 5%{?extraver}%{gitcommittag}%{?dist}
+Version: 2.11.91
+Release: 1%{?extraver}%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -1561,6 +1561,10 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Wed Apr 04 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 15:2.11.91-1.git
+- Version update
+- Updating to 46a0689 Merge tag v2.12.0-rc1 into hostos-devel
+
 * Tue Apr 03 2018 Fabiano Rosas <farosas@linux.ibm.com> - 15:2.11.50-5.git
 - Remove acpi-dsdt.aml which is not provided by seabios anymore
 
