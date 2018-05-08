@@ -1,2 +1,0 @@
-# docs fail to build due to an issue with ps2pdf
-%with_docs 0
