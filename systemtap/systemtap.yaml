@@ -1,6 +1,0 @@
-Package:
- sources:
-  - git:
-     src: 'git://sourceware.org/git/systemtap.git'
-     branch: 'master'
-     commit_id: '4051c70c9318c837981384cbb23f3e9eb1bd0892' # release-3.2

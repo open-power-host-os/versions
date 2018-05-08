@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.5
-Release: 17%{?milestone_tag}%{dist}
+Release: 18%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -73,7 +73,6 @@ Requires(post): opal-utils
 Requires(post): ppc64-diag = 2.7.4-3%{?extraver}.git608507e%{dist}
 Requires(post): servicelog = 1.1.14-9%{?extraver}.git15f2af5%{dist}
 Requires(post): sos
-Requires(post): systemtap = 3.2-1%{?extraver}.git4051c70%{dist}
 
 Requires(post): golang-github-russross-blackfriday = 1:1.2-8%{?extraver}.git5f33e7b%{dist}
 Requires(post): golang-github-shurcooL-sanitized_anchor_name = 1:0-3%{?extraver}.git1dba4b3%{dist}
@@ -147,7 +146,6 @@ Requires(post): opal-utils
 Requires(post): ppc64-diag = 2.7.4-3%{?extraver}.git608507e%{dist}
 Requires(post): servicelog = 1.1.14-9%{?extraver}.git15f2af5%{dist}
 Requires(post): sos
-Requires(post): systemtap = 3.2-1%{?extraver}.git4051c70%{dist}
 
 %description ras
 %{summary}
@@ -214,6 +212,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed May 16 2018 Fabiano Rosas <farosas@linux.ibm.com> - 3.5-18.alpha
+- Use systemtap from the base distro
+
 * Tue May 15 2018 Fabiano Rosas <farosas@linux.ibm.com> - 3.5-17.alpha
 - Update package dependencies
 
