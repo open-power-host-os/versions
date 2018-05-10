@@ -57,6 +57,10 @@
 %bcond_without gtk              # enabled
 %endif
 
+# Force `--with-kvmonly` behavior
+%define _with_kvmonly --with-kvmonly
+%global with_kvmonly 1
+
 %global SLOF_gittagdate 20160525
 
 # pkvm wants seccomp
@@ -126,10 +130,7 @@
 %global kvm_target    arm
 %endif
 
-%if %{with kvmonly}
-# If kvmonly, put the qemu-kvm binary in the qemu-kvm package
-%global kvm_package   kvm
-%else
+%if %{without kvmonly}
 # If not kvmonly, build all packages and give them normal names. qemu-kvm
 # is a simple wrapper package and is only build for archs that support KVM.
 %global user          user
@@ -411,7 +412,6 @@ emulation speed by using dynamic translation. QEMU has two operating modes:
 
 As QEMU requires no host kernel patches to run, it is safe and easy to use.
 
-%if %{without kvmonly}
 %ifarch %{kvm_archs}
 %package kvm
 Summary: QEMU metapackage for KVM support
@@ -424,7 +424,6 @@ Provides: qemu-kvm-ev = %{epoch}:%{version}-%{release}
 This is a meta-package that provides a qemu-system-<arch> package for native
 architectures where kvm can be enabled. For example, in an x86 system, this
 will install qemu-system-x86
-%endif
 %endif
 
 %package  img
@@ -669,13 +668,13 @@ This package provides the system emulator for SPARC and SPARC64 systems.
 %endif
 
 %if 0%{?system_ppc:1}
-%package %{system_ppc}
+%package system-ppc
 Summary: QEMU system emulator for PPC
 Group: Development/Tools
 Requires: %{name}-common = %{epoch}:%{version}-%{release}
 #Requires: openbios
 #Requires: SLOF >= 0.1.git%{SLOF_gittagdate}
-%description %{system_ppc}
+%description system-ppc
 QEMU is a generic and open source processor emulator which achieves a good
 emulation speed by using dynamic translation.
 
@@ -879,11 +878,6 @@ make DESTDIR=$RPM_BUILD_ROOT install
 install -m 0755 %{SOURCE13} $RPM_BUILD_ROOT%{_bindir}/qemu-kvm
 %endif
 
-%if %{with kvmonly}
-rm $RPM_BUILD_ROOT%{_bindir}/qemu-system-%{kvm_target}
-rm $RPM_BUILD_ROOT%{_datadir}/systemtap/tapset/qemu-system-%{kvm_target}.stp
-%endif
-
 chmod -x ${RPM_BUILD_ROOT}%{_mandir}/man1/*
 install -D -p -m 0644 -t ${RPM_BUILD_ROOT}%{qemudocdir} Changelog README COPYING COPYING.LIB LICENSE
 for emu in $RPM_BUILD_ROOT%{_bindir}/qemu-system-*; do
@@ -940,26 +934,28 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/efi-virtio.rom
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/target-x86_64.conf
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/kvmvapic.bin
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/linuxboot.bin
+rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/linuxboot_dma.bin
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/multiboot.bin
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/q35-acpi-dsdt.aml
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/qemu-icon.bmp
+rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/qemu_vga.ndrv
 rm -rf ${RPM_BUILD_ROOT}%{_sysconfdir}/%{name}/target-x86_64.conf
 %endif
 
 # Provided by package ipxe
-#rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/pxe*rom
-#rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/efi*rom
+rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/pxe*rom
+rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/efi*rom
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/pxe-eepro100.rom
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/efi-eepro100.rom
 # Provided by package seavgabios
-#rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/vgabios*bin
+rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/vgabios*bin
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/vgabios-virtio.bin
 # Provided by package seabios
-#rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/bios.bin
-#rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/bios-256k.bin
+rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/bios.bin
+rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/bios-256k.bin
 #rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/q35-acpi-dsdt.aml
 # Provided by package sgabios
-#rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/sgabios.bin
+rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/sgabios.bin
 
 %if 0%{?system_x86:1}
 # the pxe gpxe images will be symlinks to the images on
@@ -1479,9 +1475,8 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %if 0%{?system_ppc:1}
-%files %{system_ppc}
+%files system-ppc
 %defattr(-, root, root)
-%if %{without kvmonly}
 #{_bindir}/qemu-system-ppc
 %{_bindir}/qemu-system-ppc64
 #{_bindir}/qemu-system-ppcemb
@@ -1491,7 +1486,6 @@ getent passwd qemu >/dev/null || \
 #{_mandir}/man1/qemu-system-ppc.1*
 %{_mandir}/man1/qemu-system-ppc64.1*
 #{_mandir}/man1/qemu-system-ppcemb.1*
-%endif
 %{_datadir}/%{name}/bamboo.dtb
 %{_datadir}/%{name}/canyonlands.dtb
 %{_datadir}/%{name}/hppa-firmware.img
