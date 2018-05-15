@@ -190,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.12.0
-Release: 1%{?extraver}%{gitcommittag}%{?dist}
+Release: 2%{?extraver}%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -518,8 +518,6 @@ Provides: kvm = 85
 Obsoletes: kvm < 85
 Requires: seavgabios-bin
 # First version that ships bios-256k.bin
-#Requires: seabios-bin >= 1.7.4-3
-Requires: sgabios-bin
 #Requires: ipxe-roms-qemu >= 20130517-2.gitc4bce43
 Requires: ipxe-roms-qemu
 %if 0%{?have_seccomp:1}
@@ -959,7 +957,7 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/vgabios-virtio.bin
 #rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/bios-256k.bin
 #rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/q35-acpi-dsdt.aml
 # Provided by package sgabios
-#rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/sgabios.bin
+rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/sgabios.bin
 
 %if 0%{?system_x86:1}
 # the pxe gpxe images will be symlinks to the images on
@@ -988,7 +986,7 @@ rom_link() {
 #rom_link ../seabios/bios.bin bios.bin
 #rom_link ../seabios/bios-256k.bin bios-256k.bin
 #rom_link ../seabios/q35-acpi-dsdt.aml q35-acpi-dsdt.aml
-#rom_link ../sgabios/sgabios.bin sgabios.bin
+rom_link ../sgabios/sgabios.bin sgabios.bin
 %endif
 
 %if 0%{?user:1}
@@ -1561,6 +1559,9 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Tue May 15 2018 Fabiano Rosas <farosas@linux.ibm.com> - 15:2.12.0-2.git
+- Remove dependency on sgabios RPM which is not present in CentOS 7.5
+
 * Tue May 15 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 15:2.12.0-1.git
 - Version update
 - Updating to d36f3ee Merge tag v2.12.0 into hostos-devel
