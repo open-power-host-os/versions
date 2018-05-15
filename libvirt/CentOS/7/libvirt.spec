@@ -261,8 +261,8 @@
 
 Summary: Library providing a simple virtualization API
 Name: libvirt
-Version: 4.2.0
-Release: 2%{?extraver}%{gitcommittag}%{?dist}
+Version: 4.3.0
+Release: 1%{?extraver}%{gitcommittag}%{?dist}
 License: LGPLv2+
 Group: Development/Libraries
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -2204,6 +2204,10 @@ exit 0
 
 
 %changelog
+* Tue May 15 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.3.0-1.git
+- Version update
+- Updating to 3096ff1 Merge tag v4.3.0 into hostos-devel
+
 * Wed Apr 04 2018 Fabiano Rosas <farosas@linux.ibm.com> - 4.2.0-2.git
 - Import upstream spec file from v4.2.0 and apply OpenPOWER Host OS
   customizations
