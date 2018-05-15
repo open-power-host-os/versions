@@ -57,10 +57,6 @@
 %bcond_without gtk              # enabled
 %endif
 
-# Force `--with-kvmonly` behavior
-%define _with_kvmonly --with-kvmonly
-%global with_kvmonly 1
-
 %global SLOF_gittagdate 20160525
 
 # pkvm wants seccomp
@@ -130,7 +126,10 @@
 %global kvm_target    arm
 %endif
 
-%if %{without kvmonly}
+%if %{with kvmonly}
+# If kvmonly, put the qemu-kvm binary in the qemu-kvm package
+%global kvm_package   kvm
+%else
 # If not kvmonly, build all packages and give them normal names. qemu-kvm
 # is a simple wrapper package and is only build for archs that support KVM.
 %global user          user
@@ -191,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.12.0
-Release: 1%{?extraver}%{gitcommittag}%{?dist}
+Release: 2%{?extraver}%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -412,6 +411,7 @@ emulation speed by using dynamic translation. QEMU has two operating modes:
 
 As QEMU requires no host kernel patches to run, it is safe and easy to use.
 
+%if %{without kvmonly}
 %ifarch %{kvm_archs}
 %package kvm
 Summary: QEMU metapackage for KVM support
@@ -424,6 +424,7 @@ Provides: qemu-kvm-ev = %{epoch}:%{version}-%{release}
 This is a meta-package that provides a qemu-system-<arch> package for native
 architectures where kvm can be enabled. For example, in an x86 system, this
 will install qemu-system-x86
+%endif
 %endif
 
 %package  img
@@ -517,8 +518,6 @@ Provides: kvm = 85
 Obsoletes: kvm < 85
 Requires: seavgabios-bin
 # First version that ships bios-256k.bin
-#Requires: seabios-bin >= 1.7.4-3
-Requires: sgabios-bin
 #Requires: ipxe-roms-qemu >= 20130517-2.gitc4bce43
 Requires: ipxe-roms-qemu
 %if 0%{?have_seccomp:1}
@@ -668,13 +667,13 @@ This package provides the system emulator for SPARC and SPARC64 systems.
 %endif
 
 %if 0%{?system_ppc:1}
-%package system-ppc
+%package %{system_ppc}
 Summary: QEMU system emulator for PPC
 Group: Development/Tools
 Requires: %{name}-common = %{epoch}:%{version}-%{release}
 #Requires: openbios
 #Requires: SLOF >= 0.1.git%{SLOF_gittagdate}
-%description system-ppc
+%description %{system_ppc}
 QEMU is a generic and open source processor emulator which achieves a good
 emulation speed by using dynamic translation.
 
@@ -878,6 +877,11 @@ make DESTDIR=$RPM_BUILD_ROOT install
 install -m 0755 %{SOURCE13} $RPM_BUILD_ROOT%{_bindir}/qemu-kvm
 %endif
 
+%if %{with kvmonly}
+rm $RPM_BUILD_ROOT%{_bindir}/qemu-system-%{kvm_target}
+rm $RPM_BUILD_ROOT%{_datadir}/systemtap/tapset/qemu-system-%{kvm_target}.stp
+%endif
+
 chmod -x ${RPM_BUILD_ROOT}%{_mandir}/man1/*
 install -D -p -m 0644 -t ${RPM_BUILD_ROOT}%{qemudocdir} Changelog README COPYING COPYING.LIB LICENSE
 for emu in $RPM_BUILD_ROOT%{_bindir}/qemu-system-*; do
@@ -934,25 +938,23 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/efi-virtio.rom
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/target-x86_64.conf
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/kvmvapic.bin
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/linuxboot.bin
-rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/linuxboot_dma.bin
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/multiboot.bin
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/q35-acpi-dsdt.aml
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/qemu-icon.bmp
-rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/qemu_vga.ndrv
 rm -rf ${RPM_BUILD_ROOT}%{_sysconfdir}/%{name}/target-x86_64.conf
 %endif
 
 # Provided by package ipxe
-rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/pxe*rom
-rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/efi*rom
+#rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/pxe*rom
+#rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/efi*rom
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/pxe-eepro100.rom
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/efi-eepro100.rom
 # Provided by package seavgabios
-rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/vgabios*bin
+#rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/vgabios*bin
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/vgabios-virtio.bin
 # Provided by package seabios
-rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/bios.bin
-rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/bios-256k.bin
+#rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/bios.bin
+#rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/bios-256k.bin
 #rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/q35-acpi-dsdt.aml
 # Provided by package sgabios
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/sgabios.bin
@@ -984,7 +986,7 @@ rom_link() {
 #rom_link ../seabios/bios.bin bios.bin
 #rom_link ../seabios/bios-256k.bin bios-256k.bin
 #rom_link ../seabios/q35-acpi-dsdt.aml q35-acpi-dsdt.aml
-#rom_link ../sgabios/sgabios.bin sgabios.bin
+rom_link ../sgabios/sgabios.bin sgabios.bin
 %endif
 
 %if 0%{?user:1}
@@ -1475,8 +1477,9 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %if 0%{?system_ppc:1}
-%files system-ppc
+%files %{system_ppc}
 %defattr(-, root, root)
+%if %{without kvmonly}
 #{_bindir}/qemu-system-ppc
 %{_bindir}/qemu-system-ppc64
 #{_bindir}/qemu-system-ppcemb
@@ -1486,6 +1489,7 @@ getent passwd qemu >/dev/null || \
 #{_mandir}/man1/qemu-system-ppc.1*
 %{_mandir}/man1/qemu-system-ppc64.1*
 #{_mandir}/man1/qemu-system-ppcemb.1*
+%endif
 %{_datadir}/%{name}/bamboo.dtb
 %{_datadir}/%{name}/canyonlands.dtb
 %{_datadir}/%{name}/hppa-firmware.img
@@ -1555,6 +1559,9 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Tue May 15 2018 Fabiano Rosas <farosas@linux.ibm.com> - 15:2.12.0-2.git
+- Remove dependency on sgabios RPM which is not present in CentOS 7.5
+
 * Tue May 15 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 15:2.12.0-1.git
 - Version update
 - Updating to d36f3ee Merge tag v2.12.0 into hostos-devel
