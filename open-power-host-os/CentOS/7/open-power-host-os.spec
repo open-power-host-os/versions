@@ -5,7 +5,7 @@
 
 Name: open-power-host-os
 Version: 3.5
-Release: 15%{?milestone_tag}%{dist}
+Release: 19%{?milestone_tag}%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
@@ -58,8 +58,8 @@ Requires(post): flannel
 Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20171214-2%{?extraver}.gitc2a331f%{dist}
-Requires(post): libvirt = 4.0.0-1%{?extraver}.git7418247%{dist}
-Requires(post): qemu = 15:2.11.0-2%{?extraver}.gite7153e0%{dist}
+Requires(post): libvirt = 4.2.0-2%{?extraver}.gitbf217de%{dist}
+Requires(post): qemu = 15:2.11.0-5%{?extraver}.gite7153e0%{dist}
 Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
@@ -73,7 +73,6 @@ Requires(post): opal-utils
 Requires(post): ppc64-diag = 2.7.4-3%{?extraver}.git608507e%{dist}
 Requires(post): servicelog = 1.1.14-9%{?extraver}.git15f2af5%{dist}
 Requires(post): sos
-Requires(post): systemtap = 3.2-1%{?extraver}.git4051c70%{dist}
 
 Requires(post): golang-github-russross-blackfriday = 1:1.2-8%{?extraver}.git5f33e7b%{dist}
 Requires(post): golang-github-shurcooL-sanitized_anchor_name = 1:0-3%{?extraver}.git1dba4b3%{dist}
@@ -120,8 +119,8 @@ Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.15.0-1%{?extraver}.git33f711f%{dist}
 
 Requires(post): SLOF = 20171214-2%{?extraver}.gitc2a331f%{dist}
-Requires(post): libvirt = 4.0.0-1%{?extraver}.git7418247%{dist}
-Requires(post): qemu = 15:2.11.0-2%{?extraver}.gite7153e0%{dist}
+Requires(post): libvirt = 4.2.0-2%{?extraver}.gitbf217de%{dist}
+Requires(post): qemu = 15:2.11.0-5%{?extraver}.gite7153e0%{dist}
 
 %description virt
 %{summary}
@@ -146,7 +145,6 @@ Requires(post): opal-utils
 Requires(post): ppc64-diag = 2.7.4-3%{?extraver}.git608507e%{dist}
 Requires(post): servicelog = 1.1.14-9%{?extraver}.git15f2af5%{dist}
 Requires(post): sos
-Requires(post): systemtap = 3.2-1%{?extraver}.git4051c70%{dist}
 
 %description ras
 %{summary}
@@ -213,6 +211,18 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Wed May 16 2018 Fabiano Rosas <farosas@linux.ibm.com> - 3.5-19.alpha
+- Update package dependencies
+
+* Wed May 16 2018 Fabiano Rosas <farosas@linux.ibm.com> - 3.5-18.alpha
+- Use systemtap from the base distro
+
+* Tue May 15 2018 Fabiano Rosas <farosas@linux.ibm.com> - 3.5-17.alpha
+- Update package dependencies
+
+* Wed Apr 04 2018 Fabiano Rosas <farosas@linux.ibm.com> - 3.5-16.alpha
+- Update package dependencies
+
 * Wed Apr 04 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 3.5-15.alpha
 - Update package dependencies
 

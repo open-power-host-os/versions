@@ -190,7 +190,7 @@
 Summary: QEMU is a FAST! processor emulator
 Name: qemu
 Version: 2.11.0
-Release: 2%{?extraver}%{gitcommittag}%{?dist}
+Release: 5%{?extraver}%{gitcommittag}%{?dist}
 Epoch: 15
 License: GPLv2+ and LGPLv2+ and BSD
 Group: Development/Tools
@@ -518,8 +518,6 @@ Provides: kvm = 85
 Obsoletes: kvm < 85
 Requires: seavgabios-bin
 # First version that ships bios-256k.bin
-#Requires: seabios-bin >= 1.7.4-3
-Requires: sgabios-bin
 #Requires: ipxe-roms-qemu >= 20130517-2.gitc4bce43
 Requires: ipxe-roms-qemu
 %if 0%{?have_seccomp:1}
@@ -796,6 +794,10 @@ buildldflags="VL_LDFLAGS=-Wl,--build-id"
 sed -i.debug 's/"-g $CFLAGS"/"$CFLAGS"/g' configure
 %endif
 
+%ifarch ppc64le
+%global optflags %(echo %{optflags} | sed 's/-O2 //')
+%endif
+
 ./configure \
     --prefix=%{_prefix} \
     --libdir=%{_libdir} \
@@ -934,7 +936,6 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/efi-pcnet.rom
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/efi-rtl8139.rom
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/efi-virtio.rom
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/target-x86_64.conf
-rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/acpi-dsdt.aml
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/kvmvapic.bin
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/linuxboot.bin
 rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/multiboot.bin
@@ -954,10 +955,9 @@ rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/vgabios-virtio.bin
 # Provided by package seabios
 #rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/bios.bin
 #rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/bios-256k.bin
-#rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/acpi-dsdt.aml
 #rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/q35-acpi-dsdt.aml
 # Provided by package sgabios
-#rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/sgabios.bin
+rm -rf ${RPM_BUILD_ROOT}%{_datadir}/%{name}/sgabios.bin
 
 %if 0%{?system_x86:1}
 # the pxe gpxe images will be symlinks to the images on
@@ -985,9 +985,8 @@ rom_link() {
 #rom_link ../seavgabios/vgabios-vmware.bin vgabios-vmware.bin
 #rom_link ../seabios/bios.bin bios.bin
 #rom_link ../seabios/bios-256k.bin bios-256k.bin
-#rom_link ../seabios/acpi-dsdt.aml acpi-dsdt.aml
 #rom_link ../seabios/q35-acpi-dsdt.aml q35-acpi-dsdt.aml
-#rom_link ../sgabios/sgabios.bin sgabios.bin
+rom_link ../sgabios/sgabios.bin sgabios.bin
 %endif
 
 %if 0%{?user:1}
@@ -1309,7 +1308,6 @@ getent passwd qemu >/dev/null || \
 #%{_mandir}/man1/qemu-system-i386.1*
 #%{_mandir}/man1/qemu-system-x86_64.1*
 #%endif
-%{_datadir}/%{name}/acpi-dsdt.aml
 #%{_datadir}/%{name}/q35-acpi-dsdt.aml
 %{_datadir}/%{name}/bios.bin
 %{_datadir}/%{name}/bios-256k.bin
@@ -1493,11 +1491,14 @@ getent passwd qemu >/dev/null || \
 #{_mandir}/man1/qemu-system-ppcemb.1*
 %endif
 %{_datadir}/%{name}/bamboo.dtb
+%{_datadir}/%{name}/canyonlands.dtb
+%{_datadir}/%{name}/hppa-firmware.img
 %{_datadir}/%{name}/ppc_rom.bin
 %{_datadir}/%{name}/spapr-rtas.bin
 #{_datadir}/%{name}/openbios-ppc
 #{_datadir}/%{name}/slof.bin
 %{_datadir}/%{name}/u-boot.e500
+%{_datadir}/%{name}/u-boot-sam460-20100605.bin
 %ifarch ppc64 ppc64le
 %{?kvm_files:}
 %{?qemu_kvm_files:}
@@ -1558,6 +1559,15 @@ getent passwd qemu >/dev/null || \
 %endif
 
 %changelog
+* Tue May 15 2018 Fabiano Rosas <farosas@linux.ibm.com> - 15:2.11.0-5.git
+- Remove dependency on sgabios RPM which is not present in CentOS 7.5
+
+* Tue Apr 03 2018 Fabiano Rosas <farosas@linux.ibm.com> - 15:2.11.0-4.git
+- Remove acpi-dsdt.aml which is not provided by seabios anymore
+
+* Tue Apr 03 2018 Fabiano Rosas <farosas@linux.ibm.com> - 15:2.11.0-3.git
+- Fix build on ppc64le
+
 * Mon Mar 05 2018 Fabiano Rosas <farosas@linux.vnet.ibm.com> - 15:2.11.0-2.git
 - Avoid conflict with opal-firmware package
 
