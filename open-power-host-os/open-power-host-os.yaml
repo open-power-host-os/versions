@@ -13,7 +13,6 @@ Package:
      - libservicelog
      - libvirt
      - libvpd
-     - lsvpd
      - opal-prd
      - qemu
      - servicelog
