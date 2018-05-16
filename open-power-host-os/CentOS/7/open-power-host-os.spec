@@ -70,7 +70,6 @@ Requires(post): lsvpd = 1.7.8-4%{?extraver}.git63c0dfc%{dist}
 Requires(post): opal-firmware
 Requires(post): opal-prd
 Requires(post): opal-utils
-Requires(post): ppc64-diag = 2.7.4-3%{?extraver}.git608507e%{dist}
 Requires(post): servicelog = 1.1.14-9%{?extraver}.git15f2af5%{dist}
 Requires(post): sos
 
@@ -142,7 +141,6 @@ Requires(post): lsvpd = 1.7.8-4%{?extraver}.git63c0dfc%{dist}
 Requires(post): opal-firmware
 Requires(post): opal-prd
 Requires(post): opal-utils
-Requires(post): ppc64-diag = 2.7.4-3%{?extraver}.git608507e%{dist}
 Requires(post): servicelog = 1.1.14-9%{?extraver}.git15f2af5%{dist}
 Requires(post): sos
 
