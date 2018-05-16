@@ -315,7 +315,7 @@ Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: 4.16.0
-Release: 3%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
+Release: 4%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1695,6 +1695,9 @@ fi
 
 
 %changelog
+* Wed May 16 2018 Fabiano Rosas <farosas@linux.ibm.com> - 4.16.0-4.git
+- Bump due to config change
+
 * Tue May 15 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.16.0-3.git
 - Updating to fd8742e KVM: PPC: Book3S HV: XIVE: Resend re-routed interrupts on
   CPU priority change
