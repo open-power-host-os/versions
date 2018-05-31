@@ -315,7 +315,7 @@ Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: 4.16.0
-Release: 1%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
+Release: 2%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1695,6 +1695,9 @@ fi
 
 
 %changelog
+* Thu May 31 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.16.0-2.git
+- Updating to 5ed4ce3 KVM: PPC: Book 3S HV: Do ptesync in radix guest exit path
+
 * Fri May 25 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.16.0-1.git
 - Version update
 - Updating to fd8742e KVM: PPC: Book3S HV: XIVE: Resend re-routed interrupts on CPU priority change
