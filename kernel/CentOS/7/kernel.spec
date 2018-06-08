@@ -464,6 +464,8 @@ Source1001: hostos-minimal.config
 Source2000: cpupower.service
 Source2001: cpupower.config
 
+Patch1: powerpc-boot-wrapper.patch
+
 BuildRoot: %{_tmppath}/kernel-%{KVRA}-root
 
 #atch999: fix.script.location.patch
@@ -714,6 +716,7 @@ mv %{name} kernel-%{KVRA}
 
 #mv linux-%{rheltarball} linux-%{KVRA}
 cd kernel-%{KVRA}
+%patch1 -p1
 
 # Drop some necessary files from the source dir into the buildroot
 #cp $RPM_SOURCE_DIR/kernel-%{version}-*.config .
