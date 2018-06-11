@@ -314,8 +314,8 @@ Name: kernel%{?variant}
 Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
-Version: 4.16.0
-Release: 5%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
+Version: 4.17.0
+Release: 1%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1698,6 +1698,10 @@ fi
 
 
 %changelog
+* Mon Jun 11 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.17.0-1.git
+- Version update
+- Updating to 5ce3eac Merge tag v4.17 into hostos-devel
+
 * Fri May 25 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.16.0-5.git
 - Updating to 5ed4ce3 KVM: PPC: Book 3S HV: Do ptesync in radix guest exit path
 
