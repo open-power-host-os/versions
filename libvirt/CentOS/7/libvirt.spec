@@ -260,7 +260,7 @@
 Summary: Library providing a simple virtualization API
 Name: libvirt
 Version: 4.5.0
-Release: 2%{?extraver}%{gitcommittag}%{?dist}
+Release: 3%{?extraver}%{gitcommittag}%{?dist}
 License: LGPLv2+
 URL: https://libvirt.org/
 
@@ -2141,6 +2141,9 @@ exit 0
 
 
 %changelog
+* Tue Jul 10 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.5.0-3.git
+- Updating to b7c8ea8 Merge tag v4.5.0 into hostos-devel
+
 * Tue Jul 10 2018 Murilo Opsfelder Araújo <muriloo@linux.ibm.com> - 4.5.0-2
 - Rebase to libvirt.spec from Fedora rawhide
 - Apply HostOS customizations
