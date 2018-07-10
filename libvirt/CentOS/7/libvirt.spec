@@ -26,7 +26,6 @@
 %{!?enable_autotools:%global enable_autotools 1}
 
 # The hypervisor drivers that run in libvirtd
-%define with_xen           0%{!?_without_xen:1}
 %define with_qemu          0%{!?_without_qemu:1}
 %define with_lxc           0%{!?_without_lxc:1}
 %define with_uml           0%{!?_without_uml:1}
@@ -104,7 +103,6 @@
 
 # Xen is available only on i386 x86_64 ia64
 %ifnarch %{ix86} x86_64 ia64
-    %define with_xen 0
     %define with_libxl 0
 %endif
 
@@ -169,11 +167,6 @@
     %define with_firewalld 1
 %endif
 
-# RHEL-6 stopped including Xen on all archs.
-%if 0%{?rhel}
-    %define with_xen 0
-%endif
-
 # fuse is used to provide virtualized /proc for LXC
 %if %{with_lxc} && 0%{?rhel} != 6
     %define with_fuse      0%{!?_without_fuse:1}
@@ -199,9 +192,14 @@
 %if 0%{?fedora}
     %define with_wireshark 0%{!?_without_wireshark:1}
 %endif
+%if 0%{?fedora} || 0%{?rhel} > 7
+    %define wireshark_plugindir %(pkg-config --variable plugindir wireshark)
+%else
+    %define wireshark_plugindir %{_libdir}/wireshark/plugins
+%endif
 
 # Enable libssh transport for new enough distros
-%if 0%{?fedora}
+%if 0%{?fedora} || 0%{?rhel} > 7
     %define with_libssh 0%{!?_without_libssh:1}
 %endif
 
@@ -261,11 +259,9 @@
 
 Summary: Library providing a simple virtualization API
 Name: libvirt
-Version: 4.3.0
-Release: 1%{?extraver}%{gitcommittag}%{?dist}
+Version: 4.5.0
+Release: 2%{?extraver}%{gitcommittag}%{?dist}
 License: LGPLv2+
-Group: Development/Libraries
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 URL: https://libvirt.org/
 
 %if %(echo %{version} | grep -q "\.0$"; echo $?) == 1
@@ -287,9 +283,6 @@ Requires: libvirt-daemon-driver-qemu = %{version}-%{release}
 %endif
 %if %{with_uml}
 Requires: libvirt-daemon-driver-uml = %{version}-%{release}
-%endif
-%if %{with_xen}
-Requires: libvirt-daemon-driver-xen = %{version}-%{release}
 %endif
 %if %{with_vbox}
 Requires: libvirt-daemon-driver-vbox = %{version}-%{release}
@@ -324,7 +317,7 @@ BuildRequires: %{python}
 %if %{with_systemd}
 BuildRequires: systemd-units
 %endif
-%if %{with_xen} || %{with_libxl}
+%if %{with_libxl}
 BuildRequires: xen-devel
 %endif
 BuildRequires: libxml2-devel
@@ -384,11 +377,6 @@ BuildRequires: util-linux
 BuildRequires: libacl-devel
 # From QEMU RPMs
 BuildRequires: /usr/bin/qemu-img
-%else
-    %if %{with_xen}
-# From Xen RPMs
-BuildRequires: /usr/sbin/qcow-create
-    %endif
 %endif
 # For LVM drivers
 BuildRequires: lvm2
@@ -472,6 +460,11 @@ BuildRequires: wireshark-devel >= 2.1.0
 BuildRequires: libssh-devel >= 0.7.0
 %endif
 
+%if 0%{?fedora} > 27 || 0%{?rhel} > 7
+BuildRequires: rpcgen
+BuildRequires: libtirpc-devel
+%endif
+
 Provides: bundled(gnulib)
 
 %description
@@ -481,7 +474,6 @@ the libvirtd server exporting the virtualization support.
 
 %package docs
 Summary: API reference and website documentation
-Group: Development/Libraries
 
 %description docs
 Includes the API reference for the libvirt C library, and a complete
@@ -489,7 +481,6 @@ copy of the libvirt.org website documentation.
 
 %package daemon
 Summary: Server side daemon and supporting files for libvirt library
-Group: Development/Libraries
 
 # All runtime requirements for the libvirt package (runtime requrements
 # for subpackages are listed later in those subpackages)
@@ -499,8 +490,14 @@ Requires: %{name}-libs = %{version}-%{release}
 
 # for modprobe of pci devices
 Requires: module-init-tools
+
 # for /sbin/ip & /sbin/tc
 Requires: iproute
+# tc is provided by iproute-tc since at least Fedora 26
+%if 0%{?fedora} || 0%{?rhel} > 7
+Requires: iproute-tc
+%endif
+
 Requires: avahi-libs
 %if 0%{?fedora} || 0%{?rhel} >= 7
 Requires: polkit >= 0.112
@@ -536,7 +533,6 @@ for specific drivers.
 
 %package daemon-config-network
 Summary: Default configuration files for the libvirtd daemon
-Group: Development/Libraries
 
 Requires: libvirt-daemon = %{version}-%{release}
 Requires: libvirt-daemon-driver-network = %{version}-%{release}
@@ -546,7 +542,6 @@ Default configuration files for setting up NAT based networking
 
 %package daemon-config-nwfilter
 Summary: Network filter configuration files for the libvirtd daemon
-Group: Development/Libraries
 
 Requires: libvirt-daemon = %{version}-%{release}
 Requires: libvirt-daemon-driver-nwfilter = %{version}-%{release}
@@ -556,7 +551,6 @@ Network filter configuration files for cleaning guest traffic
 
 %package daemon-driver-network
 Summary: Network driver plugin for the libvirtd daemon
-Group: Development/Libraries
 Requires: libvirt-daemon = %{version}-%{release}
 Requires: dnsmasq >= 2.41
 Requires: radvd
@@ -573,7 +567,6 @@ bridge capabilities.
 
 %package daemon-driver-nwfilter
 Summary: Nwfilter driver plugin for the libvirtd daemon
-Group: Development/Libraries
 Requires: libvirt-daemon = %{version}-%{release}
 Requires: iptables
 %if 0%{?rhel} && 0%{?rhel} < 7
@@ -589,7 +582,6 @@ iptables and ip6tables capabilities
 
 %package daemon-driver-nodedev
 Summary: Nodedev driver plugin for the libvirtd daemon
-Group: Development/Libraries
 Requires: libvirt-daemon = %{version}-%{release}
 # needed for device enumeration
 %if 0%{?fedora} || 0%{?rhel} >= 7
@@ -606,7 +598,6 @@ capabilities.
 
 %package daemon-driver-interface
 Summary: Interface driver plugin for the libvirtd daemon
-Group: Development/Libraries
 Requires: libvirt-daemon = %{version}-%{release}
 %if (0%{?fedora} || 0%{?rhel} >= 7)
 Requires: netcf-libs >= 0.2.2
@@ -620,7 +611,6 @@ netcf library
 
 %package daemon-driver-secret
 Summary: Secret driver plugin for the libvirtd daemon
-Group: Development/Libraries
 Requires: libvirt-daemon = %{version}-%{release}
 
 %description daemon-driver-secret
@@ -629,7 +619,6 @@ an implementation of the secret key APIs.
 
 %package daemon-driver-storage-core
 Summary: Storage driver plugin including base backends for the libvirtd daemon
-Group: Development/Libraries
 Requires: libvirt-daemon = %{version}-%{release}
 Requires: nfs-utils
 # For mkfs
@@ -637,11 +626,6 @@ Requires: util-linux
 %if %{with_qemu}
 # From QEMU RPMs
 Requires: /usr/bin/qemu-img
-%else
-    %if %{with_xen}
-# From Xen RPMs
-Requires: /usr/sbin/qcow-create
-    %endif
 %endif
 
 %description daemon-driver-storage-core
@@ -651,7 +635,6 @@ iSCSI, and multipath storage.
 
 %package daemon-driver-storage-logical
 Summary: Storage driver plugin for lvm volumes
-Group: Development/Libraries
 Requires: libvirt-daemon-driver-storage-core = %{version}-%{release}
 Requires: lvm2
 
@@ -662,7 +645,6 @@ volumes using lvm.
 
 %package daemon-driver-storage-disk
 Summary: Storage driver plugin for disk
-Group: Development/Libraries
 Requires: libvirt-daemon-driver-storage-core = %{version}-%{release}
 Requires: parted
 Requires: device-mapper
@@ -674,7 +656,6 @@ volumes using the host disks.
 
 %package daemon-driver-storage-scsi
 Summary: Storage driver plugin for local scsi devices
-Group: Development/Libraries
 Requires: libvirt-daemon-driver-storage-core = %{version}-%{release}
 
 %description daemon-driver-storage-scsi
@@ -684,7 +665,6 @@ host devices.
 
 %package daemon-driver-storage-iscsi
 Summary: Storage driver plugin for iscsi
-Group: Development/Libraries
 Requires: libvirt-daemon-driver-storage-core = %{version}-%{release}
 Requires: iscsi-initiator-utils
 
@@ -695,7 +675,6 @@ volumes using the host iscsi stack.
 
 %package daemon-driver-storage-mpath
 Summary: Storage driver plugin for multipath volumes
-Group: Development/Libraries
 Requires: libvirt-daemon-driver-storage-core = %{version}-%{release}
 Requires: device-mapper
 
@@ -707,7 +686,6 @@ multipath storage using device mapper.
 %if %{with_storage_gluster}
 %package daemon-driver-storage-gluster
 Summary: Storage driver plugin for gluster
-Group: Development/Libraries
 Requires: libvirt-daemon-driver-storage-core = %{version}-%{release}
     %if 0%{?fedora}
 Requires: glusterfs-client >= 2.0.1
@@ -725,7 +703,6 @@ volumes using libgfapi.
 %if %{with_storage_rbd}
 %package daemon-driver-storage-rbd
 Summary: Storage driver plugin for rbd
-Group: Development/Libraries
 Requires: libvirt-daemon-driver-storage-core = %{version}-%{release}
 
 %description daemon-driver-storage-rbd
@@ -737,7 +714,6 @@ volumes using the ceph protocol.
 %if %{with_storage_sheepdog}
 %package daemon-driver-storage-sheepdog
 Summary: Storage driver plugin for sheepdog
-Group: Development/Libraries
 Requires: libvirt-daemon-driver-storage-core = %{version}-%{release}
 Requires: sheepdog
 
@@ -750,7 +726,6 @@ sheepdog volumes using.
 %if %{with_storage_zfs}
 %package daemon-driver-storage-zfs
 Summary: Storage driver plugin for ZFS
-Group: Development/Libraries
 Requires: libvirt-daemon-driver-storage-core = %{version}-%{release}
 # Support any conforming implementation of zfs
 Requires: /sbin/zfs
@@ -764,7 +739,6 @@ ZFS volumes.
 
 %package daemon-driver-storage
 Summary: Storage driver plugin including all backends for the libvirtd daemon
-Group: Development/Libraries
 Requires: libvirt-daemon-driver-storage-core = %{version}-%{release}
 Requires: libvirt-daemon-driver-storage-disk = %{version}-%{release}
 Requires: libvirt-daemon-driver-storage-logical = %{version}-%{release}
@@ -793,7 +767,6 @@ parted and more.
 %if %{with_qemu}
 %package daemon-driver-qemu
 Summary: QEMU driver plugin for the libvirtd daemon
-Group: Development/Libraries
 Requires: libvirt-daemon = %{version}-%{release}
 # There really is a hard cross-driver dependency here
 Requires: libvirt-daemon-driver-network = %{version}-%{release}
@@ -818,7 +791,6 @@ QEMU
 %if %{with_lxc}
 %package daemon-driver-lxc
 Summary: LXC driver plugin for the libvirtd daemon
-Group: Development/Libraries
 Requires: libvirt-daemon = %{version}-%{release}
 # There really is a hard cross-driver dependency here
 Requires: libvirt-daemon-driver-network = %{version}-%{release}
@@ -836,7 +808,6 @@ the Linux kernel
 %if %{with_uml}
 %package daemon-driver-uml
 Summary: Uml driver plugin for the libvirtd daemon
-Group: Development/Libraries
 Requires: libvirt-daemon = %{version}-%{release}
 
 %description daemon-driver-uml
@@ -846,23 +817,9 @@ User Mode Linux
 %endif
 
 
-%if %{with_xen}
-%package daemon-driver-xen
-Summary: Xen driver plugin for the libvirtd daemon
-Group: Development/Libraries
-Requires: libvirt-daemon = %{version}-%{release}
-
-%description daemon-driver-xen
-The Xen driver plugin for the libvirtd daemon, providing
-an implementation of the hypervisor driver APIs using
-Xen
-%endif
-
-
 %if %{with_vbox}
 %package daemon-driver-vbox
 Summary: VirtualBox driver plugin for the libvirtd daemon
-Group: Development/Libraries
 Requires: libvirt-daemon = %{version}-%{release}
 
 %description daemon-driver-vbox
@@ -875,8 +832,8 @@ VirtualBox
 %if %{with_libxl}
 %package daemon-driver-libxl
 Summary: Libxl driver plugin for the libvirtd daemon
-Group: Development/Libraries
 Requires: libvirt-daemon = %{version}-%{release}
+Obsoletes: libvirt-daemon-driver-xen < 4.3.0
 
 %description daemon-driver-libxl
 The Libxl driver plugin for the libvirtd daemon, providing
@@ -889,7 +846,6 @@ Libxl
 %if %{with_qemu_tcg}
 %package daemon-qemu
 Summary: Server side daemon & driver required to run QEMU guests
-Group: Development/Libraries
 
 Requires: libvirt-daemon = %{version}-%{release}
 Requires: libvirt-daemon-driver-qemu = %{version}-%{release}
@@ -910,7 +866,6 @@ capabilities of the QEMU TCG emulators
 %if %{with_qemu_kvm}
 %package daemon-kvm
 Summary: Server side daemon & driver required to run KVM guests
-Group: Development/Libraries
 
 Requires: libvirt-daemon = %{version}-%{release}
 Requires: libvirt-daemon-driver-qemu = %{version}-%{release}
@@ -931,7 +886,6 @@ capabilities of the KVM hypervisor
 %if %{with_lxc}
 %package daemon-lxc
 Summary: Server side daemon & driver required to run LXC guests
-Group: Development/Libraries
 
 Requires: libvirt-daemon = %{version}-%{release}
 Requires: libvirt-daemon-driver-lxc = %{version}-%{release}
@@ -951,7 +905,6 @@ capabilities of LXC
 %if %{with_uml}
 %package daemon-uml
 Summary: Server side daemon & driver required to run UML guests
-Group: Development/Libraries
 
 Requires: libvirt-daemon = %{version}-%{release}
 Requires: libvirt-daemon-driver-uml = %{version}-%{release}
@@ -969,15 +922,11 @@ capabilities of UML
 %endif
 
 
-%if %{with_xen} || %{with_libxl}
+%if %{with_libxl}
 %package daemon-xen
 Summary: Server side daemon & driver required to run XEN guests
-Group: Development/Libraries
 
 Requires: libvirt-daemon = %{version}-%{release}
-    %if %{with_xen}
-Requires: libvirt-daemon-driver-xen = %{version}-%{release}
-    %endif
     %if %{with_libxl}
 Requires: libvirt-daemon-driver-libxl = %{version}-%{release}
     %endif
@@ -997,7 +946,6 @@ capabilities of XEN
 %if %{with_vbox}
 %package daemon-vbox
 Summary: Server side daemon & driver required to run VirtualBox guests
-Group: Development/Libraries
 
 Requires: libvirt-daemon = %{version}-%{release}
 Requires: libvirt-daemon-driver-vbox = %{version}-%{release}
@@ -1015,7 +963,6 @@ capabilities of VirtualBox
 
 %package client
 Summary: Client side utilities of the libvirt library
-Group: Development/Libraries
 Requires: %{name}-libs = %{version}-%{release}
 Requires: readline
 Requires: ncurses
@@ -1037,7 +984,6 @@ capabilities of recent versions of Linux (and other OSes).
 
 %package libs
 Summary: Client side libraries
-Group: Development/Libraries
 # So remote clients can access libvirt over SSH tunnel
 # (client invokes 'nc' against the UNIX socket on the server)
 Requires: nc
@@ -1051,7 +997,6 @@ Shared libraries for accessing the libvirt daemon.
 
 %package admin
 Summary: Set of tools to control libvirt daemon
-Group: Development/Libraries
 Requires: %{name}-libs = %{version}-%{release}
 Requires: readline
 %if %{with_bash_completion}
@@ -1064,7 +1009,6 @@ The client side utilities to control the libvirt daemon.
 %if %{with_bash_completion}
 %package bash-completion
 Summary: Bash completion script
-Group: Development/Libraries
 
 %description bash-completion
 Bash completion script stub.
@@ -1073,7 +1017,6 @@ Bash completion script stub.
 %if %{with_wireshark}
 %package wireshark
 Summary: Wireshark dissector plugin for libvirt RPC transactions
-Group: Development/Libraries
 Requires: wireshark >= 1.12.6-4
 Requires: %{name}-libs = %{version}-%{release}
 
@@ -1084,7 +1027,6 @@ Wireshark dissector plugin for better analysis of libvirt RPC traffic.
 %if %{with_lxc}
 %package login-shell
 Summary: Login shell for connecting users to an LXC container
-Group: Development/Libraries
 Requires: %{name}-libs = %{version}-%{release}
 
 %description login-shell
@@ -1095,7 +1037,6 @@ namespaces.
 
 %package devel
 Summary: Libraries, includes, etc. to compile with the libvirt library
-Group: Development/Libraries
 Requires: %{name}-libs = %{version}-%{release}
 Requires: pkgconfig
 
@@ -1105,7 +1046,6 @@ Include header files & development libraries for the libvirt C library.
 %if %{with_sanlock}
 %package lock-sanlock
 Summary: Sanlock lock manager plugin for QEMU driver
-Group: Development/Libraries
 Requires: sanlock >= 2.4
 #for virt-sanlock-cleanup require augeas
 Requires: augeas
@@ -1119,7 +1059,6 @@ driver
 
 %package nss
 Summary: Libvirt plugin for Name Service Switch
-Group: Development/Libraries
 Requires: libvirt-daemon-driver-network = %{version}-%{release}
 
 %description nss
@@ -1170,12 +1109,6 @@ rm -rf .git
 %if ! %{supported_platform}
 echo "This RPM requires either Fedora >= %{min_fedora} or RHEL >= %{min_rhel}"
 exit 1
-%endif
-
-%if %{with_xen}
-    %define arg_xen --with-xen
-%else
-    %define arg_xen --without-xen
 %endif
 
 %if %{with_qemu}
@@ -1341,13 +1274,12 @@ exit 1
 export SOURCE_DATE_EPOCH=$(stat --printf='%Y' %{_specdir}/%{name}.spec)
 
 %if 0%{?enable_autotools}
- ./bootstrap --no-git --gnulib-srcdir=.gnulib
- ./autogen.sh --system \
+./bootstrap --no-git --gnulib-srcdir=.gnulib
+./autogen.sh --system \
 %else
 rm -f po/stamp-po
 %configure \
 %endif
-           %{?arg_xen} \
            %{?arg_qemu} \
            %{?arg_openvz} \
            %{?arg_lxc} \
@@ -1432,8 +1364,10 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/libvirt/connection-driver/*.la
 rm -f $RPM_BUILD_ROOT%{_libdir}/libvirt/connection-driver/*.a
 rm -f $RPM_BUILD_ROOT%{_libdir}/libvirt/storage-backend/*.la
 rm -f $RPM_BUILD_ROOT%{_libdir}/libvirt/storage-backend/*.a
+rm -f $RPM_BUILD_ROOT%{_libdir}/libvirt/storage-file/*.la
+rm -f $RPM_BUILD_ROOT%{_libdir}/libvirt/storage-file/*.a
 %if %{with_wireshark}
-rm -f $RPM_BUILD_ROOT%{_libdir}/wireshark/plugins/libvirt.la
+rm -f $RPM_BUILD_ROOT%{wireshark_plugindir}/libvirt.la
 %endif
 
 install -d -m 0755 $RPM_BUILD_ROOT%{_datadir}/lib/libvirt/dnsmasq/
@@ -1451,6 +1385,8 @@ rm -f $RPM_BUILD_ROOT%{_sysconfdir}/libvirt/qemu/networks/autostart/default.xml
 install -d -m 0755 $RPM_BUILD_ROOT%{_datadir}/libvirt/nwfilter/
 cp -a $RPM_BUILD_ROOT%{_sysconfdir}/libvirt/nwfilter/*.xml \
     $RPM_BUILD_ROOT%{_datadir}/libvirt/nwfilter/
+# libvirt saves these files with mode 600
+chmod 600 $RPM_BUILD_ROOT%{_sysconfdir}/libvirt/nwfilter/*.xml
 
 # Strip auto-generated UUID - we need it generated per-install
 sed -i -e "/<uuid>/d" $RPM_BUILD_ROOT%{_datadir}/libvirt/networks/default.xml
@@ -1494,12 +1430,12 @@ mv $RPM_BUILD_ROOT%{_datadir}/doc/libvirt-%{version} libvirt-docs
 %ifarch %{power64} s390x x86_64 ia64 alpha sparc64
 mv $RPM_BUILD_ROOT%{_datadir}/systemtap/tapset/libvirt_probes.stp \
    $RPM_BUILD_ROOT%{_datadir}/systemtap/tapset/libvirt_probes-64.stp
+
+    %if %{with_qemu}
 mv $RPM_BUILD_ROOT%{_datadir}/systemtap/tapset/libvirt_qemu_probes.stp \
    $RPM_BUILD_ROOT%{_datadir}/systemtap/tapset/libvirt_qemu_probes-64.stp
+    %endif
 %endif
-
-%clean
-rm -fr %{buildroot}
 
 %if %{with tests}
 %check
@@ -1849,6 +1785,7 @@ exit 0
 %config(noreplace) %{_sysconfdir}/libvirt/libvirtd.conf
 %config(noreplace) %{_sysconfdir}/libvirt/virtlogd.conf
 %config(noreplace) %{_sysconfdir}/libvirt/virtlockd.conf
+%config(noreplace) %{_sysconfdir}/sasl2/libvirt.conf
 %config(noreplace) %{_prefix}/lib/sysctl.d/60-libvirtd.conf
 
 %config(noreplace) %{_sysconfdir}/logrotate.d/libvirtd
@@ -1936,6 +1873,7 @@ exit 0
 %attr(0755, root, root) %{_libexecdir}/libvirt_parthelper
 %{_libdir}/%{name}/connection-driver/libvirt_driver_storage.so
 %{_libdir}/%{name}/storage-backend/libvirt_storage_backend_fs.so
+%{_libdir}/%{name}/storage-file/libvirt_storage_file_fs.so
 
 %files daemon-driver-storage-disk
 %{_libdir}/%{name}/storage-backend/libvirt_storage_backend_disk.so
@@ -1955,6 +1893,7 @@ exit 0
 %if %{with_storage_gluster}
 %files daemon-driver-storage-gluster
 %{_libdir}/%{name}/storage-backend/libvirt_storage_backend_gluster.so
+%{_libdir}/%{name}/storage-file/libvirt_storage_file_gluster.so
 %endif
 
 %if %{with_storage_rbd}
@@ -1985,6 +1924,8 @@ exit 0
 %{_datadir}/augeas/lenses/libvirtd_qemu.aug
 %{_datadir}/augeas/lenses/tests/test_libvirtd_qemu.aug
 %{_libdir}/%{name}/connection-driver/libvirt_driver_qemu.so
+%dir %attr(0711, root, root) %{_localstatedir}/lib/libvirt/swtpm/
+%dir %attr(0711, root, root) %{_localstatedir}/log/swtpm/libvirt/qemu/
 %endif
 
 %if %{with_lxc}
@@ -2007,12 +1948,6 @@ exit 0
 %ghost %dir %{_localstatedir}/run/libvirt/uml/
 %dir %attr(0700, root, root) %{_localstatedir}/lib/libvirt/uml/
 %{_libdir}/%{name}/connection-driver/libvirt_driver_uml.so
-%endif
-
-%if %{with_xen}
-%files daemon-driver-xen
-%dir %attr(0700, root, root) %{_localstatedir}/lib/libvirt/xen/
-%{_libdir}/%{name}/connection-driver/libvirt_driver_xen.so
 %endif
 
 %if %{with_libxl}
@@ -2049,7 +1984,7 @@ exit 0
 %files daemon-uml
 %endif
 
-%if %{with_xen} || %{with_libxl}
+%if %{with_libxl}
 %files daemon-xen
 %endif
 
@@ -2085,8 +2020,10 @@ exit 0
 %{_bindir}/virt-host-validate
 
 %{_datadir}/systemtap/tapset/libvirt_probes*.stp
-%{_datadir}/systemtap/tapset/libvirt_qemu_probes*.stp
 %{_datadir}/systemtap/tapset/libvirt_functions.stp
+%if %{with_qemu}
+%{_datadir}/systemtap/tapset/libvirt_qemu_probes*.stp
+%endif
 
 %if %{with_bash_completion}
 %{_datadir}/bash-completion/completions/virsh
@@ -2127,6 +2064,8 @@ exit 0
 %{_datadir}/libvirt/schemas/networkcommon.rng
 %{_datadir}/libvirt/schemas/nodedev.rng
 %{_datadir}/libvirt/schemas/nwfilter.rng
+%{_datadir}/libvirt/schemas/nwfilter_params.rng
+%{_datadir}/libvirt/schemas/nwfilterbinding.rng
 %{_datadir}/libvirt/schemas/secret.rng
 %{_datadir}/libvirt/schemas/storagecommon.rng
 %{_datadir}/libvirt/schemas/storagepool.rng
@@ -2135,8 +2074,6 @@ exit 0
 %{_datadir}/libvirt/cpu_map.xml
 
 %{_datadir}/libvirt/test-screenshot.png
-
-%config(noreplace) %{_sysconfdir}/sasl2/libvirt.conf
 
 %files admin
 %{_mandir}/man1/virt-admin.1*
@@ -2152,7 +2089,7 @@ exit 0
 
 %if %{with_wireshark}
 %files wireshark
-%{_libdir}/wireshark/plugins/libvirt.so
+%{wireshark_plugindir}/libvirt.so
 %endif
 
 %files nss
@@ -2204,14 +2141,6 @@ exit 0
 
 
 %changelog
-* Tue May 15 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.3.0-1.git
-- Version update
-- Updating to 3096ff1 Merge tag v4.3.0 into hostos-devel
-
-* Wed Apr 04 2018 Fabiano Rosas <farosas@linux.ibm.com> - 4.2.0-2.git
-- Import upstream spec file from v4.2.0 and apply OpenPOWER Host OS
-  customizations
-
-* Wed Apr 04 2018 Fabiano Rosas <farosas@linux.ibm.com> - 4.2.0-1.git
-- Version update
-- Updating to bf217de Merge tag v4.2.0 into hostos-devel
+* Tue Jul 10 2018 Murilo Opsfelder Araújo <muriloo@linux.ibm.com> - 4.5.0-2
+- Rebase to libvirt.spec from Fedora rawhide
+- Apply HostOS customizations
