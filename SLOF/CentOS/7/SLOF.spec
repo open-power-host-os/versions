@@ -3,8 +3,8 @@
 %global gitcommittag    .git%{shortcommit}
 
 Name:           SLOF
-Version:        20171214
-Release:        2%{?extraver}%{gitcommittag}%{?dist}
+Version:        20180621
+Release:        1%{?extraver}%{gitcommittag}%{?dist}
 Summary:        Slimline Open Firmware
 
 License:        BSD
@@ -58,6 +58,10 @@ cp -a boot_rom.bin $RPM_BUILD_ROOT%{_datadir}/qemu/slof.bin
 
 
 %changelog
+* Wed Jul 18 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 20180621-1.git
+- Version update
+- Updating to 7d37bab version: update to 20180621
+
 * Wed Apr 04 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 20171214-2.git
 - Updating to c2a331f broken_sc1: check for H_PRIVILEGE
 
