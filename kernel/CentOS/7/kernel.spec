@@ -315,7 +315,7 @@ Group: System Environment/Kernel
 License: GPLv2
 URL: http://www.kernel.org/
 Version: 4.17.0
-Release: 1%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
+Release: 2%{?prerelease}%{?extraver}%{gitcommittag}%{?dist}
 # DO NOT CHANGE THE 'ExclusiveArch' LINE TO TEMPORARILY EXCLUDE AN ARCHITECTURE BUILD.
 # SET %%nobuildarches (ABOVE) INSTEAD
 ExclusiveArch: noarch i686 x86_64 ppc ppc64 ppc64le s390 s390x %{arm} ppcnf ppc476
@@ -1040,9 +1040,9 @@ BuildKernel() {
     if [ -d arch/$Arch/scripts ]; then
       cp -a arch/$Arch/scripts $RPM_BUILD_ROOT/lib/modules/$KernelVer/build/arch/%{_arch} || :
     fi
-    if [ -f arch/$Arch/*lds ]; then
-      cp -a arch/$Arch/*lds $RPM_BUILD_ROOT/lib/modules/$KernelVer/build/arch/%{_arch}/ || :
-    fi
+    for f in arch/$Arch/kernel/*lds; do
+      cp -a --parents $f $RPM_BUILD_ROOT/lib/modules/$KernelVer/build/
+    done
     rm -f $RPM_BUILD_ROOT/lib/modules/$KernelVer/build/scripts/*.o
     rm -f $RPM_BUILD_ROOT/lib/modules/$KernelVer/build/scripts/*/*.o
 %ifarch ppc64 ppc64le ppcnf ppc476
@@ -1698,6 +1698,9 @@ fi
 
 
 %changelog
+* Tue Jul 24 2018 Fabiano Rosas <farosas@linux.ibm.com> - 4.17.0-2.git
+- Install module.lds to the correct location
+
 * Mon Jun 11 2018 OpenPOWER Host OS Builds Bot <open-power-host-os-builds-bot@users.noreply.github.com> - 4.17.0-1.git
 - Version update
 - Updating to 5ce3eac Merge tag v4.17 into hostos-devel
