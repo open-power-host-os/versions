@@ -12,4 +12,3 @@ Package:
      - opal-prd
      - ppc64-diag
      - qemu
-     - servicelog
