@@ -6,5 +6,4 @@ Package:
      - SLOF
      - kernel
      - libvirt
-     - opal-prd
      - qemu

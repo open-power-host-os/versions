@@ -59,7 +59,6 @@ Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash
 Requires(post): lshw
 Requires(post): opal-firmware
-Requires(post): opal-prd
 Requires(post): opal-utils
 Requires(post): sos
 
@@ -107,7 +106,6 @@ Requires(post): kernel = 4.16.0-2%{?extraver}.git5ed4ce3%{dist}
 Requires(post): crash
 Requires(post): lshw
 Requires(post): opal-firmware
-Requires(post): opal-prd
 Requires(post): opal-utils
 Requires(post): sos
 
