@@ -1,11 +1,6 @@
-%define milestone alpha
-%if "%{milestone}"
-%define milestone_tag .%{milestone}
-%endif
-
 Name: open-power-host-os
 Version: 3.5
-Release: 22%{?milestone_tag}%{dist}
+Release: 22%{dist}
 Summary: OpenPOWER Host OS metapackages
 Group: System Environment/Base
 License: GPLv3
