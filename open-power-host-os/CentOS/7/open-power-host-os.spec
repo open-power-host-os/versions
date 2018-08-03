@@ -57,7 +57,6 @@ Requires(post): libvirt = 4.2.0-2%{?extraver}.gitbf217de%{dist}
 Requires(post): qemu = 15:2.11.91-1%{?extraver}.git46a0689%{dist}
 Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash
-Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): lshw
 Requires(post): opal-firmware
 Requires(post): opal-prd
@@ -106,7 +105,6 @@ Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.16.0-2%{?extraver}.git5ed4ce3%{dist}
 
 Requires(post): crash
-Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): lshw
 Requires(post): opal-firmware
 Requires(post): opal-prd
