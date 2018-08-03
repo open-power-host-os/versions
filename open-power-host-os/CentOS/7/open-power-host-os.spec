@@ -109,8 +109,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__cp} -f hostos-openvswitch.{mod,pp} %{buildroot}%{_sysconfdir}/selinux/open-power-host-os/
 
 BUILD_TIMESTAMP=$(date +"%Y-%m-%d")
-VERSION_STRING=%{version}-%{milestone}
-HOST_OS_RELEASE_TEXT="OpenPOWER Host OS $VERSION_STRING ($BUILD_TIMESTAMP)"
+HOST_OS_RELEASE_TEXT="OpenPOWER Host OS ($BUILD_TIMESTAMP)"
 echo $HOST_OS_RELEASE_TEXT > open-power-host-os-release
 
 mkdir -p $RPM_BUILD_ROOT%{_sysconfdir}
