@@ -42,8 +42,6 @@ metapackages is the following:
 
 * open-power-host-os-base
 
-* open-power-host-os-container
-
 * open-power-host-os-ras
 
 * open-power-host-os-virt
