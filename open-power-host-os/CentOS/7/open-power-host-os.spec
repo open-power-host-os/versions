@@ -52,8 +52,6 @@ Summary: OpenPOWER Host OS full package set
 Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.16.0-2%{?extraver}.git5ed4ce3%{dist}
 Requires: %{name}-container = %{version}-%{release}
-Requires(post): flannel
-Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
 Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20171214-2%{?extraver}.gitc2a331f%{dist}
 Requires(post): libvirt = 4.2.0-2%{?extraver}.gitbf217de%{dist}
@@ -97,9 +95,6 @@ Summary: OpenPOWER Host OS container packages
 
 Requires: %{name}-base = %{version}-%{release}
 Requires(post): kernel = 4.16.0-2%{?extraver}.git5ed4ce3%{dist}
-
-Requires(post): flannel
-Requires(post): kubernetes = 1.2.0-0.23%{?extraver}.git4a3f9c5%{dist}
 
 %description container
 %{summary}
