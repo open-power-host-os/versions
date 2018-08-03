@@ -1,6 +1,0 @@
-Package:
- sources:
-  - git:
-     src: 'https://github.com/docker/swarm.git'
-     branch: 'master'
-     commit_id: 'a0fd82b90932741bda54245e990df433a9ee06a7'
