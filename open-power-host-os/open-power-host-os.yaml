@@ -7,7 +7,6 @@ Package:
      - hwdata
      - kernel
      - libvirt
-     - libvpd
      - lsvpd
      - opal-prd
      - ppc64-diag
