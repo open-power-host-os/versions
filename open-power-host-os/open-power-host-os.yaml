@@ -6,7 +6,6 @@ Package:
      - SLOF
      - hwdata
      - kernel
-     - libservicelog
      - libvirt
      - libvpd
      - lsvpd
