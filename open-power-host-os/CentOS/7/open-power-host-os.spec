@@ -59,7 +59,6 @@ Requires: %{name}-ras = %{version}-%{release}
 Requires(post): crash
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): lshw
-Requires(post): lsvpd = 1.7.8-4%{?extraver}.git63c0dfc%{dist}
 Requires(post): opal-firmware
 Requires(post): opal-prd
 Requires(post): opal-utils
@@ -110,7 +109,6 @@ Requires(post): kernel = 4.16.0-2%{?extraver}.git5ed4ce3%{dist}
 Requires(post): crash
 Requires(post): hwdata = 0.288-3%{?extraver}.git625a119%{dist}
 Requires(post): lshw
-Requires(post): lsvpd = 1.7.8-4%{?extraver}.git63c0dfc%{dist}
 Requires(post): opal-firmware
 Requires(post): opal-prd
 Requires(post): opal-utils
