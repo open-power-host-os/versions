@@ -72,7 +72,6 @@ Requires(post): ppc64-diag = 2.7.4-3%{?extraver}.git608507e%{dist}
 Requires(post): servicelog = 1.1.14-9%{?extraver}.git15f2af5%{dist}
 Requires(post): sos
 
-Requires(post): golang-github-shurcooL-sanitized_anchor_name = 1:0-3%{?extraver}.git1dba4b3%{dist}
 
 %description all
 %{summary}
