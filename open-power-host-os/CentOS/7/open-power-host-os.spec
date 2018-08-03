@@ -55,12 +55,6 @@ Requires: %{name}-virt = %{version}-%{release}
 Requires(post): SLOF = 20171214-2%{?extraver}.gitc2a331f%{dist}
 Requires(post): libvirt = 4.2.0-2%{?extraver}.gitbf217de%{dist}
 Requires(post): qemu = 15:2.11.91-1%{?extraver}.git46a0689%{dist}
-Requires: %{name}-ras = %{version}-%{release}
-Requires(post): crash
-Requires(post): lshw
-Requires(post): opal-firmware
-Requires(post): opal-utils
-Requires(post): sos
 
 
 %description all
@@ -93,23 +87,6 @@ Requires(post): libvirt = 4.2.0-2%{?extraver}.gitbf217de%{dist}
 Requires(post): qemu = 15:2.11.91-1%{?extraver}.git46a0689%{dist}
 
 %description virt
-%{summary}
-
-
-%package ras
-
-Summary: OpenPOWER Host OS RAS (Reliability Availability Serviceability) packages
-
-Requires: %{name}-base = %{version}-%{release}
-Requires(post): kernel = 4.16.0-2%{?extraver}.git5ed4ce3%{dist}
-
-Requires(post): crash
-Requires(post): lshw
-Requires(post): opal-firmware
-Requires(post): opal-utils
-Requires(post): sos
-
-%description ras
 %{summary}
 
 
@@ -169,7 +146,6 @@ rm -rf $RPM_BUILD_ROOT
 %files all
 %files base
 %files virt
-%files ras
 
 
 %changelog
