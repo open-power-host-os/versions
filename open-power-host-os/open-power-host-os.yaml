@@ -4,7 +4,6 @@ Package:
    '7':
     install_dependencies:
      - SLOF
-     - golang-github-russross-blackfriday
      - golang-github-shurcooL-sanitized_anchor_name
      - hwdata
      - kernel
