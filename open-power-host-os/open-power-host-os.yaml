@@ -8,5 +8,4 @@ Package:
      - kernel
      - libvirt
      - opal-prd
-     - ppc64-diag
      - qemu
