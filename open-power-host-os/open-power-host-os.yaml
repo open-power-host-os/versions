@@ -4,17 +4,6 @@ Package:
    '7':
     install_dependencies:
      - SLOF
-     - docker-swarm
-     - golang-github-russross-blackfriday
-     - golang-github-shurcooL-sanitized_anchor_name
-     - hwdata
      - kernel
-     - kubernetes
-     - libservicelog
      - libvirt
-     - libvpd
-     - lsvpd
-     - opal-prd
-     - ppc64-diag
      - qemu
-     - servicelog
